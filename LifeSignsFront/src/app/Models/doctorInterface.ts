@@ -5,7 +5,7 @@ export interface Doctor {
   address: string,
   picture: string,
   aboutMe: string,
-  specialty: string,
+  //specialty: string,
   viewPreference: boolean,
   covidStatus: string
 }
