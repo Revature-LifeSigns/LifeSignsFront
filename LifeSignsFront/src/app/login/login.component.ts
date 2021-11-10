@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../services/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
     userPassword: new FormControl('', [Validators.required])
   });
 
-  constructor(/* inject user service here */ private router: Router) { }
+  constructor(private userServ:UserService, private router: Router) { }
   //set up subscribe calls to user service with backend url (var in user service)
   // if logged in successfully -- redirect to..
 
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin() {
-    const user = new User(this.userName?.value, this.userPassword?.value);
+    //const user = new User(this.userName?.value, this.userPassword?.value);
   }
 
   ngOnInit(): void {
