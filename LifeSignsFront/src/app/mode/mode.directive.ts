@@ -18,6 +18,7 @@ export class ModeDirective implements OnInit{
 
   updateTheme(theme:Theme){
     for(const property in theme.styles){
+      console.log(theme.styles[property]);
       this._elementRef.nativeElement.style.setProperty(property, theme.styles[property]);
     }
   }

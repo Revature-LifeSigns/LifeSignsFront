@@ -2,3 +2,6 @@
 .toolbar{
     background-color: var(--toolbar-color);
 }
+#pageContainer{
+    background-color: var(--bg-color);
+}

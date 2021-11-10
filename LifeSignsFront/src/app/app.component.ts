@@ -8,7 +8,7 @@ import { ModeService } from './mode/mode.service';
 })
 export class AppComponent {
   title = 'LifeSignsFront';
-
+  isVisible = true;
   constructor(private modeService: ModeService){}
 
   toggle(){
