@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DoctorService {
 
-  private url ="http://localhost:";
+  private url ="http://localhost:9001/doctors";
   private currentDoctor!: Doctor;
   private loginDoctorStatus!: boolean;
 
@@ -20,10 +20,6 @@ export class DoctorService {
   };
 
   constructor(private http: HttpClient) { }
-
-  loginDoctor(doctor: Doctor):Observable<Doctor> {
-    return this.http.post<Doctor>(this.url +"/login", doctor, this.httpHead);
-  }
 
   signUpDoctor(doctor: Doctor):Observable<Doctor> {
     return this.http.post<Doctor>(this.url, doctor, this.httpHead);
@@ -38,7 +34,7 @@ export class DoctorService {
     this.loginDoctorStatus = true;
   }
 
-  getCurrentDoctor():Doctor {
+  getDoctor():Doctor {
     return this.currentDoctor;
   }
 }
