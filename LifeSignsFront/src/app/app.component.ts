@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModeService } from './mode/mode.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'LifeSignsFront';
+
+  constructor(private modeService: ModeService){}
+
+  toggle(){
+    this.modeService.toggleMode();
+  }
 }
