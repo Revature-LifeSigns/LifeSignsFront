@@ -70,7 +70,8 @@ export class User {
     public set roleid(theRole:number) {
         if (theRole >= 1 && theRole <= 3) {
             this._roleid = theRole;
+        } else {
+            alert('Role is invalid.');
         }
-        alert('Role is invalid.');
     }
 }
