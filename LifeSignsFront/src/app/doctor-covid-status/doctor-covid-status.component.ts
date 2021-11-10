@@ -22,6 +22,7 @@ export class DoctorCovidStatusComponent implements OnInit {
     let today:number = new Date().getDay();
     //if today is Monday(1) this will display the modal.
     today === 1 && this.displayModal();
+    //TODO: Needs to not display more than once on Monday. Displays with every login if its Monday right now.
   }
 
   //get value selected on submit.
