@@ -1,0 +1,18 @@
+.login-form {
+  text-align: center;
+  margin-top: 4%;
+  padding: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.card {
+  padding: 20px;
+  border: 1px solid #125266;
+  position: flex;
+}
+
+
+p {
+  font-family: Lato;
+}

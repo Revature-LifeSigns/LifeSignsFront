@@ -1,6 +1,6 @@
-<div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
-  <div class="container">
-    <div class="row align-items-center">
+<div class="login-form">
+  <!-- <div class="card"> -->
+    <div class="row d-flex justify-content-center align-items-center">
       <div class="col-lg-6 px-lg-4">
         <div class="card">
           <div class="card-header px-lg-5">
@@ -8,81 +8,61 @@
           </div>
           <div class="card-body p-lg-5">
             <h3 class="mb-4">Hi, welcome back!</h3>
-            <p class="text-muted text-sm mb-5">Add login text here.</p>
+            <!-- <p class="text-muted text-sm mb-5">Add login text here.</p> -->
             <form [formGroup]="loginForm">
               <div class="form-floating mb-3">
                 <input
-                  class="form-control"
+                  class="form-control mb-2"
                   id="floatingInput"
                   type="username"
                   placeholder="Username"
                   formControlName="userName"
                   required
-                >
-                <label for="floatingInput">Email address</label>
+                />
+                <label for="floatingInput"> Email address</label>
               </div>
               <div class="form-floating mb-3">
                 <input
-                  class="form-control"
+                  class="form-control mb-2"
                   id="floatingPassword"
                   type="password"
                   placeholder="Password"
                   formControlName="userPassword"
                   required
-                >
-                <label for="floatingPassword">Password</label>
+                />
+                <label for="floatingPassword"> Password</label>
               </div>
               <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                <label class="form-check-label" for="remember">Remember me</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="remember"
+                  id="remember"
+                />
+                <label class="form-check-label" for="remember"
+                  >Remember me</label
+                >
               </div>
               <button class="btn btn-primary" type="button">Submit</button>
             </form>
           </div>
           <div class="card-footer px-lg-5 py-lg-4">
-            <div class="text-sm text-muted">Don't have an account? <a>Register</a></div>
-            <button routerLink="/register" class="btn btn-primary" type="button">Register</button>
-
+            <div class="text-sm text-muted">
+              Don't have an account? <a>Register</a>
+            </div>
+            <button
+              routerLink="/register"
+              class="btn btn-primary"
+              type="button"
+            >
+              Register
+            </button>
           </div>
         </div>
       </div>
-      <!-- register -->
-       <!-- <div class="col-lg-6 px-lg-4">
-        <div class="card">
-          <div class="card-header px-lg-5">
-            <div class="card-heading text-primary">Jassa Register</div>
-          </div>
-          <div class="card-body p-lg-5">
-            <h3 class="mb-4">Get started with Chamkila</h3>
-            <p class="text-muted text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-            <form action="index.html">
-              <div class="form-floating mb-3">
-                <input class="form-control" id="username" type="email" placeholder="name@example.com" required>
-                <label for="username">Username</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input class="form-control" id="floatingInput" type="email" placeholder="name@example.com" required>
-                <label for="floatingInput">Email address</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input class="form-control" id="floatingPassword" type="password" placeholder="Password" required>
-                <label for="floatingPassword">Password</label>
-              </div>
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" name="agree" id="agree">
-                <label class="form-check-label" for="agree">I agree with the <a href="#">Terms & Conditions</a>.</label>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary" id="regidter" type="button" name="registerSubmit">Register</button>
-              </div>
-            </form>
-          </div>
-          <div class="card-footer px-lg-5 py-lg-4">
-            <div class="text-sm text-muted">Already have an account? <a>Login</a>.</div>
-          </div>
-        </div>
-      </div> -->
     </div>
-  </div>
+  <!-- </div> -->
 </div>
+
+
 
