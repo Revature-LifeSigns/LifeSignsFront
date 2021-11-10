@@ -1,6 +1,6 @@
 export class User {
-    constructor(private _userid:number, private _username:string, private _pwd:string,
-        private _email:string, private _roleid:number) { }
+    constructor(private _username:string, private _pwd:string,
+        private _email:string, private _roleid:number, private _userid?:number) { }
 
     public get userid() {
         return this._userid;
@@ -72,6 +72,6 @@ export class User {
             this._roleid = theRole;
         } else {
             alert('Role is invalid.');
-        }
+        }   
     }
 }
