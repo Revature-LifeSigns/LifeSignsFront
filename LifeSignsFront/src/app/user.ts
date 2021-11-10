@@ -10,8 +10,6 @@ export class User {
         return this._username;
     }
 
-    // Username requirement: Must be lowercase, start with a letter, and can 
-    // contain numbers, underscores, and periods (5-20 characters).
     public set username(theUsername:string) {
         if (this.validateUsername(theUsername)) {
             this._username = theUsername;
@@ -20,6 +18,8 @@ export class User {
         }
     }
 
+    // Username requirement: Must be lowercase, start with a letter, and can 
+    // contain numbers, underscores, and periods (5-20 characters).
     private validateUsername(theUsername:string) {
         const re = /^[a-z]{1}[a-z0-9_.]{4,20}$/;
         return re.test(String(theUsername));
@@ -39,7 +39,7 @@ export class User {
 
     // Password requirement: Must include at least 1 lowercase, 1 uppercase, 
     // 1 number, and 1 special character (8-20 characters).
-    public validatePwd(thePwd:string) {
+    private validatePwd(thePwd:string) {
         const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/;
         return re.test(String(thePwd));
     }
@@ -57,7 +57,7 @@ export class User {
     }
 
     // Email requirement: Must be a valid email [name@domain] (3-50 characters).
-    public validateEmail(theEmail:string) {
+    private validateEmail(theEmail:string) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(theEmail).toLowerCase());
     }
