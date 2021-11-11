@@ -10,11 +10,13 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
 import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
+import { ModeDirective } from './mode/mode.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ModeDirective,
     ProfilesComponent,
     ChartsComponent,
     LoginComponent,

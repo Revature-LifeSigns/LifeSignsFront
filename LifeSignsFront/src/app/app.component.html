@@ -1,6 +1,6 @@
 
-<div id = "top-header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div appMode id = "top-header">
+  <nav class="navbar navbar-expand-lg">
     <img src = "../assets/transparent_navlogo_1.png" width = "150" alt = "LifeSigns Image" />
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
@@ -26,6 +26,9 @@
     </div>
     <div id = "loginInfo" *ngIf = "isVisible">
       <button id = "logoutButton" class = "btn btn-secondary">Log Out</button>
+    </div>
+    <div>
+      <button class = "btn btn-secondary" (click)="toggle()">Change Mode</button>
     </div>
   </nav>
   </div>
