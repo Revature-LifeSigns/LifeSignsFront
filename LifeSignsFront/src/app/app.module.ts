@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { ChartsComponent } from './charts/charts.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user.service';
@@ -14,18 +16,21 @@ import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-s
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
+    ProfilesComponent,
+    ChartsComponent,
     LoginComponent,
     DoctorCovidStatusComponent
   ],
   imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule.forRoot([
-      {path: '', component: LoginComponent},
+    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([
+      {path: "home", component: LoginComponent},
+      {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'login', component: LoginComponent}
+      {path: "profiles", component: ProfilesComponent},
+      {path: "charts", component: ChartsComponent},
+      {path: "chat", component: AppComponent}, //TODO: fill in correct component for chat
+      {path: "**", redirectTo: "home"}  //TODO fill in correct catch-all route
+
     ])
   ],
   providers: [UserService],
