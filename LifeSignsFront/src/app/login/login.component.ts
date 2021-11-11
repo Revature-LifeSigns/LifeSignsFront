@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { UserService } from '../services/user.service';
-import { User } from '../user';
+import { User } from '../services/util/user';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +16,9 @@ export class LoginComponent implements OnInit {
     userPassword: new FormControl('', [Validators.required])
   });
 
-  constructor(private userService: UserService, private router: Router) { }
-
+  constructor(private userServ:UserService, private router: Router) { }
+  //set up subscribe calls to user service with backend url (var in user service)
+  // if logged in successfully -- redirect to..
 
   get userName() {
     return this.loginForm.get('_username');
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin() {
-    // const user = new User(this.userName?.value, this.userPassword?.value)
+    //const user = new User(this.userName?.value, this.userPassword?.value);
   }
 
   ngOnInit(): void {

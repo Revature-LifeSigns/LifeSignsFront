@@ -50,7 +50,7 @@ export class User {
 
     public set email(theEmail:string) {
         if (this.validateEmail(theEmail)) {
-
+            this._email = theEmail;
         } else {
             alert('Email address is invalid.');
         }
