@@ -6,17 +6,19 @@
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-  
+                
+                <p id="errorMessage"></p>
+
                 <form [formGroup]="registerForm">
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example3cg"><b>Account Type: </b></label>
                     <label id="asterisk">* </label> 
-                    <select formControlName="role">
+                    <select formControlName="roleID">
                       <option value="" disabled selected>Select an option</option>
-                      <option value="Doctor">Doctor</option>
-                      <option value="Nurse">Nurse</option>
-                      <option value="Patient">Patient</option>
+                      <option value="1">Doctor</option>
+                      <option value="2">Nurse</option>
+                      <option value="3">Patient</option>
                     </select>
                   </div>
 
@@ -30,18 +32,21 @@
                     <label class="form-label" for="form3Example3cg"><b>Username: </b></label>
                     <label id="asterisk">* </label> 
                     <input formControlName="username" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                    <p><small>Must be lowercase, start with a letter, and can contain numbers, underscores, and periods (5-20 characters).</small></p>
                   </div>
   
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example3cg"><b>Password: </b></label>
                     <label id="asterisk">* </label> 
                     <input formControlName="password" type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                    <p><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1 special character (8-20 characters).</small></p>
                   </div>
   
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example3cg"><b>Confirm Password: </b></label>
                     <label id="asterisk">* </label> 
                     <input formControlName="confirmed" type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                    <p><small>Passwords must match.</small></p>
                   </div>
 
                   <div class="form-outline mb-4">
