@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Doctor } from '../Models/doctorInterface';
+import { Doctor } from '../util/doctorInterface';
 import { Observable } from 'rxjs';
 
 @Injectable({
