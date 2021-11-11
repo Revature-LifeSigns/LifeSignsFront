@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+ 
   registerForm = new FormGroup({
     role: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     confirmed: new FormControl('', [Validators.required])
   })
+
   constructor(private userServ:UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class RegisterComponent implements OnInit {
         roleid=3;
         break;
     }
+    
     let newUser:User = new User('', '', '', roleid);
     newUser.email = user.get('email')?.value;
     newUser.username = user.get('username')?.value;
