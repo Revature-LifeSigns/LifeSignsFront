@@ -7,7 +7,10 @@
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
   
-                <form [formGroup]="registerForm">
+                <!-- <form [formGroup]="registerForm">
+                <form [formGroup]="covidStatusForm" (ngSubmit)="submit()">
+                -->
+                  <form attr.[formGroup]="registerForm">
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example3cg"><b>Account Type: </b></label>

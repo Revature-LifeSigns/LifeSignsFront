@@ -17,8 +17,8 @@ export class RegisterComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     confirmed: new FormControl('', [Validators.required])
-  })
-  //constructor(private userServ:UserService, private router: Router) { }
+  });
+  constructor(private userServ:UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
