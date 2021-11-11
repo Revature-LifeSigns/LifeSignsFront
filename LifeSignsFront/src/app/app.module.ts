@@ -10,7 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
 import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
-import { NurseService } from './services/api/nurse.service';
+import { NurseService } from './services/nurse/nurse.service';
 
 
 @NgModule({
