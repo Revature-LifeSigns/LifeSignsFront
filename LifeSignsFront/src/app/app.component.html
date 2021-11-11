@@ -24,8 +24,13 @@
         </ul>
       </div>
     </div>
-    <div id = "logoutInfo" *ngIf = "isVisible">
-      <button id = "logoutButton" class = "btn btn-secondary">Log Out</button>
+    <div id = "userMenu" >
+      <i class="far fa-user-circle"></i>
+      <ul id = "userOptions" *ngIf = "isVisible">
+        <li>Dark Mode Toggle</li>
+        <li>Edit Account</li>
+        <li>Logout</li>
+      </ul>
     </div>
   </nav>
   </div>
