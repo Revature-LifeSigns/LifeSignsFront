@@ -11,6 +11,7 @@ export class AppComponent {
   isVisible = true;
   constructor(private modeService: ModeService){}
 
+  // Mode Service is injected and toggleMode() is being called at each click event
   toggle(){
     this.modeService.toggleMode();
   }

@@ -16,9 +16,9 @@ export class ModeDirective implements OnInit{
       (theme:Theme) => this.updateTheme(theme));
   }
 
+  // sets css variable names to its values defined in parameter theme (datatype Theme defined in theme.ts)
   updateTheme(theme:Theme){
     for(const property in theme.styles){
-      console.log(theme.styles[property]);
       this._elementRef.nativeElement.style.setProperty(property, theme.styles[property]);
     }
   }
