@@ -1,0 +1,34 @@
+#pageContainer {
+    width: 50%;
+    margin-left: 10px;
+    margin: auto auto;
+}
+
+#peronsalInfo {
+    border: 1px solid black;
+}
+
+#peronsalInfo {
+    border: 1px solid black;
+}
+
+#name {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+#lastName, #firstName, #professionType {
+    border: 1px solid black;
+    margin: auto auto;
+}
+
+#fieldSpecialty, #dob, #covid {
+    border: 1px solid black;
+    margin: auto auto;
+}
+
+#contactInfo {
+    display: flex;
+    justify-content: space-around;
+}
