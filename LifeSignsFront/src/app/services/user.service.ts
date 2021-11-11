@@ -8,33 +8,33 @@ import { User } from '../user';
   providedIn: 'root'
 })
 export class UserService {
-  private url = "insert url here";
+  // private url = "insert url here";
 
 
-  private httpHead = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    })
-  };
+  // private httpHead = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*'
+  //   })
+  // };
 
-  constructor(private httpClient: HttpClient) { }
+  // constructor(private httpClient: HttpClient) { }
 
-  loginUser(user: User):Observable<User> {
-    return this.httpClient.post<User>(this.url +"/login", user, this.httpHead);
-  }
+  // loginUser(user: User):Observable<User> {
+  //   return this.httpClient.post<User>(this.url +"/login", user, this.httpHead);
+  // }
 
   // getAllUsers(user: User):Observable<User> {
   //   return this.httpClient.get
   // }
 
-  registerUser(user: User):Observable<User> {
-    return this.httpClient.post<User>(this.url, user, this.httpHead);
-  }
+  // registerUser(user: User):Observable<User> {
+  //   return this.httpClient.post<User>(this.url, user, this.httpHead);
+  // }
 
-  logoutUser() {
+  // logoutUser() {
 
-  }
+  // }
 
 
 }
