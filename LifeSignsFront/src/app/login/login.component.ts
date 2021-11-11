@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private url = "http://localhost:9025";
 
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -22,21 +20,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService:UserService, private router: Router) { }
 
-  get userName() {
-    return this.loginForm.get('userName');
-  }
-
-  get userPassword() {
-    return this.loginForm.get('userPassword');
-  }
-
   userLogin(input: FormGroup){
     let errMess:any = document.getElementById('errorMessage');
 
     let user = JSON.stringify(input.value);
     this.userService.loginUser(user).subscribe(
       loginResp => {
-        console.log(loginResp);
         const userLogin = new User(
           loginResp.username,
           loginResp.pwd,
@@ -53,7 +42,7 @@ export class LoginComponent implements OnInit {
         errMess.innerHTML = 'Invalid login.  Please try again.'
         this.invalidLogin = true;
       }
-    )
+    );
   }
 
   ngOnInit(): void {
