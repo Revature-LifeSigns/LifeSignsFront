@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DoctorService {
 
-  private url ="http://localhost:9001/doctors";
+  private url ="http://localhost:9025/doctors";
   private currentDoctor!: Doctor;
   private loginDoctorStatus!: boolean;
 
