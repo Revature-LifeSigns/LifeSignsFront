@@ -1,4 +1,7 @@
-#logoutInfo {
-    width: 120px;
-    margin-right: 15px;
+#userOptions {
+    overflow: visible;
+}
+
+#menuOptions {
+    float: right;
 }
