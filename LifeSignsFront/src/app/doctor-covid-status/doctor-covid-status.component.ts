@@ -43,11 +43,11 @@ export class DoctorCovidStatusComponent implements OnInit {
 
   //Methods
   ngOnInit(): void {
-    if(this.today !== 1) {
+    if(this.today !== 4) {
       this.hasDisplayed = false;
     }
 
-    if(this.today === 1 && this.hasDisplayed === false) {
+    if(this.today === 4 && this.hasDisplayed === false) {
       this.displayModal();
     }
 
@@ -58,7 +58,7 @@ export class DoctorCovidStatusComponent implements OnInit {
     let formValues = this.covidStatusForm.value;
     type formKey = "headache" | "noSmellTaste" | "fever" | "cough" | "breathingDifficulties" | "exposed" | "hasTraveled";
     for (let key in formValues) {
-      if (formValues[key] === "" || formValues[key] === "no") {
+      if (formValues[key] === "" || formValues[key] === "no" || formValues[key] === false) {
         this.covidSurvey[<formKey>key] = false;
       } else {
         this.covidSurvey[<formKey>key] = true;
