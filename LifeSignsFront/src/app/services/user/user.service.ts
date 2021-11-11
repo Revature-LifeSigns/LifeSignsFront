@@ -7,7 +7,7 @@ import { User } from '../util/user';
   providedIn: 'root'
 })
 export class UserService {
-  private url = "http://localhost:9025";
+  private url = "http://localhost:9025/LifeSigns";
 
 
   private httpHead = {
@@ -17,22 +17,8 @@ export class UserService {
     })
   };
 
-  constructor(private httpClient: HttpClient) { }
-
-  loginUser(user: User):Observable<User> {
-    return this.httpClient.post<User>(this.url +"/login", user, this.httpHead);
-  }
-
-
-
-  registerUser(user: User):Observable<User> {
-    return this.httpClient.post<User>(this.url, user, this.httpHead);
-  }
-
-  logoutUser() {
-
-  }
-
+  private loggedInUser: User;
+  private userLoggedInStatus: boolean;
 
   private urlBase = "http://localhost:9025/LifeSigns";
 
@@ -48,5 +34,30 @@ export class UserService {
     return this.http.post<User[]>(this.urlBase + "/register", user, httpHead);
   }
 
+  loginUser(user: User):Observable<User> {
+    return this.http.post<User>(this.url + "/login", user, this.httpHead);
+  }
+
+  userLoginStatus(user: User) {
+    this.loggedInUser = user;
+    this.userLoggedInStatus = true;
+  }
+
+  getLoggedInUser():User {
+    return this.loggedInUser;
+  }
+
+  isUserLoggedIn():boolean {
+    return this.userLoggedInStatus;
+  }
+
+  logoutUser() {
+    this.userLoggedInStatus = false;
+  }
+
+  setUserToCurrent() {
+    this.loggedInUser = new User("", "");
+    this.userLoggedInStatus = false;
+  }
 
 }

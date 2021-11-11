@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     userPassword: new FormControl('', [Validators.required])
   });
 
+  invalidLogin:boolean = false;
+
   constructor(private userService:UserService, private router: Router) { }
 
   get userName() {
@@ -29,7 +31,26 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(){
-    const user = new User(this.userName?.value, this.userPassword?.value,)
+    const user = new User(this.userName?.value, this.userPassword?.value);
+
+    this.userService.loginUser(user).subscribe(
+      loginResp => {
+        const userLogin = new User(
+          loginResp["_username"],
+          loginResp["_pwd"],
+          loginResp["_email"],
+          loginResp["_roleid"],
+          loginResp["_userid"]
+        );
+        this.userService.userLoginStatus(userLogin);
+        this.invalidLogin = false;
+        this.router.navigate(['/profiles']);
+      },
+      error => {
+        console.log(error);
+        this.invalidLogin = true;
+      }
+    )
   }
 
   ngOnInit(): void {
