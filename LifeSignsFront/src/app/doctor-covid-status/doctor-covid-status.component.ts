@@ -1,33 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { covidSurvey } from '../services/util/covidSurvey';
 
 @Component({
   selector: 'app-doctor-covid-status',
   templateUrl: './doctor-covid-status.component.html',
-  styleUrls: ['./doctor-covid-status.component.css']
+  styleUrls: ['./doctor-covid-status.component.css'],
 })
 export class DoctorCovidStatusComponent implements OnInit {
-
   //Fields
   covidStatusForm = new FormGroup({
-    status: new FormControl('', Validators.required)
+    headache: new FormControl('', Validators.required),
+    noSmellTaste: new FormControl('', Validators.required),
+    fever: new FormControl('', Validators.required),
+    cough: new FormControl('', Validators.required),
+    breathingDifficulties: new FormControl('', Validators.required),
+    exposed: new FormControl('', Validators.required),
+    hasTraveled: new FormControl('', Validators.required),
   });
 
+  covidSurvey: covidSurvey = {
+    headache: false,
+    noSmellTaste: false,
+    fever: false,
+    cough: false,
+    breathingDifficulties: false,
+    exposed: false,
+    hasTraveled: false
+  };
+
+  //hasDisplayed = false;
+
   //Constructor
-  constructor() { }
+  constructor() {}
 
   //Methods
   ngOnInit(): void {
-    //gets the current day of the week as a number type(1-7);
-    let today:number = new Date().getDay();
-    //if today is Monday(1) this will display the modal.
-    today === 1 && this.displayModal();
-    //TODO: Needs to not display more than once on Monday. Displays with every login if its Monday right now.
+
+
+      let today: number = new Date().getDay();
+      today === 4 && this.displayModal();
+
+
   }
 
   //get value selected on submit.
-  submit(){
+  submit() {
+    let formValues = this.covidStatusForm.value;
+    for(let key in formValues) {
+       if(formValues[key] !== "" || formValues[key] !== "no") {
+         //this.covidSurvey[key] = true;
+       }
+    }
+
     console.log(this.covidStatusForm.value);
+    console.log(this.covidSurvey);
   }
 
   //Have to click a button with Bootstrap's data attributes to show modal.
@@ -36,5 +63,4 @@ export class DoctorCovidStatusComponent implements OnInit {
   displayModal() {
     document.getElementById('showModal')?.click();
   }
-
 }
