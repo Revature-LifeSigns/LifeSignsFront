@@ -16,19 +16,9 @@
                   <p class="text-center">Don't have an account?</p>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button
-                  routerLink="/register"
-                    type="submit"
-                    class="
-                      btn btn-white btn-block
-                      text-uppercase
-                      mb-2
-                      shadow-sm
-                    "
-                  >
+                  <button routerLink="/register" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm">
                     SIGN UP
                   </button>
-
                 </div>
 
                 <div class="text-center d-flex justify-content-between mt-4">
@@ -53,44 +43,17 @@
               <p *ngIf="" class="loginformtitle">Username</p>
               <form [formGroup]="loginForm">
                 <div class="form-group mb-3">
-                  <input
-                    id="userName"
-                    type="email"
-                    placeholder="Enter username"
-                    formControlName="userName"
-                    required
-                    autofocus=""
-                    class="form-control border-0 shadow-sm px-4"
-                  />
+                  <input id="userName" type="email" placeholder="Enter username" formControlName="username" required
+                    autofocus="" class="form-control border-0 shadow-sm px-4" />
                 </div>
-              <p class="loginformtitle">Password</p>
-              <!-- <p class="text-muted mb-4">Password</p> -->
+                <p class="loginformtitle">Password</p>
+                <!-- <p class="text-muted mb-4">Password</p> -->
                 <div class="form-group mb-3">
-                  <input
-                    id="userPassword"
-                    type="password"
-                    placeholder="Enter password"
-                    required
-                    class="
-                      form-control
-                      border-0
-                      shadow-sm
-                      px-4
-                      text-primary
-                    "
-                  />
+                  <input id="userPassword" type="password" placeholder="Enter password" formControlName="password" required class="form-control border-0 shadow-sm px-4 text-primary"/>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button
-                  routerLink=""
-                  type="submit"
-                  class="
-                    btn btn-white btn-block
-                    text-uppercase
-                    mb-2
-                    shadow-sm
-                  "
-                  >
+                  <button routerLink="" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm"
+                    (click)="userLogin(loginForm)">
                     LOGIN
                   </button>
                 </div>
@@ -109,4 +72,3 @@
     <!-- End -->
   </div>
 </div>
-

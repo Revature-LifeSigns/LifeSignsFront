@@ -7,35 +7,26 @@ import { User } from '../util/user';
   providedIn: 'root'
 })
 export class UserService {
-  private url = "http://localhost:9025/LifeSigns";
+  private loggedInUser!: User;
+  private userLoggedInStatus!: boolean;
 
+  private urlBase = "http://localhost:9025/LifeSigns";
 
   private httpHead = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type':'application/json',
+      'Access-Control-Allow-Origin':'*'
     })
   };
-
-  private loggedInUser: User;
-  private userLoggedInStatus: boolean;
-
-  private urlBase = "http://localhost:9025/LifeSigns";
 
   constructor(private http: HttpClient) {}
 
   public insertUser(user:string): Observable<User[]> {
-    const httpHead = {
-      headers: new HttpHeaders({
-        'Content-Type':'application/json',
-        'Access-Control-Allow-Origin':'*'
-      })
-    };
-    return this.http.post<User[]>(this.urlBase + "/register", user, httpHead);
+    return this.http.post<User[]>(this.urlBase + "/register", user, this.httpHead);
   }
 
-  loginUser(user: User):Observable<User> {
-    return this.http.post<User>(this.url + "/login", user, this.httpHead);
+  loginUser(user:string):Observable<User> {
+    return this.http.post<User>(this.urlBase + "/login", user, this.httpHead);
   }
 
   userLoginStatus(user: User) {
@@ -56,7 +47,7 @@ export class UserService {
   }
 
   setUserToCurrent() {
-    this.loggedInUser = new User("", "");
+    this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
   }
 

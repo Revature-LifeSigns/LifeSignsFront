@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   private url = "http://localhost:9025";
 
   loginForm = new FormGroup({
-    userName: new FormControl('', [Validators.required]),
-    userPassword: new FormControl('', [Validators.required])
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
   });
 
   invalidLogin:boolean = false;
@@ -30,17 +30,17 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('userPassword');
   }
 
-  userLogin(){
-    const user = new User(this.userName?.value, this.userPassword?.value);
-
+  userLogin(input: FormGroup){
+    let user = JSON.stringify(input.value);
     this.userService.loginUser(user).subscribe(
       loginResp => {
+        console.log(loginResp);
         const userLogin = new User(
-          loginResp["_username"],
-          loginResp["_pwd"],
-          loginResp["_email"],
-          loginResp["_roleid"],
-          loginResp["_userid"]
+          loginResp.username,
+          loginResp.pwd,
+          loginResp.email,
+          loginResp.roleid,
+          loginResp.userid
         );
         this.userService.userLoginStatus(userLogin);
         this.invalidLogin = false;
