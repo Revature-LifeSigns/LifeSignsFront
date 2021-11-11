@@ -33,36 +33,84 @@
       </div>
       <!-- Modal Body: COVID status (none, exposed, vaccinated, quarantining)  -->
       <div class="modal-body text-center">
-
         <!-- Form  -->
         <form [formGroup]="covidStatusForm" (ngSubmit)="submit()">
           <!-- Have You Had Any Of These Symptoms? -->
           <!-- symptoms include headache, loss of smell and taste, nasal congestion and runny nose, cough, muscle pain, sore throat, fever, diarrhea, and breathing difficulties-->
           <h5 class="">Have you had any of these symptoms?</h5>
           <p>Select all that apply.</p>
-          <div class="btn-group btn-group-sm mb-3" role="group" aria-label="Basic checkbox toggle button group">
+          <div
+            class="btn-group btn-group-sm mb-3"
+            role="group"
+            aria-label="Basic checkbox toggle button group"
+          >
             <!-- Headache -->
-            <input type="checkbox" class="btn-check" id="checkHeadache" name="headache" formControlName="headache" autocomplete="off">
-            <label class="btn btn-outline-primary" for="checkHeadache">Headache</label>
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="checkHeadache"
+              name="headache"
+              formControlName="headache"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary" for="checkHeadache"
+              >Headache</label
+            >
             <!-- Loss of smell or taste -->
-            <input type="checkbox" class="btn-check" id="checkSmellTaste" name="noSmellTaste"  formControlName="noSmellTaste" autocomplete="off">
-            <label class="btn btn-outline-primary" for="checkSmellTaste">Loss of Smell/Taste</label>
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="checkSmellTaste"
+              name="noSmellTaste"
+              formControlName="noSmellTaste"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary" for="checkSmellTaste"
+              >Loss of Smell/Taste</label
+            >
 
             <!-- Fever -->
-            <input type="checkbox" class="btn-check" id="checkFever" name="fever" formControlName="fever" autocomplete="off">
-            <label class="btn btn-outline-primary" for="checkFever">Fever</label>
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="checkFever"
+              name="fever"
+              formControlName="fever"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary" for="checkFever"
+              >Fever</label
+            >
 
-             <!-- Cough -->
-             <input type="checkbox" class="btn-check" id="checkCough" name="cough" formControlName="cough" autocomplete="off">
-             <label class="btn btn-outline-primary" for="checkCough">Cough</label>
+            <!-- Cough -->
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="checkCough"
+              name="cough"
+              formControlName="cough"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary" for="checkCough"
+              >Cough</label
+            >
 
-              <!-- Breathing Difficulties -->
-              <input type="checkbox" class="btn-check" id="checkBreathing" name="breathingDifficulties" formControlName="breathingDifficulties" autocomplete="off">
-              <label class="btn btn-outline-primary" for="checkBreathing">Trouble Breathing</label>
+            <!-- Breathing Difficulties -->
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="checkBreathing"
+              name="breathingDifficulties"
+              formControlName="breathingDifficulties"
+              autocomplete="off"
+            />
+            <label class="btn btn-outline-primary" for="checkBreathing"
+              >Trouble Breathing</label
+            >
           </div>
 
-          <hr>
-          <br>
+          <hr />
+          <br />
 
           <!-- Have you been exposed to COVID-19? -->
           <h5>Have you been exposed to COVID-19?</h5>
@@ -71,7 +119,6 @@
             role="group"
             aria-label="Basic radio toggle button group"
           >
-
             <!-- Yes -->
             <input
               type="radio"
@@ -102,8 +149,8 @@
             >
           </div>
 
-          <hr>
-          <br>
+          <hr />
+          <br />
 
           <!-- Have You Traveled Anywhere In The Last 30 Days? -->
           <h5>Have you traveled anywhere in the last 30 days?</h5>
@@ -112,7 +159,6 @@
             role="group"
             aria-label="Basic radio toggle button group"
           >
-
             <!-- Yes -->
             <input
               type="radio"
@@ -143,8 +189,8 @@
             >
           </div>
 
-          <br>
-          <hr>
+          <br />
+          <hr />
 
           <!-- Submit Button -->
           <button
