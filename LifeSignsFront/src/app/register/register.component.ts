@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../services/user';
-import { UserService } from '../services/user.service';
+import { User } from '../services/util/user';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     confirmed: new FormControl('', [Validators.required])
-  })
+  });
   constructor(private userServ:UserService, private router: Router) { }
 
   ngOnInit(): void {
