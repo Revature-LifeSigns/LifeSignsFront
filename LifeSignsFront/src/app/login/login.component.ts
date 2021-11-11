@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(input: FormGroup){
+    let errMess:any = document.getElementById('errorMessage');
+
     let user = JSON.stringify(input.value);
     this.userService.loginUser(user).subscribe(
       loginResp => {
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log(error);
+        errMess.innerHTML = 'Invalid login.  Please try again.'
         this.invalidLogin = true;
       }
     )
