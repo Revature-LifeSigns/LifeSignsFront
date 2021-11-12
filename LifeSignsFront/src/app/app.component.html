@@ -1,5 +1,5 @@
-<div id = "top-header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div appMode id = "top-header">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <img src = "../assets/transparent_navlogo_1.png" width = "150" alt = "LifeSigns Image" />
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
@@ -21,18 +21,36 @@
             <a class="nav-link disabled" href="#">Chat</a>
           </li>
         </ul>
+        
+        <div class="dropdown">
+          <i class="fa fa-user-circle fa-2x" data-bs-toggle="dropdown"></i>
+          <div class="dropdown-menu dropdown-menu-end">
+            <div class = "dropdown-item" (click)="toggle()">Change Mode</div>
+            <div class = "dropdown-item">Edit Account</div>
+            <div class = "dropdown-item" id = "loginInfo" *ngIf = "isVisible">Log Out</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div id = "logoutInfo" *ngIf = "isVisible">
-      <button id = "logoutButton" class = "btn btn-secondary">Log Out</button>
+
+    <div id = "userMenu" >
+      <i class="fa fa-user-circle fa-list-dropdown fa-2x" (click) = "toggleUserMenu()"></i>
+      <select id = "userOptions" *ngIf = "isVisible">
+        <option value = "mode">Dark Mode Toggle</option>
+        <option value = "editAcct">Edit Account</option>
+        <option value = "logout">Logout</option>
+      </select>
     </div>
   </nav>
-  </div>
+</div>
+
   <script>
     $('#topheader.navbar-nav a').on('click', function() {
       $('#topheader.navbar-nav').find('li.active').removeClass('active');
       $(this).parent('li').addClass('active');
     });
   </script>
-  
-  <router-outlet></router-outlet>
+
+<app-doctor-covid-status></app-doctor-covid-status>
+<router-outlet></router-outlet>
+
