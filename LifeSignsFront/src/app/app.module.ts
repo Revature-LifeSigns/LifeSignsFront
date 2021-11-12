@@ -10,11 +10,17 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
 import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
+import { AuthGuardService } from './services/session-mgmt/auth-guard.service';
+import { ModeDirective } from './mode/mode.directive';
+import { NurseService } from './services/nurse/nurse.service';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ModeDirective,
     ProfilesComponent,
     ChartsComponent,
     LoginComponent,
@@ -26,14 +32,21 @@ import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-s
       {path: "home", component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: "profiles", component: ProfilesComponent},
-      {path: "charts", component: ChartsComponent},
+      {
+        path: "profiles", component: ProfilesComponent,
+        // canActivate: [AuthGuardService] *-* keep commented out until needed
+      },
+      {
+        path: "charts", component: ChartsComponent,
+        // canActivate: [AuthGuardService] *-* keep commented out until needed + add to all routes except home/login/register
+      },
       {path: "chat", component: AppComponent}, //TODO: fill in correct component for chat
       {path: "**", redirectTo: "home"}  //TODO fill in correct catch-all route
 
     ])
   ],
-  providers: [UserService],
+
+  providers: [UserService, NurseService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,7 @@
                   <p class="text-center">Don't have an account?</p>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button routerLink="/register" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm">
+                  <button routerLink="/register" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm signupbutton">
                     SIGN UP
                   </button>
                 </div>
@@ -39,8 +39,12 @@
           <div class="row">
             <div class="col-lg-10 col-xl-7 mx-auto">
               <h3 class="logintitle">Login</h3>
-              <p id="errorMessage" class="loginformtitle">Username</p>
-              <form [formGroup]="loginForm">
+
+              <!-- <h3 class="display-4 text-center">Login</h3> -->
+
+              <p id="errorMessage"></p>
+              <form class="loginform" [formGroup]="loginForm">
+
                 <div class="form-group mb-3">
                   <p class="loginformtitle">Username</p>
                   <input id="userName" type="email" placeholder="Enter username" formControlName="username" required
@@ -51,7 +55,7 @@
                   <input id="userPassword" type="password" placeholder="Enter password" formControlName="password" required class="form-control border-0 shadow-sm px-4 text-primary"/>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button routerLink="" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm"
+                  <button routerLink="" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm loginbutton"
                     (click)="userLogin(loginForm)">
                     LOGIN
                   </button>
