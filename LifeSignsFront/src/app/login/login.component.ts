@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         // store url memory for userlogin then reset to null
         if (this.userService.returnUrl) {
           this.router.navigate([this.userService.returnUrl]);
-          this.userService.returnUrl = null;
+          this.userService.returnUrl = "";
         }
         else {
           // user navigated after successful login

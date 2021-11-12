@@ -1,69 +1,82 @@
-<section class="vh-100 bg-image" >
+<body>
+  <br><br><br><br>
+  <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-            <div class="card" style="border-radius: 15px;">
-              <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+            <div class="card" id="outbord" style="border-radius: 5px;">
+              <div class="card" id="inbord" style="border-radius: 5px;">
+                <div class="card-body p-5" style="border-radius: 5px;">
+                  <img class="clipb" src="../../assets/clipboard.png" style="width:350px;height:180px;">
+                  <br>
+                  <img class="png2" src="../../assets/transparent_navlogo.png">
+                  <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                <p id="errorMessage"></p>
+                  <p id="errorMessage"></p>
 
-                <form [formGroup]="registerForm">
+                  <form [formGroup]="registerForm">
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3cg"><b>Account Type: </b></label>
-                    <label id="asterisk">* </label>
-                    <select formControlName="roleID">
-                      <option value="" disabled selected>Select an option</option>
-                      <option value="1">Doctor</option>
-                      <option value="2">Nurse</option>
-                      <option value="3">Patient</option>
-                    </select>
-                  </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3cg"><b>Account Type: </b></label>
+                      <label id="asterisk">* </label>
+                      <select formControlName="roleID">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="1">Doctor</option>
+                        <option value="2">Nurse</option>
+                        <option value="3">Patient</option>
+                      </select>
+                    </div>
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3cg"><b>Email: </b></label>
-                    <label id="asterisk">* </label>
-                    <input formControlName="email" type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                  </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3cg"><b>Email: </b></label>
+                      <label id="asterisk">* </label>
+                      <input formControlName="email" type="email" id="form3Example3cg"
+                        class="form-control form-control-lg" />
+                    </div>
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3cg"><b>Username: </b></label>
-                    <label id="asterisk">* </label>
-                    <input formControlName="username" type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                    <p><small>Must be lowercase, start with a letter, and can contain numbers, underscores, and periods (5-20 characters).</small></p>
-                  </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3cg"><b>Username: </b></label>
+                      <label id="asterisk">* </label>
+                      <input formControlName="username" type="text" id="form3Example1cg"
+                        class="form-control form-control-lg" />
+                      <p><small>Must be lowercase, start with a letter, and can contain numbers, underscores, and
+                          periods (5-20 characters).</small></p>
+                    </div>
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3cg"><b>Password: </b></label>
-                    <label id="asterisk">* </label>
-                    <input formControlName="password" type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                    <p><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1 special character (8-20 characters).</small></p>
-                  </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3cg"><b>Password: </b></label>
+                      <label id="asterisk">* </label>
+                      <input formControlName="password" type="password" id="form3Example4cg"
+                        class="form-control form-control-lg" />
+                      <p><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1 special character (8-20
+                          characters).</small></p>
+                    </div>
 
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3cg"><b>Confirm Password: </b></label>
-                    <label id="asterisk">* </label>
-                    <input formControlName="confirmed" type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                    <p><small>Passwords must match.</small></p>
-                  </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3cg"><b>Confirm Password: </b></label>
+                      <label id="asterisk">* </label>
+                      <input formControlName="confirmed" type="password" id="form3Example4cdg"
+                        class="form-control form-control-lg" />
+                      <p><small>Passwords must match.</small></p>
+                    </div>
 
-                  <div class="form-outline mb-4">
-                    <label id="asterisk">* </label>
-                    <label id="required-text"><small>Required</small></label>
-                  </div>
+                    <div class="form-outline mb-4">
+                      <label id="asterisk">* </label>
+                      <label id="required-text"><small>Required</small></label>
+                    </div>
 
-                  <div class="d-flex justify-content-center">
-                    <button type="submit" (click)="submitUser(registerForm)" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                      Register
-                    </button>
-                  </div>
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" (click)="submitUser(registerForm)" class="btn btn-primary">
+                        Register
+                      </button>
+                    </div>
 
-                  <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="#!" class="fw-bold text-body"><u>Login here</u></a></p>
+                    <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="#!"
+                        class="fw-bold text-body"><u>Login here</u></a></p>
 
-                </form>
-
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -71,3 +84,4 @@
       </div>
     </div>
   </section>
+</body>

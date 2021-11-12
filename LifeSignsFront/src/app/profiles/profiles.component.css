@@ -4,11 +4,11 @@
     margin: auto auto;
 }
 
-#peronsalInfo {
+#personalInfo {
     border: 1px solid black;
 }
 
-#peronsalInfo {
+#personalInfo {
     border: 1px solid black;
 }
 
@@ -31,4 +31,12 @@
 #contactInfo {
     display: flex;
     justify-content: space-around;
+}
+
+.toggleContainer{
+    height: 100vh;
+    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.5s ease-in-out;
 }
