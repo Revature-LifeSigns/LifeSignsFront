@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
       }
     } else {
       // Invalid Email
-      errMess.innerHTML = 'Invalid input. Please try again.';
+      errMess.innerHTML = 'Invalid email. Please try again.';
     }
   }
 

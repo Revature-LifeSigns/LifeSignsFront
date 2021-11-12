@@ -27,11 +27,18 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(user).subscribe(
       loginResp => {
         const userLogin = new User(
+          loginResp.roleid,
           loginResp.username,
           loginResp.pwd,
           loginResp.email,
-          loginResp.roleid,
-          loginResp.userid
+          loginResp.firstname,
+          loginResp.lastname,
+          loginResp.dob,
+          loginResp.address,
+          loginResp.image,
+          loginResp.aboutMe,
+          loginResp.viewPref,
+          loginResp.covidStatus
         );
         this.userService.userLoginStatus(userLogin);
         this.invalidLogin = false;
