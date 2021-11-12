@@ -12,24 +12,46 @@ import { UserService } from '../services/user/user.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    userName: new FormControl('', [Validators.required]),
-    userPassword: new FormControl('', [Validators.required])
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
   });
 
-  constructor(private userServ:UserService, private router: Router) { }
-  //set up subscribe calls to user service with backend url (var in user service)
-  // if logged in successfully -- redirect to..
+  invalidLogin:boolean = false;
 
-  get userName() {
-    return this.loginForm.get('userName');
-  }
+  constructor(private userService:UserService, private router: Router) { }
 
-  get userPassword() {
-    return this.loginForm.get('userPassword');
-  }
+  userLogin(input: FormGroup){
+    let errMess:any = document.getElementById('errorMessage');
 
-  userLogin() {
-    //const user = new User(this.userName?.value, this.userPassword?.value);
+    let user = JSON.stringify(input.value);
+    this.userService.loginUser(user).subscribe(
+      loginResp => {
+        const userLogin = new User(
+          loginResp.username,
+          loginResp.pwd,
+          loginResp.email,
+          loginResp.roleid,
+          loginResp.userid
+        );
+        this.userService.userLoginStatus(userLogin);
+        this.invalidLogin = false;
+
+        // store url memory for userlogin then reset to null
+        if (this.userService.returnUrl) {
+          this.router.navigate([this.userService.returnUrl]);
+          this.userService.returnUrl = "";
+        }
+        else {
+          // user navigated after successful login
+          this.router.navigate(['/profiles']);
+        }
+      },
+      error => {
+        console.log(error);
+        errMess.innerHTML = 'Invalid login.  Please try again.'
+        this.invalidLogin = true;
+      }
+    );
   }
 
   ngOnInit(): void {
