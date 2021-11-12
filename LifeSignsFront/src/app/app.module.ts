@@ -13,6 +13,7 @@ import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-s
 import { NurseService } from './services/nurse/nurse.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
