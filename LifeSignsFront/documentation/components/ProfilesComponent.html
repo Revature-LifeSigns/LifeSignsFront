@@ -241,7 +241,7 @@ export class ProfilesComponent implements OnInit {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div id &#x3D; &quot;pageContainer&quot;&gt;
     &lt;!--This container holds all personal info, name, address, photo, dob, specialty, etc--&gt;
-    &lt;section id &#x3D; &quot;peronsalInfo&quot;&gt;
+    &lt;section id &#x3D; &quot;personalInfo&quot;&gt;
         &lt;div id &#x3D; &quot;name&quot;&gt;
             &lt;span id &#x3D; &quot;lastName&quot;&gt;Last Name&lt;/span&gt;
             &lt;span id &#x3D; &quot;firstName&quot;&gt;First Name&lt;/span&gt;
@@ -280,11 +280,11 @@ export class ProfilesComponent implements OnInit {
     margin: auto auto;
 }
 
-#peronsalInfo {
+#personalInfo {
     border: 1px solid black;
 }
 
-#peronsalInfo {
+#personalInfo {
     border: 1px solid black;
 }
 
@@ -335,7 +335,7 @@ export class ProfilesComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div id = "pageContainer">    <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->    <section id = "peronsalInfo">        <div id = "name">            <span id = "lastName">Last Name</span>            <span id = "firstName">First Name</span>            <span id = "professionType">Nurse</span>        </div>        <div id = "contactInfo">            <div id = "leftContainer">Photo</div>            <div id = "rightContainer">                <div>                    <span id = "fieldSpecialty">Specialty</span>                    <span id = "dob">DOB</span>                    <span id = "covid">Covid Status</span>                </div>                <div id = "addressOne">Address line 1</div>                <div id = "addressTwo">Address line 2</div>            </div>        </div>    </section>    <!--This is a container that will hold the "About Me" information for the individual-->    <section id = "aboutContainer">        <h2>About me</h2>        <p>This is all the stuff about our nurse, just another general bio with information, stories, awards, lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other information that no one will ever look at again. Exceptions being criminal cases, government intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such. These can be really long if the person does anything interesting, or one line, like mine. At this point, I\'m just writing filler text to see if this page\'s formatting works at all or is complete and utter garbage...........        </p>    </section></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div id = "pageContainer">    <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->    <section id = "personalInfo">        <div id = "name">            <span id = "lastName">Last Name</span>            <span id = "firstName">First Name</span>            <span id = "professionType">Nurse</span>        </div>        <div id = "contactInfo">            <div id = "leftContainer">Photo</div>            <div id = "rightContainer">                <div>                    <span id = "fieldSpecialty">Specialty</span>                    <span id = "dob">DOB</span>                    <span id = "covid">Covid Status</span>                </div>                <div id = "addressOne">Address line 1</div>                <div id = "addressTwo">Address line 2</div>            </div>        </div>    </section>    <!--This is a container that will hold the "About Me" information for the individual-->    <section id = "aboutContainer">        <h2>About me</h2>        <p>This is all the stuff about our nurse, just another general bio with information, stories, awards, lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other information that no one will ever look at again. Exceptions being criminal cases, government intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such. These can be really long if the person does anything interesting, or one line, like mine. At this point, I\'m just writing filler text to see if this page\'s formatting works at all or is complete and utter garbage...........        </p>    </section></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChartsComponent', 'selector': 'app-charts'},{'name': 'DoctorCovidStatusComponent', 'selector': 'app-doctor-covid-status'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ProfilesComponent', 'selector': 'app-profiles'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProfilesComponent'};
