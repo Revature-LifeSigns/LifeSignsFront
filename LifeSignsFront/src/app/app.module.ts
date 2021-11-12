@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
 import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
+import { NurseService } from './services/nurse/nurse.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-s
 
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, NurseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

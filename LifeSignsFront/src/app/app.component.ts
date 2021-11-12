@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'LifeSignsFront';
-  isVisible = true;
+  isVisible = false;
+  toggleUserMenu():void {
+    this.isVisible = !this.isVisible;
+  }
+    
 }
+
