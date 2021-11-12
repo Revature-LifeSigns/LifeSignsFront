@@ -17,7 +17,11 @@ export class ChartsComponent implements OnInit {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     dob: new FormControl(''),
-    symptoms: new FormControl('')
+    address: new FormControl(''),
+    email: new FormControl(''),
+    insuranceId: new FormControl(''),
+    room: new FormControl(''),
+    notes: new FormControl('')
   });
 
   constructor(private nurseServ: NurseService) { }
