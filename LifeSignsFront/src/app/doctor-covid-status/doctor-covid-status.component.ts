@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { covidSurvey } from '../services/util/covidSurvey';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-doctor-covid-status',
@@ -9,27 +10,21 @@ import { covidSurvey } from '../services/util/covidSurvey';
 })
 export class DoctorCovidStatusComponent implements OnInit {
   //Fields
-  //Fields
-  @ViewChild("showModal", { static: true })
+  @ViewChild('showModal', { static: true })
   modal!: ElementRef;
 
+  private currentUserId: number = null;
+
   covidStatusForm = new FormGroup({
-    headache: new FormControl('', Validators.required),
-    noSmellTaste: new FormControl('', Validators.required),
-    fever: new FormControl('', Validators.required),
-    cough: new FormControl('', Validators.required),
-    breathingDifficulties: new FormControl('', Validators.required),
-    exposed: new FormControl('', Validators.required),
+    hasSymptoms: new FormControl('', Validators.required),
+    isExposed: new FormControl('', Validators.required),
     hasTraveled: new FormControl('', Validators.required),
   });
 
   covidSurvey: covidSurvey = {
-    headache: false,
-    noSmellTaste: false,
-    fever: false,
-    cough: false,
-    breathingDifficulties: false,
-    exposed: false,
+    userId: null,
+    hasSymptoms: false,
+    isExposed: false,
     hasTraveled: false,
   };
 
@@ -37,43 +32,42 @@ export class DoctorCovidStatusComponent implements OnInit {
   today = new Date().getDay();
 
   //Constructor
-  constructor() {
-
-  }
+  constructor(private userServ: UserService) {}
 
   //Methods
   ngOnInit(): void {
-    if(this.today !== 5) {
+    //uncomment this out once hooked up to backend
+    //this.currentUserId = this.userServ.getLoggedInUser().userid;
+
+    if (this.today !== 5) {
       this.hasDisplayed = false;
     }
 
-    if(this.today === 5 && this.hasDisplayed === false) {
+    if (this.today === 5 && this.hasDisplayed === false) {
       this.displayModal();
     }
-
   }
 
-  //get value selected on submit.
+  //get value selected on submit and update covidSurvey object.
   submit() {
     let formValues = this.covidStatusForm.value;
-    type formKey = "headache" | "noSmellTaste" | "fever" | "cough" | "breathingDifficulties" | "exposed" | "hasTraveled";
+    type formKey = 'hasSymptoms' | 'isExposed' | 'hasTraveled';
     for (let key in formValues) {
-      if (formValues[key] === "" || formValues[key] === "no" || formValues[key] === false) {
-        this.covidSurvey[<formKey>key] = false;
-      } else {
-        this.covidSurvey[<formKey>key] = true;
-      }
+      formValues[key] === 'no'
+        ? (this.covidSurvey[<formKey>key] = false)
+        : (this.covidSurvey[<formKey>key] = true);
     }
+    //get user id from user service
+    this.covidSurvey.userId = this.currentUserId;
 
+    //submit to backend with user service here
     console.log(this.covidStatusForm.value);
     console.log(this.covidSurvey);
   }
 
   //Have to click a button with Bootstrap's data attributes to show modal.
   //This simulates the button being clicked, the button is hidden in the view.
-  //There is probably a better way to do this.
   displayModal() {
-    //document.getElementById('showModal')?.click();
     this.modal.nativeElement.click();
   }
 }

@@ -91,7 +91,7 @@
                                     <a href="../components/LoginComponent.html" >LoginComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/ProfilesComponent.html"  class="active" >ProfilesComponent</a>
+                                    <a href="../components/ProfilesComponent.html" >ProfilesComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/RegisterComponent.html" >RegisterComponent</a>
@@ -155,7 +155,7 @@
                                     <a href="../injectables/ModeService.html" >ModeService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/NurseService.html" >NurseService</a>
+                                    <a href="../injectables/NurseService.html"  class="active" >NurseService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/UserService.html" >UserService</a>
@@ -289,7 +289,7 @@
                                            <a href="../components/LoginComponent.html" >LoginComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/ProfilesComponent.html"  class="active" >ProfilesComponent</a>
+                                           <a href="../components/ProfilesComponent.html" >ProfilesComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/RegisterComponent.html" >RegisterComponent</a>
@@ -353,7 +353,7 @@
                                            <a href="../injectables/ModeService.html" >ModeService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/NurseService.html" >NurseService</a>
+                                           <a href="../injectables/NurseService.html"  class="active" >NurseService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/UserService.html" >UserService</a>
@@ -410,121 +410,266 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content injectable">
                    <div class="content-data">
 
 
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>ProfilesComponent</li>
+  <li>Injectables</li>
+  <li>NurseService</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/profiles/profiles.component.ts</code>
-</p>
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/nurse/nurse.service.ts</code>
+        </p>
 
 
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor(http: HttpClient)</code>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+            </section>
 
+            <section>
+                <h3 id="methods">Methods</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> getNurseProfile</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
+                                        </span>
+                                    <code>getNurseProfile(userId: number)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>Observable&lt;Nurse&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> updateNurseProfile</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
+                                        </span>
+                                    <code>updateNurseProfile(nurse: Nurse)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>Observable&lt;Object&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> uploadPhoto</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
+                                        </span>
+                                    <code>uploadPhoto(photo: FormData)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>Observable&lt;any&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> sendPatientChart</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
+                                        </span>
+                                    <code>sendPatientChart(chart: Chart)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>Observable&lt;Object&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> httpHead</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>httpHead:     <code>{ headers: HttpHeaders; }</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> nurseUrl</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>nurseUrl:     <code>string</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> urlBase</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>urlBase:     <code>string</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value: </i><code>http://localhost:9025</code>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { Nurse } from &quot;../util/nurse&quot;;
+import { Chart } from &#x27;../util/chart&#x27;;
 
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-profiles</code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>profiles.component.css</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>profiles.component.html</code></td>
-            </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
-
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(nurseServ: <a href="../injectables/NurseService.html" >NurseService</a>)</code>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-    </section>
-
-
-</div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { NurseService } from &#x27;../services/nurse/nurse.service&#x27;;
-import { Nurse } from &#x27;../services/util/nurse&#x27;;
-
-@Component({
-  selector: &#x27;app-profiles&#x27;,
-  templateUrl: &#x27;./profiles.component.html&#x27;,
-  styleUrls: [&#x27;./profiles.component.css&#x27;]
+@Injectable({
+  providedIn: &#x27;root&#x27;
 })
-export class ProfilesComponent implements OnInit {
+export class NurseService {
 
-  constructor(private nurseServ:NurseService) { }
-
-  ngOnInit(): void {
-    let currentUser:Nurse &#x3D; JSON.parse(sessionStorage.getItem(&quot;currentUser&quot;)!);
-    this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
-      response &#x3D;&gt; {
-        console.log(currentUser);
-      }
-    )
+  private urlBase &#x3D; &quot;http://localhost:9025&quot;;
+  private nurseUrl &#x3D; this.urlBase + &quot;/nurse&quot;;
+  private httpHead &#x3D; {
+    headers: new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      &#x27;Access-Control-Allow-Origin&#x27;: &#x27;*&#x27;
+    })
   }
 
+  constructor(private http:HttpClient) { }
+
+  public getNurseProfile(userId:number): Observable&lt;Nurse&gt; {
+    let url &#x3D; this.nurseUrl + &quot;/id/&quot; + userId;
+    return this.http.get&lt;Nurse&gt;(url, this.httpHead);
+  }
+  public updateNurseProfile(nurse:Nurse): Observable&lt;Object&gt;{
+    let url &#x3D; this.nurseUrl + &quot;/update/&quot; + nurse.user_id;
+    return this.http.post&lt;String&gt;(url, nurse, this.httpHead);
+  }
+
+  public uploadPhoto(photo: FormData): Observable&lt;any&gt; {
+    let url &#x3D; this.nurseUrl  + &quot;&quot; ;//add later;
+    let httpHead &#x3D; {
+      headers: new HttpHeaders({
+        &#x27;Access-Control-Allow-Origin&#x27;: &#x27;*&#x27;
+      })
+    }
+    return this.http.post&lt;Object&gt;(url, photo, httpHead);
+  }
+
+  public sendPatientChart(chart:Chart): Observable&lt;Object&gt;{
+    let url &#x3D; this.nurseUrl + &quot;/diagnosis&quot; ;
+    return this.http.post&lt;String&gt;(url, chart, this.httpHead);
+  }
 }
 </code></pre>
-        </div>
     </div>
-
-
-
+</div>
 
 
 
