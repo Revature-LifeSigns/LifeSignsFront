@@ -7,6 +7,9 @@ import { User } from '../util/user';
   providedIn: 'root'
 })
 export class UserService {
+  // url to store memory for auth
+  public returnUrl: string;
+
   private loggedInUser!: User;
   private userLoggedInStatus!: boolean;
 
