@@ -31,3 +31,13 @@ body {
     border-color: #F26925;
     border-width: 14px;
   }
+
+  #asterisk {
+    color: red;
+  }
+
+  #errorMessage {
+    color: red;
+    text-align: center;
+  }
+
