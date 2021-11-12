@@ -32,6 +32,15 @@
         </div>
       </div>
     </div>
+
+    <div id = "userMenu" >
+      <i class="fa fa-user-circle fa-list-dropdown fa-2x" (click) = "toggleUserMenu()"></i>
+      <select id = "userOptions" *ngIf = "isVisible">
+        <option value = "mode">Dark Mode Toggle</option>
+        <option value = "editAcct">Edit Account</option>
+        <option value = "logout">Logout</option>
+      </select>
+    </div>
   </nav>
 </div>
 

@@ -8,6 +8,7 @@ import { ModeService } from './mode/mode.service';
 })
 export class AppComponent {
   title = 'LifeSignsFront';
+
   isVisible = true;
   constructor(private modeService: ModeService){}
 
@@ -15,4 +16,11 @@ export class AppComponent {
   toggle(){
     this.modeService.toggleMode();
   }
+
+  toggleUserMenu():void {
+    this.isVisible = !this.isVisible;
+  }
+    
+
 }
+

@@ -6,7 +6,7 @@ export interface Nurse {
   firstname: string;
   dob: Date;
   lastname: string;
-  photo: File;
+  photo?: File;
   about_me: string;
   view_preference: boolean;
   covid_status: string;

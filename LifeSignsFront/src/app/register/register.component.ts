@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,8 +16,8 @@ export class RegisterComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     confirmed: new FormControl('', [Validators.required])
-  })
-  //constructor(private userServ:UserService, private router: Router) { }
+  });
+  constructor(private userServ:UserService, private router: Router) { }
 
   ngOnInit(): void {
   }

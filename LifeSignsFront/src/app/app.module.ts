@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
 import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
 import { ModeDirective } from './mode/mode.directive';
+import { NurseService } from './services/nurse/nurse.service';
+
+
 
 
 @NgModule({
@@ -35,7 +38,7 @@ import { ModeDirective } from './mode/mode.directive';
 
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, NurseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
