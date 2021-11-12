@@ -534,11 +534,11 @@ export class DoctorCovidStatusComponent implements OnInit {
 
   //Methods
   ngOnInit(): void {
-    if(this.today !&#x3D;&#x3D; 1) {
+    if(this.today !&#x3D;&#x3D; 4) {
       this.hasDisplayed &#x3D; false;
     }
 
-    if(this.today &#x3D;&#x3D;&#x3D; 1 &amp;&amp; this.hasDisplayed &#x3D;&#x3D;&#x3D; false) {
+    if(this.today &#x3D;&#x3D;&#x3D; 4 &amp;&amp; this.hasDisplayed &#x3D;&#x3D;&#x3D; false) {
       this.displayModal();
     }
 
@@ -549,7 +549,7 @@ export class DoctorCovidStatusComponent implements OnInit {
     let formValues &#x3D; this.covidStatusForm.value;
     type formKey &#x3D; &quot;headache&quot; | &quot;noSmellTaste&quot; | &quot;fever&quot; | &quot;cough&quot; | &quot;breathingDifficulties&quot; | &quot;exposed&quot; | &quot;hasTraveled&quot;;
     for (let key in formValues) {
-      if (formValues[key] &#x3D;&#x3D;&#x3D; &quot;&quot; || formValues[key] &#x3D;&#x3D;&#x3D; &quot;no&quot;) {
+      if (formValues[key] &#x3D;&#x3D;&#x3D; &quot;&quot; || formValues[key] &#x3D;&#x3D;&#x3D; &quot;no&quot; || formValues[key] &#x3D;&#x3D;&#x3D; false) {
         this.covidSurvey[&lt;formKey&gt;key] &#x3D; false;
       } else {
         this.covidSurvey[&lt;formKey&gt;key] &#x3D; true;
@@ -607,36 +607,84 @@ export class DoctorCovidStatusComponent implements OnInit {
       &lt;/div&gt;
       &lt;!-- Modal Body: COVID status (none, exposed, vaccinated, quarantining)  --&gt;
       &lt;div class&#x3D;&quot;modal-body text-center&quot;&gt;
-
         &lt;!-- Form  --&gt;
         &lt;form [formGroup]&#x3D;&quot;covidStatusForm&quot; (ngSubmit)&#x3D;&quot;submit()&quot;&gt;
           &lt;!-- Have You Had Any Of These Symptoms? --&gt;
           &lt;!-- symptoms include headache, loss of smell and taste, nasal congestion and runny nose, cough, muscle pain, sore throat, fever, diarrhea, and breathing difficulties--&gt;
           &lt;h5 class&#x3D;&quot;&quot;&gt;Have you had any of these symptoms?&lt;/h5&gt;
           &lt;p&gt;Select all that apply.&lt;/p&gt;
-          &lt;div class&#x3D;&quot;btn-group btn-group-sm mb-3&quot; role&#x3D;&quot;group&quot; aria-label&#x3D;&quot;Basic checkbox toggle button group&quot;&gt;
+          &lt;div
+            class&#x3D;&quot;btn-group btn-group-sm mb-3&quot;
+            role&#x3D;&quot;group&quot;
+            aria-label&#x3D;&quot;Basic checkbox toggle button group&quot;
+          &gt;
             &lt;!-- Headache --&gt;
-            &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;btn-check&quot; id&#x3D;&quot;checkHeadache&quot; name&#x3D;&quot;headache&quot; formControlName&#x3D;&quot;headache&quot; autocomplete&#x3D;&quot;off&quot;&gt;
-            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkHeadache&quot;&gt;Headache&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;checkbox&quot;
+              class&#x3D;&quot;btn-check&quot;
+              id&#x3D;&quot;checkHeadache&quot;
+              name&#x3D;&quot;headache&quot;
+              formControlName&#x3D;&quot;headache&quot;
+              autocomplete&#x3D;&quot;off&quot;
+            /&gt;
+            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkHeadache&quot;
+              &gt;Headache&lt;/label
+            &gt;
             &lt;!-- Loss of smell or taste --&gt;
-            &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;btn-check&quot; id&#x3D;&quot;checkSmellTaste&quot; name&#x3D;&quot;noSmellTaste&quot;  formControlName&#x3D;&quot;noSmellTaste&quot; autocomplete&#x3D;&quot;off&quot;&gt;
-            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkSmellTaste&quot;&gt;Loss of Smell/Taste&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;checkbox&quot;
+              class&#x3D;&quot;btn-check&quot;
+              id&#x3D;&quot;checkSmellTaste&quot;
+              name&#x3D;&quot;noSmellTaste&quot;
+              formControlName&#x3D;&quot;noSmellTaste&quot;
+              autocomplete&#x3D;&quot;off&quot;
+            /&gt;
+            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkSmellTaste&quot;
+              &gt;Loss of Smell/Taste&lt;/label
+            &gt;
 
             &lt;!-- Fever --&gt;
-            &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;btn-check&quot; id&#x3D;&quot;checkFever&quot; name&#x3D;&quot;fever&quot; formControlName&#x3D;&quot;fever&quot; autocomplete&#x3D;&quot;off&quot;&gt;
-            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkFever&quot;&gt;Fever&lt;/label&gt;
+            &lt;input
+              type&#x3D;&quot;checkbox&quot;
+              class&#x3D;&quot;btn-check&quot;
+              id&#x3D;&quot;checkFever&quot;
+              name&#x3D;&quot;fever&quot;
+              formControlName&#x3D;&quot;fever&quot;
+              autocomplete&#x3D;&quot;off&quot;
+            /&gt;
+            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkFever&quot;
+              &gt;Fever&lt;/label
+            &gt;
 
-             &lt;!-- Cough --&gt;
-             &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;btn-check&quot; id&#x3D;&quot;checkCough&quot; name&#x3D;&quot;cough&quot; formControlName&#x3D;&quot;cough&quot; autocomplete&#x3D;&quot;off&quot;&gt;
-             &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkCough&quot;&gt;Cough&lt;/label&gt;
+            &lt;!-- Cough --&gt;
+            &lt;input
+              type&#x3D;&quot;checkbox&quot;
+              class&#x3D;&quot;btn-check&quot;
+              id&#x3D;&quot;checkCough&quot;
+              name&#x3D;&quot;cough&quot;
+              formControlName&#x3D;&quot;cough&quot;
+              autocomplete&#x3D;&quot;off&quot;
+            /&gt;
+            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkCough&quot;
+              &gt;Cough&lt;/label
+            &gt;
 
-              &lt;!-- Breathing Difficulties --&gt;
-              &lt;input type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;btn-check&quot; id&#x3D;&quot;checkBreathing&quot; name&#x3D;&quot;breathingDifficulties&quot; formControlName&#x3D;&quot;breathingDifficulties&quot; autocomplete&#x3D;&quot;off&quot;&gt;
-              &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkBreathing&quot;&gt;Trouble Breathing&lt;/label&gt;
+            &lt;!-- Breathing Difficulties --&gt;
+            &lt;input
+              type&#x3D;&quot;checkbox&quot;
+              class&#x3D;&quot;btn-check&quot;
+              id&#x3D;&quot;checkBreathing&quot;
+              name&#x3D;&quot;breathingDifficulties&quot;
+              formControlName&#x3D;&quot;breathingDifficulties&quot;
+              autocomplete&#x3D;&quot;off&quot;
+            /&gt;
+            &lt;label class&#x3D;&quot;btn btn-outline-primary&quot; for&#x3D;&quot;checkBreathing&quot;
+              &gt;Trouble Breathing&lt;/label
+            &gt;
           &lt;/div&gt;
 
-          &lt;hr&gt;
-          &lt;br&gt;
+          &lt;hr /&gt;
+          &lt;br /&gt;
 
           &lt;!-- Have you been exposed to COVID-19? --&gt;
           &lt;h5&gt;Have you been exposed to COVID-19?&lt;/h5&gt;
@@ -645,7 +693,6 @@ export class DoctorCovidStatusComponent implements OnInit {
             role&#x3D;&quot;group&quot;
             aria-label&#x3D;&quot;Basic radio toggle button group&quot;
           &gt;
-
             &lt;!-- Yes --&gt;
             &lt;input
               type&#x3D;&quot;radio&quot;
@@ -676,8 +723,8 @@ export class DoctorCovidStatusComponent implements OnInit {
             &gt;
           &lt;/div&gt;
 
-          &lt;hr&gt;
-          &lt;br&gt;
+          &lt;hr /&gt;
+          &lt;br /&gt;
 
           &lt;!-- Have You Traveled Anywhere In The Last 30 Days? --&gt;
           &lt;h5&gt;Have you traveled anywhere in the last 30 days?&lt;/h5&gt;
@@ -686,7 +733,6 @@ export class DoctorCovidStatusComponent implements OnInit {
             role&#x3D;&quot;group&quot;
             aria-label&#x3D;&quot;Basic radio toggle button group&quot;
           &gt;
-
             &lt;!-- Yes --&gt;
             &lt;input
               type&#x3D;&quot;radio&quot;
@@ -717,8 +763,8 @@ export class DoctorCovidStatusComponent implements OnInit {
             &gt;
           &lt;/div&gt;
 
-          &lt;br&gt;
-          &lt;hr&gt;
+          &lt;br /&gt;
+          &lt;hr /&gt;
 
           &lt;!-- Submit Button --&gt;
           &lt;button
@@ -734,7 +780,8 @@ export class DoctorCovidStatusComponent implements OnInit {
       &lt;div class&#x3D;&quot;modal-footer&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -769,9 +816,9 @@ export class DoctorCovidStatusComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Toggle Modal Button(is hidden), is conditionally toggled in component.ts--><button  type="button"  class="visually-hidden"  data-bs-toggle="modal"  data-bs-target="#DoctorCovidSurvey"  #showModal>  Covid Status Update</button><!-- Covid Status Survey Modal: Will need to open on first login on Monday, day checked in nginit method --><div  class="modal fade"  id="DoctorCovidSurvey"  tabindex="-1"  aria-labelledby="DoctorCovidSurvey"  aria-hidden="true">  <div class="modal-dialog modal-dialog-centered">    <div class="modal-content">      <!-- Modal Header -->      <div class="modal-header">        <h5 class="modal-title" id="exampleModalLabel">          Weekly Covid Status Survey        </h5>        <button          type="button"          class="btn-close"          data-bs-dismiss="modal"          aria-label="Close"        ></button>      </div>      <!-- Modal Body: COVID status (none, exposed, vaccinated, quarantining)  -->      <div class="modal-body text-center">        <!-- Form  -->        <form [formGroup]="covidStatusForm" (ngSubmit)="submit()">          <!-- Have You Had Any Of These Symptoms? -->          <!-- symptoms include headache, loss of smell and taste, nasal congestion and runny nose, cough, muscle pain, sore throat, fever, diarrhea, and breathing difficulties-->          <h5 class="">Have you had any of these symptoms?</h5>          <p>Select all that apply.</p>          <div class="btn-group btn-group-sm mb-3" role="group" aria-label="Basic checkbox toggle button group">            <!-- Headache -->            <input type="checkbox" class="btn-check" id="checkHeadache" name="headache" formControlName="headache" autocomplete="off">            <label class="btn btn-outline-primary" for="checkHeadache">Headache</label>            <!-- Loss of smell or taste -->            <input type="checkbox" class="btn-check" id="checkSmellTaste" name="noSmellTaste"  formControlName="noSmellTaste" autocomplete="off">            <label class="btn btn-outline-primary" for="checkSmellTaste">Loss of Smell/Taste</label>            <!-- Fever -->            <input type="checkbox" class="btn-check" id="checkFever" name="fever" formControlName="fever" autocomplete="off">            <label class="btn btn-outline-primary" for="checkFever">Fever</label>             <!-- Cough -->             <input type="checkbox" class="btn-check" id="checkCough" name="cough" formControlName="cough" autocomplete="off">             <label class="btn btn-outline-primary" for="checkCough">Cough</label>              <!-- Breathing Difficulties -->              <input type="checkbox" class="btn-check" id="checkBreathing" name="breathingDifficulties" formControlName="breathingDifficulties" autocomplete="off">              <label class="btn btn-outline-primary" for="checkBreathing">Trouble Breathing</label>          </div>          <hr>          <br>          <!-- Have you been exposed to COVID-19? -->          <h5>Have you been exposed to COVID-19?</h5>          <div            class="btn-group btn-group-lg mb-3"            role="group"            aria-label="Basic radio toggle button group"          >            <!-- Yes -->            <input              type="radio"              class="btn-check"              name="exposed"              id="radioExposed1"              autocomplete="off"              checked              value="yes"              formControlName="exposed"            />            <label class="btn btn-outline-primary" for="radioExposed1"              >Yes</label            >            <!-- No -->            <input              type="radio"              class="btn-check"              name="exposed"              id="radioExposed2"              autocomplete="off"              value="no"              formControlName="exposed"            />            <label class="btn btn-outline-primary" for="radioExposed2"              >No</label            >          </div>          <hr>          <br>          <!-- Have You Traveled Anywhere In The Last 30 Days? -->          <h5>Have you traveled anywhere in the last 30 days?</h5>          <div            class="btn-group btn-group-lg mb-3"            role="group"            aria-label="Basic radio toggle button group"          >            <!-- Yes -->            <input              type="radio"              class="btn-check"              name="hasTraveled"              id="raidoTraveled1"              autocomplete="off"              checked              value="yes"              formControlName="hasTraveled"            />            <label class="btn btn-outline-primary" for="raidoTraveled1"              >Yes</label            >            <!-- No -->            <input              type="radio"              class="btn-check"              name="hasTraveled"              id="raidoTraveled2"              autocomplete="off"              value="no"              formControlName="hasTraveled"            />            <label class="btn btn-outline-primary" for="raidoTraveled2"              >No</label            >          </div>          <br>          <hr>          <!-- Submit Button -->          <button            type="submit"            class="btn btn-primary mt-3"            data-bs-dismiss="modal"          >            Update Status          </button>        </form>      </div>      <!-- Modal Footer -->      <div class="modal-footer"></div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- Toggle Modal Button(is hidden), is conditionally toggled in component.ts--><button  type="button"  class="visually-hidden"  data-bs-toggle="modal"  data-bs-target="#DoctorCovidSurvey"  #showModal>  Covid Status Update</button><!-- Covid Status Survey Modal: Will need to open on first login on Monday, day checked in nginit method --><div  class="modal fade"  id="DoctorCovidSurvey"  tabindex="-1"  aria-labelledby="DoctorCovidSurvey"  aria-hidden="true">  <div class="modal-dialog modal-dialog-centered">    <div class="modal-content">      <!-- Modal Header -->      <div class="modal-header">        <h5 class="modal-title" id="exampleModalLabel">          Weekly Covid Status Survey        </h5>        <button          type="button"          class="btn-close"          data-bs-dismiss="modal"          aria-label="Close"        ></button>      </div>      <!-- Modal Body: COVID status (none, exposed, vaccinated, quarantining)  -->      <div class="modal-body text-center">        <!-- Form  -->        <form [formGroup]="covidStatusForm" (ngSubmit)="submit()">          <!-- Have You Had Any Of These Symptoms? -->          <!-- symptoms include headache, loss of smell and taste, nasal congestion and runny nose, cough, muscle pain, sore throat, fever, diarrhea, and breathing difficulties-->          <h5 class="">Have you had any of these symptoms?</h5>          <p>Select all that apply.</p>          <div            class="btn-group btn-group-sm mb-3"            role="group"            aria-label="Basic checkbox toggle button group"          >            <!-- Headache -->            <input              type="checkbox"              class="btn-check"              id="checkHeadache"              name="headache"              formControlName="headache"              autocomplete="off"            />            <label class="btn btn-outline-primary" for="checkHeadache"              >Headache</label            >            <!-- Loss of smell or taste -->            <input              type="checkbox"              class="btn-check"              id="checkSmellTaste"              name="noSmellTaste"              formControlName="noSmellTaste"              autocomplete="off"            />            <label class="btn btn-outline-primary" for="checkSmellTaste"              >Loss of Smell/Taste</label            >            <!-- Fever -->            <input              type="checkbox"              class="btn-check"              id="checkFever"              name="fever"              formControlName="fever"              autocomplete="off"            />            <label class="btn btn-outline-primary" for="checkFever"              >Fever</label            >            <!-- Cough -->            <input              type="checkbox"              class="btn-check"              id="checkCough"              name="cough"              formControlName="cough"              autocomplete="off"            />            <label class="btn btn-outline-primary" for="checkCough"              >Cough</label            >            <!-- Breathing Difficulties -->            <input              type="checkbox"              class="btn-check"              id="checkBreathing"              name="breathingDifficulties"              formControlName="breathingDifficulties"              autocomplete="off"            />            <label class="btn btn-outline-primary" for="checkBreathing"              >Trouble Breathing</label            >          </div>          <hr />          <br />          <!-- Have you been exposed to COVID-19? -->          <h5>Have you been exposed to COVID-19?</h5>          <div            class="btn-group btn-group-lg mb-3"            role="group"            aria-label="Basic radio toggle button group"          >            <!-- Yes -->            <input              type="radio"              class="btn-check"              name="exposed"              id="radioExposed1"              autocomplete="off"              checked              value="yes"              formControlName="exposed"            />            <label class="btn btn-outline-primary" for="radioExposed1"              >Yes</label            >            <!-- No -->            <input              type="radio"              class="btn-check"              name="exposed"              id="radioExposed2"              autocomplete="off"              value="no"              formControlName="exposed"            />            <label class="btn btn-outline-primary" for="radioExposed2"              >No</label            >          </div>          <hr />          <br />          <!-- Have You Traveled Anywhere In The Last 30 Days? -->          <h5>Have you traveled anywhere in the last 30 days?</h5>          <div            class="btn-group btn-group-lg mb-3"            role="group"            aria-label="Basic radio toggle button group"          >            <!-- Yes -->            <input              type="radio"              class="btn-check"              name="hasTraveled"              id="raidoTraveled1"              autocomplete="off"              checked              value="yes"              formControlName="hasTraveled"            />            <label class="btn btn-outline-primary" for="raidoTraveled1"              >Yes</label            >            <!-- No -->            <input              type="radio"              class="btn-check"              name="hasTraveled"              id="raidoTraveled2"              autocomplete="off"              value="no"              formControlName="hasTraveled"            />            <label class="btn btn-outline-primary" for="raidoTraveled2"              >No</label            >          </div>          <br />          <hr />          <!-- Submit Button -->          <button            type="submit"            class="btn btn-primary mt-3"            data-bs-dismiss="modal"          >            Update Status          </button>        </form>      </div>      <!-- Modal Footer -->      <div class="modal-footer"></div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChartsComponent', 'selector': 'app-charts'},{'name': 'DoctorCovidStatusComponent', 'selector': 'app-doctor-covid-status'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ProfilesComponent', 'selector': 'app-profiles'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
-    var DIRECTIVES = [];
+    var DIRECTIVES = [{'name': 'ModeDirective', 'selector': '[appMode]'}];
     var ACTUAL_COMPONENT = {'name': 'DoctorCovidStatusComponent'};
 </script>
 <script src="../js/tree.js"></script>

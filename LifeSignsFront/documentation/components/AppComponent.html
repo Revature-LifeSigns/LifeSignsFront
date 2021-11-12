@@ -137,6 +137,23 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#toggle" >toggle</a>
+                            </li>
+                            <li>
+                                <a href="#toggleUserMenu" >toggleUserMenu</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -146,12 +163,139 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(modeService: <a href="../injectables/ModeService.html" target="_self">ModeService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/app.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>modeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModeService.html" target="_self" >ModeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggle"></a>
+                    <span class="name">
+                        <span ><b>toggle</b></span>
+                        <a href="#toggle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggle()</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/app/app.component.ts:16</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleUserMenu"></a>
+                    <span class="name">
+                        <span ><b>toggleUserMenu</b></span>
+                        <a href="#toggleUserMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleUserMenu()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/app.component.ts:20</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section>
     
     <h3 id="inputs">
@@ -175,7 +319,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/app.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/app.component.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -206,7 +350,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/app.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/app.component.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -220,6 +364,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ModeService } from &#x27;./mode/mode.service&#x27;;
 
 @Component({
   selector: &#x27;app-root&#x27;,
@@ -228,15 +373,28 @@
 })
 export class AppComponent {
   title &#x3D; &#x27;LifeSignsFront&#x27;;
+
   isVisible &#x3D; true;
+  constructor(private modeService: ModeService){}
+
+  // Mode Service is injected and toggleMode() is being called at each click event
+  toggle(){
+    this.modeService.toggleMode();
+  }
+
+  toggleUserMenu():void {
+    this.isVisible &#x3D; !this.isVisible;
+  }
+    
+
 }
+
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">
-&lt;div id &#x3D; &quot;top-header&quot;&gt;
-  &lt;nav class&#x3D;&quot;navbar navbar-expand-lg navbar-light bg-light&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div appMode id &#x3D; &quot;top-header&quot;&gt;
+  &lt;nav class&#x3D;&quot;navbar navbar-expand-lg navbar-dark&quot;&gt;
     &lt;img src &#x3D; &quot;../assets/transparent_navlogo_1.png&quot; width &#x3D; &quot;150&quot; alt &#x3D; &quot;LifeSigns Image&quot; /&gt;
     &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
       &lt;a class&#x3D;&quot;navbar-brand&quot; href&#x3D;&quot;#&quot;&gt;&lt;/a&gt;
@@ -258,21 +416,35 @@ export class AppComponent {
             &lt;a class&#x3D;&quot;nav-link disabled&quot; href&#x3D;&quot;#&quot;&gt;Chat&lt;/a&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
+        
+        &lt;div class&#x3D;&quot;dropdown&quot;&gt;
+          &lt;i class&#x3D;&quot;fa fa-user-circle fa-2x&quot; data-bs-toggle&#x3D;&quot;dropdown&quot;&gt;&lt;/i&gt;
+          &lt;div class&#x3D;&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+            &lt;div class &#x3D; &quot;dropdown-item&quot; (click)&#x3D;&quot;toggle()&quot;&gt;Change Mode&lt;/div&gt;
+            &lt;div class &#x3D; &quot;dropdown-item&quot;&gt;Edit Account&lt;/div&gt;
+            &lt;div class &#x3D; &quot;dropdown-item&quot; id &#x3D; &quot;loginInfo&quot; *ngIf &#x3D; &quot;isVisible&quot;&gt;Log Out&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div id &#x3D; &quot;loginInfo&quot; *ngIf &#x3D; &quot;isVisible&quot;&gt;
-      &lt;button id &#x3D; &quot;logoutButton&quot; class &#x3D; &quot;btn btn-secondary&quot;&gt;Log Out&lt;/button&gt;
+
+    &lt;div id &#x3D; &quot;userMenu&quot; &gt;
+      &lt;i class&#x3D;&quot;fa fa-user-circle fa-list-dropdown fa-2x&quot; (click) &#x3D; &quot;toggleUserMenu()&quot;&gt;&lt;/i&gt;
+      &lt;select id &#x3D; &quot;userOptions&quot; *ngIf &#x3D; &quot;isVisible&quot;&gt;
+        &lt;option value &#x3D; &quot;mode&quot;&gt;Dark Mode Toggle&lt;/option&gt;
+        &lt;option value &#x3D; &quot;editAcct&quot;&gt;Edit Account&lt;/option&gt;
+        &lt;option value &#x3D; &quot;logout&quot;&gt;Logout&lt;/option&gt;
+      &lt;/select&gt;
     &lt;/div&gt;
   &lt;/nav&gt;
-  &lt;/div&gt;
+&lt;/div&gt;
+
   &lt;script&gt;
     $(&#x27;#topheader.navbar-nav a&#x27;).on(&#x27;click&#x27;, function() {
       $(&#x27;#topheader.navbar-nav&#x27;).find(&#x27;li.active&#x27;).removeClass(&#x27;active&#x27;);
       $(this).parent(&#x27;li&#x27;).addClass(&#x27;active&#x27;);
     });
   &lt;/script&gt;
- 
-
 
 &lt;app-doctor-covid-status&gt;&lt;/app-doctor-covid-status&gt;
 &lt;router-outlet&gt;&lt;/router-outlet&gt;
@@ -284,10 +456,37 @@ export class AppComponent {
                 <p class="comment">
                     <code>./app.component.css</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">#logoutInfo {
-    width: 120px;
-    margin-right: 15px;
-}</code></pre>
+                <pre class="line-numbers"><code class="language-scss">
+#top-header{
+    background-color: var(--navbar-bg-color);
+    color: var(--navbar-text-color);
+    transition: all 0.5s ease-in-out;
+}
+
+.dropdown{
+    margin-left:auto;
+    cursor: pointer;
+}
+
+i{
+    color: var(--navbar-text-color);
+}
+
+.side-menu{
+    bordeR: 1px black solid;
+    width: 25%;
+    height: 100%;
+}
+
+#userOptions {
+    overflow: visible;
+}
+
+#menuOptions {
+    float: right;
+
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -315,9 +514,9 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div id = "top-header">  <nav class="navbar navbar-expand-lg navbar-light bg-light">    <img src = "../assets/transparent_navlogo_1.png" width = "150" alt = "LifeSigns Image" />    <div class="container-fluid">      <a class="navbar-brand" href="#"></a>      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">        <span class="navbar-toggler-icon"></span>      </button>      <div class="collapse navbar-collapse" id="navbarNav">        <ul class="navbar-nav">          <li class="nav-item">            <a class="nav-link" aria-current="page" href="#">Home</a>          </li>          <li class="nav-item">            <a class="nav-link" routerLink = "/profiles">Profiles</a>          </li>          <li class="nav-item">            <a class="nav-link" routerLink = "/charts">Charts</a>          </li>          <li class="nav-item">            <a class="nav-link disabled" href="#">Chat</a>          </li>        </ul>      </div>    </div>    <div id = "loginInfo" *ngIf = "isVisible">      <button id = "logoutButton" class = "btn btn-secondary">Log Out</button>    </div>  </nav>  </div>  <script>    $(\'#topheader.navbar-nav a\').on(\'click\', function() {      $(\'#topheader.navbar-nav\').find(\'li.active\').removeClass(\'active\');      $(this).parent(\'li\').addClass(\'active\');    });  </script> <app-doctor-covid-status></app-doctor-covid-status><router-outlet></router-outlet></div>'
+        var COMPONENT_TEMPLATE = '<div><div appMode id = "top-header">  <nav class="navbar navbar-expand-lg navbar-dark">    <img src = "../assets/transparent_navlogo_1.png" width = "150" alt = "LifeSigns Image" />    <div class="container-fluid">      <a class="navbar-brand" href="#"></a>      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">        <span class="navbar-toggler-icon"></span>      </button>      <div class="collapse navbar-collapse" id="navbarNav">        <ul class="navbar-nav">          <li class="nav-item">            <a class="nav-link" aria-current="page" href="#">Home</a>          </li>          <li class="nav-item">            <a class="nav-link" routerLink = "/profiles">Profiles</a>          </li>          <li class="nav-item">            <a class="nav-link" routerLink = "/charts">Charts</a>          </li>          <li class="nav-item">            <a class="nav-link disabled" href="#">Chat</a>          </li>        </ul>                <div class="dropdown">          <i class="fa fa-user-circle fa-2x" data-bs-toggle="dropdown"></i>          <div class="dropdown-menu dropdown-menu-end">            <div class = "dropdown-item" (click)="toggle()">Change Mode</div>            <div class = "dropdown-item">Edit Account</div>            <div class = "dropdown-item" id = "loginInfo" *ngIf = "isVisible">Log Out</div>          </div>        </div>      </div>    </div>    <div id = "userMenu" >      <i class="fa fa-user-circle fa-list-dropdown fa-2x" (click) = "toggleUserMenu()"></i>      <select id = "userOptions" *ngIf = "isVisible">        <option value = "mode">Dark Mode Toggle</option>        <option value = "editAcct">Edit Account</option>        <option value = "logout">Logout</option>      </select>    </div>  </nav></div>  <script>    $(\'#topheader.navbar-nav a\').on(\'click\', function() {      $(\'#topheader.navbar-nav\').find(\'li.active\').removeClass(\'active\');      $(this).parent(\'li\').addClass(\'active\');    });  </script><app-doctor-covid-status></app-doctor-covid-status><router-outlet></router-outlet></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChartsComponent', 'selector': 'app-charts'},{'name': 'DoctorCovidStatusComponent', 'selector': 'app-doctor-covid-status'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ProfilesComponent', 'selector': 'app-profiles'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
-    var DIRECTIVES = [];
+    var DIRECTIVES = [{'name': 'ModeDirective', 'selector': '[appMode]'}];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
 </script>
 <script src="../js/tree.js"></script>

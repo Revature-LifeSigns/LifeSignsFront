@@ -119,6 +119,7 @@
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#photo" 
 >
                                             photo
@@ -378,6 +379,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -496,7 +502,7 @@
   firstname: string;
   dob: Date;
   lastname: string;
-  photo: File;
+  photo?: File;
   about_me: string;
   view_preference: boolean;
   covid_status: string;

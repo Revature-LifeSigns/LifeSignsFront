@@ -781,7 +781,7 @@
         }
     }
 
-    // Username requirement: Must be lowercase, start with a letter, and can 
+    // Username requirement: Must be lowercase, start with a letter, and can
     // contain numbers, underscores, and periods (5-20 characters).
     private validateUsername(theUsername:string) {
         const re &#x3D; /^[a-z]{1}[a-z0-9_.]{4,20}$/;
@@ -800,7 +800,7 @@
         }
     }
 
-    // Password requirement: Must include at least 1 lowercase, 1 uppercase, 
+    // Password requirement: Must include at least 1 lowercase, 1 uppercase,
     // 1 number, and 1 special character (8-20 characters).
     private validatePwd(thePwd:string) {
         const re &#x3D; /^(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z])(?&#x3D;.*[0-9])(?&#x3D;.*[!@#$%^&amp;*_&#x3D;+-]).{8,20}$/;
@@ -835,7 +835,7 @@
             this._roleid &#x3D; theRole;
         } else {
             alert(&#x27;Role is invalid.&#x27;);
-        }   
+        }
     }
 }
 </code></pre>
