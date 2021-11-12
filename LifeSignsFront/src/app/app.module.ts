@@ -11,11 +11,16 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
 import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ModeDirective } from './mode/mode.directive';
+import { NurseService } from './services/nurse/nurse.service';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ModeDirective,
     ProfilesComponent,
     ChartsComponent,
     LoginComponent,
@@ -40,7 +45,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 
     ])
   ],
-  providers: [UserService, AuthGuardService],
+
+  providers: [UserService, NurseService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

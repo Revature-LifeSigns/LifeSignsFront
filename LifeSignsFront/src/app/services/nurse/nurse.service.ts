@@ -7,9 +7,9 @@ import { Chart } from '../util/chart';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class NurseService {
 
-  private urlBase = "http://localhost:9001";
+  private urlBase = "http://localhost:9025";
   private nurseUrl = this.urlBase + "/nurse";
   private httpHead = {
     headers: new HttpHeaders({
