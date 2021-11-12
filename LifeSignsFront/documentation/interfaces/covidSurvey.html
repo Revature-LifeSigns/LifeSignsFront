@@ -91,7 +91,7 @@
                                     <a href="../components/LoginComponent.html" >LoginComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/ProfilesComponent.html"  class="active" >ProfilesComponent</a>
+                                    <a href="../components/ProfilesComponent.html" >ProfilesComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/RegisterComponent.html" >RegisterComponent</a>
@@ -187,7 +187,7 @@
                                     <a href="../interfaces/Theme.html" >Theme</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/covidSurvey.html" >covidSurvey</a>
+                                    <a href="../interfaces/covidSurvey.html"  class="active" >covidSurvey</a>
                                 </li>
                         </ul>
                     </li>
@@ -289,7 +289,7 @@
                                            <a href="../components/LoginComponent.html" >LoginComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/ProfilesComponent.html"  class="active" >ProfilesComponent</a>
+                                           <a href="../components/ProfilesComponent.html" >ProfilesComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/RegisterComponent.html" >RegisterComponent</a>
@@ -385,7 +385,7 @@
                                            <a href="../interfaces/Theme.html" >Theme</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/covidSurvey.html" >covidSurvey</a>
+                                           <a href="../interfaces/covidSurvey.html"  class="active" >covidSurvey</a>
                                        </li>
                                </ul>
                            </li>
@@ -410,124 +410,240 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content interface">
                    <div class="content-data">
 
 
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>ProfilesComponent</li>
+  <li>Interfaces</li>
+  <li>covidSurvey</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/profiles/profiles.component.ts</code>
-</p>
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/util/covidSurvey.ts</code>
+        </p>
 
 
 
 
 
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <b>breathingDifficulties</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>breathingDifficulties:     <code>boolean</code>
+</bcode>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean</code>
+
+                                        </td>
+                                    </tr>
 
 
 
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <b>cough</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>cough:     <code>boolean</code>
+</bcode>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean</code>
+
+                                        </td>
+                                    </tr>
 
 
 
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-profiles</code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>profiles.component.css</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>profiles.component.html</code></td>
-            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <b>exposed</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>exposed:     <code>boolean</code>
+</bcode>
+                                    </td>
+                                </tr>
 
 
-        </tbody>
-    </table>
-</section>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean</code>
+
+                                        </td>
+                                    </tr>
 
 
 
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(nurseServ: <a href="../injectables/NurseService.html" >NurseService</a>)</code>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-    </section>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <b>fever</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>fever:     <code>boolean</code>
+</bcode>
+                                    </td>
+                                </tr>
 
 
-</div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { NurseService } from &#x27;../services/nurse/nurse.service&#x27;;
-import { Nurse } from &#x27;../services/util/nurse&#x27;;
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean</code>
 
-@Component({
-  selector: &#x27;app-profiles&#x27;,
-  templateUrl: &#x27;./profiles.component.html&#x27;,
-  styleUrls: [&#x27;./profiles.component.css&#x27;]
-})
-export class ProfilesComponent implements OnInit {
+                                        </td>
+                                    </tr>
 
-  constructor(private nurseServ:NurseService) { }
 
-  ngOnInit(): void {
-    let currentUser:Nurse &#x3D; JSON.parse(sessionStorage.getItem(&quot;currentUser&quot;)!);
-    this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
-      response &#x3D;&gt; {
-        console.log(currentUser);
-      }
-    )
-  }
 
-}
-</code></pre>
-        </div>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <b>hasTraveled</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>hasTraveled:     <code>boolean</code>
+</bcode>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <b>headache</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>headache:     <code>boolean</code>
+</bcode>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <b>noSmellTaste</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>noSmellTaste:     <code>boolean</code>
+</bcode>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                        </tbody>
+                    </table>
+            </section>
     </div>
-
-
-
-
-
-
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">export interface covidSurvey {
+    headache: boolean,
+    noSmellTaste: boolean,
+    fever: boolean,
+    cough: boolean,
+    breathingDifficulties: boolean,
+    exposed: boolean,
+    hasTraveled: boolean
+}</code></pre>
+    </div>
+</div>
 
 
 

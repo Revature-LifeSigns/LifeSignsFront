@@ -91,7 +91,7 @@
                                     <a href="../components/LoginComponent.html" >LoginComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/ProfilesComponent.html"  class="active" >ProfilesComponent</a>
+                                    <a href="../components/ProfilesComponent.html" >ProfilesComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/RegisterComponent.html" >RegisterComponent</a>
@@ -146,7 +146,7 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
-                                    <a href="../injectables/AuthGuardService.html" >AuthGuardService</a>
+                                    <a href="../injectables/AuthGuardService.html"  class="active" >AuthGuardService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DoctorService.html" >DoctorService</a>
@@ -289,7 +289,7 @@
                                            <a href="../components/LoginComponent.html" >LoginComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/ProfilesComponent.html"  class="active" >ProfilesComponent</a>
+                                           <a href="../components/ProfilesComponent.html" >ProfilesComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/RegisterComponent.html" >RegisterComponent</a>
@@ -344,7 +344,7 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
-                                           <a href="../injectables/AuthGuardService.html" >AuthGuardService</a>
+                                           <a href="../injectables/AuthGuardService.html"  class="active" >AuthGuardService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DoctorService.html" >DoctorService</a>
@@ -410,121 +410,108 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content injectable">
                    <div class="content-data">
 
 
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>ProfilesComponent</li>
+  <li>Injectables</li>
+  <li>AuthGuardService</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/profiles/profiles.component.ts</code>
-</p>
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/auth-guard.service.ts</code>
+        </p>
 
 
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor(userService: <a href="../injectables/UserService.html" >UserService</a>, router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank" >Router</a>)</code>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+            </section>
+
+            <section>
+                <h3 id="methods">Methods</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> canActivate</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>canActivate(route: <a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRouteSnapshot-interface.html" target="_blank" >ActivatedRouteSnapshot</a>, state: <a href="https://angular.io/docs/ts/latest/api/router/index/RouterStateSnapshot-interface.html" target="_blank" >RouterStateSnapshot</a>)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+
+    </div>
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from &#x27;@angular/router&#x27;;
+import { UserService } from &#x27;./user/user.service&#x27;;
 
 
-
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-profiles</code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>profiles.component.css</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>profiles.component.html</code></td>
-            </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
-
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(nurseServ: <a href="../injectables/NurseService.html" >NurseService</a>)</code>
-                        </td>
-                    </tr>
-    
-                </tbody>
-            </table>
-    </section>
-
-
-</div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { NurseService } from &#x27;../services/nurse/nurse.service&#x27;;
-import { Nurse } from &#x27;../services/util/nurse&#x27;;
-
-@Component({
-  selector: &#x27;app-profiles&#x27;,
-  templateUrl: &#x27;./profiles.component.html&#x27;,
-  styleUrls: [&#x27;./profiles.component.css&#x27;]
+@Injectable({
+  providedIn: &#x27;root&#x27;
 })
-export class ProfilesComponent implements OnInit {
+export class AuthGuardService {
 
-  constructor(private nurseServ:NurseService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void {
-    let currentUser:Nurse &#x3D; JSON.parse(sessionStorage.getItem(&quot;currentUser&quot;)!);
-    this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
-      response &#x3D;&gt; {
-        console.log(currentUser);
-      }
-    )
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    // deactive once user success login
+    if (this.userService.isUserLoggedIn()) {
+      return true;
+    }
+
+    this.userService.returnUrl &#x3D; state.url;
+
+    // return all unauthorized attempts to login page
+    this.router.navigateByUrl(&#x27;/login&#x27;);
+    return false;
   }
-
 }
 </code></pre>
-        </div>
     </div>
-
-
-
+</div>
 
 
 

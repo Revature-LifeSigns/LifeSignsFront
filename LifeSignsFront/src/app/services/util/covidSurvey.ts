@@ -1,4 +1,13 @@
 export interface covidSurvey {
+    userId: number,
+    hasSymptoms: boolean,
+    isExposed: boolean,
+    hasTraveled: boolean
+}
+
+/*
+export interface covidSurvey {
+    userId: number,
     headache: boolean,
     noSmellTaste: boolean,
     fever: boolean,
@@ -7,3 +16,4 @@ export interface covidSurvey {
     exposed: boolean,
     hasTraveled: boolean
 }
+*/
