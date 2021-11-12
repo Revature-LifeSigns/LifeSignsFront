@@ -43,11 +43,11 @@ export class DoctorCovidStatusComponent implements OnInit {
 
   //Methods
   ngOnInit(): void {
-    if(this.today !== 4) {
+    if(this.today !== 5) {
       this.hasDisplayed = false;
     }
 
-    if(this.today === 4 && this.hasDisplayed === false) {
+    if(this.today === 5 && this.hasDisplayed === false) {
       this.displayModal();
     }
 
