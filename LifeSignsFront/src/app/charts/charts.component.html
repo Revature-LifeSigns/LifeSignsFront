@@ -1,1 +1,38 @@
-<p>charts works!</p>
+<div class="container align-items-center w-50 p-3">
+        <div *ngIf="null == null; then loggedIn else loggedOut"></div>
+        
+        <ng-template #loggedIn>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-heading text-primary">Patient Chart</div>
+                </div>
+
+                <div class="card-body">
+                    <form [formGroup] = "chartGroup">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="First Name">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Last Name">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Date of Birth" onClick="event.preventDefault()">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <textarea class="form-control" placeholder="Symptoms"></textarea>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" (click)="submitChart(chartGroup)">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </ng-template>
+
+    <ng-template #loggedOut>
+        <p>Login or Create an Account</p>
+    </ng-template>
+</div>
