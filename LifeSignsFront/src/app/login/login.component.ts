@@ -46,7 +46,16 @@ export class LoginComponent implements OnInit {
         );
         this.userService.userLoginStatus(userLogin);
         this.invalidLogin = false;
-        this.router.navigate(['/profiles']);
+
+        // store url memory for userlogin then reset to null
+        if (this.userService.returnUrl) {
+          this.router.navigate([this.userService.returnUrl]);
+          this.userService.returnUrl = null;
+        }
+        else {
+          // user navigated after successful login
+          this.router.navigate(['/profiles']);
+        }
       },
       error => {
         console.log(error);
