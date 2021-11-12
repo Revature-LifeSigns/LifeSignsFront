@@ -6,18 +6,12 @@ import { Theme, ThemeMode } from './theme/theme';
 @Injectable({
   providedIn: 'root'
 })
-export class ModeService implements OnInit{
+export class ModeService{
 
   private currentTheme = ThemeMode.LIGHT;
   themeChange = new EventEmitter<Theme>();
   
   constructor() { }
-
-
-    //todo: get preference from database and set to currentTheme
-  ngOnInit(): void {
-    
-  }
 
   // toggles between 2 Theme based on the current theme
   public toggleMode(){
