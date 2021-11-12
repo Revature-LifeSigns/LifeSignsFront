@@ -10,7 +10,6 @@ import { UserService } from '../services/user/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   registerForm = new FormGroup({
     roleID: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
@@ -62,7 +61,7 @@ export class RegisterComponent implements OnInit {
       }
     } else {
       // Invalid Email
-      errMess.innerHTML = 'Invalid input. Please try again.';
+      errMess.innerHTML = 'Invalid email. Please try again.';
     }
   }
 

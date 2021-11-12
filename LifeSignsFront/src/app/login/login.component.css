@@ -72,3 +72,7 @@ button {
   color: rgba(72, 76, 86);
 }
 
+#errorMessage {
+  color: black;
+  text-align: center;
+}
