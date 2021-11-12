@@ -1,4 +1,4 @@
-<div class="container align-items-center p-3">
+<div class="container align-items-center p-3 w-75">
         <div *ngIf="null == null; then loggedIn else loggedOut"></div>
         
         <ng-template #loggedIn>
@@ -52,8 +52,9 @@
                             <textarea class="form-control shadow-sm px-4" placeholder="Diagnostic Information"></textarea>
                         </div>
 
-                        <button class="btn btn-block text-uppercase mb-2 shadow-sm" (click)="submitChart(chartGroup)">Submit</button>
-
+                        <div class="col text-center">
+                            <button class="btn btn-block text-uppercase mb-2 shadow-sm w-25" (click)="submitChart(chartGroup)">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
