@@ -18,7 +18,7 @@ export class User {
         }
     }
 
-    // Username requirement: Must be lowercase, start with a letter, and can 
+    // Username requirement: Must be lowercase, start with a letter, and can
     // contain numbers, underscores, and periods (5-20 characters).
     private validateUsername(theUsername:string) {
         const re = /^[a-z]{1}[a-z0-9_.]{4,20}$/;
@@ -37,7 +37,7 @@ export class User {
         }
     }
 
-    // Password requirement: Must include at least 1 lowercase, 1 uppercase, 
+    // Password requirement: Must include at least 1 lowercase, 1 uppercase,
     // 1 number, and 1 special character (8-20 characters).
     private validatePwd(thePwd:string) {
         const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/;
@@ -72,6 +72,6 @@ export class User {
             this._roleid = theRole;
         } else {
             alert('Role is invalid.');
-        }   
+        }
     }
 }
