@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -10,7 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
 import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NurseService } from './services/nurse/nurse.service';
+
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, NurseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
