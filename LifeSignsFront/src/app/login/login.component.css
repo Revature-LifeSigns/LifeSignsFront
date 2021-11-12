@@ -67,3 +67,7 @@ button {
 .signupbutton {
   margin-top: 20px;
 }
+
+.bg-secondary {
+  color: rgba(72, 76, 86);
+}
