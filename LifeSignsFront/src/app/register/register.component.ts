@@ -10,6 +10,7 @@ import { UserService } from '../services/user/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   registerForm = new FormGroup({
     roleID: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
