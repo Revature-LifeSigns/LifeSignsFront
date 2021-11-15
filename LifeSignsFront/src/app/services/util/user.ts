@@ -3,7 +3,7 @@ import { Byte } from "@angular/compiler/src/util";
 export class User {
     constructor(
         private _roleid:number,
-        private _username:string, 
+        private _username:string,
         private _pwd:string,
         private _email:string,
         private _fname:string,
@@ -13,7 +13,7 @@ export class User {
         private _image:Byte[],
         private _about:string,
         private _viewpref:boolean,
-        private _covidstatus:string, 
+        private _covidstatus:string,
         private _userid?:number
     ) { }
 
