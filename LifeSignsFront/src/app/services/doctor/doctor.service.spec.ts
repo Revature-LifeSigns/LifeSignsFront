@@ -4,9 +4,12 @@ import { DoctorService } from './doctor.service';
 
 describe('DoctorService', () => {
   let service: DoctorService;
+  let mockStream: jasmine.SpyObj<DoctorService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [DoctorService]
+    });
     service = TestBed.inject(DoctorService);
   });
 
