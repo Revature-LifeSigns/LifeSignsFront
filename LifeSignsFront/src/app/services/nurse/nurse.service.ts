@@ -9,8 +9,7 @@ import { Chart } from '../util/chart';
 })
 export class NurseService {
 
-  private urlBase = "http://localhost:9025";
-  private nurseUrl = this.urlBase + "/nurse";
+  private urlBase = "http://localhost:9025/LifeSigns";
   private httpHead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,17 +19,9 @@ export class NurseService {
 
   constructor(private http:HttpClient) { }
 
-  public getNurseProfile(userId:number): Observable<Nurse> {
-    let url = this.nurseUrl + "/id/" + userId;
-    return this.http.get<Nurse>(url, this.httpHead);
-  }
-  public updateNurseProfile(nurse:Nurse): Observable<Object>{
-    let url = this.nurseUrl + "/update/" + nurse.user_id;
-    return this.http.post<String>(url, nurse, this.httpHead);
-  }
 
   public uploadPhoto(photo: FormData): Observable<any> {
-    let url = this.nurseUrl  + "" ;//add later;
+    let url = this.urlBase  + "/photo" ;
     let httpHead = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*'
@@ -40,7 +31,7 @@ export class NurseService {
   }
 
   public sendPatientChart(chart:Chart): Observable<Object>{
-    let url = this.nurseUrl + "/diagnosis" ;
+    let url = this.urlBase + "/chart/insert" ;
     return this.http.post<String>(url, chart, this.httpHead);
   }
 }
