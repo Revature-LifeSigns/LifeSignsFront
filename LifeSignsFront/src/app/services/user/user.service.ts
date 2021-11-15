@@ -32,6 +32,11 @@ export class UserService {
     return this.http.post<User>(this.urlBase + "/login", user, this.httpHead);
   }
 
+  public updateUserProfile(user:User): Observable<Object>{
+    let url = this.urlBase + "/users/update/" + user.userid;
+    return this.http.patch<String>(url, user, this.httpHead);
+  }
+
   userLoginStatus(user: User) {
     this.loggedInUser = user;
     this.userLoggedInStatus = true;
@@ -50,7 +55,7 @@ export class UserService {
   }
 
   setUserToCurrent() {
-    this.loggedInUser = new User("", "", "", 0);
+    // this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
   }
 

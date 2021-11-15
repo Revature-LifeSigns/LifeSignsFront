@@ -8,6 +8,7 @@ export const LightTheme: Theme = {
         "--navbar-bg-color": "#474C55",
         "--navbar-text-color": "white",
         "--menu-bg-color": "#F26925",
-        "--menu-text-color": "white"
+        "--menu-text-color": "white",
+        "--slider-bg-color": "#B9B9BA"
     }
 }

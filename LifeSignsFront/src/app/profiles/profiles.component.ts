@@ -12,17 +12,12 @@ export class ProfilesComponent implements OnInit {
   constructor(private nurseServ:NurseService) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    //let currentUser:Nurse = sessionStorage.getItem("currentUser");
-    this.nurseServ.getNurseProfile(1).subscribe(
-=======
     let currentUser:Nurse = JSON.parse(sessionStorage.getItem("currentUser")!);
-    this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
->>>>>>> cdee8dcb8aaa7eae1837273bc25c218c998a9dfc
-      response => {
-        console.log(response);
-      }
-    )
+    // this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
+    //   response => {
+    //     console.log(currentUser);
+    //   }
+    // )
   }
 
 }
