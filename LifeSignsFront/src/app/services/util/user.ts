@@ -1,4 +1,5 @@
 import { Byte } from "@angular/compiler/src/util";
+import { Photo } from "./photo";
 
 export class User {
     constructor(
@@ -10,7 +11,7 @@ export class User {
         private _lname:string,
         private _dob:string,
         private _address:string,
-        private _image:Byte[],
+        private _image:string,
         private _about:string,
         private _viewpref:boolean,
         private _covidstatus:string,
@@ -126,10 +127,11 @@ export class User {
         return this._image;
     }
 
-    public set image(theImage:Byte[]) {
-        this._image = theImage;
-    }
+    public set image(filename: string) {
+        let baseURL = "http://s3.amazonaws.com/lifesigns/";
 
+      this._image = baseURL + filename;
+    }
     public get aboutMe() {
         return this._about;
     }
