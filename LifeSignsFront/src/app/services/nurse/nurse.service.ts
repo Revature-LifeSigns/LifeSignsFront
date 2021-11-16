@@ -12,6 +12,7 @@ import { Photo } from '../util/photo';
 export class NurseService {
 
   private urlBase = "http://localhost:9025/LifeSigns";
+  // private urlBase = "http://ec2-3-90-86-121.compute-1.amazonaws.com/";
   private httpHead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -21,10 +22,12 @@ export class NurseService {
 
   constructor(private http:HttpClient) { }
 
+
   public getPhoto(user:User): Observable<Photo>{
     let url = this.urlBase + "/photo/" + user.userid ;
     return this.http.get<Photo>(url, this.httpHead);
   }
+
 
 
   public uploadPhoto(photo: FormData): Observable<any> {
