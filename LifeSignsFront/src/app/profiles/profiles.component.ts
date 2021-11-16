@@ -27,6 +27,9 @@ export class ProfilesComponent implements OnInit {
     )
   }
 
+  updatePhoto() {
+    alert('clicked update photo')
+  }
 }
 
 
