@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from './services/user/user.service';
+import { ModeService } from './mode/mode.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,10 @@ import { UserService } from './services/user/user.service';
 })
 export class AppComponent {
   title = 'LifeSignsFront';
+
   isVisible = true;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private modeService: ModeService) {
 
   }
 
@@ -19,4 +21,17 @@ export class AppComponent {
   get isUserLoggedIn() {
     return this.userService.isUserLoggedIn();
   }
+
+
+  // Mode Service is injected and toggleMode() is being called at each click event
+  toggle(){
+    this.modeService.toggleMode();
+  }
+
+  toggleUserMenu():void {
+    this.isVisible = !this.isVisible;
+  }
+
+
 }
+

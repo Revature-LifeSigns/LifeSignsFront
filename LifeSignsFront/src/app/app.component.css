@@ -6,3 +6,33 @@
 button {
   font-family: futura std-book;
 }
+
+#top-header{
+    background-color: var(--navbar-bg-color);
+    color: var(--navbar-text-color);
+    transition: all 0.5s ease-in-out;
+}
+
+.dropdown{
+    margin-left:auto;
+    cursor: pointer;
+}
+
+i{
+    color: var(--navbar-text-color);
+}
+
+.side-menu{
+    bordeR: 1px black solid;
+    width: 25%;
+    height: 100%;
+}
+
+#userOptions {
+    overflow: visible;
+}
+
+#menuOptions {
+    float: right;
+
+}

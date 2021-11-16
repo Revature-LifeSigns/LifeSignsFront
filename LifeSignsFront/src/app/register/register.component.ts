@@ -4,20 +4,20 @@ import { Router } from '@angular/router';
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+ 
   registerForm = new FormGroup({
     roleID: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     confirmed: new FormControl('', [Validators.required])
-  })
+  });
 
   constructor(private userServ:UserService, private router: Router) { }
 
