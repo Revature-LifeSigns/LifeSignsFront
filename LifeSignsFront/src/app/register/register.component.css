@@ -1,0 +1,43 @@
+body {
+    background-image: url('../../assets/healthcarebackground.jpg');
+  }
+
+.clipb {
+    position: absolute;
+    right: 115px;
+    top: -100px;
+ }
+
+ .png2 {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ }
+
+ .btn {
+    background-color: #474C55;
+    border: none;
+    color: white;
+ }
+
+ #inbord {
+    /* F26925 */
+    border-color: #474C55;
+    border-width: 7px;
+  }
+
+  #outbord {
+    /*  */
+    border-color: #F26925;
+    border-width: 14px;
+  }
+
+  #asterisk {
+    color: red;
+  }
+
+  #errorMessage {
+    color: red;
+    text-align: center;
+  }
+
