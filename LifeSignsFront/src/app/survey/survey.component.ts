@@ -2,13 +2,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { covidSurvey } from '../services/util/covidSurvey';
 import { UserService } from '../services/user/user.service';
+import {SurveyService} from '../services/survey/survey.service';
 
 @Component({
-  selector: 'app-doctor-covid-status',
-  templateUrl: './doctor-covid-status.component.html',
-  styleUrls: ['./doctor-covid-status.component.css'],
+  selector: 'app-survey',
+  templateUrl: './survey.component.html',
+  styleUrls: ['./survey.component.css'],
 })
-export class DoctorCovidStatusComponent implements OnInit {
+export class Survey implements OnInit {
   //Fields
   @ViewChild('showModal', { static: true })
   modal!: ElementRef;
@@ -28,22 +29,22 @@ export class DoctorCovidStatusComponent implements OnInit {
     hasTraveled: false,
   };
 
-  hasDisplayed = false;
   today = new Date().getDay();
+  dayToDisplay = 2;
+  hasDisplayed = false;
 
   //Constructor
-  constructor(private userServ: UserService) {}
+  constructor(private userServ: UserService, private surveyServ: SurveyService) {}
 
   //Methods
   ngOnInit(): void {
-    //uncomment this out once hooked up to backend
-    //this.currentUserId = this.userServ.getLoggedInUser().userid;
+    this.currentUserId = this.userServ.getLoggedInUser()?.userid;
 
-    if (this.today !== 5) {
+    if (this.today !== this.dayToDisplay) {
       this.hasDisplayed = false;
     }
 
-    if (this.today === 5 && this.hasDisplayed === false) {
+    if (this.today === this.dayToDisplay && this.hasDisplayed === false) {
       this.displayModal();
     }
   }
@@ -61,8 +62,10 @@ export class DoctorCovidStatusComponent implements OnInit {
     this.covidSurvey.userId = this.currentUserId;
 
     //submit to backend with user service here
-    console.log(this.covidStatusForm.value);
-    console.log(this.covidSurvey);
+    // console.log(this.covidStatusForm.value);
+    // console.log(this.covidSurvey);
+
+    this.surveyServ.insertSurvey(this.covidSurvey);
   }
 
   //Have to click a button with Bootstrap's data attributes to show modal.
