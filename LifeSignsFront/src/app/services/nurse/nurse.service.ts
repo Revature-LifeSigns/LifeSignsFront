@@ -29,7 +29,6 @@ export class NurseService {
 
 
 
-
   public uploadPhoto(photo: FormData): Observable<any> {
     let url = this.urlBase  + "/photo" ;
     let httpHead = {
