@@ -14,7 +14,6 @@ export class ProfilesComponent implements OnInit {
   constructor(private userServ:UserService, private nurseServ:NurseService) { }
 
   ngOnInit(): void {
-
     this.currentUser = this.userServ.getLoggedInUser();
     console.log(this.currentUser);
 
