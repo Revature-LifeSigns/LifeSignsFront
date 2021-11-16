@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { LoginComponent } from 'src/app/login/login.component';
 import { UserService } from '../user/user.service';
 
 
@@ -22,4 +23,5 @@ export class AuthGuardService {
     this.router.navigateByUrl('/login');
     return false;
   }
+
 }
