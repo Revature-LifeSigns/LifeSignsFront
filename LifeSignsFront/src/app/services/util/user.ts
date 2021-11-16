@@ -3,7 +3,7 @@ import { Photo } from "./photo";
 
 export class User {
     constructor(
-        private _roleid:number,
+        private _role:string,
         private _username:string,
         private _pwd:string,
         private _email:string,
@@ -78,17 +78,13 @@ export class User {
         return re.test(String(theEmail).toLowerCase());
     }
 
-    public get roleid() {
-        return this._roleid;
+    public get role() {
+        return this._role;
     }
 
     // Roles: (1) Doctor, (2) Nurse, (3) Patient
-    public set roleid(theRole:number) {
-        if (theRole >= 1 && theRole <= 3) {
-            this._roleid = theRole;
-        } else {
-            alert('Role is invalid.');
-        }
+    public set role(theRole:string) {
+        this._role = theRole;
     }
 
     public get firstname() {
