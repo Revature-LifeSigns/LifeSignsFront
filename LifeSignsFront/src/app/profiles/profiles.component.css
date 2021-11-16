@@ -1,30 +1,23 @@
 #pageContainer {
-    width: 50%;
+    
     margin-left: 10px;
     margin: auto auto;
 }
 
-#personalInfo {
-    border: 1px solid black;
-}
-
-#personalInfo {
+#idDetails {
     border: 1px solid black;
 }
 
 #name {
-    border: 1px solid black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 #lastName, #firstName, #professionType {
-    border: 1px solid black;
     margin: auto auto;
 }
 
 #fieldSpecialty, #dob, #covid {
-    border: 1px solid black;
     margin: auto auto;
 }
 
