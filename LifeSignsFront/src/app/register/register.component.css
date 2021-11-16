@@ -1,17 +1,18 @@
 body {
-    background-image: url('../../assets/healthcarebackground.jpg');
+    background-image: url('../../assets/img/healthcarebackground.jpg');
   }
 
 .clipb {
     position: absolute;
-    right: 115px;
-    top: -100px;
+    top: -2.5%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
  }
 
  .png2 {
- display: block;
- margin-left: auto;
- margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
  }
 
  .btn {
@@ -21,15 +22,17 @@ body {
  }
 
  #inbord {
-    /* F26925 */
     border-color: #474C55;
     border-width: 7px;
   }
 
   #outbord {
-    /*  */
-    border-color: #F26925;
+    background-color: #F26925;
     border-width: 14px;
+  }
+
+  input[type=text], input[type=email], input[type=password] {
+    font-size: small;
   }
 
   #asterisk {
