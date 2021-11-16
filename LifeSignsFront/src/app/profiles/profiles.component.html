@@ -1,28 +1,91 @@
-<div id = "pageContainer">
-    <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
-    <section id = "personalInfo">
-        <div id = "name">
-            <span id = "lastName">Last Name</span>
-            <span id = "firstName">First Name</span>
-            <span id = "professionType">Nurse</span>
+<div id="pageContainer row">
+    <div class="d-flex">
+    <div class="quick-nav col-3">
+        <div>
+        <h2>QuickNav</h2>
+        <ul class="nav quick-nav flex-column col-12">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Chart Options</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Discussion Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Other</a>
+            </li>
+        </ul>
         </div>
-        <div id = "contactInfo">
-            <div id = "leftContainer">Photo</div>
-            <div id = "rightContainer">
-                <div>
-                    <span id = "fieldSpecialty">Specialty</span>
-                    <span id = "dob">DOB</span>
-                    <span id = "covid">Covid Status</span>
+    </div>
+    <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
+    <div class="col-9 card">
+        <h2 id="greeting card-header">Welcome Doctor/Nurse ____!</h2>
+        <div class="row">
+            <div class="col-6">
+
+                <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="">
+
+                <img src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}" />
+
+
+            </div>
+            <div class="col-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Last</th>
+                            <th scope="col">First</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Doe</td>
+                            <td>John</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">Role</th>
+                            <th scope="col">Specialty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nurse</td>
+                            <td>Pediatrics</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">DOB</th>
+                            <th scope="col">Covid Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12/10/1815</td>
+                            <td>Vaccinated</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="address">
+                    <div>Address Line 1</div>
+                    <div>Address Line 2</div>
                 </div>
-                <div id = "addressOne">Address line 1</div>
-                <div id = "addressTwo">Address line 2</div>
             </div>
         </div>
-    </section>
-    <!--This is a container that will hold the "About Me" information for the individual-->
-    <section id = "aboutContainer">
-        <h2>About me</h2>
-        <p>This is all the stuff about our nurse, just another general bio with information, stories, awards, lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other information that no one will ever look at again. Exceptions being criminal cases, government intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such. These can be really long if the person does anything interesting, or one line, like mine. At this point, I'm just writing filler text to see if this page's formatting works at all or is complete and utter garbage...........
-        </p>
-    </section>
+        <!--This is a container that will hold the "About Me" information for the individual-->
+        <div id="aboutContainer">
+            <h2>About me</h2>
+            <p>This is all the stuff about our nurse, just another general bio with information, stories, awards,
+                lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other
+                information that no one will ever look at again. Exceptions being criminal cases, government
+                intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such.
+                These can be really long if the person does anything interesting, or one line, like mine. At this
+                point, I'm just writing filler text to see if this page's formatting works at all or is complete and
+                utter garbage...........
+            </p>
+        </div>
+    </div>
+    </div>
+
 </div>
