@@ -14,8 +14,6 @@ export class Survey implements OnInit {
   @ViewChild('showModal', { static: true })
   modal!: ElementRef;
 
-  private currentUserId: number = null;
-
   covidStatusForm = new FormGroup({
     hasSymptoms: new FormControl('', Validators.required),
     isExposed: new FormControl('', Validators.required),
@@ -38,7 +36,6 @@ export class Survey implements OnInit {
 
   //Methods
   ngOnInit(): void {
-    this.currentUserId = this.userServ.getLoggedInUser()?.userid;
 
     if (this.today !== this.dayToDisplay) {
       this.hasDisplayed = false;
@@ -49,8 +46,9 @@ export class Survey implements OnInit {
     }
   }
 
-  //get value selected on submit and update covidSurvey object.
+
   submit() {
+    //get value selected on submit and update covidSurvey object.
     let formValues = this.covidStatusForm.value;
     type formKey = 'hasSymptoms' | 'isExposed' | 'hasTraveled';
     for (let key in formValues) {
@@ -59,13 +57,18 @@ export class Survey implements OnInit {
         : (this.covidSurvey[<formKey>key] = true);
     }
     //get user id from user service
-    this.covidSurvey.userId = this.currentUserId;
+    this.covidSurvey.userId = this.userServ.getLoggedInUser()?.userid;
 
-    //submit to backend with user service here
-    // console.log(this.covidStatusForm.value);
-    // console.log(this.covidSurvey);
-
-    this.surveyServ.insertSurvey(this.covidSurvey);
+    //submit to backend with survey service
+    let surveyJson = JSON.stringify(this.covidSurvey);
+    this.surveyServ.insertSurvey(surveyJson).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.error(error);
+      }
+    )
   }
 
   //Have to click a button with Bootstrap's data attributes to show modal.

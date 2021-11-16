@@ -18,14 +18,7 @@ export class SurveyService {
 
   constructor(private http: HttpClient) {}
 
-  public insertSurvey(survey: covidSurvey): Observable<covidSurvey> {
-    // alert(
-    //   `Survey Inserted\n
-    //   userId: ${survey.userId}\n
-    //   hasSymptoms: ${survey.hasSymptoms}\n
-    //   isExposed: ${survey.isExposed}\n
-    //   hasTraveled: ${survey.hasTraveled}`
-    // );
+  public insertSurvey(survey: String): Observable<covidSurvey> {
     return this.http.post<covidSurvey>(
       `${this.urlBase}/survey/insert`,
       survey,
