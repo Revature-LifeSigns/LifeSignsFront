@@ -14,7 +14,12 @@ export class RegisterComponent implements OnInit {
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
     dob: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
+    address: new FormControl(''),
+    street1: new FormControl('', [Validators.required]),
+    street2: new FormControl(''),
+    city: new FormControl('', [Validators.required]),
+    state: new FormControl('', [Validators.required]),
+    zipcode: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -87,4 +92,6 @@ export class RegisterComponent implements OnInit {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(theEmail).toLowerCase());
   }
+
+  // 
 }
