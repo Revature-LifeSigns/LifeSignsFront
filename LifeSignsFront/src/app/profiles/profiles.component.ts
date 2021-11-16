@@ -18,6 +18,7 @@ export class ProfilesComponent implements OnInit {
     console.log(this.currentUser);
     this.loadPhoto();
   }
+
   loadPhoto(){
     this.nurseServ.getPhoto(this.currentUser).subscribe(
       res => {
@@ -27,7 +28,6 @@ export class ProfilesComponent implements OnInit {
     )
 
   }
-
 }
 
 
