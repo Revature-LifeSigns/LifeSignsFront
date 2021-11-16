@@ -16,6 +16,7 @@ export class ProfilesComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
     console.log(this.currentUser);
+
     this.loadPhoto();
   }
   loadPhoto(){
@@ -27,6 +28,9 @@ export class ProfilesComponent implements OnInit {
     )
   }
 
+  updatePhoto() {
+    alert('clicked update photo')
+  }
 }
 
 
