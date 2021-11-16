@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
           loginResp.image,
           loginResp.aboutMe,
           loginResp.viewPref,
+          loginResp.specialty,
           loginResp.covidStatus
         );
         this.userService.userLoginStatus(userLogin);

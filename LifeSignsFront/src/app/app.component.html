@@ -22,8 +22,8 @@
             <a class="nav-link disabled" href="#">Chat</a>
           </li>
         </ul>
-        
-        <div class="dropdown" *ngIf = "isVisible">
+
+        <div id = "userMenu" class="dropdown" *ngIf = "isVisible">
           <i class="fa fa-user-circle fa-2x" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" ></i>
           <div class="dropdown-menu dropdown-menu-end">
             <label class="switch mt-2">
@@ -38,14 +38,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div id = "userMenu" >
-      <i class="fa fa-user-circle fa-list-dropdown fa-2x" (click) = "toggleUserMenu()"></i>
-      <select id = "userOptions" *ngIf = "isVisible">
-        <option value = "mode">Dark Mode Toggle</option>
-        <option value = "editAcct">Edit Account</option>
-        <option value = "logout">Logout</option>
-      </select>
     </div>
   </nav>
 </div>
