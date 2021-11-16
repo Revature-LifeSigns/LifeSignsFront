@@ -3,6 +3,10 @@ export interface Chart {
     firstname: string;
     lastname: string;
     dob: Date;
-    symptoms: string;
+    address: string;
+    email: string;
+    insuranceId: number;
+    room: number;
+    notes: string;
 
 }
