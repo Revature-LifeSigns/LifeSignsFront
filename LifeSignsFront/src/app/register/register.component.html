@@ -11,7 +11,7 @@
                   <img class="clipb" src="../../assets/img/clipboard.png" style="width:350px;height:180px;">
                   <img class="png2" src="../../assets/img/transparent_navlogo.png">
 
-                  <form [formGroup]="registerForm">
+                  <form [formGroup]="registerForm" ngNativeValidate>
                     <br>
                     <h4><b>General Information</b></h4>
                     <hr>
@@ -20,8 +20,13 @@
                         <div class="form-outline">
                           <label class="form-label" for="firstName"><b>First Name: </b></label>
                           <label id="asterisk">* </label>
-                          <input type="text" id="firstname" class="form-control form-control-lg" 
-                            placeholder="Enter first name"/>
+                          <input formControlName="firstname" type="text" id="firstname" class="form-control form-control-lg" 
+                            placeholder="Enter first name">
+                          <div *ngIf="registerForm.controls['firstname'].invalid && registerForm.controls['firstname'].touched">
+                            <div *ngIf="registerForm.controls['firstname'].errors.required">
+                              <small style="color:red">First name is required.</small>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -29,8 +34,13 @@
                         <div class="form-outline">
                           <label class="form-label" for="lastName"><b>Last Name: </b></label>
                           <label id="asterisk">* </label>
-                          <input type="text" id="lastname" class="form-control form-control-lg" 
-                            placeholder="Enter last name"/>
+                          <input formControlName="lastname" type="text" id="lastname" class="form-control form-control-lg" 
+                            placeholder="Enter last name">
+                          <div *ngIf="registerForm.controls['lastname'].invalid && registerForm.controls['lastname'].touched">
+                            <div *ngIf="registerForm.controls['lastname'].errors.required">
+                              <small style="color:red">Last name is required.</small>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -40,9 +50,14 @@
                         <div class="form-outline">
                           <label for="date" class="form-label"><b>Date of Birth: </b></label>
                           <label id="asterisk">* </label>
-                          
-                            <input type="date" id="dateofbirth" class="form-control form-control-lg">
-                          
+                          <div class="input-group date" id="datepicker">
+                            <input formControlName="dob" type="date" id="dateofbirth" class="form-control form-control-lg">
+                          </div>
+                          <div *ngIf="registerForm.controls['dob'].invalid && registerForm.controls['dob'].touched">
+                            <div *ngIf="registerForm.controls['dob'].errors.required">
+                              <small style="color:red">Date of birth is required.</small>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -51,24 +66,39 @@
                       <label class="form-label" for="form3Example3cg"><b>Email: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="email" type="email" id="form3Example3cg"
-                        class="form-control form-control-lg" placeholder="Enter email address" />
+                        class="form-control form-control-lg" placeholder="Enter email address">
+                      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+                        <div *ngIf="registerForm.controls['email'].errors.required">
+                          <small style="color:red">Email address is required.</small>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example8"><b>Address:</b></label>
                       <label id="asterisk">* </label>
-                      <input type="text" id="form3Example8" class="form-control form-control-lg"
-                        placeholder="Enter street address 1" />
+                      <input formControlName="street1" type="text" id="form3Example8" class="form-control form-control-lg"
+                        placeholder="Enter street address 1">
+                      <div *ngIf="registerForm.controls['street1'].invalid && registerForm.controls['street1'].touched">
+                        <div *ngIf="registerForm.controls['street1'].errors.required">
+                          <small style="color:red">Street address is required.</small>
+                        </div>
+                      </div>
                       <br>
-                      <input type="text" id="form3Example8" class="form-control form-control-lg"
-                        placeholder="Enter street address 2" />
+                      <input formControlName="street2" type="text" id="form3Example8" class="form-control form-control-lg"
+                        placeholder="Enter street address 2">
                     </div>
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example8"><b>City:</b></label>
                       <label id="asterisk">* </label>
-                      <input type="text" id="form3Example8" class="form-control form-control-lg" 
-                        placeholder="Enter city"/>
+                      <input formControlName="city" type="text" id="form3Example8" class="form-control form-control-lg" 
+                        placeholder="Enter city">
+                      <div *ngIf="registerForm.controls['city'].invalid && registerForm.controls['city'].touched">
+                        <div *ngIf="registerForm.controls['city'].errors.required">
+                          <small style="color:red">City is required.</small>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="row">
@@ -136,6 +166,11 @@
                               <option value="Wyoming">Wyoming</option>
                             </select>
                           </fieldset>
+                          <div *ngIf="registerForm.controls['state'].invalid && registerForm.controls['state'].touched">
+                            <div *ngIf="registerForm.controls['state'].errors.required">
+                              <small style="color:red">State is required.</small>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -143,8 +178,13 @@
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example8"><b>Zip Code:</b></label>
                       <label id="asterisk">* </label>
-                      <input type="number" id="form3Example8" class="form-control form-control-lg" 
-                        placeholder="Enter zip code"/>
+                      <input formControlName="zipcode" type="number" id="form3Example8" class="form-control form-control-lg" 
+                        placeholder="Enter zip code">
+                      <div *ngIf="registerForm.controls['zipcode'].invalid && registerForm.controls['zipcode'].touched">
+                        <div *ngIf="registerForm.controls['zipcode'].errors.required">
+                          <small style="color:red">Zip code is required.</small>
+                        </div>
+                      </div>
                     </div>
 
                     <br>
@@ -158,13 +198,23 @@
                         <option value="doctor">Doctor</option>
                         <option value="nurse">Nurse</option>
                       </select>
+                      <div *ngIf="registerForm.controls['role'].invalid && registerForm.controls['role'].touched">
+                        <div *ngIf="registerForm.controls['role'].errors.required">
+                          <small style="color:red">Account type is required.</small>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example3cg"><b>Username: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="username" type="text" id="form3Example1cg"
-                        class="form-control form-control-lg" placeholder="Enter username" />
+                        class="form-control form-control-lg" placeholder="Enter username">
+                      <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched">
+                        <div *ngIf="registerForm.controls['username'].errors.required">
+                          <small style="color:red">Username is required.</small>
+                        </div>
+                      </div>
                       <p class="info"><small>Must be lowercase, start with a letter, and can contain numbers, underscores, and
                           periods (5-20 characters).</small></p>
                     </div>
@@ -173,7 +223,12 @@
                       <label class="form-label" for="form3Example3cg"><b>Password: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="password" type="password" id="form3Example4cg"
-                        class="form-control form-control-lg" placeholder="Enter password" />
+                        class="form-control form-control-lg" placeholder="Enter password">
+                      <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+                        <div *ngIf="registerForm.controls['password'].errors.required">
+                          <small style="color:red">Password is required.</small>
+                        </div>
+                      </div>
                       <p class="info"><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1 special character (8-20
                           characters).</small></p>
                     </div>
@@ -182,7 +237,12 @@
                       <label class="form-label" for="form3Example3cg"><b>Confirm Password: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="confirmed" type="password" id="form3Example4cdg"
-                        class="form-control form-control-lg" placeholder="Enter password again" />
+                        class="form-control form-control-lg" placeholder="Enter password again">
+                      <div *ngIf="registerForm.controls['confirmed'].invalid && registerForm.controls['confirmed'].touched">
+                        <div *ngIf="registerForm.controls['confirmed'].errors.required">
+                          <small style="color:red">Confirmation is required.</small>
+                        </div>
+                      </div>
                       <p class="info"><small>Passwords must match.</small></p>
                     </div>
 
@@ -196,6 +256,7 @@
                         Register
                       </button>
                     </div>
+                    <br>
                     <p id="errorMessage"></p>
                     <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="#!"
                         class="fw-bold text-body"><u>Login here</u></a></p>
@@ -208,9 +269,6 @@
       </div>
     </div>
   </section>
-
-
-
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
