@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NurseService } from '../services/nurse/nurse.service';
-import { Nurse } from '../services/util/nurse';
+import { UserService } from '../services/user/user.service';
+import { User } from '../services/util/user';
 
 @Component({
   selector: 'app-profiles',
@@ -8,16 +9,14 @@ import { Nurse } from '../services/util/nurse';
   styleUrls: ['./profiles.component.css']
 })
 export class ProfilesComponent implements OnInit {
+  currentUser!:User;
 
-  constructor(private nurseServ:NurseService) { }
+  constructor(private userServ:UserService, private nurseServ:NurseService) { }
 
   ngOnInit(): void {
-    let currentUser:Nurse = JSON.parse(sessionStorage.getItem("currentUser")!);
-    // this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
-    //   response => {
-    //     console.log(currentUser);
-    //   }
-    // )
+    this.currentUser = this.userServ.getLoggedInUser();
+    console.log(this.currentUser);
   }
-
 }
+
+
