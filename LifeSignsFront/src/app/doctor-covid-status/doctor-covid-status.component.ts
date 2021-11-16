@@ -39,11 +39,11 @@ export class DoctorCovidStatusComponent implements OnInit {
     //uncomment this out once hooked up to backend
     //this.currentUserId = this.userServ.getLoggedInUser().userid;
 
-    if (this.today !== 5) {
+    if (this.today !== 1) {
       this.hasDisplayed = false;
     }
 
-    if (this.today === 5 && this.hasDisplayed === false) {
+    if (this.today === 1 && this.hasDisplayed === false) {
       this.displayModal();
     }
   }
