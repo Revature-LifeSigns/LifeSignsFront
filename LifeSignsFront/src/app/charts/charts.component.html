@@ -1,7 +1,7 @@
 
-<div class="container align-items-center p-3 w-75">
+  <div class="container align-items-center p-3 w-75">
         <div *ngIf="null == null; then loggedIn else loggedOut"></div>
-
+        
         <ng-template #loggedIn>
             <div class="card">
                 <div class="card-header">
@@ -17,25 +17,27 @@
                             </div>
                             <input type="text" class="form-control shadow-sm px-4" placeholder="First Name">
                             <input type="text" class="form-control shadow-sm px-4 mr-2" placeholder="Last Name">
-
+                            
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">Date of Birth</span>
                             </div>
                             <input type="text" class="form-control shadow-sm px-4" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="MM/DD/YYYY" onClick="event.preventDefault()">
+
                         </div>
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
+
                                 <span class="input-group-text" id="">Address</span>
                             </div>
                             <input type="text" class="form-control shadow-sm px-4 mr-2" placeholder="123 Main Street">
-
+                            
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">Email</span>
                             </div>
                             <input type="email" class="form-control shadow-sm px-4" placeholder="email@example.com">
                         </div>
-
+                        
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">Policy Number</span>
@@ -47,6 +49,7 @@
                             </div>
                             <input type="text" class="form-control shadow-sm px-4" placeholder="101">
 
+                        
                         </div>
 
                         <div class="input-group mb-3">
@@ -57,13 +60,13 @@
                             <button class="btn btn-block text-uppercase mb-2 shadow-sm w-25" (click)="submitChart(chartGroup)">Submit</button>
                         </div>
                     </form>
-                  </div>
                 </div>
             </ng-template>
-
-
+          
     <ng-template #loggedOut>
         <p>Log In or Create an Account</p>
     </ng-template>
 
+
 </div>
+

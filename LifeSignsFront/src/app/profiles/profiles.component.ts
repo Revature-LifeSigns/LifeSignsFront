@@ -14,6 +14,7 @@ export class ProfilesComponent implements OnInit {
   constructor(private userServ:UserService, private nurseServ:NurseService) { }
 
   ngOnInit(): void {
+
     this.currentUser = this.userServ.getLoggedInUser();
     console.log(this.currentUser);
 
@@ -26,7 +27,6 @@ export class ProfilesComponent implements OnInit {
         this.currentUser.image = "http://s3.amazonaws.com/lifesigns/" + res.imageFileName;
       }
     )
-
   }
 
   updatePhoto() {
