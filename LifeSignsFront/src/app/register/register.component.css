@@ -1,5 +1,8 @@
 body {
     background-image: url('../../assets/healthcarebackground.jpg');
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    background-size:cover;
   }
 
 .clipb {
@@ -40,4 +43,5 @@ body {
     color: red;
     text-align: center;
   }
+
 
