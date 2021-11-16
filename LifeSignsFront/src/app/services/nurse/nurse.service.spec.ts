@@ -34,21 +34,4 @@ describe('ApiService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should have getNurseProfile() return data', () => {
-    service.getNurseProfile(1).subscribe( response =>{
-    expect(response.toString()).toEqual(dummyNurseProfile.toString());
-    })
-    const req = httpMock.expectOne("http://localhost:9025/nurse/id/1");
-    expect(req.request.method).toBe("GET");
-    req.flush(dummyNurseProfile);
-  });
-
-  it('should have updateNurseProfile() post data', () => {
-    service.updateNurseProfile(dummyNurseProfile).subscribe( response =>{
-    expect(response.toString()).toHaveBeenCalled();
-    })
-    const req = httpMock.expectOne("http://localhost:9025/nurse/update/1");
-    expect(req.request.method).toBe("POST");
-    req.flush(dummyNurseProfile);
-  })
 });

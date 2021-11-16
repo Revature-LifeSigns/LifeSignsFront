@@ -8,9 +8,13 @@ import { Theme } from './theme/theme';
 export class ModeDirective implements OnInit{
 
   constructor(private modeServ: ModeService, private _elementRef: ElementRef) { }
-  
+
+    //todo: get preference from database and set to currentTheme
+    // todo: set slider to correct side based on preference
   ngOnInit(): void {
-    this.updateTheme(this.modeServ.getActiveTheme());
+    let currentTheme = this.modeServ.getActiveTheme();
+    if(currentTheme)
+      this.updateTheme(currentTheme);
 
     this.modeServ.themeChange.subscribe(
       (theme:Theme) => this.updateTheme(theme));

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(user).subscribe(
       loginResp => {
         const userLogin = new User(
-          loginResp.roleid,
+          loginResp.role,
           loginResp.username,
           loginResp.pwd,
           loginResp.email,
