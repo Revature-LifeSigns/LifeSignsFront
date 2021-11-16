@@ -1,3 +1,4 @@
+
 <div class="container align-items-center p-3 w-75">
         <div *ngIf="null == null; then loggedIn else loggedOut"></div>
         
@@ -56,11 +57,13 @@
                             <button class="btn btn-block text-uppercase mb-2 shadow-sm w-25" (click)="submitChart(chartGroup)">Submit</button>
                         </div>
                     </form>
+
                 </div>
-            </div>
-        </ng-template>
+            </ng-template>
+
 
     <ng-template #loggedOut>
         <p>Log In or Create an Account</p>
     </ng-template>
+
 </div>
