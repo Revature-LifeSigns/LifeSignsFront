@@ -21,10 +21,12 @@ export class NurseService {
 
   constructor(private http:HttpClient) { }
 
+
   public getPhoto(user:User): Observable<Photo>{
     let url = this.urlBase + "/photo/" + user.userid ;
     return this.http.get<Photo>(url, this.httpHead);
   }
+
 
 
   public uploadPhoto(photo: FormData): Observable<any> {

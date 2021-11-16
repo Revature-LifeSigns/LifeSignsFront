@@ -15,14 +15,23 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let currentUser:Nurse = JSON.parse(sessionStorage.getItem("currentUser")!);
-    this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
+    this.currentUser = this.userServ.getLoggedInUser();
+    console.log(this.currentUser);
 
-      response => {
-        console.log(response);
+    this.loadPhoto();
+  }
+  loadPhoto(){
+    this.nurseServ.getPhoto(this.currentUser).subscribe(
+      res => {
+        console.log(res);
+        this.currentUser.image = "http://s3.amazonaws.com/lifesigns/" + res.imageFileName;
       }
     )
-
   }
 
+  updatePhoto() {
+    alert('clicked update photo')
+  }
 }
+
+

@@ -15,36 +15,28 @@
                 <div class = "row">
                     <div class = "col-6">
                         <p>This is where the photo goes</p>
-                        <!-- <img src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}"/>-->
-
+                        <img src= {{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}"/>
+                        <button class = "btn btn-primary" (click) = "updatePhoto()">Update picture</button>
                     </div>
-                    <div class = "col-6">
+                    <div id = "idDetails" class = "col-6">
                         <div id = "name">
-                            <span id = "lastName">Last Name</span>
-                            <span id = "firstName">First Name</span>
+                            <span id = "lastName">First Name: {{currentUser.firstname}}</span>
+                            <span id = "firstName">Last Name: {{currentUser.lastname}}</span>
                         </div>
-                        <div id = "professionDetails">
-                            <span id = "userType">Type: Nurse</span>
-                            <span id = "fieldSpecialty">Specialty: Pediatrics</span>
-                        </div>
-                        <div id = "misc">
-                            <span id = "dob">DOB: 8/6/1355</span>
-                            <span id = "covid">Covid Status: vaccinated</span>
-                        </div>
-                        <div id = "address">
-                            <div>Address Line 1</div>
-                            <div>Address Line 2</div>
-                        </div>
+                        <div id = "professionDetails">Type: {{currentUser.role}}</div>
+                        <div id = "specialty">Specialty: {{currentUser.specialty}}</div>
+                        <div id = "covid">Covid Status: {{currentUser.covidStatus}}</div>
+                        <div id = "dob">DOB: {{currentUser.dob}}</div>
+                        <div id = "address1">Address Line 1</div>
+                        <div id = "address2">Address Line 2</div>
                     </div>
                 </div>
                 <!--This is a container that will hold the "About Me" information for the individual-->
                 <div id = "aboutContainer">
                     <h2>About me</h2>
-                    <p>This is all the stuff about our nurse, just another general bio with information, stories, awards, lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other information that no one will ever look at again. Exceptions being criminal cases, government intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such. These can be really long if the person does anything interesting, or one line, like mine. At this point, I'm just writing filler text to see if this page's formatting works at all or is complete and utter garbage...........
-                    </p>
+                    <p>{{currentUser.aboutMe}}</p>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
