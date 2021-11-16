@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Nurse } from "../util/nurse";
 import { Chart } from '../util/chart';
+import { User } from '../util/user';
+import { Photo } from '../util/photo';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,14 @@ export class NurseService {
   }
 
   constructor(private http:HttpClient) { }
+
+
+  public getPhoto(user:User): Observable<Photo>{
+    let url = this.urlBase + "/photo/" + user.userid ;
+    return this.http.get<Photo>(url, this.httpHead);
+  }
+
+
 
 
   public uploadPhoto(photo: FormData): Observable<any> {
