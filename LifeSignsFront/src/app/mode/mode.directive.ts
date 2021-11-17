@@ -10,14 +10,15 @@ import { Theme, ThemeMode } from './theme/theme';
   selector: '[appMode]'
 })
 export class ModeDirective implements OnInit{
-  currentUser;
+  private currentUser:any;
   constructor(private modeServ: ModeService, private userServ: UserService, private _elementRef: ElementRef) { }
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
     var element = <HTMLInputElement> document.getElementById("checkbox");
     if(this.currentUser){
-      if(this.currentUser.viewPreference || this.currentUser.viewPreference == null){
+      console.log(this.currentUser);
+      if(this.currentUser._viewpref || this.currentUser._viewpref == null){
         element.checked = false;
         this.modeServ.setCurrentTheme(ThemeMode.LIGHT);
       }else{

@@ -28,12 +28,11 @@ export class AdminComponent implements OnInit {
 
   constructor(private modalServ: NgbModal, private router: Router, private adminServ: AdminService, private userServ: UserService) { }
 
-  // todo: make sure logged in user is admin
   ngOnInit(): void {
-    let currentUser = this.userServ.getLoggedInUser();
-    // if(!currentUser || currentUser.role.toLocaleLowerCase() != "admin" )
-    //   this.router.navigate(["/home"]);
-    // else{
+    let currentUser:any = this.userServ.getLoggedInUser();
+    if(!currentUser || currentUser._role.toLocaleLowerCase() != "admin" )
+      this.router.navigate(["/home"]);
+    else{
       this.adminServ.getAllUsers().subscribe(
         response => {
           if(response != null){
@@ -48,7 +47,7 @@ export class AdminComponent implements OnInit {
             this.units = response;
           }
       });
-    // }
+    }
   }
 
   assignUnit(unitForm:FormGroup){
