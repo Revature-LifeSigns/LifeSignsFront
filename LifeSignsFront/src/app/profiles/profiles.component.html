@@ -15,32 +15,39 @@
                 <div class = "row">
                     <div class = "col-6">
                         <p>This is where the photo goes</p>
-
                         <img src= {{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}"/>
-
-<<<<<<< HEAD
-                        <button class = "btn btn-primary" (click) = "updatePhoto()">Update picture</button>
-=======
-
->>>>>>> fbfc901c8e4e23fc262da9e9fad472ae47b6651c
+                        <button class = "btn btn-primary" (click) = "updatePhoto()">Update photo</button>
+                        <input #file type = "file" style = "display: none" accept = "/image" />
                     </div>
                     <div id = "idDetails" class = "col-6">
                         <div id = "name">
                             <span id = "lastName">First Name: {{currentUser.firstname}}</span>
                             <span id = "firstName">Last Name: {{currentUser.lastname}}</span>
+
                         </div>
-                        <div id = "professionDetails">Type: {{currentUser.role}}</div>
-                        <div id = "specialty">Specialty: {{currentUser.specialty}}</div>
-                        <div id = "covid">Covid Status: {{currentUser.covidStatus}}</div>
-                        <div id = "dob">DOB: {{currentUser.dob}}</div>
+                        <div id = "professionDetails">
+                            Type: {{currentUser.roleid}}
+                        </div>
+                        <div id = "specialty">
+                            Specialty: <!--{{currentUser}} -->
+                        </div>
+                        <div id = "covid">
+                            Covid Status: {{currentUser.covidStatus}}
+                        </div>
+                        <div id = "dob">
+                            DOB: {{currentUser.dob}}
+                        </div>
                         <div id = "address1">Address Line 1</div>
                         <div id = "address2">Address Line 2</div>
+                        <a href = "*">Edit</a>
                     </div>
                 </div>
                 <!--This is a container that will hold the "About Me" information for the individual-->
                 <div id = "aboutContainer">
                     <h2>About me</h2>
-                    <p>{{currentUser.aboutMe}}</p>
+                    <p>
+                        {{currentUser.aboutMe}}
+                    </p>
                 </div>
             </div>
         </div>
