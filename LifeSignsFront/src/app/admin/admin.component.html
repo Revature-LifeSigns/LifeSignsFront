@@ -67,8 +67,8 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">Covid Status</div>
                                         </div>
-                                        <input *ngIf = !user.covid_status type="text" readonly class="form-control" id="inlineFormInputGroup" value="N/A">
-                                        <input *ngIf = user.covid_status type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.covid_status}}>
+                                        <input *ngIf = !user.covidStatus type="text" readonly class="form-control" id="inlineFormInputGroup" value="N/A">
+                                        <input *ngIf = user.covidStatus type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.covidStatus}}>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                             </form>
                         </div>
                     </ng-template>
-                    <div *ngIf="user.role != 'admin'" class="user" (click)="showUnitAssignModal(viewUser, user.userid)"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i> {{user.lastName}}, {{user.firstName}}</div>
+                    <div *ngIf="user.role !='admin'"class="user" (click)="showUnitAssignModal(viewUser, user.userid)"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i> {{user.lastName}}, {{user.firstName}}</div>
                 </div>
             </div>
         </div>

@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           const userLogin = new User(
             loginResp.role,
             loginResp.username,
-            loginResp.password,
+            loginResp.pwd,
             loginResp.email,
             loginResp.firstName,
             loginResp.lastName,
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
             loginResp.userid
           );
           this.userService.userLoginStatus(userLogin);
+          console.log(this.userService.getLoggedInUser());
           this.invalidLogin = false;
           // store url memory for userlogin then reset to null
           if (this.userService.returnUrl) {
@@ -65,11 +66,10 @@ export class LoginComponent implements OnInit {
             // user navigated after successful login
             if (userLogin.role == 'doctor' || userLogin.role == 'nurse') {
               this.router.navigate(['/profiles']);
-            } else if(userLogin.role =='admin'){
+            } else if (userLogin.role == 'admin') {
               this.router.navigate(['/admin']);
-            }else{
-              this.router.navigate(['/charts/' + userLogin.userid]
-              );
+            } else {
+              this.router.navigate(['/charts/' + userLogin.userid]);
             }
           }
 

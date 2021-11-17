@@ -149,11 +149,11 @@ export class User {
         this._viewpref = mode;
     }
 
-    public get covid_status() {
+    public get covidStatus() {
         return this._covidstatus;
     }
 
-    public set covid_status(status:string) {
+    public set covidStatus(status:string) {
         this._covidstatus = status;
     }
 }
