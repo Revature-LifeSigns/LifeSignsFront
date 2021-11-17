@@ -9,19 +9,21 @@
         <div class="col-6">
             <div class="personal">
                 <h4><b>Personal Info</b></h4>
-
-                <button class="modal-btn" (click)="open(email)"><b>UPDATE PERSONAL INFO</b></button>
+                <p><b>Full Name: </b>{{currentUser.firstname}} {{currentUser.lastname}}</p>
+                <p><b>Date of Birth: </b>{{currentUser.dob}}</p>
+                <p><b>Home Address: </b> {{currentUser.address}}</p>
+                <button class="modal-btn" (click)="open(personal)"><b>UPDATE PERSONAL INFO</b></button>
                 <hr>
             </div>
             <div class="email">
                 <h4><b>Email</b></h4>
-
+                <p>{{currentUser.email}}</p>
                 <button class="modal-btn" (click)="open(email)"><b>UPDATE EMAIL</b></button>
                 <hr>
             </div>
             <div class="password">
                 <h4><b>Password</b></h4>
-
+                <p>{{hiddenPwd}}</p>
                 <button class="modal-btn" (click)="open(password)"><b>UPDATE PASSWORD</b></button>
                 <hr>
             </div>
@@ -30,8 +32,8 @@
     </div>
 </div>
 
-<!-- Email Update Modal -->
-<ng-template #email let-modal>
+<!-- Personal Info Update Modal -->
+<ng-template #personal let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="update-email">Update Personal Information</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -83,29 +85,38 @@
     <div class="modal-body">
         <form [formGroup]="passwordForm">
             <div class="row">
-                <div class="col-md-6 mb-4">
+                <div class="col">
                     <div class="form-outline">
-                        <label class="form-label" for="currPwd"><b>Current Password: </b></label>
-                        <input formControlName="currPwd" type="password" class="form-control form-control-lg"
+                        <label class="form-label" for="currentPassword"><b>Current Password: </b></label>
+                        <input formControlName="currentPassword" type="password" class="form-control form-control-lg"
                             placeholder="Enter current password">
                     </div>
                     <br>
                     <div class="form-outline">
-                        <label class="form-label" for="newPwd"><b>New Password: </b></label>
-                        <input formControlName="newPwd" type="password" class="form-control form-control-lg"
+                        <label class="form-label" for="newPassword"><b>New Password: </b></label>
+                        <input formControlName="newPassword" type="password" class="form-control form-control-lg"
                             placeholder="Enter new password">
+                        <p class="info"><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1 
+                            special character (8-20 characters).</small></p>
                     </div>
                     <br>
                     <div class="form-outline">
-                        <label class="form-label" for="pwdAgain"><b>Confirm New Password: </b></label>
-                        <input formControlName="pwdAgain" type="password" class="form-control form-control-lg"
+                        <label class="form-label" for="passwordAgain"><b>Confirm New Password: </b></label>
+                        <input formControlName="passwordAgain" type="password" class="form-control form-control-lg"
                             placeholder="Enter new password again">
+                        <p class="info"><small>Passwords must match.</small></p>
                     </div>
+
+                    <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-dark" (click)="updatePwd(passwordForm)">
+                        Save
+                    </button>
+                    </div>
+                    <br>
+                    <p id="successMessage"></p>
+                    <p id="errorMessage"></p>
                 </div>
             </div>
         </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
     </div>
 </ng-template>

@@ -16,3 +16,13 @@ input[type=password] {
 .modal-title, .modal-btn:hover {
     color:#F26925;
 }
+
+#successMessage {
+    text-align: center;
+    color: mediumseagreen;
+}
+
+#errorMessage {
+    text-align: center;
+    color: red;
+}

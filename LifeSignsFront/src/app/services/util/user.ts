@@ -1,6 +1,3 @@
-import { Byte } from "@angular/compiler/src/util";
-import { Photo } from "./photo";
-
 export class User {
     constructor(
         private _role:string,
