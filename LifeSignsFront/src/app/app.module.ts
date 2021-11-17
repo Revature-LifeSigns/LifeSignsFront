@@ -35,7 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {path: "home", component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'account', component: AccountComponent},
+      {path: 'account-details', component: AccountComponent},
       {
         path: "profiles", component: ProfilesComponent,
         // canActivate: [AuthGuardService] *-* keep commented out until needed
