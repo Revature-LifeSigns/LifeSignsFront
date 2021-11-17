@@ -1,5 +1,6 @@
 import { Directive, ElementRef, OnInit } from '@angular/core';
-import { ModeService } from './mode.service';
+import { ModeService } from '../services/mode/mode.service';
+
 import { Theme } from './theme/theme';
 
 @Directive({
