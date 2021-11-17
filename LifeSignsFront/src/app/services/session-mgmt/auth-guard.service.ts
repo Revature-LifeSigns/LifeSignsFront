@@ -1,5 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LoginComponent } from 'src/app/login/login.component';
 import { UserService } from '../user/user.service';
 
@@ -11,7 +12,7 @@ export class AuthGuardService {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // deactive once user success login
     if (this.userService.isUserLoggedIn()) {
       return true;
