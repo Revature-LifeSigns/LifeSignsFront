@@ -1,15 +1,12 @@
-
 <div class="container-fluid">
-  <!-- <div class="row no-gutter"> -->
-    <!-- LIFE SIGNS HALF
+  <div class="row no-gutter">
+    <!-- LIFE SIGNS HALF -->
     <div class="col-md-6 bg-light">
       <div class="login d-flex align-items-center py-5">
-        <-- content -->
-        <!-- <div class="container">
+        <div class="container">
           <div class="row">
-            <div class="col-lg-10 col-xl-7 mx-auto"> -->
-              <!-- <h3 class="display-4 text-center">LifeSigns</h3> -->
-              <!-- <img class="transparentlogo" src="./../assets/img/transparent_logo.png" alt="transparentlogo">
+            <div class="col-lg-10 col-xl-7 mx-auto">
+              <img class="transparentlogo" src="./../assets/img/transparent_logo.png" alt="transparentlogo">
               <form>
                 <div class="form-group mb-3">
                 </div>
@@ -27,49 +24,47 @@
               </form>
             </div>
           </div>
-        </div> -->
-        <!-- End -->
-      <!-- </div>
+        </div>
+      </div>
       <p class="copyright">Copyright <span>&#169;</span> 2021 LifeSigns</p>
-    </div> -->
+    </div>
     <!-- LOGIN HALF -->
-    <!-- <div class="col-md-6" style="background-color: rgb(72, 76, 86);">
-      <div class="login d-flex align-items-center py-5"> -->
-
+    <div class="col-md-6" style="background-color: rgb(72, 76, 86);">
+      <div class="login d-flex align-items-center py-5">
         <div class="container">
           <div class="row">
             <div class="col-lg-10 col-xl-7 mx-auto">
+              <h3 class="logintitle">Login</h3>
 
-      <h3 class="logintitle">Login</h3>
-      <p id="errorMessage"></p>
+              <p id="errorMessage"></p>
 
-      <form class="loginform" [formGroup]="loginForm">
-        <div class="form-group mb-3">
-          <p class="loginformtitle">Username</p>
-          <input id="userName" type="email" placeholder="Enter Username" formControlName="username" required
-            autofocus="" class="form-control border-0 shadow-sm px-4" />
-        </div>
-        <div class="form-group mb-3">
-          <p class="loginformtitle">Password</p>
-          <input id="userPassword" type="password" placeholder="Enter Password" formControlName="password" required class="form-control border-0 shadow-sm px-4 text-primary"/>
-        </div>
-        <div class="d-flex justify-content-center">
-          <button routerLink="" id="login-btn" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm loginbutton"
-            (click)="userLogin(loginForm)">
-            LOGIN
-          </button>
-        </div>
-        <br>
-        <a id="forgot-password" routerLink="/register">Register Account</a>
-        <br><br>
-      </form>
+              <form class="loginform" [formGroup]="loginForm">
 
+                <div class="form-group mb-3">
+                  <p class="loginformtitle">Username</p>
+                  <input id="userName" type="email" placeholder="Enter username" formControlName="username" required
+                    autofocus="" class="form-control border-0 shadow-sm px-4" />
+                </div>
+                <div class="form-group mb-3">
+                  <p class="loginformtitle">Password</p>
+                  <input id="userPassword" type="password" placeholder="Enter password" formControlName="password" required class="form-control border-0 shadow-sm px-4"/>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button routerLink="" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm loginbutton"
+                    (click)="userLogin(loginForm)">
+                    LOGIN
+                  </button>
+                </div>
+
+                <div class="text-center d-flex justify-content-between mt-4">
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <img style="float: right;" class="revlogo" src="./../assets/img/rev-logo_281_29.png" alt="transparentlogo">
     </div>
-
+  </div>
 </div>
-
-
-<br>
-<img class="center" src="./../assets/img/rev-logo_281_29.png">
-<p class="copyright">Copyright &#169; 2021 LifeSigns</p>
-
