@@ -1,0 +1,111 @@
+.login-container, .hidden-container {
+	width: 500px;
+	margin: 0 auto 50px;
+	padding: 10px;
+	background: #B9B9BA;
+	border-radius: 30px;
+}
+
+.login,
+.image {
+  min-height: 100vh;
+}
+.bg-image {
+  background-size: cover;
+  background-position: center center;
+}
+
+.transparentlogo {
+  background-size: flex;
+  background-position: center center;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  min-height: 55vh;
+  max-height: 70vh;
+  /* min-height: auto;
+  max-height: auto; */
+
+}
+
+.revlogo {
+  display: block;
+  max-height: 25vh;
+  max-width: fit-content;
+  position: right;
+  padding-bottom: 5%;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  font-size: 110%;
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  align-items: center;
+  text-align: center;
+}
+
+#login-btn:hover {
+  background-color: #72A4C2;
+  color: white;
+}
+
+.copyright {
+  display: block;
+  text-align: center;
+  color: rgb(185, 185, 186);
+  margin-top: 5rem;
+}
+
+.loginformtitle {
+  color: white;
+}
+
+.logintitle {
+  color: rgba(242, 105, 38);
+  text-align: center;
+  font-size: 65px;
+  padding-top: 20px;
+  line-height: 2;
+}
+
+.loginform {
+  width: flex;
+}
+
+.loginbutton {
+  margin-top: 30px;
+}
+
+#register-text {
+  color: black;
+}
+
+.signupbutton {
+  margin-top: 20px;
+}
+
+.bg-secondary {
+  color: rgba(72, 76, 86);
+}
+
+.text-center {
+  font-size: large;
+}
+
+#errorMessage {
+  color: black;
+  text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+

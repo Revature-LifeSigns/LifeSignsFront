@@ -3,11 +3,12 @@ import { Theme } from "./theme";
 export const DarkTheme: Theme = {
     themeName: "dark",
     styles:{
-        "--toolbar-color": "#232323",
-        "--toolbar-text-color": "#EEEEEE",
-        "--card-bg": "#494949",
-        "--card-border": "#5c5c5c",
-        "--card-text-color": "#EEEEEE",
-        "--background-color": "#232323"
+        "--bg-color": "#474C55",
+        "--text-color": "white",
+        "--navbar-bg-color": "#3B3B3B",
+        "--navbar-text-color": "white",
+        "--menu-bg-color": "#F26925",
+        "--menu-text-color": "white",
+        "--slider-bg-color": "#474C55"
     }
 }

@@ -3,11 +3,12 @@ import { Theme } from "./theme";
 export const LightTheme: Theme = {
     themeName: "light",
     styles:{
-        "--toolbar-color": "#EEEEEE",
-        "--toolbar-text-color": "#232323",
-        "--card-bg": "#fafafa",
-        "--card-border": "#eee",
-        "--card-text-color": "#232323",
-        "--background-color": "#EEEEEE"
+        "--bg-color": "white",
+        "--text-color": "black",
+        "--navbar-bg-color": "#474C55",
+        "--navbar-text-color": "white",
+        "--menu-bg-color": "#F26925",
+        "--menu-text-color": "white",
+        "--slider-bg-color": "#B9B9BA"
     }
 }
