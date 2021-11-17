@@ -77,4 +77,50 @@ describe('ProfilesComponent', () => {
     let userImage = fixture.debugElement.query(By.css('img')).nativeElement;
     expect(userImage.src).toBe("http://s3.amazonaws.com/lifesigns/" + imgStr);
   });
+
+  it('should have current user span tag with id: "lastName" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let span = fixture.debugElement.query(By.css('#lastName')).nativeElement;
+    expect(span.innerHTML).toBe("First Name: " + dummyUser.firstname);
+  });
+
+  it('should have current user span tag with id: "firstName" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let span = fixture.debugElement.query(By.css('#firstName')).nativeElement;
+    expect(span.innerHTML).toBe("Last Name: " + dummyUser.lastname);
+  });
+
+  it('should have current user div tag with id: "professionDetails" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let div = fixture.debugElement.query(By.css('#professionDetails')).nativeElement;
+    expect(div.innerHTML).toBe(" Type: " + dummyUser.role + " ");
+  });
+
+  it('should have current user div tag with id: "covid" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let div = fixture.debugElement.query(By.css('#covid')).nativeElement;
+    expect(div.innerHTML).toBe(" Covid Status: " + dummyUser.covidStatus + " ");
+  });
+
+  it('should have current user div tag with id: "dob" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let div = fixture.debugElement.query(By.css('#dob')).nativeElement;
+    expect(div.innerHTML).toBe(" DOB: " + dummyUser.dob + " ");
+  });
+
+  it('should have current user p tag in div with id: "aboutContainer" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let p = fixture.debugElement.query(By.css('#aboutContainer p')).nativeElement;
+    expect(p.innerHTML).toBe(" " + dummyUser.aboutMe + " ");
+  });
+
+  it('should call updatePhoto method', () => {
+    fixture.detectChanges();
+    let button =  fixture.debugElement.query(By.css('button')).nativeElement;
+    spyOn(component, 'updatePhoto');
+    button.click();
+    fixture.whenStable().then(()=>{
+      expect(component.updatePhoto).toHaveBeenCalled();
+    })
+  });
 });

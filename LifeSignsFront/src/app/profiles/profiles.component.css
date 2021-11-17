@@ -45,3 +45,7 @@
 .nav-link{
     color: white;
 }
+#name {
+    border: 1px solid black;
+}
+
