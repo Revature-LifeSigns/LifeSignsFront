@@ -8,7 +8,7 @@ import { covidSurvey } from '../util/covidSurvey';
 })
 export class SurveyService {
   // private urlBase = 'http://localhost:9025/LifeSigns';
-  private urlBase = "http://ec2-3-90-86-121.compute-1.amazonaws.com:9025/LifeSigns";
+  private urlBase = "http://ec2-18-116-241-177.us-east-2.compute.amazonaws.com:9025/";
 
   private httpHead = {
     headers: new HttpHeaders({
