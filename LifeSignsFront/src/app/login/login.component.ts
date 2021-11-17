@@ -27,11 +27,18 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(user).subscribe(
       loginResp => {
         const userLogin = new User(
+          loginResp.role,
           loginResp.username,
           loginResp.pwd,
           loginResp.email,
-          loginResp.roleid,
-          loginResp.userid
+          loginResp.firstName,
+          loginResp.lastName,
+          loginResp.dob,
+          loginResp.address,
+          loginResp.image,
+          loginResp.aboutMe,
+          loginResp.viewPreference,
+          loginResp.covid_status
         );
         this.userService.userLoginStatus(userLogin);
         this.invalidLogin = false;
@@ -45,6 +52,7 @@ export class LoginComponent implements OnInit {
           // user navigated after successful login
           this.router.navigate(['/profiles']);
         }
+        // navigate to admin if user logged in is an admin
       },
       error => {
         console.log(error);

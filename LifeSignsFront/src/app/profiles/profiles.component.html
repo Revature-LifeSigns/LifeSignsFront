@@ -1,32 +1,55 @@
-
-<div appMode class = "toggleContainer">
+<div appMode class= "toggleContainer">
     <div id = "pageContainer">
-        <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
-        <section id = "peronsalInfo">
-            <div id = "name">
-                <span id = "lastName">Last Name</span>
-                <span id = "firstName">First Name</span>
-                <span id = "professionType">Nurse</span>
-            </div>
-            <div id = "contactInfo">
-                <div id = "leftContainer">Photo</div>
-                <div id = "rightContainer">
-                    <div>
-                        <span id = "fieldSpecialty">Specialty</span>
-                        <span id = "dob">DOB</span>
-                        <span id = "covid">Covid Status</span>
-                    </div>
-                    <div id = "addressOne">Address line 1</div>
-                    <div id = "addressTwo">Address line 2</div>
+        <div id = "peronsalInfo" class = "container">
+            <div class = "row">
+                <div class = "col-2">
+                    <h2>QuickNav</h2>
+                    <ul>
+                        <li>Chart Options</li>
+                        <li>Discussion Board</li>
+                        <li>Other</li>
+                    </ul>
+                </div>
+                <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
+                <div class = "col-8">
+                    <h2 id = "greeting">Welcome Doctor/Nurse/Dude</h2>
+                    <div class = "row">
+                        <div class = "col-6">
+                            <p>This is where the photo goes</p>
 
+
+                            <img src= {{currentUser.image}} alt="{{currentUser.firstName + ' ' + currentUser.lastName}}"/>
+
+
+                        </div>
+                        <div class = "col-6">
+                            <div id = "name">
+                                <span id = "lastName">Last Name</span>
+                                <span id = "firstName">First Name</span>
+                            </div>
+                            <div id = "professionDetails">
+                                <span id = "userType">Type: Nurse</span>
+                                <span id = "fieldSpecialty">Specialty: Pediatrics</span>
+                            </div>
+                            <div id = "misc">
+                                <span id = "dob">DOB: 8/6/1355</span>
+                                <span id = "covid">Covid Status: vaccinated</span>
+                            </div>
+                            <div id = "address">
+                                <div>Address Line 1</div>
+                                <div>Address Line 2</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--This is a container that will hold the "About Me" information for the individual-->
+                    <div id = "aboutContainer">
+                        <h2>About me</h2>
+                        <p>This is all the stuff about our nurse, just another general bio with information, stories, awards, lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other information that no one will ever look at again. Exceptions being criminal cases, government intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such. These can be really long if the person does anything interesting, or one line, like mine. At this point, I'm just writing filler text to see if this page's formatting works at all or is complete and utter garbage...........
+                        </p>
+                    </div>
                 </div>
             </div>
-        </section>
-        <!--This is a container that will hold the "About Me" information for the individual-->
-        <section id = "aboutContainer">
-            <h2>About me</h2>
-            <p>This is all the stuff about our nurse, just another general bio with information, stories, awards, lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other information that no one will ever look at again. Exceptions being criminal cases, government intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such. These can be really long if the person does anything interesting, or one line, like mine. At this point, I'm just writing filler text to see if this page's formatting works at all or is complete and utter garbage...........
-            </p>
-        </section>
+
+        </div>
     </div>
 </div>

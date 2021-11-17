@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ModeService } from './mode/mode.service';
-
+import { ModeService } from './services/mode/mode.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
