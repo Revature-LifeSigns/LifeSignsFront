@@ -26,7 +26,6 @@ export class ProfilesComponent implements OnInit {
         this.currentUser.image = "http://s3.amazonaws.com/lifesigns/" + res.imageFileName;
       }
     )
-
   }
 
   updatePhoto() {
