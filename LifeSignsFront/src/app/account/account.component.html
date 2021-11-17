@@ -11,7 +11,20 @@
                 <h4><b>Personal Info</b></h4>
                 <p><b>Full Name: </b>{{currentUser.firstname | titlecase}} {{currentUser.lastname | titlecase}}</p>
                 <p><b>Date of Birth: </b>{{currentUser.dob}}</p>
-                <p><b>Home Address: </b></p>
+                <p *ngIf="street2==''; else elseBlock"><b>Home Address: </b>
+                    <br>
+                    {{street1}}
+                    <br>
+                    {{city}}, {{state}} {{zip}}
+                </p>
+                <ng-template #elseBlock><p><b>Home Address: </b> 
+                    <br>
+                    {{street1}}
+                    <br>
+                    {{street2}}
+                    <br>
+                    {{city}}, {{state}} {{zip}}
+                </p></ng-template>
                 <button class="modal-btn" (click)="open(personal)"><b>UPDATE PERSONAL INFO</b></button>
                 <hr>
             </div>

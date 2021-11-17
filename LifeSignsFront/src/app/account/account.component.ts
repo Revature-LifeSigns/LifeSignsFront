@@ -12,6 +12,11 @@ import { User } from '../services/util/user';
 })
 export class AccountComponent implements OnInit, OnChanges {
   currentUser!:User;
+  street1!:string;
+  street2!:string;
+  city!:string;
+  state!:string;
+  zip!:string;
 
   passwordForm = new FormGroup({
     username: new FormControl(''),
@@ -24,7 +29,22 @@ export class AccountComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
-    console.log(this.currentUser);
+    let address:string[] = this.currentUser.address.split(';');
+    if (address.length == 4) {
+      // address does not have a street2 field
+      this.street1 = address[0];
+      this.street2 = '';
+      this.city = address[1];
+      this.state = address[2];
+      this.zip = address[3];
+    } else if (address.length == 5) {
+      // address does have a street2 field
+      this.street1 = address[0];
+      this.street2 = address[1];
+      this.city = address[2];
+      this.state = address[3];
+      this.zip = address[4];
+    }
   }
 
   ngOnChanges(): void {
