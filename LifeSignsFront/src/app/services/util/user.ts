@@ -91,15 +91,15 @@ export class User {
         return this._fname;
     }
 
-    public set firstname(name:string) {
+    public set firstName(name:string) {
         this._fname = name;
     }
 
-    public get lastname() {
+    public get lastName() {
         return this._lname;
     }
 
-    public set lastname(name:string) {
+    public set lastName(name:string) {
         this._lname = name;
     }
 
@@ -136,19 +136,19 @@ export class User {
         this._about = description;
     }
 
-    public get viewPref() {
+    public get viewPreference() {
         return this._viewpref;
     }
 
-    public set viewPref(mode:boolean) {
+    public set viewPreference(mode:boolean) {
         this._viewpref = mode;
     }
 
-    public get covidStatus() {
+    public get covid_status() {
         return this._covidstatus;
     }
 
-    public set covidStatus(status:string) {
+    public set covid_status(status:string) {
         this._covidstatus = status;
     }
 }

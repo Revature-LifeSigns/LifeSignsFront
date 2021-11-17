@@ -16,9 +16,9 @@ export class ProfilesComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
     console.log(this.currentUser);
-
     this.loadPhoto();
   }
+
   loadPhoto(){
     this.nurseServ.getPhoto(this.currentUser).subscribe(
       res => {
