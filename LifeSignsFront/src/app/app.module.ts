@@ -41,6 +41,8 @@ import { AccountComponent } from './account/account.component';
       },
       {
         path: "charts", component: ChartsComponent,
+        // *_* refactor below once params setup
+        // path: "charts/:patientID", component: ChartsComponent,
         // canActivate: [AuthGuardService] *-* keep commented out until needed + add to all routes except home/login/register
       },
       {path: "chat", component: AppComponent}, //TODO: fill in correct component for chat

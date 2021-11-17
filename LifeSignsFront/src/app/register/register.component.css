@@ -34,8 +34,16 @@ body {
   border-width: 14px;
 }
 
-input[type=text], input[type=email], input[type=password] {
+h4 {
+  text-align: center;
+}
+
+input[type=text], input[type=email], input[type=password], input[type=date], input[type=number] {
   font-size: small;
+}
+
+.info {
+  color: #474C55;
 }
 
 #asterisk {
