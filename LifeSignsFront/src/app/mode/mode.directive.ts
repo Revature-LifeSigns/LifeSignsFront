@@ -10,24 +10,20 @@ import { Theme, ThemeMode } from './theme/theme';
   selector: '[appMode]'
 })
 export class ModeDirective implements OnInit{
-
+  currentUser;
   constructor(private modeServ: ModeService, private userServ: UserService, private _elementRef: ElementRef) { }
 
   ngOnInit(): void {
-    let currentUser = this.userServ.getLoggedInUser();
+    this.currentUser = this.userServ.getLoggedInUser();
     var element = <HTMLInputElement> document.getElementById("checkbox");
-    if(currentUser){
-      console.log(currentUser.viewPreference);
-      if(currentUser.viewPreference || currentUser.viewPreference == null){
+    if(this.currentUser){
+      if(this.currentUser.viewPreference || this.currentUser.viewPreference == null){
         element.checked = false;
         this.modeServ.setCurrentTheme(ThemeMode.LIGHT);
       }else{
         element.checked = true;
         this.modeServ.setCurrentTheme(ThemeMode.DARK);
       }
-      
-      currentUser.viewPreference = !currentUser.viewPreference;
-      // this.userServ.updateUserProfile(currentUser).subscribe();
     }
     let currentTheme = this.modeServ.getActiveTheme();
 
@@ -40,9 +36,8 @@ export class ModeDirective implements OnInit{
 
   // sets css variable names to its values defined in parameter theme (datatype Theme defined in theme.ts)
   updateTheme(theme:Theme){
-    for(const property in theme.styles){
-      this._elementRef.nativeElement.style.setProperty(property, theme.styles[property]);
+      for(const property in theme.styles){
+        this._elementRef.nativeElement.style.setProperty(property, theme.styles[property]);
+      }
     }
-  }
-
 }

@@ -32,8 +32,8 @@ export class UserService {
     return this.http.post<User>(this.urlBase + "/login", user, this.httpHead);
   }
 
-  public updateUserProfile(user:User): Observable<Object>{
-    let url = this.urlBase + "/users/update/" + user.userid;
+  public updateUserProfile(user:any): Observable<Object>{
+    let url = this.urlBase + "/user/update";
     return this.http.patch<String>(url, user, this.httpHead);
   }
 

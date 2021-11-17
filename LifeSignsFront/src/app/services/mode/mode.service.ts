@@ -2,6 +2,7 @@ import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { DarkTheme } from 'src/app/mode/theme/darkTheme';
 import { LightTheme } from 'src/app/mode/theme/lightTheme';
 import { Theme, ThemeMode } from 'src/app/mode/theme/theme';
+import { UserService } from '../user/user.service';
 
 
 @Injectable({
@@ -12,10 +13,24 @@ export class ModeService{
   private currentTheme = ThemeMode.LIGHT;
   themeChange = new EventEmitter<Theme>();
   
-  constructor() { }
+  constructor(private userServ:UserService) { }
 
   // toggles between 2 Theme based on the current theme
   public toggleMode(){
+    
+    let currentUser = this.userServ.getLoggedInUser();
+    if(currentUser){
+      currentUser.viewPreference = !currentUser.viewPreference;
+      let temp = new User(currentUser.username, currentUser.userid, currentUser.viewPreference);
+      this.userServ.updateUserProfile(temp).subscribe(
+        response=>{
+          console.log(response)
+        },error=>{
+          console.log(error)
+
+        }
+      );
+    }
     if(this.currentTheme == ThemeMode.LIGHT){
       this.setTheme(ThemeMode.DARK)
     }else{
@@ -41,4 +56,8 @@ export class ModeService{
       return LightTheme;
     return DarkTheme;
   }
+
+}
+class User{
+  constructor(public username:string, public userid:number, public viewPreference:boolean){}
 }
