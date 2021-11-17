@@ -14,8 +14,8 @@ import { AuthGuardService } from './services/session-mgmt/auth-guard.service';
 import { ModeDirective } from './mode/mode.directive';
 import { NurseService } from './services/nurse/nurse.service';
 import { AccountComponent } from './account/account.component';
-
-
+import { AdminComponent } from './admin/admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -27,15 +27,15 @@ import { AccountComponent } from './account/account.component';
     LoginComponent,
     Survey,
     RegisterComponent,
-     AccountComponent
-
+    AccountComponent,
+    AdminComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([
+    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, NgbModule, RouterModule.forRoot([
       {path: "home", component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'account', component: AccountComponent},
+      {path: 'account-details', component: AccountComponent},
       {
         path: "profiles", component: ProfilesComponent,
         // canActivate: [AuthGuardService] *-* keep commented out until needed
@@ -47,6 +47,7 @@ import { AccountComponent } from './account/account.component';
         // canActivate: [AuthGuardService] *-* keep commented out until needed + add to all routes except home/login/register
       },
       {path: "chat", component: AppComponent}, //TODO: fill in correct component for chat
+      {path: "admin", component: AdminComponent},
       {path: "**", redirectTo: "home"}  //TODO fill in correct catch-all route
 
     ])

@@ -1,1 +1,122 @@
-<p>Font test</p>
+<div class="container">
+    <div class="title">
+        <h1 style="text-align: center;" class="heading"><b>Manage Your Account</b></h1>
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <div class="personal">
+                <h4><b>Personal Info</b></h4>
+                <p><b>Full Name: </b>{{currentUser.firstname}} {{currentUser.lastname}}</p>
+                <p><b>Date of Birth: </b>{{currentUser.dob}}</p>
+                <p><b>Home Address: </b> {{currentUser.address}}</p>
+                <button class="modal-btn" (click)="open(personal)"><b>UPDATE PERSONAL INFO</b></button>
+                <hr>
+            </div>
+            <div class="email">
+                <h4><b>Email</b></h4>
+                <p>{{currentUser.email}}</p>
+                <button class="modal-btn" (click)="open(email)"><b>UPDATE EMAIL</b></button>
+                <hr>
+            </div>
+            <div class="password">
+                <h4><b>Password</b></h4>
+                <p>{{hiddenPwd}}</p>
+                <button class="modal-btn" (click)="open(password)"><b>UPDATE PASSWORD</b></button>
+                <hr>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<!-- Personal Info Update Modal -->
+<ng-template #personal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="update-email">Update Personal Information</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
+
+<!-- Email Update Modal -->
+<ng-template #email let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="update-email">Change Email Address</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
+
+<!-- Password Update Modal -->
+<ng-template #password let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="update-password">Update Password</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="passwordForm">
+            <div class="row">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="currentPassword"><b>Current Password: </b></label>
+                        <input formControlName="currentPassword" type="password" class="form-control form-control-lg"
+                            placeholder="Enter current password">
+                    </div>
+                    <br>
+                    <div class="form-outline">
+                        <label class="form-label" for="newPassword"><b>New Password: </b></label>
+                        <input formControlName="newPassword" type="password" class="form-control form-control-lg"
+                            placeholder="Enter new password">
+                        <p class="info"><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1
+                            special character (8-20 characters).</small></p>
+                    </div>
+                    <br>
+                    <div class="form-outline">
+                        <label class="form-label" for="passwordAgain"><b>Confirm New Password: </b></label>
+                        <input formControlName="passwordAgain" type="password" class="form-control form-control-lg"
+                            placeholder="Enter new password again">
+                        <p class="info"><small>Passwords must match.</small></p>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-dark" (click)="updatePwd(passwordForm)">
+                        Save
+                    </button>
+                    </div>
+                    <br>
+                    <p id="successMessage"></p>
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
