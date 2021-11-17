@@ -1,6 +1,5 @@
 #pageContainer {
     width: 80%;
-
     margin-left: 10px;
     margin: auto auto;
 }
@@ -46,7 +45,3 @@
 .nav-link{
     color: white;
 }
-#name {
-    border: 1px solid black;
-}
-
