@@ -13,6 +13,8 @@ import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-s
 import { AuthGuardService } from './services/session-mgmt/auth-guard.service';
 import { ModeDirective } from './mode/mode.directive';
 import { NurseService } from './services/nurse/nurse.service';
+import { AdminComponent } from './admin/admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -25,10 +27,11 @@ import { NurseService } from './services/nurse/nurse.service';
     ChartsComponent,
     LoginComponent,
     DoctorCovidStatusComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([
+    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, NgbModule, RouterModule.forRoot([
       {path: "home", component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
@@ -41,6 +44,7 @@ import { NurseService } from './services/nurse/nurse.service';
         // canActivate: [AuthGuardService] *-* keep commented out until needed + add to all routes except home/login/register
       },
       {path: "chat", component: AppComponent}, //TODO: fill in correct component for chat
+      {path: "admin", component: AdminComponent},
       {path: "**", redirectTo: "home"}  //TODO fill in correct catch-all route
 
     ])

@@ -1,0 +1,100 @@
+<div appMode class="toggleContainer container-fluid">
+    <div class="row flex-nowrap">
+        <div class="sideMenu col-auto col-md-3 ">
+            <div class="flex-column align-items-sm-start px-3 pt-2">
+                <h1 class="mt-5">Menu</h1>
+                <ul class="nav flex-column mb-sm-auto mb-0 align-items-center">
+                    <li class="w-100">
+                        <a href="/admin" class="nav-link px-0 mt-4 ml-3"> <i class="fa fa-stethoscope fa-2x" aria-hidden="true"> Assign Units</i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+            <h1 class="ml-5 mt-5">Welcome Admin</h1>
+            <div class="container mt-5">
+                <h5>Click below to view their profile</h5>
+                <div *ngFor="let user of users">
+                    <ng-template #viewUser let-modal>
+                        <div appMode class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">{{user.lastName}}, {{user.firstName}}</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div appMode class="modal-body">
+                            <div class="input-group mb-2 mt-4">
+                                <div class="input-group-prepend">
+                                  <div class="input-group-text"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i></div>
+                                </div>
+                                <input type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.role}}>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="input-group mb-2 mt-4">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">@</div>
+                                        </div>
+                                        <input type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.username}}>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-2 mt-4">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Email</div>
+                                        </div>
+                                        <input type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.email}}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group mb-2 mt-4">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text">Address</div>
+                              </div>
+                              <input type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.address}}>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="input-group mb-2 mt-4">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                        </div>
+                                        <input type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.dob}}>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-2 mt-4">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Covid Status</div>
+                                        </div>
+                                        <input *ngIf = !user.covid_status type="text" readonly class="form-control" id="inlineFormInputGroup" value="N/A">
+                                        <input *ngIf = user.covid_status type="text" readonly class="form-control" id="inlineFormInputGroup" value={{user.covid_status}}>
+                                    </div>
+                                </div>
+                            </div>
+                            <form [formGroup]="unitGroup">
+                                <div class="input-group mb-2 mt-4">
+                                    <div class="input-group-prepend">
+                                      <div class="input-group-text">Unit</div>
+                                    </div>
+                                    <select class="form-control" formControlName ="unit" required>
+                                        <option *ngFor="let unit of units" [ngValue]="unit.unit">{{unit.unit}}</option>
+                                    </select>
+                                </div>
+
+                                <button appMode type="submit" class=" updateBtn btn" (click)="assignUnit(unitGroup)">Update</button>
+                            </form>
+                        </div>
+                    </ng-template>
+                    <div class="user" (click)="showUnitAssignModal(viewUser, user.userid)"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i> {{user.lastName}}, {{user.firstName}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #unitAssignedModal let-modal>
+    <div appMode *ngIf="unitAssigned; else invalid_unit" class="modal-body" style="background-color: #d4edda; color:black;">Hospital unit assigned successfully!</div>
+</ng-template>
+<ng-template #invalid_unit>
+    <div appMode appMode *ngIf="!unitAssigned" class="modal-body" style="background-color: #f8d7da; color:black;">Hospital unit was not assigned</div>
+</ng-template>

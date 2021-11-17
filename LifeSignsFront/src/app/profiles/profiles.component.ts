@@ -14,14 +14,6 @@ export class ProfilesComponent implements OnInit {
   constructor(private userServ:UserService, private nurseServ:NurseService) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    let currentUser:Nurse = JSON.parse(sessionStorage.getItem("currentUser")!);
-    // this.nurseServ.getNurseProfile(currentUser.user_id).subscribe(
-    //   response => {
-    //     console.log(currentUser);
-    //   }
-    // )
-=======
     this.currentUser = this.userServ.getLoggedInUser();
     console.log(this.currentUser);
     this.loadPhoto();
@@ -34,7 +26,6 @@ export class ProfilesComponent implements OnInit {
       }
     )
 
->>>>>>> a856c36ba5bc36b3c91df713676e907281c9c5b8
   }
 
 }

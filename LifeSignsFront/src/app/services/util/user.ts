@@ -3,7 +3,7 @@ import { Photo } from "./photo";
 
 export class User {
     constructor(
-        private _roleid:number,
+        private _role:string,
         private _username:string,
         private _pwd:string,
         private _email:string,
@@ -78,32 +78,35 @@ export class User {
         return re.test(String(theEmail).toLowerCase());
     }
 
-    public get roleid() {
-        return this._roleid;
+    public get role() {
+        return this._role;
     }
 
     // Roles: (1) Doctor, (2) Nurse, (3) Patient
-    public set roleid(theRole:number) {
-        if (theRole >= 1 && theRole <= 3) {
-            this._roleid = theRole;
-        } else {
-            alert('Role is invalid.');
-        }
-    }
+    // public set role(theRole:string) {
+    //     switch(theRole){
+    //         case "doctor"
+    //     }
+    //     if (theRole >= 1 && theRole <= 3) {
+    //         this._role = theRole;
+    //     } else {
+    //         alert('Role is invalid.');
+    //     }
+    // }
 
-    public get firstname() {
+    public get firstName() {
         return this._fname;
     }
 
-    public set firstname(name:string) {
+    public set firstName(name:string) {
         this._fname = name;
     }
 
-    public get lastname() {
+    public get lastName() {
         return this._lname;
     }
 
-    public set lastname(name:string) {
+    public set lastName(name:string) {
         this._lname = name;
     }
 
@@ -140,19 +143,19 @@ export class User {
         this._about = description;
     }
 
-    public get viewPref() {
+    public get viewPreference() {
         return this._viewpref;
     }
 
-    public set viewPref(mode:boolean) {
+    public set viewPreference(mode:boolean) {
         this._viewpref = mode;
     }
 
-    public get covidStatus() {
+    public get covid_status() {
         return this._covidstatus;
     }
 
-    public set covidStatus(status:string) {
+    public set covid_status(status:string) {
         this._covidstatus = status;
     }
 }
