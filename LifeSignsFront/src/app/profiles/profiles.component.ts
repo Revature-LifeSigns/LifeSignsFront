@@ -15,8 +15,15 @@ export class ProfilesComponent implements OnInit {
     newPhoto: new FormControl('')
   })
 
+  aboutMeGroup = new FormGroup({
+    aboutMe: new FormControl('')
+  })
+
   currentUser!:User;
   isNurse:boolean;
+
+  file: any;
+
   constructor(private userServ:UserService, private nurseServ:NurseService) { }
 
   ngOnInit(): void {
@@ -40,8 +47,22 @@ export class ProfilesComponent implements OnInit {
     )
   }
 
-  updatePhoto() {
-    alert('clicked update photo')
+  //onChange, create formdata object, then append file
+  updatePhoto(event:any) {
+    alert("update photo clicked");
+    console.log(event.target.files[0]);
+    this.file = event.target.files[0];
+    let formData = new FormData();
+    formData.append("file", this.file, this.photoGroup.get("newPhoto")!.value);
+    this.nurseServ.uploadPhoto(formData).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
+
+  updateAboutMe() {
+    console.log(this.aboutMeGroup.value.aboutMe);
   }
 }
 
