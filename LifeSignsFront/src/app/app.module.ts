@@ -38,7 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {path: 'account-details', component: AccountComponent},
       {
         path: "profiles", component: ProfilesComponent,
-        // canActivate: [AuthGuardService] *-* keep commented out until needed
+        canActivate: [AuthGuardService]
       },
       {
         path: "charts", component: ChartsComponent,
