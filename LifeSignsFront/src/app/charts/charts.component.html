@@ -2,11 +2,10 @@
 
         <div *ngIf="null == null; then loggedIn else loggedOut"></div>
 
-        <div class="col text-center">
-            <button class="btn btn-block text-uppercase shadow-sm w-25" (click)='toggleForm()'>{{isVisible ? 'Hide Chart Form' : 'Show Chart Form'}}</button>
-        </div>
-
         <ng-template #loggedIn>
+            <div class="col text-center">
+                <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide Chart Form' : 'Show Chart Form'}}</button>
+            </div>
             <div *ngIf="isVisible" class="card">
                 <div class="card-header">
                     <div class="card-heading">Patient Chart</div>
