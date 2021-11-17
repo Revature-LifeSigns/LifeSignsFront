@@ -31,6 +31,7 @@ export class ChartsComponent implements OnInit {
 
   // adding for redirect to patient's id once logged in
   patientID$: Observable<number>;
+  isVisible: boolean = false;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService) {
     this.patientID$ = this.route.params.pipe(
@@ -53,4 +54,10 @@ export class ChartsComponent implements OnInit {
       }
     );
   }
+
+  toggleForm() {
+  //console.log('button clicked');
+    this.isVisible = !this.isVisible;
+  }
+
 }
