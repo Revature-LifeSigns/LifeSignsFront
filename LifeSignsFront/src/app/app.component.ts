@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from './services/user/user.service';
 import { ModeService } from './services/mode/mode.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
 
   isVisible = true;
 
-  constructor(private userService: UserService, private modeService: ModeService) {
+  constructor(private userService: UserService, private modeService: ModeService,
+    private router: Router) {
 
   }
 
@@ -31,7 +33,13 @@ export class AppComponent {
   toggleUserMenu():void {
     this.isVisible = !this.isVisible;
   }
+  logoutUser() {
+    this.userService.logoutUser();
+    this.router.navigate(['/login']);
+  }
 
-
+  // logout():void {
+    
+  // }
 }
 

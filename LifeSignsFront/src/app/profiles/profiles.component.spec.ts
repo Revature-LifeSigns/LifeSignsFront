@@ -16,10 +16,10 @@ describe('ProfilesComponent', () => {
   let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
 
   const imgStr = 'src';
-  const dummyUser = new User(1,"TestUsername", "TestPassword", "TestEmail", "TestFirstName",
+  const dummyUser = new User('doctor',"TestUsername", "TestPassword", "TestEmail", "TestFirstName",
     "TestLastName", "TestDoB", "TestAddress", "http://s3.amazonaws.com/lifesigns/" + imgStr,
-    "TestAbout", false, "TestCovidStatus", 1);
-  
+    "TestAbout", false, "TestCovidStatus", '1');
+
     class MockServiceUser {
     getLoggedInUser(): User{
       return dummyUser;
@@ -39,7 +39,7 @@ describe('ProfilesComponent', () => {
 
 
   beforeEach(() => {
-    
+
     TestBed.configureTestingModule({
       declarations: [ ProfilesComponent ],
       providers:[
@@ -52,7 +52,7 @@ describe('ProfilesComponent', () => {
   });
 
   beforeEach(() => {
-  
+
     userServ = TestBed.inject(UserService);
     nurseServ = TestBed.inject(NurseService);
     mockClient =  TestBed.get(HttpClient);

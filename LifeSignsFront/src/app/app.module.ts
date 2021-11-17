@@ -44,10 +44,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         path: "charts", component: ChartsComponent,
         // *_* refactor below once params setup
         // path: "charts/:patientID", component: ChartsComponent,
-        // canActivate: [AuthGuardService] *-* keep commented out until needed + add to all routes except home/login/register
+        canActivate: [AuthGuardService]
       },
       {path: "chat", component: AppComponent}, //TODO: fill in correct component for chat
-      {path: "admin", component: AdminComponent},
+      {path: "admin", component: AdminComponent,
+      canActivate: [AuthGuardService]
+      },
       {path: "**", redirectTo: "home"}  //TODO fill in correct catch-all route
 
     ])

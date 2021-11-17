@@ -22,12 +22,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-
-  min-height: 55vh;
-  max-height: 70vh;
-  /* min-height: auto;
-  max-height: auto; */
-
+  min-height: 150px;
+  max-height: 30vh;
 }
 
 .revlogo {
