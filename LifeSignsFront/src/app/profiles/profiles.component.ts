@@ -54,6 +54,9 @@ export class ProfilesComponent implements OnInit {
     this.file = event.target.files[0];
     let formData = new FormData();
     formData.append("file", this.file, this.photoGroup.get("newPhoto")!.value);
+
+    formData.append("uploader", String(this.currentUser.userid));
+
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);
