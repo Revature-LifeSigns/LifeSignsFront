@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class DoctorService {
 
   private url ="http://localhost:9025/doctors";
+  private urlBase = "http://ec2-3-90-86-121.compute-1.amazonaws.com:9025/LifeSigns";
   private currentDoctor!: Doctor;
   private loginDoctorStatus!: boolean;
 

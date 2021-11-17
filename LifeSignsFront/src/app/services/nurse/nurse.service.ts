@@ -11,8 +11,8 @@ import { Photo } from '../util/photo';
 })
 export class NurseService {
 
-  private urlBase = "http://localhost:9025/LifeSigns";
-  // private urlBase = "http://ec2-3-90-86-121.compute-1.amazonaws.com/";
+  // private urlBase = "http://localhost:9025/LifeSigns";
+  private urlBase = "http://ec2-3-90-86-121.compute-1.amazonaws.com:9025/LifeSigns";
   private httpHead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export class NurseService {
 
 
   public uploadPhoto(photo: FormData): Observable<any> {
-    let url = this.urlBase  + "/photo" ;
+    let url = this.urlBase  + "/photo";
     let httpHead = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*'
