@@ -1,7 +1,8 @@
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
-import { DarkTheme } from './theme/darkTheme';
-import { LightTheme } from './theme/lightTheme';
-import { Theme, ThemeMode } from './theme/theme';
+import { DarkTheme } from 'src/app/mode/theme/darkTheme';
+import { LightTheme } from 'src/app/mode/theme/lightTheme';
+import { Theme, ThemeMode } from 'src/app/mode/theme/theme';
+
 
 @Injectable({
   providedIn: 'root'

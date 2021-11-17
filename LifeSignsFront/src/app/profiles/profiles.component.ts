@@ -32,5 +32,3 @@ export class ProfilesComponent implements OnInit {
     alert('clicked update photo')
   }
 }
-
-

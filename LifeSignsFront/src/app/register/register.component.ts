@@ -34,12 +34,12 @@ export class RegisterComponent implements OnInit {
   public submitUser(user: FormGroup) {
     let errMess: any = document.getElementById('errorMessage');
     // Check that all fields were manipulated
-    if (user.get('firstname').value == '' || user.get('lastname').value == '' ||
-      user.get('dob').value == '' || user.get('email').value == '' ||
-      user.get('street1').value == '' || user.get('city').value == '' ||
-      user.get('state').value == '' || user.get('zipcode').value == '' ||
-      user.get('role').value == '' || user.get('username').value == '' ||
-      user.get('password').value == '' || user.get('confirmed').value == '') {
+    if (user.get('firstname')!.value == '' || user.get('lastname')!.value == '' ||
+      user.get('dob')!.value == '' || user.get('email')!.value == '' ||
+      user.get('street1')!.value == '' || user.get('city')!.value == '' ||
+      user.get('state')!.value == '' || user.get('zipcode')!.value == '' ||
+      user.get('role')!.value == '' || user.get('username')!.value == '' ||
+      user.get('password')!.value == '' || user.get('confirmed')!.value == '') {
       errMess.innerHTML = 'All fields are required.'
     } else {
       // Validate user input
@@ -50,14 +50,14 @@ export class RegisterComponent implements OnInit {
               if (this.validatePwd(user.get('password')?.value)) {
                 // Check that password and confirmation password match
                 if (user.get('password')?.value == user.get('confirmed')?.value) {
-                  
+
                   // Reformat address
-                  var street1 = user.get('street1').value;
-                  var street2 = user.get('street2').value;
-                  var city = user.get('city').value;
-                  var state = user.get('state').value;
-                  var zip = user.get('zipcode').value;
-                  user.get('address').setValue(street1 + "; " + street2 + "; " + city + "; " + state + "; " + zip);
+                  var street1 = user.get('street1')!.value;
+                  var street2 = user.get('street2')!.value;
+                  var city = user.get('city')!.value;
+                  var state = user.get('state')!.value;
+                  var zip = user.get('zipcode')!.value;
+                  user.get('address')!.setValue(street1 + "; " + street2 + "; " + city + "; " + state + "; " + zip);
 
                   // Create JSON object to send to backend
                   let newUser = JSON.stringify(user.value);

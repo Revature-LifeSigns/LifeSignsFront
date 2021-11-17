@@ -5,6 +5,7 @@ import { take, catchError } from 'rxjs/operators';
 
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +30,12 @@ export class LoginComponent implements OnInit {
       .loginUser(user)
       .pipe(
         take(1),
-        catchError((error) => {
-          console.log(error);
-          errMess.innerHTML = 'Invalid login.  Please try again.';
-          this.invalidLogin = true;
-          return null;
-        })
+        // catchError((error) => {
+        //   console.log(error);
+        //   errMess.innerHTML = 'Invalid login.  Please try again.';
+        //   this.invalidLogin = true;
+        //   return null;
+        // })
       )
       .subscribe((loginResp: any) => {
         if (loginResp) {

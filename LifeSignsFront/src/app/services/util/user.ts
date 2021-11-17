@@ -1,6 +1,3 @@
-import { Byte } from "@angular/compiler/src/util";
-import { Photo } from "./photo";
-
 export class User {
     constructor(
         private _role:string,
@@ -144,11 +141,11 @@ export class User {
       this._specialty = description;
   }
 
-    public get viewPref() {
+    public get viewPreference() {
         return this._viewpref;
     }
 
-    public set viewPref(mode:boolean) {
+    public set viewPreference(mode:boolean) {
         this._viewpref = mode;
     }
 
