@@ -1,6 +1,7 @@
 import { inject, TestBed } from '@angular/core/testing';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Doctor } from '../util/doctorInterface';
 import { DoctorService } from './doctor.service';
 import { User } from '../util/user';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -9,19 +10,18 @@ import { Chart } from '../util/chart';
 
 describe('DoctorService', () => {
   let service: DoctorService;
-  let httpMock: HttpTestingController;
-  let HttpClient: HttpClient;
+  let mockStream: jasmine.SpyObj<DoctorService>;
+  let httpClientSpy: { get: jasmine.Spy };
+  let fakeDoctor: any;
 
   beforeEach(() => {
-    const httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'patch']);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    const spy = jasmine.createSpyObj('DoctorService', ['getDoctor']);
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      providers: [
-        {provide: HttpClient, useValue: httpClientSpy}
-        ]
+      providers: [{provide: DoctorService, useValue: spy}]
     });
     service = new DoctorService(httpClientSpy as any);
-    httpMock = TestBed.inject(HttpTestingController);
+    mockStream = TestBed.inject(DoctorService) as jasmine.SpyObj<DoctorService>;
   });
 
   it('should be created', () => {
@@ -64,5 +64,20 @@ describe('DoctorService', () => {
     httpMock.verify;
     })
   );
+  it('should return doctor', () => {
+    const fakeDoctor:Doctor = {
+      userId: 1,
+      firstName: 'Real',
+      lastName: 'Doctor',
+      dob: new Date('1900-01-01'),
+      address: '123 Fake Street',
+      picture: '',
+      aboutMe: '',
+      viewPreference: true,
+      covidStatus: ''
+    }
+    service.setDoctor(fakeDoctor);
+    expect(service.getDoctor().firstName).toEqual(fakeDoctor.firstName);
+  });
 
 });

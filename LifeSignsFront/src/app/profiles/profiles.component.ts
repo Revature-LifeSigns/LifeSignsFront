@@ -73,6 +73,3 @@ export class ProfilesComponent implements OnInit {
     )
   }
 }
-
-
-

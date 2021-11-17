@@ -39,7 +39,6 @@ describe('ProfilesComponent', () => {
 
 
   beforeEach(() => {
-
     TestBed.configureTestingModule({
       declarations: [ ProfilesComponent ],
       providers:[
@@ -52,7 +51,6 @@ describe('ProfilesComponent', () => {
   });
 
   beforeEach(() => {
-
     userServ = TestBed.inject(UserService);
     nurseServ = TestBed.inject(NurseService);
     mockClient =  TestBed.get(HttpClient);

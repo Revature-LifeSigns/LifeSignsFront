@@ -7,20 +7,19 @@ button {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     border-color: #474C55;
 }
 
-::selection {
-    background-color: #B9B9BA;
-}
-
+::selection,
+.input-group-prepend .input-group-text,
 ::-webkit-datetime-edit-month-field,
 ::-webkit-datetime-edit-day-field,
 ::-webkit-datetime-edit-year-field {
     background-color: #B9B9BA;
 }
 
-.input-group-prepend .input-group-text {
-    background-color: #B9B9BA;
+.card-body {
+    width: 90%;
 }

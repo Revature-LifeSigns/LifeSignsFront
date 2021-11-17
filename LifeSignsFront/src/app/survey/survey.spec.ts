@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,12 +55,49 @@ describe('SurveyComponent', () => {
     fixture = TestBed.createComponent(Survey);
     component = fixture.componentInstance;
 
+=======
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+<<<<<<< HEAD:LifeSignsFront/src/app/account/account.component.spec.ts
+import { AccountComponent } from './account.component';
+
+describe('AccountComponent', () => {
+  let component: AccountComponent;
+  let fixture: ComponentFixture<AccountComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ AccountComponent ]
+=======
+import { Survey } from './survey.component';
+
+describe('DoctorCovidStatusComponent', () => {
+  let component: Survey;
+  let fixture: ComponentFixture<Survey>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ Survey ]
+>>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa:LifeSignsFront/src/app/survey/survey.spec.ts
+    })
+    .compileComponents();
+  });
+
+  beforeEach(() => {
+<<<<<<< HEAD:LifeSignsFront/src/app/account/account.component.spec.ts
+    fixture = TestBed.createComponent(AccountComponent);
+=======
+    fixture = TestBed.createComponent(Survey);
+>>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa:LifeSignsFront/src/app/survey/survey.spec.ts
+    component = fixture.componentInstance;
+>>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+<<<<<<< HEAD
 
   it('should set today date after init', () => {
     component.ngOnInit();
@@ -127,4 +165,6 @@ describe('SurveyComponent', () => {
     expect(component.covidSurvey.userId).toBe(dummyUser.userid);
   });
 
+=======
+>>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa
 });

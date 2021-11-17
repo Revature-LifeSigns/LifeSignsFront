@@ -64,7 +64,7 @@ export class AccountComponent implements OnInit, OnChanges {
   updateEmail(emails:FormGroup) {
     let message: any = document.getElementById('message');
     if (this.validateEmail(emails.get('newEmail')!.value)) {
-      
+
     } else {
       // Invalid email
       message.setAttribute("style", "color:red");
@@ -74,7 +74,7 @@ export class AccountComponent implements OnInit, OnChanges {
 
   updatePwd(passwords:FormGroup) {
     let message: any = document.getElementById('message');
-    if (this.validatePwd(passwords.get('currentPassword')!.value) && 
+    if (this.validatePwd(passwords.get('currentPassword')!.value) &&
         this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
         passwords.get('username')!.setValue(this.currentUser.username);

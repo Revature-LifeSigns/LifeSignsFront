@@ -42,6 +42,8 @@ export class UserService {
     return this.http.post<User[]>(this.urlBase + "/changePassword", passwords, this.httpHead);
   }
 
+
+
   userLoginStatus(user: User) {
     this.loggedInUser = user;
     this.userLoggedInStatus = true;
