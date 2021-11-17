@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
             loginResp.userid
           );
           this.userService.userLoginStatus(userLogin);
-          console.log(this.userService.getLoggedInUser());
           this.invalidLogin = false;
           // store url memory for userlogin then reset to null
           if (this.userService.returnUrl) {
