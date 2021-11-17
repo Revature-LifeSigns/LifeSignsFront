@@ -1,0 +1,34 @@
+.custom-header-color {
+    color: #ffffff;
+}
+
+.custom-secondary-color {
+    color:  #F26925;
+}
+
+.custom-background-color {
+    background-color: #474C55;
+}
+
+.btn-primary {
+    background-color: #F26925;
+    border-color: #474C55;
+}
+
+.btn-outline-primary {
+    color: #72A4C2;
+    border-color: #72A4C2;
+}
+
+.btn-outline-primary:hover {
+    color: #ffffff;
+    border-color: #72A4C2;
+    background-color: #72A4C2;
+}
+
+.btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
+    color: #fff;
+    background-color: #72A4C2;
+    border-color: #72A4C2;
+}
+/*: #72A4C2 */

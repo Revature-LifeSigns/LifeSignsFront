@@ -81,7 +81,12 @@ button {
   color: rgba(72, 76, 86);
 }
 
+
 .text-center {
   font-family: futura std-book;
   font-size: large;
+
+#errorMessage {
+  color: black;
+  text-align: center;
 }

@@ -13,6 +13,7 @@ import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-s
 import { AuthGuardService } from './services/session-mgmt/auth-guard.service';
 import { ModeDirective } from './mode/mode.directive';
 import { NurseService } from './services/nurse/nurse.service';
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -25,13 +26,15 @@ import { NurseService } from './services/nurse/nurse.service';
     ChartsComponent,
     LoginComponent,
     DoctorCovidStatusComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([
       {path: "home", component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
+      {path: 'account', component: AccountComponent},
       {
         path: "profiles", component: ProfilesComponent,
         // canActivate: [AuthGuardService] *-* keep commented out until needed

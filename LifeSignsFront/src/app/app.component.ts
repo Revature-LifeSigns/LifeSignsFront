@@ -23,7 +23,7 @@ export class AppComponent {
   }
 
 
-  // Mode Service is injected and toggleMode() is being called at each click event
+  // ModeService is injected and toggleMode() is being called at each click event
   toggle(){
     this.modeService.toggleMode();
   }

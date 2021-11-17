@@ -1,6 +1,22 @@
+import { Byte } from "@angular/compiler/src/util";
+import { Photo } from "./photo";
+
 export class User {
-    constructor(private _username:string, private _pwd:string,
-        private _email:string, private _roleid:number, private _userid?:number) { }
+    constructor(
+        private _role:string,
+        private _username:string,
+        private _pwd:string,
+        private _email:string,
+        private _fname:string,
+        private _lname:string,
+        private _dob:string,
+        private _address:string,
+        private _image:string,
+        private _about:string,
+        private _viewpref:boolean,
+        private _covidstatus:string,
+        private _userid?:number
+    ) { }
 
     public get userid() {
         return this._userid;
@@ -62,16 +78,77 @@ export class User {
         return re.test(String(theEmail).toLowerCase());
     }
 
-    public get roleid() {
-        return this._roleid;
+    public get role() {
+        return this._role;
     }
 
     // Roles: (1) Doctor, (2) Nurse, (3) Patient
-    public set roleid(theRole:number) {
-        if (theRole >= 1 && theRole <= 3) {
-            this._roleid = theRole;
-        } else {
-            alert('Role is invalid.');
-        }
+    public set role(theRole:string) {
+        this._role = theRole;
+    }
+
+    public get firstname() {
+        return this._fname;
+    }
+
+    public set firstname(name:string) {
+        this._fname = name;
+    }
+
+    public get lastname() {
+        return this._lname;
+    }
+
+    public set lastname(name:string) {
+        this._lname = name;
+    }
+
+    public get dob() {
+        return this._dob;
+    }
+
+    public set dob(birthday:string) {
+        this._dob = birthday;
+    }
+
+    public get address() {
+        return this._address;
+    }
+
+    public set address(theAddress:string) {
+        this._address = theAddress;
+    }
+
+    public get image() {
+        return this._image;
+    }
+
+    public set image(filename: string) {
+        let baseURL = "http://s3.amazonaws.com/lifesigns/";
+
+      this._image = baseURL + filename;
+    }
+    public get aboutMe() {
+        return this._about;
+    }
+
+    public set aboutMe(description:string) {
+        this._about = description;
+    }
+
+    public get viewPref() {
+        return this._viewpref;
+    }
+
+    public set viewPref(mode:boolean) {
+        this._viewpref = mode;
+    }
+
+    public get covidStatus() {
+        return this._covidstatus;
+    }
+
+    public set covidStatus(status:string) {
+        this._covidstatus = status;
     }
 }
