@@ -11,7 +11,7 @@ describe('NurseService', () => {
   let service: NurseService;
   let httpMock: HttpTestingController;
   const dummyNurseProfile = new User(
-    2, "testNurse", "","test@test.com","Test","Nurse","01-01-1900","100 E Main St; Buffalo, NY 00000",
+    "Nurse", "testNurse", "","test@test.com","Test","Nurse","01-01-1900","100 E Main St; Buffalo, NY 00000",
     "http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg","This is my totally cool description of me.", false,"Pediatrics","unknown",1)
   const testPhoto:Photo = {
     photoId: 1,

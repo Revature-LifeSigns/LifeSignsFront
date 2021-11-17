@@ -1,9 +1,6 @@
-import { Byte } from "@angular/compiler/src/util";
-import { Photo } from "./photo";
-
 export class User {
     constructor(
-        private _roleid:number,
+        private _role:string,
         private _username:string,
         private _pwd:string,
         private _email:string,
@@ -79,17 +76,13 @@ export class User {
         return re.test(String(theEmail).toLowerCase());
     }
 
-    public get roleid() {
-        return this._roleid;
+    public get role() {
+        return this._role;
     }
 
     // Roles: (1) Doctor, (2) Nurse, (3) Patient
-    public set roleid(theRole:number) {
-        if (theRole >= 1 && theRole <= 3) {
-            this._roleid = theRole;
-        } else {
-            alert('Role is invalid.');
-        }
+    public set role(theRole:string) {
+        this._role = theRole;
     }
 
     public get firstname() {
@@ -148,11 +141,11 @@ export class User {
       this._specialty = description;
   }
 
-    public get viewPref() {
+    public get viewPreference() {
         return this._viewpref;
     }
 
-    public set viewPref(mode:boolean) {
+    public set viewPreference(mode:boolean) {
         this._viewpref = mode;
     }
 

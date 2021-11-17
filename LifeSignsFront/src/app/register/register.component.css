@@ -1,43 +1,58 @@
 body {
-    background-image: url('../../assets/healthcarebackground.jpg');
+    background-image: url('../../assets/img/healthcarebackground.jpg');
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    background-size:cover;
   }
 
 .clipb {
     position: absolute;
-    right: 115px;
-    top: -100px;
+    top: -2.5%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
  }
 
- .png2 {
- display: block;
- margin-left: auto;
- margin-right: auto;
- }
+.png2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
- .btn {
-    background-color: #474C55;
-    border: none;
-    color: white;
- }
+.btn {
+  background-color: #474C55;
+  border: none;
+  color: white;
+}
 
- #inbord {
-    /* F26925 */
-    border-color: #474C55;
-    border-width: 7px;
-  }
+#inbord {
+  border-color: #474C55;
+  border-width: 7px;
+}
 
-  #outbord {
-    /*  */
-    border-color: #F26925;
-    border-width: 14px;
-  }
+#outbord {
+  background-color: #F26925;
+  border-width: 14px;
+}
 
-  #asterisk {
-    color: red;
-  }
+h4 {
+  text-align: center;
+}
 
-  #errorMessage {
-    color: red;
-    text-align: center;
-  }
+input[type=text], input[type=email], input[type=password], input[type=date], input[type=number] {
+  font-size: small;
+}
+
+.info {
+  color: #474C55;
+}
+
+#asterisk {
+  color: red;
+}
+
+#errorMessage {
+  color: red;
+  text-align: center;
+}
+
 
