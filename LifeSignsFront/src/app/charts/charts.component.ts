@@ -16,13 +16,16 @@ export class ChartsComponent implements OnInit {
   chartsList: Chart[] = [];
 
   chartGroup = new FormGroup({
+    doctor: new FormControl(''),
+    nurse: new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     dob: new FormControl(''),
     address: new FormControl(''),
     email: new FormControl(''),
     insuranceId: new FormControl(''),
-    room: new FormControl(''),
+    // room: new FormControl(''),
+    diagnosis: new FormControl(''),
     notes: new FormControl('')
   });
 
