@@ -1,8 +1,10 @@
 import { InvokeFunctionExpr } from '@angular/compiler';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminService } from '../services/admin/admin.service';
+import { UserService } from '../services/user/user.service';
 import { Unit } from '../services/util/unit';
 import { User } from '../services/util/user';
 
@@ -24,25 +26,29 @@ export class AdminComponent implements OnInit {
   unitAssigned:boolean = false;
   @ViewChild('unitAssignedModal') unitAssignedModal:any;
 
-  constructor(private modalServ: NgbModal, private adminServ: AdminService) { }
+  constructor(private modalServ: NgbModal, private router: Router, private adminServ: AdminService, private userServ: UserService) { }
 
   // todo: make sure logged in user is admin
   ngOnInit(): void {
-
-    this.adminServ.getAllUsers().subscribe(
-      response => {
-        if(response != null){
-          this.users = response;
-          this.sortUsers();
-        }
-    });
-
-    this.adminServ.getAllUnits().subscribe(
-      response => {
-        if(response != null){
-          this.units = response;
-        }
-    });
+    let currentUser = this.userServ.getLoggedInUser();
+    // if(!currentUser || currentUser.role.toLocaleLowerCase() != "admin" )
+    //   this.router.navigate(["/home"]);
+    // else{
+      this.adminServ.getAllUsers().subscribe(
+        response => {
+          if(response != null){
+            this.users = response;
+            this.sortUsers();
+          }
+      });
+  
+      this.adminServ.getAllUnits().subscribe(
+        response => {
+          if(response != null){
+            this.units = response;
+          }
+      });
+    // }
   }
 
   assignUnit(unitForm:FormGroup){
