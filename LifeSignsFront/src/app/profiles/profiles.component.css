@@ -1,5 +1,6 @@
 #pageContainer {
-    
+    width: 80%;
+
     margin-left: 10px;
     margin: auto auto;
 }
@@ -25,3 +26,27 @@
     display: flex;
     justify-content: space-around;
 }
+
+.card-header {
+    background-color: #72A4C2;
+}
+
+.quick-nav{
+    height: 100%;
+    background-color: #F26925;
+    color: white;
+}
+
+.test-image{
+    height: 7em;
+    width: auto;
+    border-radius: 100px;
+}
+
+.nav-link{
+    color: white;
+}
+#name {
+    border: 1px solid black;
+}
+

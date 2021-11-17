@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <div class="row no-gutter">
     <!-- LIFE SIGNS HALF -->
@@ -13,7 +14,7 @@
                 <div class="form-group mb-3">
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
-                  <p class="text-center">Don't have an account?</p>
+                  <p id="register-text" class="text-center">Don't have an account?</p>
                 </div>
                 <div class="d-flex justify-content-center">
                   <button routerLink="/register" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm signupbutton">
@@ -32,7 +33,7 @@
       <p class="copyright">Copyright <span>&#169;</span> 2021 LifeSigns</p>
     </div>
     <!-- LOGIN HALF -->
-    <div class="col-md-6 bg-secondary">
+    <div class="col-md-6" style="background-color: rgb(72, 76, 86);">
       <div class="login d-flex align-items-center py-5">
         <!-- content-->
         <div class="container">
@@ -42,35 +43,36 @@
 
               <p id="errorMessage"></p>
 
-              <form class="loginform" [formGroup]="loginForm">
+      <h3 class="logintitle">Login</h3>
+      <p id="errorMessage"></p>
 
-                <div class="form-group mb-3">
-                  <p class="loginformtitle">Username</p>
-                  <input id="userName" type="email" placeholder="Enter username" formControlName="username" required
-                    autofocus="" class="form-control border-0 shadow-sm px-4" />
-                </div>
-                <div class="form-group mb-3">
-                  <p class="loginformtitle">Password</p>
-                  <input id="userPassword" type="password" placeholder="Enter password" formControlName="password" required class="form-control border-0 shadow-sm px-4 text-primary"/>
-                </div>
-                <div class="d-flex justify-content-center">
-                  <button routerLink="" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm loginbutton"
-                    (click)="userLogin(loginForm)">
-                    LOGIN
-                  </button>
-                </div>
-
-                <div class="text-center d-flex justify-content-between mt-4">
-                </div>
-              </form>
-            </div>
-
-          </div>
+      <form class="loginform" [formGroup]="loginForm">
+        <div class="form-group mb-3">
+          <p class="loginformtitle">Username</p>
+          <input id="userName" type="email" placeholder="Enter Username" formControlName="username" required
+            autofocus="" class="form-control border-0 shadow-sm px-4" />
         </div>
-        <!-- End -->
-      </div>
-      <img style="float: right;" class="revlogo" src="./../assets/img/rev-logo_281_29.png" alt="transparentlogo">
+        <div class="form-group mb-3">
+          <p class="loginformtitle">Password</p>
+          <input id="userPassword" type="password" placeholder="Enter Password" formControlName="password" required class="form-control border-0 shadow-sm px-4 text-primary"/>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button routerLink="" id="login-btn" type="submit" class="btn btn-white btn-block text-uppercase mb-2 shadow-sm loginbutton"
+            (click)="userLogin(loginForm)">
+            LOGIN
+          </button>
+        </div>
+        <br>
+        <a id="forgot-password" routerLink="/register">Register Account</a>
+        <br><br>
+      </form>
+
     </div>
-    <!-- End -->
   </div>
 </div>
+
+
+<br>
+<img class="center" src="./../assets/img/rev-logo_281_29.png">
+<p class="copyright">Copyright &#169; 2021 LifeSigns</p>
+
