@@ -20,12 +20,6 @@ input[type=password] {
     color:#F26925;
 }
 
-#successMessage {
+#message {
     text-align: center;
-    color: mediumseagreen;
-}
-
-#errorMessage {
-    text-align: center;
-    color: red;
 }

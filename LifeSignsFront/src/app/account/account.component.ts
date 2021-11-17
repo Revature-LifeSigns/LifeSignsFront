@@ -48,7 +48,9 @@ export class AccountComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.currentUser = this.userServ.getLoggedInUser();
+    // this.currentUser = this.userServ.getLoggedInUser();
+    // console.log(this.currentUser);
+    console.log("change made");
   }
 
   open(content:any) {
@@ -56,30 +58,32 @@ export class AccountComponent implements OnInit, OnChanges {
   }
 
   updatePwd(passwords:FormGroup) {
-    let errMess: any = document.getElementById('errorMessage');
+    let message: any = document.getElementById('message');
     if (this.validatePwd(passwords.get('currentPassword')!.value),
-        this.validatePwd(passwords.get('newPassword')!.value),
-        this.validatePwd(passwords.get('passwordAgain')!.value)) {
+        this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
         passwords.get('username')!.setValue(this.currentUser.username);
         this.userServ.updatePassword(JSON.stringify(passwords.value)).subscribe(
           response => {
             if (response) {
-              errMess.innerHTML = '';
-              document.getElementById('successMessage')!.innerHTML = 'Successfully changed password.'
-              this.router.navigateByUrl('/account-details');
+              message.setAttribute("style", "color:mediumseagreen");
+              message.innerHTML = 'Successfully changed password.';
+              console.log(response);
             } else {
-              errMess.innerHTML = 'Current password does not match. Please try again.';
+              message.setAttribute("style", "color:red");
+              message.innerHTML = 'Current password does not match. Please try again.';
             }
           }
         );
       } else {
         // New password and confirmation don't match
-        errMess.innerHTML = 'Passwords do not match. Please try again.'
+        message.setAttribute("style", "color:red");
+        message.innerHTML = 'Passwords do not match. Please try again.'
       }
     } else {
       // Invalid fields
-      errMess.innerHTML = 'Invalid password. Please try again.'
+      message.setAttribute("style", "color:red");
+      message.innerHTML = 'Invalid password. Please try again.'
     }
   }
 
