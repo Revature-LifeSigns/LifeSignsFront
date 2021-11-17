@@ -1,3 +1,11 @@
+.login-container, .hidden-container {
+	width: 500px;
+	margin: 0 auto 50px;
+	padding: 10px;
+	background: #B9B9BA;
+	border-radius: 30px;
+}
+
 .login,
 .image {
   min-height: 100vh;
@@ -14,7 +22,6 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  min-height: 55vh;
 }
 
 .revlogo {
@@ -36,6 +43,11 @@ button {
   text-align: center;
 }
 
+#login-btn:hover {
+  background-color: #72A4C2;
+  color: white;
+}
+
 .copyright {
   display: block;
   text-align: center;
@@ -51,7 +63,6 @@ button {
   color: rgba(242, 105, 38);
   text-align: center;
   font-size: 65px;
-  /* margin-top: 80px; */
   padding-top: 20px;
   line-height: 2;
 }
@@ -75,4 +86,10 @@ button {
 #errorMessage {
   color: black;
   text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
