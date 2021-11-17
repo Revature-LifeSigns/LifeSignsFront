@@ -16,7 +16,7 @@
 }
 
 .transparentlogo {
-  background-size: cover;
+  background-size: flex;
   background-position: center center;
   text-align: center;
   display: block;
@@ -75,12 +75,21 @@ button {
   margin-top: 30px;
 }
 
+#register-text {
+  color: black;
+}
+
 .signupbutton {
   margin-top: 20px;
 }
 
 .bg-secondary {
   color: rgba(72, 76, 86);
+}
+
+
+.text-center {
+  font-size: large;
 }
 
 #errorMessage {
