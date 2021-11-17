@@ -44,12 +44,13 @@ export class LoginComponent implements OnInit {
             loginResp.username,
             loginResp.pwd,
             loginResp.email,
-            loginResp.firstname,
-            loginResp.lastname,
+            loginResp.firstName,
+            loginResp.lastName,
+            loginResp.dob,
             loginResp.address,
-            loginResp.image,
+            loginResp.profile_image,
             loginResp.aboutMe,
-            loginResp.viewPref,
+            loginResp.viewPreference,
             loginResp.specialty,
             loginResp.covidStatus,
             loginResp.userid
@@ -64,6 +65,8 @@ export class LoginComponent implements OnInit {
             // user navigated after successful login
             if (userLogin.role == 'doctor' || userLogin.role == 'nurse') {
               this.router.navigate(['/profiles']);
+            } else if (userLogin.role == 'admin') {
+              this.router.navigate(['/admin']);
             } else {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
