@@ -61,7 +61,7 @@ button {
 }
 
 .loginformtitle {
-  color: rgba(242, 105, 38);
+  color: white;
 }
 
 .logintitle {
@@ -81,7 +81,7 @@ button {
 }
 
 #register-text {
-  color: white;
+  color: black;
 }
 
 .signupbutton {

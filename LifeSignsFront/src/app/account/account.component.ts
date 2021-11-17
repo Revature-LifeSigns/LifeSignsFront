@@ -59,7 +59,7 @@ export class AccountComponent implements OnInit, OnChanges {
 
   updatePwd(passwords:FormGroup) {
     let message: any = document.getElementById('message');
-    if (this.validatePwd(passwords.get('currentPassword')!.value),
+    if (this.validatePwd(passwords.get('currentPassword')!.value) && 
         this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
         passwords.get('username')!.setValue(this.currentUser.username);
