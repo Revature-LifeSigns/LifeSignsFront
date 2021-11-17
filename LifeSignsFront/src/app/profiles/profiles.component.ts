@@ -20,10 +20,10 @@ export class ProfilesComponent implements OnInit {
 >>>>>>> 7537265b119f99bda0343acf1a127fdbac0b3a31
     this.currentUser = this.userServ.getLoggedInUser();
     console.log(this.currentUser);
-
     this.loadPhoto();
 <<<<<<< HEAD
   }
+
   loadPhoto(){
     this.nurseServ.getPhoto(this.currentUser).subscribe(
       res => {
