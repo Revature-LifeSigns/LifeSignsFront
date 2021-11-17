@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from './services/user/user.service';
-import { ModeService } from './mode/mode.service';
+import { ModeService } from './services/mode/mode.service';
 
 @Component({
   selector: 'app-root',
