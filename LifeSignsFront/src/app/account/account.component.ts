@@ -12,7 +12,11 @@ import { User } from '../services/util/user';
 })
 export class AccountComponent implements OnInit, OnChanges {
   currentUser!:User;
-  hiddenPwd!:string;
+  street1!:string;
+  street2!:string;
+  city!:string;
+  state!:string;
+  zip!:string;
 
   passwordForm = new FormGroup({
     username: new FormControl(''),
@@ -25,12 +29,28 @@ export class AccountComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
-    console.log(this.currentUser);
+    let address:string[] = this.currentUser.address.split(';');
+    if (address.length == 4) {
+      // address does not have a street2 field
+      this.street1 = address[0];
+      this.street2 = '';
+      this.city = address[1];
+      this.state = address[2];
+      this.zip = address[3];
+    } else if (address.length == 5) {
+      // address does have a street2 field
+      this.street1 = address[0];
+      this.street2 = address[1];
+      this.city = address[2];
+      this.state = address[3];
+      this.zip = address[4];
+    }
   }
 
   ngOnChanges(): void {
-    this.currentUser = this.userServ.getLoggedInUser();
-    console.log(this.currentUser);
+    // this.currentUser = this.userServ.getLoggedInUser();
+    // console.log(this.currentUser);
+    console.log("change made");
   }
 
   open(content:any) {
@@ -38,30 +58,32 @@ export class AccountComponent implements OnInit, OnChanges {
   }
 
   updatePwd(passwords:FormGroup) {
-    let errMess: any = document.getElementById('errorMessage');
+    let message: any = document.getElementById('message');
     if (this.validatePwd(passwords.get('currentPassword')!.value),
-        this.validatePwd(passwords.get('newPassword')!.value),
-        this.validatePwd(passwords.get('passwordAgain')!.value)) {
+        this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
         passwords.get('username')!.setValue(this.currentUser.username);
         this.userServ.updatePassword(JSON.stringify(passwords.value)).subscribe(
           response => {
             if (response) {
-              errMess.innerHTML = '';
-              document.getElementById('successMessage')!.innerHTML = 'Successfully changed password.'
-              this.router.navigateByUrl('/account-details');
+              message.setAttribute("style", "color:mediumseagreen");
+              message.innerHTML = 'Successfully changed password.';
+              console.log(response);
             } else {
-              errMess.innerHTML = 'Current password does not match. Please try again.';
+              message.setAttribute("style", "color:red");
+              message.innerHTML = 'Current password does not match. Please try again.';
             }
           }
         );
       } else {
         // New password and confirmation don't match
-        errMess.innerHTML = 'Passwords do not match. Please try again.'
+        message.setAttribute("style", "color:red");
+        message.innerHTML = 'Passwords do not match. Please try again.'
       }
     } else {
       // Invalid fields
-      errMess.innerHTML = 'Invalid password. Please try again.'
+      message.setAttribute("style", "color:red");
+      message.innerHTML = 'Invalid password. Please try again.'
     }
   }
 

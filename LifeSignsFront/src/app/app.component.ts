@@ -32,6 +32,8 @@ export class AppComponent {
     this.isVisible = !this.isVisible;
   }
 
-
+  // logout():void {
+    
+  // }
 }
 

@@ -23,8 +23,7 @@
   margin-left: auto;
   margin-right: auto;
 
-  min-height: 55vh;
-  max-height: 70vh;
+  max-height: 30vh;
   /* min-height: auto;
   max-height: auto; */
 
@@ -62,7 +61,7 @@ button {
 }
 
 .loginformtitle {
-  color: white;
+  color: rgba(242, 105, 38);
 }
 
 .logintitle {
@@ -82,7 +81,7 @@ button {
 }
 
 #register-text {
-  color: black;
+  color: white;
 }
 
 .signupbutton {
@@ -100,4 +99,10 @@ button {
 #errorMessage {
   color: black;
   text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

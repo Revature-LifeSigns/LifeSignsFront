@@ -9,9 +9,22 @@
         <div class="col-6">
             <div class="personal">
                 <h4><b>Personal Info</b></h4>
-                <p><b>Full Name: </b>{{currentUser.firstname}} {{currentUser.lastname}}</p>
+                <p><b>Full Name: </b>{{currentUser.firstname | titlecase}} {{currentUser.lastname | titlecase}}</p>
                 <p><b>Date of Birth: </b>{{currentUser.dob}}</p>
-                <p><b>Home Address: </b> {{currentUser.address}}</p>
+                <p *ngIf="street2==''; else elseBlock"><b>Home Address: </b>
+                    <br>
+                    {{street1}}
+                    <br>
+                    {{city}}, {{state}} {{zip}}
+                </p>
+                <ng-template #elseBlock><p><b>Home Address: </b> 
+                    <br>
+                    {{street1}}
+                    <br>
+                    {{street2}}
+                    <br>
+                    {{city}}, {{state}} {{zip}}
+                </p></ng-template>
                 <button class="modal-btn" (click)="open(personal)"><b>UPDATE PERSONAL INFO</b></button>
                 <hr>
             </div>
@@ -23,7 +36,6 @@
             </div>
             <div class="password">
                 <h4><b>Password</b></h4>
-                <p>{{hiddenPwd}}</p>
                 <button class="modal-btn" (click)="open(password)"><b>UPDATE PASSWORD</b></button>
                 <hr>
             </div>
@@ -113,8 +125,7 @@
                     </button>
                     </div>
                     <br>
-                    <p id="successMessage"></p>
-                    <p id="errorMessage"></p>
+                    <p id="message"></p>
                 </div>
             </div>
         </form>

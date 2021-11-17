@@ -1,7 +1,7 @@
 <div appMode id="top-header">
   <i class="carrot fas fa-carrot"></i>
   <nav *ngIf="isUserLoggedIn" class="navbar navbar-expand-lg navbar-dark">
-    <img src = "../assets/img/transparent_navlogo.png" width = "150" alt = "LifeSigns Image" />
+    <img src = "../assets/img/navlogo.png" width = "150" alt = "LifeSigns Image" />
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -36,21 +36,21 @@
               </div>
             </label>
             <div class="dropdown-item" routerLink="/account-details">Edit Account</div>
-            <div class="dropdown-item" id = "loginInfo">Log Out</div>
+            <div class="dropdown-item" routerLink="" >Log Out</div> 
+            <!-- (click)="logout()" -->
           </div>
         </div>
       </div>
     </div>
   </nav>
 </div>
-
-  
 <script>
   $('#topheader.navbar-nav a').on('click', function () {
     $('#topheader.navbar-nav').find('li.active').removeClass('active');
     $(this).parent('li').addClass('active');
   });
 </script>
+
 
 
 <app-survey></app-survey>
