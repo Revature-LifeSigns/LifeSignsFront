@@ -14,8 +14,11 @@ export class AuthGuardService {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // deactive once user success login
-    if (this.userService.isUserLoggedIn()) {
+    // const userLoggedIn = this.userService.isUserLoggedIn();
+    if (this.userService.getLoggedInUser()) {
+      // if (userLoggedIn) {
       return true;
+
     }
 
     this.userService.returnUrl = state.url;
