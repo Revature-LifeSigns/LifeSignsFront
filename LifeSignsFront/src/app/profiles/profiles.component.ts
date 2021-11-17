@@ -65,7 +65,12 @@ export class ProfilesComponent implements OnInit {
   }
 
   updateAboutMe() {
-    console.log(this.aboutMeGroup.value.aboutMe);
+    this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
+    this.userServ.updateUserProfile(this.currentUser).subscribe(
+      response => {
+        console.log(response);
+      }
+    )
   }
 }
 
