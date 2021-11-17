@@ -18,6 +18,10 @@ export class AccountComponent implements OnInit, OnChanges {
   state!:string;
   zip!:string;
 
+  emailForm = new FormGroup({
+    newEmail: new FormControl('')
+  });
+
   passwordForm = new FormGroup({
     username: new FormControl(''),
     currentPassword: new FormControl(''),
@@ -57,6 +61,17 @@ export class AccountComponent implements OnInit, OnChanges {
     this.modalServ.open(content);
   }
 
+  updateEmail(emails:FormGroup) {
+    let message: any = document.getElementById('message');
+    if (this.validateEmail(emails.get('newEmail')!.value)) {
+      
+    } else {
+      // Invalid email
+      message.setAttribute("style", "color:red");
+      message.innerHTML = 'Invalid email. Please try again.'
+    }
+  }
+
   updatePwd(passwords:FormGroup) {
     let message: any = document.getElementById('message');
     if (this.validatePwd(passwords.get('currentPassword')!.value) && 
@@ -85,6 +100,11 @@ export class AccountComponent implements OnInit, OnChanges {
       message.setAttribute("style", "color:red");
       message.innerHTML = 'Invalid password. Please try again.'
     }
+  }
+
+  private validateEmail(theEmail: string) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(theEmail).toLowerCase());
   }
 
   private validatePwd(thePwd: string) {
