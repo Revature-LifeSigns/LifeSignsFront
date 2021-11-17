@@ -17,14 +17,16 @@
                     <br>
                     {{city}}, {{state}} {{zip}}
                 </p>
-                <ng-template #elseBlock><p><b>Home Address: </b> 
-                    <br>
-                    {{street1}}
-                    <br>
-                    {{street2}}
-                    <br>
-                    {{city}}, {{state}} {{zip}}
-                </p></ng-template>
+                <ng-template #elseBlock>
+                    <p><b>Home Address: </b>
+                        <br>
+                        {{street1}}
+                        <br>
+                        {{street2}}
+                        <br>
+                        {{city}}, {{state}} {{zip}}
+                    </p>
+                </ng-template>
                 <button class="modal-btn" (click)="open(personal)"><b>UPDATE PERSONAL INFO</b></button>
                 <hr>
             </div>
@@ -74,15 +76,26 @@
         </button>
     </div>
     <div class="modal-body">
-        <form [formGroup]="">
+        <form [formGroup]="emailForm">
             <div class="row">
-                <div class="col-md-6 mb-4">
+                <div class="col">
+                    <p><b>Current Email: </b>{{currentUser.email}}</p>
+                    <div class="form-outline">
+                        <label class="form-label" for="newEmail"><b>New Email: </b></label>
+                        <input formControlName="newEmail" type="text" class="form-control form-control-lg"
+                            placeholder="Enter new email">
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-dark" (click)="updateEmail(emailForm)">
+                            Save
+                        </button>
+                    </div>
+                    <br>
+                    <p id="message"></p>
                 </div>
             </div>
         </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
     </div>
 </ng-template>
 
@@ -109,7 +122,7 @@
                         <input formControlName="newPassword" type="password" class="form-control form-control-lg"
                             placeholder="Enter new password">
                         <p class="info"><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1
-                            special character (8-20 characters).</small></p>
+                                special character (8-20 characters).</small></p>
                     </div>
                     <br>
                     <div class="form-outline">
@@ -120,9 +133,9 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-dark" (click)="updatePwd(passwordForm)">
-                        Save
-                    </button>
+                        <button type="submit" class="btn btn-outline-dark" (click)="updatePwd(passwordForm)">
+                            Save
+                        </button>
                     </div>
                     <br>
                     <p id="message"></p>
