@@ -37,8 +37,6 @@ button {
   background-color: white;
   align-items: center;
   text-align: center;
-  font-family: futura std-book;
-
 }
 
 .copyright {
@@ -50,7 +48,6 @@ button {
 
 .loginformtitle {
   color: white;
-  font-family: futura std-book;
 }
 
 .logintitle {
@@ -60,17 +57,18 @@ button {
   /* margin-top: 80px; */
   padding-top: 20px;
   line-height: 2;
-  font-family: futura std-book;
 }
 
 .loginform {
   width: flex;
-  font-family: futura std-book;
-
 }
 
 .loginbutton {
   margin-top: 30px;
+}
+
+#register-text {
+  color: black;
 }
 
 .signupbutton {
@@ -83,8 +81,8 @@ button {
 
 
 .text-center {
-  font-family: futura std-book;
   font-size: large;
+}
 
 #errorMessage {
   color: black;
