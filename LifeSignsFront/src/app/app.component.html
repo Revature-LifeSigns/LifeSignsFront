@@ -26,6 +26,9 @@
         <div class="dropdown" *ngIf="isVisible">
           <i class="fa fa-user-circle fa-2x" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
             data-bs-auto-close="outside"></i>
+        <div id = "userMenu" class="dropdown" *ngIf = "isVisible">
+          <i class="fa fa-user-circle fa-2x" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" ></i>
+
           <div class="dropdown-menu dropdown-menu-end">
             <label class="switch mt-2">
               <input type="checkbox" (click)="toggle()">

@@ -14,6 +14,7 @@ export class User {
         private _image:string,
         private _about:string,
         private _viewpref:boolean,
+        private _specialty:string,
         private _covidstatus:string,
         private _userid?:number
     ) { }
@@ -135,6 +136,13 @@ export class User {
     public set aboutMe(description:string) {
         this._about = description;
     }
+    public get specialty() {
+      return this._specialty;
+  }
+
+  public set specialty(description:string) {
+      this._specialty = description;
+  }
 
     public get viewPreference() {
         return this._viewpref;

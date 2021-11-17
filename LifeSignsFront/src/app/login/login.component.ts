@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
             loginResp.image,
             loginResp.aboutMe,
             loginResp.viewPref,
+            loginResp.specialty,
             loginResp.covidStatus,
             loginResp.userid
           );
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
           }
+
         }
       });
   }
