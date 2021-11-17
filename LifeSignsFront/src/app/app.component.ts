@@ -7,7 +7,7 @@ import { ModeService } from './services/mode/mode.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'LifeSignsFront';
 
   isVisible = true;
@@ -21,8 +21,9 @@ export class AppComponent {
   get isUserLoggedIn() {
     return this.userService.isUserLoggedIn();
   }
-
-
+  get userLoggedIn(){
+    return this.userService.getLoggedInUser();
+  }
   // ModeService is injected and toggleMode() is being called at each click event
   toggle(){
     this.modeService.toggleMode();

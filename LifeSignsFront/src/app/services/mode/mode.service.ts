@@ -31,6 +31,10 @@ export class ModeService{
     this.themeChange.emit(this.getActiveTheme());
   }
 
+  setCurrentTheme(theme:ThemeMode){
+    this.currentTheme = theme;
+  }
+
   // returns the appropriate Theme (datatype Theme defined in theme.ts) based on the current theme
   getActiveTheme():Theme{
     if(this.currentTheme == ThemeMode.LIGHT)
