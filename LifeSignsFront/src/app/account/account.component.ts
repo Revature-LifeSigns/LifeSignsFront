@@ -12,7 +12,6 @@ import { User } from '../services/util/user';
 })
 export class AccountComponent implements OnInit, OnChanges {
   currentUser!:User;
-  hiddenPwd!:string;
 
   passwordForm = new FormGroup({
     username: new FormControl(''),
@@ -30,7 +29,6 @@ export class AccountComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.currentUser = this.userServ.getLoggedInUser();
-    console.log(this.currentUser);
   }
 
   open(content:any) {
