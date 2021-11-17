@@ -18,7 +18,7 @@
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
     <div class="col-9 card">
-        <h2 id="greeting card-header">Welcome Doctor/Nurse ____!</h2>
+        <h2 id="greeting card-header">Welcome, {{ currentUser.role | titlecase }} {{ currentUser.lastname | titlecase }}</h2>
         <div class="row">
             <div class="col-6">
 
@@ -38,8 +38,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Doe</td>
-                            <td>John</td>
+                            <td>{{ currentUser.lastname | titlecase}}</td>
+                            <td>{{ currentUser.firstname | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -50,8 +50,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Nurse</td>
-                            <td>Pediatrics</td>
+                            <td>{{ currentUser.role | titlecase}}</td>
+                            <td>{{ currentUser.specialty | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -62,27 +62,22 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>12/10/1815</td>
-                            <td>Vaccinated</td>
+                            <td>{{ currentUser.dob }}</td>
+                            <td>{{ currentUser.covidStatus }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div id="address">
-                    <div>Address Line 1</div>
-                    <div>Address Line 2</div>
+                    <div>{{ currentUser.address }}</div>
+                    <!-- <div>Address Line 2</div> -->
                 </div>
             </div>
         </div>
         <!--This is a container that will hold the "About Me" information for the individual-->
         <div id="aboutContainer">
             <h2>About me</h2>
-            <p>This is all the stuff about our nurse, just another general bio with information, stories, awards,
-                lifestyle choices, dental records, recent x-rays, hobbies, friends, and a whole bunch of other
-                information that no one will ever look at again. Exceptions being criminal cases, government
-                intervention, data breaches, promotions, relocations, alien invasions, global pandemics and such.
-                These can be really long if the person does anything interesting, or one line, like mine. At this
-                point, I'm just writing filler text to see if this page's formatting works at all or is complete and
-                utter garbage...........
+            <p>
+                {{ currentUser.aboutMe }}
             </p>
         </div>
     </div>
