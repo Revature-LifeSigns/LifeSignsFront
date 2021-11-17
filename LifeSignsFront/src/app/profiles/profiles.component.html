@@ -1,59 +1,89 @@
+<div id="pageContainer row">
+    <div class="d-flex">
+    <div class="quick-nav col-3">
+        <div>
+        <h2>QuickNav</h2>
+        <ul class="nav quick-nav flex-column col-12">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Chart Options</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Discussion Board</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Other</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
+    <div class="col-9 card">
+        <h2 id="greeting card-header">Welcome, {{ currentUser.role | titlecase }} {{ currentUser.lastname | titlecase }}</h2>
+        <div class="row">
+            <div class="col-6">
 
-<div id = "pageContainer">
-    <div id = "personsalInfo" class = "container">
-        <div class = "row">
-            <div class = "col-2">
-                <h2>QuickNav</h2>
-                <ul>
-                    <li>Chart Options</li>
-                    <li>Discussion Board</li>
-                    <li>Other</li>
-                </ul>
+                <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="">
+
+                <img src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}" />
+                <form [formGroup] = "photoGroup" form-control = "formGroup" (ngSubmit)="updatePhoto()">
+                    <input #file style = "display:none" type = "file" formControlName = "newPhoto"/>
+                    <button class = "btn btn-primary" type = "submit"></button>
+                </form>
+                
+
             </div>
-            <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
-            <div class = "col-8">
-                <h2 id = "greeting">Welcome Doctor/Nurse/Dude</h2>
-                <div class = "row">
-                    <div class = "col-6">
-                        <p>This is where the photo goes</p>
-                        <img src= {{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}"/>
-                        <button class = "btn btn-primary" (click) = "updatePhoto()">Update photo</button>
-                        <input #file type = "file" style = "display: none" accept = "/image" />
-                    </div>
-                    <div id = "idDetails" class = "col-6">
-                        <div id = "name">
-                            <span id = "lastName">First Name: {{currentUser.firstname}}</span>
-                            <span id = "firstName">Last Name: {{currentUser.lastname}}</span>
-
-                        </div>
-                        <div id = "professionDetails">
-                            Type: {{currentUser.role}}
-                        </div>
-                        <div id = "specialty">
-                            Specialty: <!--{{currentUser}} -->
-                        </div>
-                        <div id = "covid">
-                            Covid Status: {{currentUser.covidStatus}}
-                        </div>
-                        <div id = "dob">
-                            DOB: {{currentUser.dob}}
-                        </div>
-                        <div id = "address1">Address Line 1</div>
-                        <div id = "address2">Address Line 2</div>
-                        <a href = "*">Edit</a>
-                    </div>
-                </div>
-                <!--This is a container that will hold the "About Me" information for the individual-->
-                <div id = "aboutContainer">
-                    <h2>About me</h2>
-                    <p>
-                        {{currentUser.aboutMe}}
-                    </p>
+            <div class="col-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Last</th>
+                            <th scope="col">First</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ currentUser.lastname | titlecase}}</td>
+                            <td>{{ currentUser.firstname | titlecase}}</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">Role</th>
+                            <th scope="col">Specialty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ currentUser.role | titlecase}}</td>
+                            <td>{{ currentUser.specialty | titlecase}}</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">DOB</th>
+                            <th scope="col">Covid Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ currentUser.dob }}</td>
+                            <td>{{ currentUser.covidStatus }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="address">
+                    <div>{{ currentUser.address }}</div>
+                    <!-- <div>Address Line 2</div> -->
                 </div>
             </div>
         </div>
-
+        <!--This is a container that will hold the "About Me" information for the individual-->
+        <div id="aboutContainer">
+            <h2>About me</h2>
+            <p>
+                {{ currentUser.aboutMe }}
+            </p>
+        </div>
     </div>
-
 
 </div>
