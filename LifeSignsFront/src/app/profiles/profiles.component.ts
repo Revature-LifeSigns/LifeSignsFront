@@ -18,7 +18,6 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
-    console.log(this.currentUser);
     this.loadPhoto();
     this.getAssignedUnit();
   }
@@ -37,12 +36,14 @@ export class ProfilesComponent implements OnInit {
   }
 
   getAssignedUnit(){
-    console.log(this.currentUser.userid);
-    this.adminServ.getUnit(this.currentUser.userid).subscribe(
+    let currentUser:any = this.userServ.getLoggedInUser();
+    this.adminServ.getUnit(currentUser._userid).subscribe(
       response =>{
-        console.log(response.unit);
         this.unitName = response.unit;
       }
     );
 }
 }
+
+
+

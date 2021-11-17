@@ -6,6 +6,7 @@ import { take, catchError } from 'rxjs/operators';
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
 import { error } from '@angular/compiler/src/util';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,18 @@ export class LoginComponent implements OnInit {
 
   invalidLogin: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  //storing user loc stor
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
+
+  constructor(private userService: UserService, private router: Router) {
+    this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
 
   userLogin(input: FormGroup) {
     let errMess: any = document.getElementById('errorMessage');
@@ -64,9 +76,14 @@ export class LoginComponent implements OnInit {
           } else {
             // user navigated after successful login
             if (userLogin.role == 'doctor' || userLogin.role == 'nurse') {
+              localStorage.setItem('currentUser', JSON.stringify(userLogin));
               this.router.navigate(['/profiles']);
+              // user session
+
             } else if (userLogin.role == 'admin') {
+              localStorage.setItem('currentUser', JSON.stringify(userLogin));
               this.router.navigate(['/admin']);
+              // user session
             } else {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
@@ -76,5 +93,16 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.userService.getLoggedInUser()) {
+      let currentUser:any = this.userService.getLoggedInUser();
+      if (currentUser._role == 'doctor' || currentUser._role == 'nurse') {
+        this.router.navigate(['/profiles']);
+      } else if (currentUser._role == 'admin') {
+        this.router.navigate(['/admin']);
+      }else{
+        this.router.navigate(['/login']);
+      }
+    }
+  }
 }

@@ -18,18 +18,11 @@ export class ModeService{
   // toggles between 2 Theme based on the current theme
   public toggleMode(){
     
-    let currentUser = this.userServ.getLoggedInUser();
+    let currentUser:any = this.userServ.getLoggedInUser();
     if(currentUser){
-      currentUser.viewPreference = !currentUser.viewPreference;
-      let temp = new User(currentUser.username, currentUser.userid, currentUser.viewPreference);
-      this.userServ.updateUserProfile(temp).subscribe(
-        response=>{
-          console.log(response)
-        },error=>{
-          console.log(error)
-
-        }
-      );
+      currentUser._viewpref = !currentUser._viewpref;
+      let temp = new User(currentUser._username, currentUser._userid, currentUser._viewpref);
+      this.userServ.updateUserProfile(temp).subscribe();
     }
     if(this.currentTheme == ThemeMode.LIGHT){
       this.setTheme(ThemeMode.DARK)

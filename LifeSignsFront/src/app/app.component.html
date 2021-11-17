@@ -1,8 +1,6 @@
-<div appMode id="top-header">
-  <nav *ngIf="isUserLoggedIn" class="navbar navbar-expand-lg navbar-dark">
-
-    <img src = "../assets/img/transparent_navlogo.png" width = "150" alt = "LifeSigns Image" />
-
+<div appMode id="top-header" *ngIf="isUserLoggedIn">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <img src = "../assets/img/navlogo.png" width = "150" alt = "LifeSigns Image" />
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -14,14 +12,13 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
-          <!-- *ngIf="userLoggedIn.role != 'admin'" -->
-          <li class="nav-item">
+          <li *ngIf="isUserLoggedIn._role != 'admin'" class="nav-item">
             <a class="nav-link" routerLink="/profiles">Profiles</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="isUserLoggedIn._role != 'admin'" class="nav-item">
             <a class="nav-link" routerLink="/charts">Charts</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="isUserLoggedIn._role != 'admin'" class="nav-item">
             <a class="nav-link disabled" href="#">Chat</a>
           </li>
         </ul>
@@ -38,18 +35,23 @@
               </div>
             </label>
             <div class="dropdown-item" routerLink="/account-details">Edit Account</div>
-            <div class="dropdown-item" id = "loginInfo">Log Out</div>
+            <div class="dropdown-item" id = "loginInfo" (click)="logoutUser()">Log Out</div>
+
           </div>
         </div>
       </div>
     </div>
   </nav>
+</div>
 <script>
   $('#topheader.navbar-nav a').on('click', function () {
     $('#topheader.navbar-nav').find('li.active').removeClass('active');
     $(this).parent('li').addClass('active');
   });
 </script>
+
+
+
 <app-survey></app-survey>
 <router-outlet></router-outlet>
 
