@@ -47,7 +47,10 @@ export class UserService {
   }
 
   getLoggedInUser():User {
-    return this.loggedInUser;
+    // return JSON.parse(localStorage.getItem('currentUser'));
+    // return this.loggedInUser;
+    return this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+
   }
 
   isUserLoggedIn():boolean {
@@ -56,6 +59,7 @@ export class UserService {
 
   logoutUser() {
     this.userLoggedInStatus = false;
+    localStorage.removeItem('currentUser');
   }
 
   setUserToCurrent() {
