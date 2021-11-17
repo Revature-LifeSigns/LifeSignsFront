@@ -86,7 +86,7 @@
                             </form>
                         </div>
                     </ng-template>
-                    <div class="user" (click)="showUnitAssignModal(viewUser, user.userid)"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i> {{user.lastName}}, {{user.firstName}}</div>
+                    <div *ngIf="user.role != 'admin'" class="user" (click)="showUnitAssignModal(viewUser, user.userid)"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i> {{user.lastName}}, {{user.firstName}}</div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,3 @@
-import { Byte } from "@angular/compiler/src/util";
-import { Photo } from "./photo";
-
 export class User {
     constructor(
         private _role:string,
@@ -14,6 +11,7 @@ export class User {
         private _image:string,
         private _about:string,
         private _viewpref:boolean,
+        private _specialty:string,
         private _covidstatus:string,
         private _userid?:number
     ) { }
@@ -83,30 +81,23 @@ export class User {
     }
 
     // Roles: (1) Doctor, (2) Nurse, (3) Patient
-    // public set role(theRole:string) {
-    //     switch(theRole){
-    //         case "doctor"
-    //     }
-    //     if (theRole >= 1 && theRole <= 3) {
-    //         this._role = theRole;
-    //     } else {
-    //         alert('Role is invalid.');
-    //     }
-    // }
+    public set role(theRole:string) {
+        this._role = theRole;
+    }
 
-    public get firstName() {
+    public get firstname() {
         return this._fname;
     }
 
-    public set firstName(name:string) {
+    public set firstname(name:string) {
         this._fname = name;
     }
 
-    public get lastName() {
+    public get lastname() {
         return this._lname;
     }
 
-    public set lastName(name:string) {
+    public set lastname(name:string) {
         this._lname = name;
     }
 
@@ -142,6 +133,13 @@ export class User {
     public set aboutMe(description:string) {
         this._about = description;
     }
+    public get specialty() {
+      return this._specialty;
+  }
+
+  public set specialty(description:string) {
+      this._specialty = description;
+  }
 
     public get viewPreference() {
         return this._viewpref;

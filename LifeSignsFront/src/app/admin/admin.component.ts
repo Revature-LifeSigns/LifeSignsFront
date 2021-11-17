@@ -15,7 +15,7 @@ import { User } from '../services/util/user';
 })
 export class AdminComponent implements OnInit {
 
-  users: User[] = [];
+  users:any[] = [];
   units:Unit[] = [];
 
   unitGroup = new FormGroup({
@@ -37,7 +37,10 @@ export class AdminComponent implements OnInit {
       this.adminServ.getAllUsers().subscribe(
         response => {
           if(response != null){
+            console.log(response)
             this.users = response;
+            console.log(this.users)
+          
             this.sortUsers();
           }
       });
