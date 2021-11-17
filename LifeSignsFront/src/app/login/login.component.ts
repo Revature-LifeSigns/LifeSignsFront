@@ -5,6 +5,7 @@ import { take, catchError } from 'rxjs/operators';
 
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +30,12 @@ export class LoginComponent implements OnInit {
       .loginUser(user)
       .pipe(
         take(1),
-        catchError((error) => {
-          console.log(error);
-          errMess.innerHTML = 'Invalid login.  Please try again.';
-          this.invalidLogin = true;
-          return null;
-        })
+        // catchError((error) => {
+        //   console.log(error);
+        //   errMess.innerHTML = 'Invalid login.  Please try again.';
+        //   this.invalidLogin = true;
+        //   return null;
+        // })
       )
       .subscribe((loginResp: any) => {
         if (loginResp) {
@@ -43,17 +44,19 @@ export class LoginComponent implements OnInit {
             loginResp.username,
             loginResp.pwd,
             loginResp.email,
-            loginResp.firstname,
-            loginResp.lastname,
+            loginResp.firstName,
+            loginResp.lastName,
+            loginResp.dob,
             loginResp.address,
-            loginResp.image,
+            loginResp.profile_image,
             loginResp.aboutMe,
-            loginResp.viewPref,
+            loginResp.viewPreference,
             loginResp.specialty,
             loginResp.covidStatus,
             loginResp.userid
           );
           this.userService.userLoginStatus(userLogin);
+          console.log(this.userService.getLoggedInUser());
           this.invalidLogin = false;
           // store url memory for userlogin then reset to null
           if (this.userService.returnUrl) {
@@ -63,6 +66,8 @@ export class LoginComponent implements OnInit {
             // user navigated after successful login
             if (userLogin.role == 'doctor' || userLogin.role == 'nurse') {
               this.router.navigate(['/profiles']);
+            } else if (userLogin.role == 'admin') {
+              this.router.navigate(['/admin']);
             } else {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }

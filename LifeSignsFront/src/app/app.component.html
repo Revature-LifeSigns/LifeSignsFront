@@ -1,10 +1,11 @@
-<div appMode id = "top-header">
+<div appMode id="top-header">
   <i class="carrot fas fa-carrot"></i>
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav *ngIf="isUserLoggedIn" class="navbar navbar-expand-lg navbar-dark">
     <img src = "../assets/img/transparent_navlogo.png" width = "150" alt = "LifeSigns Image" />
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -13,18 +14,19 @@
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink = "/profiles">Profiles</a>
+            <a class="nav-link" routerLink="/profiles">Profiles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink = "/charts">Charts</a>
+            <a class="nav-link" routerLink="/charts">Charts</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Chat</a>
           </li>
         </ul>
-        
-        <div class="dropdown" *ngIf = "isVisible">
+
+        <div id = "userMenu" class="dropdown" *ngIf = "isVisible">
           <i class="fa fa-user-circle fa-2x" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" ></i>
+
           <div class="dropdown-menu dropdown-menu-end">
             <label class="switch mt-2">
               <input type="checkbox" (click)="toggle()">
@@ -42,12 +44,15 @@
   </nav>
 </div>
 
-  <script>
-    $('#topheader.navbar-nav a').on('click', function() {
-      $('#topheader.navbar-nav').find('li.active').removeClass('active');
-      $(this).parent('li').addClass('active');
-    });
-  </script>
+  
+<script>
+  $('#topheader.navbar-nav a').on('click', function () {
+    $('#topheader.navbar-nav').find('li.active').removeClass('active');
+    $(this).parent('li').addClass('active');
+  });
+</script>
 
-<app-doctor-covid-status></app-doctor-covid-status>
+<app-survey></app-survey>
 <router-outlet></router-outlet>
+
+

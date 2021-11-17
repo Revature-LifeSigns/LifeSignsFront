@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserService } from './services/user/user.service';
-import { DoctorCovidStatusComponent } from './doctor-covid-status/doctor-covid-status.component';
+import { Survey } from './survey/survey.component';
 import { AuthGuardService } from './services/session-mgmt/auth-guard.service';
 import { ModeDirective } from './mode/mode.directive';
 import { NurseService } from './services/nurse/nurse.service';
@@ -25,7 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProfilesComponent,
     ChartsComponent,
     LoginComponent,
-    DoctorCovidStatusComponent,
+    Survey,
     RegisterComponent,
     AccountComponent,
     AdminComponent
@@ -38,7 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {path: 'account-details', component: AccountComponent},
       {
         path: "profiles", component: ProfilesComponent,
-        // canActivate: [AuthGuardService] *-* keep commented out until needed
+        canActivate: [AuthGuardService]
       },
       {
         path: "charts", component: ChartsComponent,

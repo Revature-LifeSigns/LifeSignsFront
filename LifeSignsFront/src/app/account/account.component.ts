@@ -38,17 +38,17 @@ export class AccountComponent implements OnInit, OnChanges {
   }
 
   updatePwd(passwords:FormGroup) {
-    let errMess: any = document.getElementById('errorMessage'); 
-    if (this.validatePwd(passwords.get('currentPassword').value), 
-        this.validatePwd(passwords.get('newPassword').value),
-        this.validatePwd(passwords.get('passwordAgain').value)) {
-      if (passwords.get('newPassword').value == passwords.get('passwordAgain').value) {
-        passwords.get('username').setValue(this.currentUser.username);
+    let errMess: any = document.getElementById('errorMessage');
+    if (this.validatePwd(passwords.get('currentPassword')!.value),
+        this.validatePwd(passwords.get('newPassword')!.value),
+        this.validatePwd(passwords.get('passwordAgain')!.value)) {
+      if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
+        passwords.get('username')!.setValue(this.currentUser.username);
         this.userServ.updatePassword(JSON.stringify(passwords.value)).subscribe(
           response => {
             if (response) {
               errMess.innerHTML = '';
-              document.getElementById('successMessage').innerHTML = 'Successfully changed password.'
+              document.getElementById('successMessage')!.innerHTML = 'Successfully changed password.'
               this.router.navigateByUrl('/account-details');
             } else {
               errMess.innerHTML = 'Current password does not match. Please try again.';
