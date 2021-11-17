@@ -21,8 +21,9 @@ export class AppComponent{
   get isUserLoggedIn() {
     return this.userService.isUserLoggedIn();
   }
-
-
+  get userLoggedIn(){
+    return this.userService.getLoggedInUser();
+  }
   // ModeService is injected and toggleMode() is being called at each click event
   toggle(){
     this.modeService.toggleMode();

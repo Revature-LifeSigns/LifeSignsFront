@@ -13,22 +13,23 @@ export class ModeDirective implements OnInit{
 
   constructor(private modeServ: ModeService, private userServ: UserService, private _elementRef: ElementRef) { }
 
-    //todo: get preference from database and set to currentTheme
-    // todo: set slider to correct side based on preference
   ngOnInit(): void {
     let currentUser = this.userServ.getLoggedInUser();
-    let currentTheme = this.modeServ.getActiveTheme();
     var element = <HTMLInputElement> document.getElementById("checkbox");
-    // console.log(element.checked)
-    if(element)
-      // console.log(element.checked = true)
+    if(currentUser){
+      console.log(currentUser.viewPreference);
+      if(currentUser.viewPreference || currentUser.viewPreference == null){
+        element.checked = false;
+        this.modeServ.setCurrentTheme(ThemeMode.LIGHT);
+      }else{
+        element.checked = true;
+        this.modeServ.setCurrentTheme(ThemeMode.DARK);
+      }
       
-    // console.log(element.checked)
-    if(currentUser && (currentUser.viewPreference || currentUser.viewPreference == null)){
-      currentTheme = LightTheme;
-    }else{
-      currentTheme = DarkTheme;
+      currentUser.viewPreference = !currentUser.viewPreference;
+      // this.userServ.updateUserProfile(currentUser).subscribe();
     }
+    let currentTheme = this.modeServ.getActiveTheme();
 
     if(currentTheme)
       this.updateTheme(currentTheme);
