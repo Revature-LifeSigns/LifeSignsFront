@@ -18,6 +18,7 @@ export class ProfilesComponent implements OnInit {
     console.log(this.currentUser);
 
     this.loadPhoto();
+<<<<<<< HEAD
   }
   loadPhoto(){
     this.nurseServ.getPhoto(this.currentUser).subscribe(
@@ -26,11 +27,19 @@ export class ProfilesComponent implements OnInit {
         this.currentUser.image = "http://s3.amazonaws.com/lifesigns/" + res.imageFileName;
       }
     )
+=======
+>>>>>>> 3817270e4143de985388f6f808aa15024ac5b460
   }
 
+<<<<<<< HEAD
   updatePhoto() {
     alert('clicked update photo')
   }
+=======
+  // updatePhoto() {
+  //   alert('clicked update photo')
+  // }
+>>>>>>> 3817270e4143de985388f6f808aa15024ac5b460
 }
 
-
+}
