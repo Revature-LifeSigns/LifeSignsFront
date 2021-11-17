@@ -25,3 +25,7 @@
     display: flex;
     justify-content: space-around;
 }
+
+#name {
+    border: 1px solid black;
+}
