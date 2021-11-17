@@ -39,10 +39,17 @@ export class LoginComponent implements OnInit {
       .subscribe((loginResp: any) => {
         if (loginResp) {
           const userLogin = new User(
+            loginResp.role,
             loginResp.username,
             loginResp.pwd,
             loginResp.email,
-            loginResp.roleid,
+            loginResp.firstname,
+            loginResp.lastname,
+            loginResp.address,
+            loginResp.image,
+            loginResp.aboutMe,
+            loginResp.viewPref,
+            loginResp.covidStatus,
             loginResp.userid
           );
           this.userService.userLoginStatus(userLogin);
@@ -53,7 +60,7 @@ export class LoginComponent implements OnInit {
             this.userService.returnUrl = '';
           } else {
             // user navigated after successful login
-            if (userLogin.roleid == 1 || userLogin.roleid == 2) {
+            if (userLogin.role == 'doctor' || userLogin.role == 'nurse') {
               this.router.navigate(['/profiles']);
             } else {
               this.router.navigate(['/charts/' + userLogin.userid]);
