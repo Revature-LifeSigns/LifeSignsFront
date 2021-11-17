@@ -82,8 +82,8 @@ export class AdminComponent implements OnInit {
 
   private sortUsers(){
     this.users.sort((a,b)=>{
-      if(a.lastName.toLocaleLowerCase() > b.lastName.toLocaleLowerCase()) return 1;
-      if(a.lastName.toLocaleLowerCase() < b.lastName.toLocaleLowerCase()) return -1;
+      if(a.lastname.toLocaleLowerCase() > b.lastname.toLocaleLowerCase()) return 1;
+      if(a.lastname.toLocaleLowerCase() < b.lastname.toLocaleLowerCase()) return -1;
       return 0;
     });
   }

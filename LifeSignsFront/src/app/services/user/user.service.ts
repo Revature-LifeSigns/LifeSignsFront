@@ -37,6 +37,10 @@ export class UserService {
     return this.http.patch<String>(url, user, this.httpHead);
   }
 
+  public updatePassword(passwords:string): Observable<User[]> {
+    return this.http.post<User[]>(this.urlBase + "/changePassword", passwords, this.httpHead);
+  }
+
   userLoginStatus(user: User) {
     this.loggedInUser = user;
     this.userLoggedInStatus = true;
@@ -58,5 +62,4 @@ export class UserService {
     // this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
   }
-
 }
