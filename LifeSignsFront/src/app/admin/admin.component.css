@@ -7,14 +7,23 @@
     height: 100%;
 }
 
+.usersContainer{
+    margin-top: 2%;
+    margin-left: 2%;
+    height: 75vh;
+    overflow: auto;
+    border: 2px var(--text-color) dotted;
+}
+
 .nav-link{
     color: var(--menu-text-color);
 }
 
 .user{
     font-size: 20px;
+    margin-top: 2%;
     margin-left: 5%;
-    margin-top: 5%;
+    margin-bottom: 5%;
     cursor: pointer;
 }
 

@@ -1,8 +1,10 @@
 import { InvokeFunctionExpr } from '@angular/compiler';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminService } from '../services/admin/admin.service';
+import { UserService } from '../services/user/user.service';
 import { Unit } from '../services/util/unit';
 import { User } from '../services/util/user';
 
@@ -13,7 +15,7 @@ import { User } from '../services/util/user';
 })
 export class AdminComponent implements OnInit {
 
-  users: User[] = [];
+  users:any[] = [];
   units:Unit[] = [];
 
   unitGroup = new FormGroup({
@@ -24,25 +26,28 @@ export class AdminComponent implements OnInit {
   unitAssigned:boolean = false;
   @ViewChild('unitAssignedModal') unitAssignedModal:any;
 
-  constructor(private modalServ: NgbModal, private adminServ: AdminService) { }
+  constructor(private modalServ: NgbModal, private router: Router, private adminServ: AdminService, private userServ: UserService) { }
 
-  // todo: make sure logged in user is admin
   ngOnInit(): void {
-
-    this.adminServ.getAllUsers().subscribe(
-      response => {
-        if(response != null){
-          this.users = response;
-          this.sortUsers();
-        }
-    });
-
-    this.adminServ.getAllUnits().subscribe(
-      response => {
-        if(response != null){
-          this.units = response;
-        }
-    });
+    let currentUser:any = this.userServ.getLoggedInUser();
+    if(!currentUser || currentUser._role.toLocaleLowerCase() != "admin" )
+      this.router.navigate(["/home"]);
+    else{
+      this.adminServ.getAllUsers().subscribe(
+        response => {
+          if(response != null){
+            this.users = response;
+            this.sortUsers();
+          }
+      });
+  
+      this.adminServ.getAllUnits().subscribe(
+        response => {
+          if(response != null){
+            this.units = response;
+          }
+      });
+    }
   }
 
   assignUnit(unitForm:FormGroup){
@@ -82,8 +87,8 @@ export class AdminComponent implements OnInit {
 
   private sortUsers(){
     this.users.sort((a,b)=>{
-      if(a.lastname.toLocaleLowerCase() > b.lastname.toLocaleLowerCase()) return 1;
-      if(a.lastname.toLocaleLowerCase() < b.lastname.toLocaleLowerCase()) return -1;
+      if(a.lastName.toLocaleLowerCase() > b.lastName.toLocaleLowerCase()) return 1;
+      if(a.lastName.toLocaleLowerCase() < b.lastName.toLocaleLowerCase()) return -1;
       return 0;
     });
   }

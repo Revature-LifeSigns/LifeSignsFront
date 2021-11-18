@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'LifeSignsFront';
 
   isVisible = true;
@@ -21,10 +21,9 @@ export class AppComponent {
   // note *-* remove exclamation mark for all ngIf="isUserLoggedIn" in HTML file for actual implementation
   // leave for now for easier access
   get isUserLoggedIn() {
-    return this.userService.isUserLoggedIn();
+    let currentUser:any = this.userService.getLoggedInUser();
+    return currentUser;
   }
-
-
   // ModeService is injected and toggleMode() is being called at each click event
   toggle(){
     this.modeService.toggleMode();
