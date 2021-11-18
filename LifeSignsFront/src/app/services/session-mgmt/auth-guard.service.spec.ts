@@ -3,12 +3,14 @@ import { getTestBed, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 
+
 import { AuthGuardService } from './auth-guard.service';
 
 describe('AuthGuardService', () => {
   let injector: TestBed;
   let authService: AuthGuardService;
   let userService: UserService;
+
   let guard: AuthGuardService;
   let routeMock: any = { snapshot: {}};
   let routeStateMock: any = { snapshot: {}, url: '/profiles'};
@@ -22,6 +24,7 @@ describe('AuthGuardService', () => {
     injector: getTestBed();
     authService = TestBed.inject(AuthGuardService);
     userService = TestBed.inject(UserService);
+
     guard = injector.get(AuthGuardService);
   });
 
