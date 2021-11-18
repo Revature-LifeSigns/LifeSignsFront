@@ -1,4 +1,4 @@
-<div id="pageContainer row">
+<div appMode class = "toggleContainer" id="pageContainer row">
     <div class="d-flex">
     <div class="quick-nav col-3">
         <div>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
-    <div class="col-9 card">
+    <div appMode class="col-9 card">
         <h2 id="greeting card-header">Welcome, {{ this.currentUser.role | titlecase }} {{ this.currentUser.lastname | titlecase }}</h2>
         <div class="row">
             <div class="col-6">
@@ -32,7 +32,7 @@
 
             </div>
             <div class="col-6">
-                <table class="table">
+                <table appMode class="table">
                     <thead>
                         <tr>
                             <th scope="col">Last</th>
@@ -88,7 +88,7 @@
                     <textarea class="form-control" placeholder="Add about me information here.." id="floatingTextarea" formControlName="aboutMe"></textarea>
                     <label for="floatingTextarea">Edit About Me</label>
                   </div>
-                <button class = "btn btn-primary" type = "submit">Update</button>
+                <button class = "updateBtn btn" type = "submit">Update</button>
             </form>
         </div>
     </div>
