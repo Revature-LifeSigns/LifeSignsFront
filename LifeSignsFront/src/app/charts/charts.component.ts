@@ -26,6 +26,8 @@ export class ChartsComponent implements OnInit {
     insuranceId: new FormControl(''),
     // room: new FormControl(''),
     diagnosis: new FormControl(''),
+    approved: new FormControl(''),
+    treatment: new FormControl(''),
     notes: new FormControl('')
   });
 
@@ -50,7 +52,7 @@ export class ChartsComponent implements OnInit {
     this.nurseServ.sendPatientChart(chart.value).subscribe(
       (response) => {},
       (error) => {
-        console.warn('Error Submitting Chart', error);
+        console.warn('Error Submitting Chart ', error);
       }
     );
   }

@@ -7,9 +7,11 @@ export interface Chart {
     dob: Date;
     address: string;
     email: string;
-    insuranceId: number;
+    insuranceId: string;
     // room: number;
     diagnosis: string;
+    treatment: string;
+    approved: boolean;
     notes: string;
 
 }

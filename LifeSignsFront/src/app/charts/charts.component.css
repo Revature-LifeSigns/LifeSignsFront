@@ -1,4 +1,5 @@
-button {
+button,
+.custom-control-input-orange:checked~.custom-control-label::before {
     background-color: #F26925;
 }
 
@@ -21,5 +22,5 @@ select:focus {
 }
 
 .card-body {
-    width: 90%;
+    width: 60%;
 }

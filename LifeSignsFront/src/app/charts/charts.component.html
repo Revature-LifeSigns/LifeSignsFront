@@ -6,6 +6,42 @@
             <div class="col text-center">
                 <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide Chart Form' : 'Show Chart Form'}}</button>
             </div>
+
+            <table class="table success">
+                <thead>
+                    <tr>
+                        <th scope="col">Doctor</th>
+                        <th scope="col">Nurse</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Insurance</th>
+                        <th scope="col">Diagnosis</th>
+                        <th scope="col">Approved</th>
+                        <th scope="col">Treatment</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let chart of chartsList">
+                        <td scope="col">{{chart.doctor}}</td>
+                        <td scope="col">{{chart.nurse}}</td>
+                        <td scope="col">{{chart.firstname}}</td>
+                        <td scope="col">{{chart.lastname}}</td>
+                        <td scope="col">{{chart.dob}}</td>
+                        <td scope="col">{{chart.address}}</td>
+                        <td scope="col">{{chart.email}}</td>
+                        <td scope="col">{{chart.insuranceId}}</td>
+                        <td scope="col">{{chart.diagnosis}}</td>
+                        <td scope="col">{{chart.approved}}</td>
+                        <td scope="col">{{chart.treatment}}</td>
+                        <td scope="col">{{chart.notes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div *ngIf="isVisible" class="card">
                 <div class="card-header">
                     <div class="card-heading">Patient Chart</div>
@@ -13,128 +49,138 @@
 
                 <div class="card-body mx-auto">
                     <form [formGroup] = "chartGroup">
-                        <div class="input-group my-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Doctor</span>
-                            </div>
-                            <input formControlName="doctor" type="text" class="form-control shadow-sm mr-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Nurse</span>
-                            </div>
-                            <input formControlName="nurse" type="text" class="form-control shadow-sm">
+                        <div class="form-group input-group-sm my-4">
+                            <label for="doctor">Doctor:</label>
+                            <input id="doctor" formControlName="doctor" type="text" class="form-control shadow-sm">
                         </div>
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Name</span>
-                            </div>
-                            <input formControlName="firstname" type="text" class="form-control shadow-sm" placeholder="First Name">
-                            <input formControlName="lastname" type="text" class="form-control shadow-sm mr-3" placeholder="Last Name">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">DOB</span>
-                            </div>
-                            <input formControlName="dob" type="text" class="form-control shadow-sm" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="MM/DD/YYYY" onClick="event.preventDefault()">
+                        <div class="form-group input-group-sm my-4">
+                            <label for="nurse">Nurse:</label>
+                            <input id="nurse" formControlName="nurse" type="text" class="form-control shadow-sm">
                         </div>
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="">Address</span>
-                            </div>
-                            <input formControlName="address" type="text" class="form-control shadow-sm" placeholder="123 Main Street">
-                            <input formControlName="address" type="text" class="form-control shadow-sm" placeholder="Apartment, suite, building, etc.">
-                        </div>
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="">City</span>
-                            </div>
-                            <input formControlName="address" type="text" class="form-control shadow-sm mr-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="">State</span>
-                            </div>
-                            <select formControlName="address" class="form-select shadow-sm mr-3">
-                                <option value="" disabled>Select a State</option>
-                                <option value="Alabama">Alabama</option>
-                                <option value="Alaska">Alaska</option>
-                                <option value="Arizona">Arizona</option>
-                                <option value="Arkansas">Arkansas</option>
-                                <option value="California">California</option>
-                                <option value="Colorado">Colorado</option>
-                                <option value="Connecticut">Connecticut</option>
-                                <option value="Delaware">Delaware</option>
-                                <option value="District of Columbia">District of Columbia</option>
-                                <option value="Florida">Florida</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Guam">Guam</option>
-                                <option value="Hawaii">Hawaii</option>
-                                <option value="Idaho">Idaho</option>
-                                <option value="Illinois">Illinois</option>
-                                <option value="Indiana">Indiana</option>
-                                <option value="Iowa">Iowa</option>
-                                <option value="Kansas">Kansas</option>
-                                <option value="Kentucky">Kentucky</option>
-                                <option value="Louisiana">Louisiana</option>
-                                <option value="Maine">Maine</option>
-                                <option value="Maryland">Maryland</option>
-                                <option value="Massachusetts">Massachusetts</option>
-                                <option value="Michigan">Michigan</option>
-                                <option value="Minnesota">Minnesota</option>
-                                <option value="Mississippi">Mississippi</option>
-                                <option value="Missouri">Missouri</option>
-                                <option value="Montana">Montana</option>
-                                <option value="Nebraska">Nebraska</option>
-                                <option value="Nevada">Nevada</option>
-                                <option value="New Hampshire">New Hampshire</option>
-                                <option value="New Jersey">New Jersey</option>
-                                <option value="New Mexico">New Mexico</option>
-                                <option value="New York">New York</option>
-                                <option value="North Carolina">North Carolina</option>
-                                <option value="North Dakota">North Dakota</option>
-                                <option value="Northern Marianas Islands">Northern Marianas Islands</option>
-                                <option value="Ohio">Ohio</option>
-                                <option value="Oklahoma">Oklahoma</option>
-                                <option value="Oregon">Oregon</option>
-                                <option value="Pennsylvania">Pennsylvania</option>
-                                <option value="Puerto Rico">Puerto Rico</option>
-                                <option value="Rhode Island">Rhode Island</option>
-                                <option value="South Carolina">South Carolina</option>
-                                <option value="South Dakota">South Dakota</option>
-                                <option value="Tennessee">Tennessee</option>
-                                <option value="Texas">Texas</option>
-                                <option value="Utah">Utah</option>
-                                <option value="Vermont">Vermont</option>
-                                <option value="Virginia">Virginia</option>
-                                <option value="Virgin Islands">Virgin Islands</option>
-                                <option value="Washington">Washington</option>
-                                <option value="West Virginia">West Virginia</option>
-                                <option value="Wisconsin">Wisconsin</option>
-                                <option value="Wyoming">Wyoming</option>
-                            </select>
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="">Zip Code</span>
-                            </div>
-                            <input formControlName="address" type="text" class="form-control shadow-sm">
-                        </div>
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="">Email</span>
-                            </div>
-                            <input formControlName="email" type="email" class="form-control shadow-sm mr-3" placeholder="email@example.com">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Insurance</span>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group input-group-sm mb-4">
+                                    <label for="firstname">First Name:</label>
+                                    <input id="firstname" formControlName="firstname" type="text" class="form-control shadow-sm">
                                 </div>
-                                <input formControlName="insuranceId" type="text" class="form-control shadow-sm" placeholder="123456789">
-    
-                                <!-- <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Room</span>
-                                </div>
-                                <input type="text" class="form-control shadow-sm" placeholder="101"> -->
-                        </div>
-                        <div class="input-group mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="">Diagnosis</span>
                             </div>
-                            <input formControlName="diagnosis" type="text" class="form-control shadow-sm">
+                            <div class="col">
+                                <div class="form-group input-group-sm mb-4">
+                                    <label for="lastname">Last Name:</label>
+                                    <input id="lastname" formControlName="lastname" type="text" class="form-control shadow-sm mr-3">
+                                </div>
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <textarea formControlName="notes" class="form-control shadow-sm" placeholder="Notes"></textarea>
+                        <div class="form-group input-group-sm my-4">
+                            <label for="doctor">Date of Birth:</label>
+                            <input formControlName="dob" type="text" class="form-control shadow-sm" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="" onClick="event.preventDefault()">
+                        </div>
+                        <div class="form-group input-group-sm mb-4">
+                            <label for="address_line1">Address Line 1:</label>
+                            <input id="address_line1" formControlName="address" type="text" class="form-control shadow-sm">
+                        </div>
+                        <div class="form-group input-group-sm mb-4">
+                            <label for="address_line2">Address Line 2:</label>
+                            <input id="address_line2" formControlName="address" type="text" class="form-control shadow-sm">
+                        </div>
+                        <div class="form-group input-group-sm mb-4">
+                            <label for="city">City:</label>
+                            <input id="city" formControlName="address" type="text" class="form-control shadow-sm">
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group input-group-sm mb-4">
+                                    <label for="state">State:</label>
+                                    <select formControlName="address" class="form-select shadow-sm mr-3">
+                                    <option value="" disabled>Select a State</option>
+                                    <option value="Alabama">Alabama</option>
+                                    <option value="Alaska">Alaska</option>
+                                    <option value="Arizona">Arizona</option>
+                                    <option value="Arkansas">Arkansas</option>
+                                    <option value="California">California</option>
+                                    <option value="Colorado">Colorado</option>
+                                    <option value="Connecticut">Connecticut</option>
+                                    <option value="Delaware">Delaware</option>
+                                    <option value="District of Columbia">District of Columbia</option>
+                                    <option value="Florida">Florida</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Guam">Guam</option>
+                                    <option value="Hawaii">Hawaii</option>
+                                    <option value="Idaho">Idaho</option>
+                                    <option value="Illinois">Illinois</option>
+                                    <option value="Indiana">Indiana</option>
+                                    <option value="Iowa">Iowa</option>
+                                    <option value="Kansas">Kansas</option>
+                                    <option value="Kentucky">Kentucky</option>
+                                    <option value="Louisiana">Louisiana</option>
+                                    <option value="Maine">Maine</option>
+                                    <option value="Maryland">Maryland</option>
+                                    <option value="Massachusetts">Massachusetts</option>
+                                    <option value="Michigan">Michigan</option>
+                                    <option value="Minnesota">Minnesota</option>
+                                    <option value="Mississippi">Mississippi</option>
+                                    <option value="Missouri">Missouri</option>
+                                    <option value="Montana">Montana</option>
+                                    <option value="Nebraska">Nebraska</option>
+                                    <option value="Nevada">Nevada</option>
+                                    <option value="New Hampshire">New Hampshire</option>
+                                    <option value="New Jersey">New Jersey</option>
+                                    <option value="New Mexico">New Mexico</option>
+                                    <option value="New York">New York</option>
+                                    <option value="North Carolina">North Carolina</option>
+                                    <option value="North Dakota">North Dakota</option>
+                                    <option value="Northern Marianas Islands">Northern Marianas Islands</option>
+                                    <option value="Ohio">Ohio</option>
+                                    <option value="Oklahoma">Oklahoma</option>
+                                    <option value="Oregon">Oregon</option>
+                                    <option value="Pennsylvania">Pennsylvania</option>
+                                    <option value="Puerto Rico">Puerto Rico</option>
+                                    <option value="Rhode Island">Rhode Island</option>
+                                    <option value="South Carolina">South Carolina</option>
+                                    <option value="South Dakota">South Dakota</option>
+                                    <option value="Tennessee">Tennessee</option>
+                                    <option value="Texas">Texas</option>
+                                    <option value="Utah">Utah</option>
+                                    <option value="Vermont">Vermont</option>
+                                    <option value="Virginia">Virginia</option>
+                                    <option value="Virgin Islands">Virgin Islands</option>
+                                    <option value="Washington">Washington</option>
+                                    <option value="West Virginia">West Virginia</option>
+                                    <option value="Wisconsin">Wisconsin</option>
+                                    <option value="Wyoming">Wyoming</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group input-group-sm mb-4">
+                                    <label for="zip">Zip Code:</label>
+                                    <input id="zip" formControlName="address" type="text" class="form-control shadow-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group input-group-sm mb-4">
+                            <label for="email">Email:</label>
+                            <input id="email" formControlName="email" type="email" class="form-control shadow-sm">
+                        </div>
+                        <div class="form-group input-group-sm mb-4">
+                            <label for="insurance">Insurance ID:</label>
+                            <input id="insurance" formControlName="insuranceId" type="text" class="form-control shadow-sm">
+                        </div>
+                        <div class="form-group input-group-sm mb-2">
+                            <label for="diagnosis">Diagnosis:</label>
+                            <input id="diagnosis" formControlName="diagnosis" type="text" class="form-control shadow-sm">
+                        </div>
+                        <div class="custom-control custom-checkbox custom-checkbox-orange ml-n4 mb-4">
+                            <input id="diagnosis_approved" class="custom-control-input custom-control-input-orange" formControlName="approved" type="checkbox">
+                            <label class="custom-control-label pl-4" for="diagnosis_approved">Approved</label>
+                        </div>
+                        <div class="form-group input-group-sm mb-4">
+                            <label for="treatment">Treatment:</label>
+                            <input id="treatment" formControlName="treatment" type="text" class="form-control shadow-sm">    
+                        </div>
+                        <div class="form-group input-group-sm mb-4">
+                            <label for="notes">Notes:</label>
+                            <textarea id="notes" formControlName="notes" class="form-control shadow-sm"></textarea>
                         </div>
                         <div class="col text-center">
                             <button class="btn btn-block text-uppercase mt-4 mb-2 shadow-sm w-25" (click)="submitChart(chartGroup)">Submit</button>
