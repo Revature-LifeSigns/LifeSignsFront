@@ -65,5 +65,6 @@ export class UserService {
   setUserToCurrent() {
     // this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
+    // this.userLoggedInStatus = true;
   }
 }
