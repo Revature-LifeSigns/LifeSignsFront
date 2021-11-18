@@ -4,7 +4,7 @@ import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
 import { AdminService } from '../services/admin/admin.service';
-import { StringLiteralLike } from 'typescript';
+
 
 @Component({
   selector: 'app-profiles',
@@ -53,11 +53,10 @@ export class ProfilesComponent implements OnInit {
 
   //onChange, create formdata object, then append file
   updatePhoto(event:any) {
-    alert("update photo clicked");
     console.log(event.target.files[0]);
     this.file = event.target.files[0];
     let formData = new FormData();
-    formData.append("file", this.file, this.photoGroup.get("newPhoto")!.value);
+    formData.append("file", this.file);
     formData.append("uploader", String(this.currentUser.userid));
 
     this.nurseServ.uploadPhoto(formData).subscribe(
