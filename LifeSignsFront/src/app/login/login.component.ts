@@ -96,9 +96,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.userService.getLoggedInUser()) {
       let currentUser: any = this.userService.getLoggedInUser();
-      if (currentUser._role == 'doctor' || currentUser._role == 'nurse') {
+      if (currentUser.role == 'doctor' || currentUser.role == 'nurse') {
         this.router.navigate(['/profiles']);
-      } else if (currentUser._role == 'admin') {
+      } else if (currentUser.role == 'admin') {
         this.router.navigate(['/admin']);
       }else{
         this.router.navigate(['/login']);
