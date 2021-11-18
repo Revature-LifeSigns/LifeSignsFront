@@ -5,7 +5,6 @@ import { take, catchError } from 'rxjs/operators';
 
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
-import { error } from '@angular/compiler/src/util';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
@@ -68,7 +67,6 @@ export class LoginComponent implements OnInit {
             loginResp.userid
           );
           this.userService.userLoginStatus(userLogin);
-          console.log(this.userService.getLoggedInUser());
           this.invalidLogin = false;
           // store url memory for userlogin then reset to null
           if (this.userService.returnUrl) {
@@ -90,19 +88,18 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
           }
-
         }
       });
   }
 
   ngOnInit(): void {
     if (this.userService.getLoggedInUser()) {
-      let currentUser:any = this.userService.getLoggedInUser();
+      let currentUser: any = this.userService.getLoggedInUser();
       if (currentUser._role == 'doctor' || currentUser._role == 'nurse') {
         this.router.navigate(['/profiles']);
       } else if (currentUser._role == 'admin') {
         this.router.navigate(['/admin']);
-      }else{
+      } else {
         this.router.navigate(['/login']);
       }
     }
