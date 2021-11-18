@@ -14,17 +14,20 @@ export class ModeDirective implements OnInit{
   constructor(private modeServ: ModeService, private userServ: UserService, private _elementRef: ElementRef) { }
 
   ngOnInit(): void {
-    this.currentUser = this.userServ.getLoggedInUser();
+    let currentUser = this.userServ.getLoggedInUser();
     var element = <HTMLInputElement> document.getElementById("checkbox");
-    if(this.currentUser){
-      console.log(this.currentUser);
-      if(this.currentUser._viewpref || this.currentUser._viewpref == null){
+    if(currentUser){
+      console.log(currentUser.viewPreference);
+      if(currentUser.viewPreference || currentUser.viewPreference == null){
         element.checked = false;
         this.modeServ.setCurrentTheme(ThemeMode.LIGHT);
       }else{
         element.checked = true;
         this.modeServ.setCurrentTheme(ThemeMode.DARK);
       }
+      
+      currentUser.viewPreference = !currentUser.viewPreference;
+      // this.userServ.updateUserProfile(currentUser).subscribe();
     }
     let currentTheme = this.modeServ.getActiveTheme();
 
