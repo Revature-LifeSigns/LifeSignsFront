@@ -18,7 +18,7 @@ export class ModeDirective implements OnInit{
     var element = <HTMLInputElement> document.getElementById("checkbox");
     if(this.currentUser){
       console.log(this.currentUser);
-      if(this.currentUser._viewpref || this.currentUser._viewpref == null){
+      if(this.currentUser.viewPref || this.currentUser.viewPref == null){
         element.checked = false;
         this.modeServ.setCurrentTheme(ThemeMode.LIGHT);
       }else{
