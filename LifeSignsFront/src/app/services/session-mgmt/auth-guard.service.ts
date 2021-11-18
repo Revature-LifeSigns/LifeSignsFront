@@ -18,9 +18,9 @@ export class AuthGuardService {
     let currentUser:any = this.userService.getLoggedInUser();
     if (currentUser) {
       // if (userLoggedIn) {
-      if(currentUser._role == 'admin' && (state.url =='/admin'))
+      if(currentUser.role == 'admin' && (state.url =='/admin'))
         return true;
-      if((currentUser._role == 'doctor' || currentUser._role == 'nurse') && (state.url != '/admin'))
+      if((currentUser.role == 'doctor' || currentUser.role == 'nurse') && (state.url != '/admin'))
         return true;
 
     }
