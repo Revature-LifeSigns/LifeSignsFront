@@ -10,14 +10,10 @@ import { Chart } from '../util/chart';
 })
 export class DoctorService {
 
-<<<<<<< HEAD
   private url ="http://localhost:9025/doctors";
   private urlBase = "http://ec2-3-90-86-121.compute-1.amazonaws.com:9025/LifeSigns";
-  private currentDoctor!: Doctor;
+  private currentDoctor!: User;
   private loginDoctorStatus!: boolean;
-=======
-  private url ="http://localhost:9025/LifeSigns/";
->>>>>>> 8bb2e741e278d3c1f2618f4a53181b442ae4342f
 
   private httpHead = {
     headers: new HttpHeaders({
