@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
   unitGroup = new FormGroup({
     unit: new FormControl('', Validators.required)
   });
-  chosenUserId:number;
+  chosenUserId!:number;
 
   unitAssigned:boolean = false;
   @ViewChild('unitAssignedModal') unitAssignedModal:any;
@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit {
             this.sortUsers();
           }
       });
-  
+
       this.adminServ.getAllUnits().subscribe(
         response => {
           if(response != null){
@@ -53,10 +53,10 @@ export class AdminComponent implements OnInit {
   assignUnit(unitForm:FormGroup){
     let chosenUnit: Unit =  new Unit(unitForm.value.unit);
     this.modalServ.dismissAll();
-    
+
     this.adminServ.insertOrUpdateUnitAssignment(this.chosenUserId, chosenUnit).subscribe(
       response =>{
-        if(response != null){ 
+        if(response != null){
           this.unitAssigned = true;
           this.modalServ.open(this.unitAssignedModal, {size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result;
         }

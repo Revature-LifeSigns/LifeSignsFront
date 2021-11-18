@@ -25,7 +25,7 @@
                 <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="" *ngIf="currentUser._image == null">
                 <img src={{currentUser._image}} alt="{{currentUser._fname + ' ' + currentUser._lname}}" width= 400 *ngIf="currentUser._image != null"/>
                 <form [formGroup] = "photoGroup" form-control = "formGroup">
-                    <input #file class = "" type="file" formControlName="newPhoto" (change)="updatePhoto($event)"/>
+                    <input #file class = "" type="file" formControlName="newPhoto" (change)="updatePhoto($event)" *ngIf="currentUser._image == null"/>
                     <!-- <button class = "btn btn-primary" type = "submit">Change Photo</button> -->
                 </form>
 
