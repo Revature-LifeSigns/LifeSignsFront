@@ -34,11 +34,11 @@
       <!-- Modal Body: COVID status (none, exposed, vaccinated, quarantining)  -->
       <div class="modal-body text-center">
         <!-- Form  -->
-        <form [formGroup]="covidStatusForm" (ngSubmit)="submit()">
+        <form [formGroup]="covidStatusForm" ngNativeValidate (ngSubmit)="submit()">
           <!-- Have You Had Any Of These Symptoms? -->
           <!-- symptoms include headache, loss of smell and taste, nasal congestion and runny nose, cough, muscle pain, sore throat, fever, diarrhea, and breathing difficulties-->
           <h5 class="custom-secondary-color">Have you had any of the following symptoms?</h5>
-          <p>(Headache, loss of smell and taste, nasal congestion and runny nose, cough, muscle pain, sore throat, fever, diarrhea, or breathing difficulties.)</p>
+          <p class="text-black">(Headache, loss of smell and taste, nasal congestion and runny nose, cough, muscle pain, sore throat, fever, diarrhea, or breathing difficulties.)</p>
           <div
             class="btn-group btn-group-lg mb-3"
             role="group"

@@ -1,6 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
@@ -11,7 +10,8 @@ import { User } from '../services/util/user';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit, OnChanges {
-  currentUser!:User;
+  storedUser!:string;
+  currentUser!:any;
   street1!:string;
   street2!:string;
   city!:string;
@@ -29,32 +29,22 @@ export class AccountComponent implements OnInit, OnChanges {
     passwordAgain: new FormControl('')
   });
 
-  constructor(private modalServ:NgbModal, private userServ:UserService, private router: Router) { }
+  constructor(private modalServ:NgbModal, private userServ:UserService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.userServ.getLoggedInUser();
-    let address:string[] = this.currentUser.address.split(';');
-    if (address.length == 4) {
-      // address does not have a street2 field
-      this.street1 = address[0];
-      this.street2 = '';
-      this.city = address[1];
-      this.state = address[2];
-      this.zip = address[3];
-    } else if (address.length == 5) {
-      // address does have a street2 field
-      this.street1 = address[0];
-      this.street2 = address[1];
-      this.city = address[2];
-      this.state = address[3];
-      this.zip = address[4];
-    }
+    this.storedUser = window.localStorage.getItem('currentUser')!;
+    this.currentUser = JSON.parse(this.storedUser);
+    let address:string[] = this.currentUser._address.split(';');
+    console.log(address);
+    this.street1 = address[0];
+    this.street2 = address[1];
+    this.city = address[2];
+    this.state = address[3];
+    this.zip = address[4];
   }
 
   ngOnChanges(): void {
-    // this.currentUser = this.userServ.getLoggedInUser();
-    // console.log(this.currentUser);
-    console.log("change made");
+
   }
 
   open(content:any) {
@@ -64,7 +54,7 @@ export class AccountComponent implements OnInit, OnChanges {
   updateEmail(emails:FormGroup) {
     let message: any = document.getElementById('message');
     if (this.validateEmail(emails.get('newEmail')!.value)) {
-      
+
     } else {
       // Invalid email
       message.setAttribute("style", "color:red");
@@ -74,7 +64,7 @@ export class AccountComponent implements OnInit, OnChanges {
 
   updatePwd(passwords:FormGroup) {
     let message: any = document.getElementById('message');
-    if (this.validatePwd(passwords.get('currentPassword')!.value) && 
+    if (this.validatePwd(passwords.get('currentPassword')!.value) &&
         this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
         passwords.get('username')!.setValue(this.currentUser.username);
@@ -83,7 +73,6 @@ export class AccountComponent implements OnInit, OnChanges {
             if (response) {
               message.setAttribute("style", "color:mediumseagreen");
               message.innerHTML = 'Successfully changed password.';
-              console.log(response);
             } else {
               message.setAttribute("style", "color:red");
               message.innerHTML = 'Current password does not match. Please try again.';

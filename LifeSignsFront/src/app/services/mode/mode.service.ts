@@ -12,16 +12,16 @@ export class ModeService{
 
   private currentTheme = ThemeMode.LIGHT;
   themeChange = new EventEmitter<Theme>();
-  
+
   constructor(private userServ:UserService) { }
 
   // toggles between 2 Theme based on the current theme
   public toggleMode(){
-    
+
     let currentUser:any = this.userServ.getLoggedInUser();
     if(currentUser){
-      currentUser._viewpref = !currentUser._viewpref;
-      let temp = new User(currentUser._username, currentUser._userid, currentUser._viewpref);
+      console.log(currentUser);
+      let temp = new User(currentUser._username, currentUser._userid, !currentUser._viewpref);
       this.userServ.updateUserProfile(temp).subscribe();
     }
     if(this.currentTheme == ThemeMode.LIGHT){
