@@ -29,6 +29,7 @@ select:focus {
 }
 
 #inbord {
+    background-color: white;
     border:none;
 }
 

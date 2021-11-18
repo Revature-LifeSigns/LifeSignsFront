@@ -34,7 +34,6 @@ export class UserService {
   }
 
   public updateUserProfile(user:User): Observable<User>{
-    console.log(user)
     let url = this.urlBase + "/user/update/" + user.userid;
     return this.http.patch<User>(url, user, this.httpHead);
   }

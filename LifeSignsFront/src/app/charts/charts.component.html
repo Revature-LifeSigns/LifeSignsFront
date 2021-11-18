@@ -1,8 +1,7 @@
 <div appMode class="toggleContainer">    
     <div class="toggleContainer container align-items-center p-3 w-75">
 
-        <div *ngIf="null == null; then loggedIn else loggedOut"></div>
-
+    <div *ngIf="null == null; then loggedIn else loggedOut"></div>
         <ng-template #loggedIn>
             <div class="col text-center">
                 <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide
@@ -172,6 +171,5 @@
         <ng-template #loggedOut>
             <p>Log In or Create an Account</p>
         </ng-template>
-
     </div>
 </div>

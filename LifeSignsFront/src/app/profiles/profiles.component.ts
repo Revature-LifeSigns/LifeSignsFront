@@ -25,7 +25,7 @@ export class ProfilesComponent implements OnInit {
   isNurse:boolean = false;
 
   file: any;
-  unitName:String = "";
+  unitName:string = "";
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -84,6 +84,4 @@ export class ProfilesComponent implements OnInit {
       }
     )
   }
-
-
 }

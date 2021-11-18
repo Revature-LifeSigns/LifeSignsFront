@@ -22,7 +22,6 @@ export class ModeService{
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     let temp = new User(currentUser.username, currentUser.userid, currentUser.viewPref);
     this.userServ.updateUserPref(temp).subscribe();
-
     if(this.currentTheme == ThemeMode.LIGHT){
       this.setTheme(ThemeMode.DARK)
     }else{
