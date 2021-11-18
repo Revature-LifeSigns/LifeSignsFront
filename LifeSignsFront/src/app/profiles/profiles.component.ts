@@ -46,7 +46,7 @@ export class ProfilesComponent implements OnInit {
     this.nurseServ.getPhoto(this.currentUser as User).subscribe(
       res => {
         console.log(res);
-        this.currentUser.image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
+        this.currentUser._image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
       }
     )
   }
