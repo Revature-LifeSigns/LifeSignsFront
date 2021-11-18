@@ -5,6 +5,10 @@ body {
     background-size:cover;
   }
 
+.clipboard {
+  width: 75%;
+}
+
 .clipb {
     position: absolute;
     top: -2.5%;
@@ -40,7 +44,7 @@ h4 {
 }
 
 input[type=text], input[type=email], input[type=password], input[type=date], input[type=number] {
-  font-size: small;
+  font-size: medium;
 }
 
 .info {

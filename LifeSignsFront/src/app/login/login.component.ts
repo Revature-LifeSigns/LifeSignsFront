@@ -5,7 +5,6 @@ import { take, catchError } from 'rxjs/operators';
 
 import { User } from '../services/util/user';
 import { UserService } from '../services/user/user.service';
-import { error } from '@angular/compiler/src/util';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
   public currentUser: Observable<any>;
 
   constructor(private userService: UserService, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')!));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -90,14 +89,13 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
           }
-
         }
       });
   }
 
   ngOnInit(): void {
     if (this.userService.getLoggedInUser()) {
-      let currentUser:any = this.userService.getLoggedInUser();
+      let currentUser: any = this.userService.getLoggedInUser();
       if (currentUser._role == 'doctor' || currentUser._role == 'nurse') {
         this.router.navigate(['/profiles']);
       } else if (currentUser._role == 'admin') {

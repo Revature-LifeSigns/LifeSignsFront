@@ -21,11 +21,11 @@ export class ProfilesComponent implements OnInit {
     aboutMe: new FormControl('')
   })
 
-  currentUser!:User;
+  currentUser!:any;
   isNurse:boolean = false;
 
   file: any;
-  unitName:String;
+  unitName:String = "";
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -43,7 +43,7 @@ export class ProfilesComponent implements OnInit {
   }
 
   loadPhoto(){
-    this.nurseServ.getPhoto(this.currentUser).subscribe(
+    this.nurseServ.getPhoto(this.currentUser as User).subscribe(
       res => {
         console.log(res);
         this.currentUser.image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
@@ -53,12 +53,11 @@ export class ProfilesComponent implements OnInit {
 
   //onChange, create formdata object, then append file
   updatePhoto(event:any) {
-    alert("update photo clicked");
     console.log(event.target.files[0]);
     this.file = event.target.files[0];
     let formData = new FormData();
-    formData.append("file", this.file, this.photoGroup.get("newPhoto")!.value);
-    formData.append("uploader", String(this.currentUser.userid));
+    formData.append("file", this.file);
+    formData.append("uploader", String(this.currentUser._userid));
 
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
@@ -85,4 +84,6 @@ export class ProfilesComponent implements OnInit {
       }
     )
   }
+
+
 }
