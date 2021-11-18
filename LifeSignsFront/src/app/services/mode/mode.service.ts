@@ -20,9 +20,9 @@ export class ModeService{
 
     let currentUser:any = this.userServ.getLoggedInUser();
     if(currentUser){
-      currentUser._viewpref = !currentUser._viewpref;
-      // let temp = new User(currentUser._username, currentUser._userid, currentUser._viewpref);
-      this.userServ.updateUserProfile(currentUser).subscribe();
+      console.log(currentUser);
+      let temp = new User(currentUser._username, currentUser._userid, !currentUser._viewpref);
+      this.userServ.updateUserProfile(temp).subscribe();
     }
     if(this.currentTheme == ThemeMode.LIGHT){
       this.setTheme(ThemeMode.DARK)
