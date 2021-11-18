@@ -44,4 +44,9 @@ export class NurseService {
     let url = this.urlBase + "/chart/insert" ;
     return this.http.post<String>(url, chart, this.httpHead);
   }
+
+  public getAllCharts(): Observable<Chart[]> {
+    let url = this.urlBase + "/chart";
+    return this.http.get<Chart[]>(url, this.httpHead);
+  }
 }
