@@ -24,7 +24,7 @@ export class NurseService {
 
 
   public getPhoto(user:any): Observable<Photo>{
-    let url = this.urlBase + "/photo/" + user._userid ;
+    let url = this.urlBase + "/photo/" + user.userid ;
     return this.http.get<Photo>(url, this.httpHead);
   }
 

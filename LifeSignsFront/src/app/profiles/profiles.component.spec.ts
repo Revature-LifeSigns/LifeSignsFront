@@ -16,9 +16,23 @@ describe('ProfilesComponent', () => {
   let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
 
   const imgStr = 'src';
-  const dummyUser = new User('doctor',"TestUsername", "TestPassword", "TestEmail", "TestFirstName",
-    "TestLastName", "TestDoB", "TestAddress", "http://s3.amazonaws.com/lifesigns/" + imgStr,
-    "TestAbout", false, "TestCovidStatus", '1');
+  const dummyUser: User = {
+
+  role:'doctor',
+  username:"TestUsername",
+  password: "TestPassword",
+  email: "TestEmail",
+  firstname: "TestFirstName",
+  lastname: "TestLastName",
+  dob: "TestDoB",
+  address: "TestAddress",
+  image: "http://s3.amazonaws.com/lifesigns/" + imgStr,
+  aboutMe:"TestAbout",
+  specialty: "none",
+  viewPref: false,
+  covidStatus: "TestCovidStatus",
+  userid:1
+};
 
     class MockServiceUser {
     getLoggedInUser(): User{

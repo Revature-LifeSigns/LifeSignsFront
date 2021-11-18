@@ -15,12 +15,12 @@ export class AuthGuardService {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // deactive once user success login
     // const userLoggedIn = this.userService.isUserLoggedIn();
-    let currentUser:any = this.userService.getLoggedInUser();
+    let currentUser = this.userService.getLoggedInUser();
     if (currentUser) {
       // if (userLoggedIn) {
-      if(currentUser._role == 'admin' && (state.url =='/admin'))
+      if(currentUser.role == 'admin' && (state.url =='/admin'))
         return true;
-      if((currentUser._role == 'doctor' || currentUser._role == 'nurse') && (state.url != '/admin'))
+      if((currentUser.role == 'doctor' || currentUser.role == 'nurse') && (state.url != '/admin'))
         return true;
 
     }

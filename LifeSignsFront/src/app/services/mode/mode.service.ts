@@ -10,20 +10,19 @@ import { UserService } from '../user/user.service';
 })
 export class ModeService{
 
-  private currentTheme = ThemeMode.LIGHT;
+  private currentTheme;
   themeChange = new EventEmitter<Theme>();
 
   constructor(private userServ:UserService) { }
 
   // toggles between 2 Theme based on the current theme
   public toggleMode(){
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    currentUser.viewPref = !currentUser.viewPref;
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    let temp = new User(currentUser.username, currentUser.userid, currentUser.viewPref);
+    this.userServ.updateUserPref(temp).subscribe();
 
-    let currentUser:any = this.userServ.getLoggedInUser();
-    if(currentUser){
-      console.log(currentUser);
-      let temp = new User(currentUser._username, currentUser._userid, !currentUser._viewpref);
-      this.userServ.updateUserProfile(temp).subscribe();
-    }
     if(this.currentTheme == ThemeMode.LIGHT){
       this.setTheme(ThemeMode.DARK)
     }else{
