@@ -28,7 +28,7 @@ export class Survey implements OnInit {
   };
 
   today = new Date().getDay();
-  dayToDisplay = 2;
+  dayToDisplay = 1;
   hasDisplayed = false;
 
   //Constructor

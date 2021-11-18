@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Doctor } from '../util/doctorInterface';
 import { Observable } from 'rxjs';
+import { Photo } from '../util/photo';
+import { User } from '../util/user';
+import { Chart } from '../util/chart';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ import { Observable } from 'rxjs';
 export class DoctorService {
 
   private url ="http://localhost:9025/doctors";
-  private currentDoctor!: Doctor;
+  private urlBase = "http://ec2-3-90-86-121.compute-1.amazonaws.com:9025/LifeSigns";
+  private currentDoctor!: User;
   private loginDoctorStatus!: boolean;
 
   private httpHead = {
@@ -21,20 +24,22 @@ export class DoctorService {
 
   constructor(private http: HttpClient) { }
 
-  signUpDoctor(doctor: Doctor):Observable<Doctor> {
-    return this.http.post<Doctor>(this.url, doctor, this.httpHead);
+  public getPhoto(user:User): Observable<Photo>{
+    return this.http.get<Photo>((this.url + "photo/" + user.userid), this.httpHead);
   }
 
-  updateDoctor(doctor: Doctor):Observable<Doctor> {
-    return this.http.patch<Doctor>(this.url, doctor, this.httpHead);
+  public uploadPhoto(photo: FormData): Observable<any> {
+    return this.http.post<Object>((this.url + "photo"), photo, this.httpHead);
   }
 
-  setDoctor(doctor:Doctor) {
-    this.currentDoctor = doctor;
-    this.loginDoctorStatus = true;
+  //Placeholder method. Waiting for chart id
+  public getPatientChart(chart?:Chart): Observable<Object>{
+    return this.http.get<String>((this.url + "chart"), this.httpHead);
   }
 
-  getDoctor():Doctor {
-    return this.currentDoctor;
+  //Placeholder method. Waiting for chart id
+  public updatePatientChart(chart:Chart): Observable<Object>{
+    return this.http.patch<String>((this.url + "chart/update"), chart, this.httpHead);
   }
+
 }
