@@ -30,7 +30,22 @@ describe('DoctorService', () => {
 
   it('should get photo',inject([HttpTestingController, DoctorService],
     (httpMock: HttpTestingController, service: DoctorService) => {
-    let fakeUser:User = new User('','','','','','','','','','',true,'','',1);
+    let fakeUser: User = {
+      role:"",
+      username:"",
+      password: "",
+      email: "",
+      firstname: "",
+      lastname: "",
+      dob: "",
+      address: "",
+      image: "",
+      aboutMe:"",
+      specialty: "",
+      viewPref: true,
+      covidStatus: "",
+      userid:1
+    };
     let fakePhoto:Photo = {
       photoId: 1,
       imagePath: '',
@@ -48,6 +63,8 @@ describe('DoctorService', () => {
   it('should get patient chart',inject([HttpTestingController, DoctorService],
     (httpMock: HttpTestingController, service: DoctorService) => {
     let fakeChart:Chart = {
+      doctor: '',
+      nurse: '',
       firstname: '',
       lastname: '',
       dob: undefined,
@@ -55,6 +72,7 @@ describe('DoctorService', () => {
       email: '',
       insuranceId: 1,
       room: 1,
+      diagnosis: '',
       notes: ''
     }
     service.getPatientChart(fakeChart).subscribe(chart => expect(chart).toEqual(fakeChart))
@@ -73,6 +91,7 @@ describe('DoctorService', () => {
       address: '123 Fake Street',
       picture: '',
       aboutMe: '',
+      specialty: '',
       viewPreference: true,
       covidStatus: ''
     }
