@@ -35,7 +35,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {path: "home", component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'account-details', component: AccountComponent},
+      {
+        path: 'account-details', component: AccountComponent,
+        canActivate: [AuthGuardService]
+      },
       {
         path: "profiles", component: ProfilesComponent,
         canActivate: [AuthGuardService]
@@ -47,8 +50,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         canActivate: [AuthGuardService]
       },
       {path: "chat", component: AppComponent}, //TODO: fill in correct component for chat
-      {path: "admin", component: AdminComponent,
-      canActivate: [AuthGuardService]
+      {
+        path: "admin", component: AdminComponent,
+        canActivate: [AuthGuardService]
       },
       {path: "**", redirectTo: "home"}  //TODO fill in correct catch-all route
 
