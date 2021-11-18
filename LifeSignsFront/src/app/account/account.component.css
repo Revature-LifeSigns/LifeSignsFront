@@ -1,0 +1,25 @@
+p {
+    font-family: 'revatureFont';
+}
+.title {
+    padding-top: 5%;
+}
+
+input[type=text], input[type=password] {
+    font-size: medium;
+}
+
+.modal-btn {
+    transition-duration: 0.4s;
+    border:none;
+    color: #f09467;
+    background-color: white;
+}
+
+.modal-title, .modal-btn:hover {
+    color:#F26925;
+}
+
+#message {
+    text-align: center;
+}

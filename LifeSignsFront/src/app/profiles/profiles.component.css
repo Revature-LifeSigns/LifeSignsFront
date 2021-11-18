@@ -1,30 +1,23 @@
 #pageContainer {
-    width: 50%;
+    width: 80%;
     margin-left: 10px;
     margin: auto auto;
 }
 
-#personalInfo {
-    border: 1px solid black;
-}
-
-#personalInfo {
+#idDetails {
     border: 1px solid black;
 }
 
 #name {
-    border: 1px solid black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 #lastName, #firstName, #professionType {
-    border: 1px solid black;
     margin: auto auto;
 }
 
 #fieldSpecialty, #dob, #covid {
-    border: 1px solid black;
     margin: auto auto;
 }
 
@@ -32,3 +25,27 @@
     display: flex;
     justify-content: space-around;
 }
+
+.card-header {
+    background-color: #72A4C2;
+}
+
+.quick-nav{
+    height: 100%;
+    background-color: #F26925;
+    color: white;
+}
+
+.test-image{
+    height: 7em;
+    width: auto;
+    border-radius: 100px;
+}
+
+.nav-link{
+    color: white;
+}
+#name {
+    border: 1px solid black;
+}
+

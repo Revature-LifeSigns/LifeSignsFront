@@ -1,18 +1,33 @@
-import { Directive, ElementRef, OnInit } from '@angular/core';
-import { ModeService } from './mode.service';
-import { Theme } from './theme/theme';
+import { Directive, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ModeService } from '../services/mode/mode.service';
+import { UserService } from '../services/user/user.service';
+import { DarkTheme } from './theme/darkTheme';
+import { LightTheme } from './theme/lightTheme';
+
+import { Theme, ThemeMode } from './theme/theme';
 
 @Directive({
   selector: '[appMode]'
 })
 export class ModeDirective implements OnInit{
+  private currentUser:any;
+  constructor(private modeServ: ModeService, private userServ: UserService, private _elementRef: ElementRef) { }
 
-  constructor(private modeServ: ModeService, private _elementRef: ElementRef) { }
-
-    //todo: get preference from database and set to currentTheme
-    // todo: set slider to correct side based on preference
   ngOnInit(): void {
+    this.currentUser = this.userServ.getLoggedInUser();
+    var element = <HTMLInputElement> document.getElementById("checkbox");
+    if(this.currentUser){
+      console.log(this.currentUser);
+      if(this.currentUser._viewpref || this.currentUser._viewpref == null){
+        element.checked = false;
+        this.modeServ.setCurrentTheme(ThemeMode.LIGHT);
+      }else{
+        element.checked = true;
+        this.modeServ.setCurrentTheme(ThemeMode.DARK);
+      }
+    }
     let currentTheme = this.modeServ.getActiveTheme();
+
     if(currentTheme)
       this.updateTheme(currentTheme);
 
@@ -22,9 +37,8 @@ export class ModeDirective implements OnInit{
 
   // sets css variable names to its values defined in parameter theme (datatype Theme defined in theme.ts)
   updateTheme(theme:Theme){
-    for(const property in theme.styles){
-      this._elementRef.nativeElement.style.setProperty(property, theme.styles[property]);
+      for(const property in theme.styles){
+        this._elementRef.nativeElement.style.setProperty(property, theme.styles[property]);
+      }
     }
-  }
-
 }

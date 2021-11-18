@@ -1,43 +1,228 @@
 <body>
-  <br><br><br><br>
+  <br><br><br><br><br><br><br>
   <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-
+          <div class="clipboard">
             <div class="card" id="outbord" style="border-radius: 5px;">
               <div class="card" id="inbord" style="border-radius: 5px;">
                 <div class="card-body p-5" style="border-radius: 5px;">
-                  <img class="clipb" src="../../assets/clipboard.png" style="width:350px;height:180px;">
-                  <br>
-                  <img class="png2" src="../../assets/transparent_navlogo.png">
-                  <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-                  <form [formGroup]="registerForm">
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example3cg"><b>Account Type: </b></label>
-                      <label id="asterisk">* </label>
-                      <select formControlName="roleID">
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="1">Doctor</option>
-                        <option value="2">Nurse</option>
-                        <option value="3">Patient</option>
-                      </select>
+                  <img class="clipb" src="../../assets/img/clipboard.png" style="width:350px;height:180px;">
+                  <img class="png2" src="../../assets/img/orange_navlogo.png">
+                  <form [formGroup]="registerForm" ngNativeValidate>
+                    <br>
+                    <h4><b>General Information</b></h4>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="firstName"><b>First Name: </b></label>
+                          <label id="asterisk">* </label>
+                          <input formControlName="firstname" type="text" id="firstname"
+                            class="form-control form-control-lg" placeholder="Enter first name">
+                          <div
+                            *ngIf="registerForm.controls['firstname'].invalid && registerForm.controls['firstname'].touched">
+                            <div *ngIf="registerForm.controls['firstname'].errors.required">
+                              <small style="color:red">First name is required.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="lastName"><b>Last Name: </b></label>
+                          <label id="asterisk">* </label>
+                          <input formControlName="lastname" type="text" id="lastname"
+                            class="form-control form-control-lg" placeholder="Enter last name">
+                          <div
+                            *ngIf="registerForm.controls['lastname'].invalid && registerForm.controls['lastname'].touched">
+                            <div *ngIf="registerForm.controls['lastname'].errors.required">
+                              <small style="color:red">Last name is required.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label for="date" class="form-label"><b>Date of Birth: </b></label>
+                          <label id="asterisk">* </label>
+                          <div class="input-group date" id="datepicker">
+                            <input formControlName="dob" type="date" id="dateofbirth"
+                              class="form-control form-control-lg">
+                          </div>
+                          <div *ngIf="registerForm.controls['dob'].invalid && registerForm.controls['dob'].touched">
+                            <div *ngIf="registerForm.controls['dob'].errors.required">
+                              <small style="color:red">Date of birth is required.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example3cg"><b>Email: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="email" type="email" id="form3Example3cg"
-                        class="form-control form-control-lg" />
+                        class="form-control form-control-lg" placeholder="Enter email address">
+                      <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+                        <div *ngIf="registerForm.controls['email'].errors.required">
+                          <small style="color:red">Email address is required.</small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example8"><b>Address:</b></label>
+                      <label id="asterisk">* </label>
+                      <input formControlName="street1" type="text" id="form3Example8"
+                        class="form-control form-control-lg" placeholder="Enter street address 1">
+                      <div
+                        *ngIf="registerForm.controls['street1'].invalid && registerForm.controls['street1'].touched">
+                        <div *ngIf="registerForm.controls['street1'].errors.required">
+                          <small style="color:red">Street address is required.</small>
+                        </div>
+                      </div>
+                      <br>
+                      <input formControlName="street2" type="text" id="form3Example8"
+                        class="form-control form-control-lg" placeholder="Enter street address 2">
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example8"><b>City:</b></label>
+                      <label id="asterisk">* </label>
+                      <input formControlName="city" type="text" id="form3Example8"
+                        class="form-control form-control-lg" placeholder="Enter city">
+                      <div *ngIf="registerForm.controls['city'].invalid && registerForm.controls['city'].touched">
+                        <div *ngIf="registerForm.controls['city'].errors.required">
+                          <small style="color:red">City is required.</small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <fieldset>
+                            <label class="form-label" for="form3Example8"><b>State:</b></label>
+                            <label id="asterisk">* </label>
+                            <select formControlName="state" class="form-select" aria-label="Default select example">
+                              <option value="" disabled selected>Select a state</option>
+                              <option value="AL">Alabama</option>
+                              <option value="AK">Alaska</option>
+                              <option value="AZ">Arizona</option>
+                              <option value="AR">Arkansas</option>
+                              <option value="CA">California</option>
+                              <option value="CO">Colorado</option>
+                              <option value="CT">Connecticut</option>
+                              <option value="DE">Delaware</option>
+                              <option value="DC">District of Columbia</option>
+                              <option value="FL">Florida</option>
+                              <option value="GA">Georgia</option>
+                              <option value="GU">Guam</option>
+                              <option value="HI">Hawaii</option>
+                              <option value="ID">Idaho</option>
+                              <option value="IL">Illinois</option>
+                              <option value="IN">Indiana</option>
+                              <option value="IA">Iowa</option>
+                              <option value="KS">Kansas</option>
+                              <option value="KY">Kentucky</option>
+                              <option value="LA">Louisiana</option>
+                              <option value="ME">Maine</option>
+                              <option value="MD">Maryland</option>
+                              <option value="MA">Massachusetts</option>
+                              <option value="MI">Michigan</option>
+                              <option value="MN">Minnesota</option>
+                              <option value="MS">Mississippi</option>
+                              <option value="MO">Missouri</option>
+                              <option value="MT">Montana</option>
+                              <option value="NE">Nebraska</option>
+                              <option value="NV">Nevada</option>
+                              <option value="NH">New Hampshire</option>
+                              <option value="NJ">New Jersey</option>
+                              <option value="NM">New Mexico</option>
+                              <option value="NY">New York</option>
+                              <option value="NC">North Carolina</option>
+                              <option value="ND">North Dakota</option>
+                              <option value="CM">Northern Marianas Islands</option>
+                              <option value="OH">Ohio</option>
+                              <option value="OK">Oklahoma</option>
+                              <option value="OR">Oregon</option>
+                              <option value="PA">Pennsylvania</option>
+                              <option value="PR">Puerto Rico</option>
+                              <option value="RI">Rhode Island</option>
+                              <option value="SC">South Carolina</option>
+                              <option value="SD">South Dakota</option>
+                              <option value="TN">Tennessee</option>
+                              <option value="TX">Texas</option>
+                              <option value="UT">Utah</option>
+                              <option value="VT">Vermont</option>
+                              <option value="VA">Virginia</option>
+                              <option value="VI">Virgin Islands</option>
+                              <option value="WA">Washington</option>
+                              <option value="WV">West Virginia</option>
+                              <option value="WI">Wisconsin</option>
+                              <option value="WY">Wyoming</option>
+                            </select>
+                          </fieldset>
+                          <div
+                            *ngIf="registerForm.controls['state'].invalid && registerForm.controls['state'].touched">
+                            <div *ngIf="registerForm.controls['state'].errors.required">
+                              <small style="color:red">State is required.</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example8"><b>Zip Code:</b></label>
+                      <label id="asterisk">* </label>
+                      <input formControlName="zipcode" type="number" id="form3Example8"
+                        class="form-control form-control-lg" placeholder="Enter zip code">
+                      <div
+                        *ngIf="registerForm.controls['zipcode'].invalid && registerForm.controls['zipcode'].touched">
+                        <div *ngIf="registerForm.controls['zipcode'].errors.required">
+                          <small style="color:red">Zip code is required.</small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <h4><b>Account Details</b></h4>
+                    <hr>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example3cg"><b>Account Type: </b></label>
+                      <label id="asterisk">* </label>
+                      <select formControlName="role" class="form-select" aria-label="Default select example">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="nurse">Nurse</option>
+                      </select>
+                      <div *ngIf="registerForm.controls['role'].invalid && registerForm.controls['role'].touched">
+                        <div *ngIf="registerForm.controls['role'].errors.required">
+                          <small style="color:red">Account type is required.</small>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example3cg"><b>Username: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="username" type="text" id="form3Example1cg"
-                        class="form-control form-control-lg" />
-                      <p><small>Must be lowercase, start with a letter, and can contain numbers, underscores, and
+                        class="form-control form-control-lg" placeholder="Enter username">
+                      <div
+                        *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched">
+                        <div *ngIf="registerForm.controls['username'].errors.required">
+                          <small style="color:red">Username is required.</small>
+                        </div>
+                      </div>
+                      <p class="info"><small>Must be lowercase, start with a letter, and can contain numbers,
+                          underscores, and
                           periods (5-20 characters).</small></p>
                     </div>
 
@@ -45,8 +230,15 @@
                       <label class="form-label" for="form3Example3cg"><b>Password: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="password" type="password" id="form3Example4cg"
-                        class="form-control form-control-lg" />
-                      <p><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1 special character (8-20
+                        class="form-control form-control-lg" placeholder="Enter password">
+                      <div
+                        *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+                        <div *ngIf="registerForm.controls['password'].errors.required">
+                          <small style="color:red">Password is required.</small>
+                        </div>
+                      </div>
+                      <p class="info"><small>Must include at least 1 lowercase, 1 uppercase, 1 number, and 1 special
+                          character (8-20
                           characters).</small></p>
                     </div>
 
@@ -54,8 +246,14 @@
                       <label class="form-label" for="form3Example3cg"><b>Confirm Password: </b></label>
                       <label id="asterisk">* </label>
                       <input formControlName="confirmed" type="password" id="form3Example4cdg"
-                        class="form-control form-control-lg" />
-                      <p><small>Passwords must match.</small></p>
+                        class="form-control form-control-lg" placeholder="Enter password again">
+                      <div
+                        *ngIf="registerForm.controls['confirmed'].invalid && registerForm.controls['confirmed'].touched">
+                        <div *ngIf="registerForm.controls['confirmed'].errors.required">
+                          <small style="color:red">Confirmation is required.</small>
+                        </div>
+                      </div>
+                      <p class="info"><small>Passwords must match.</small></p>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -71,11 +269,9 @@
                     <br>
                     <p id="errorMessage"></p>
                     <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="#!"
-                                                                                            class="fw-bold text-body"><u>Login here</u></a></p>
-
+                        class="fw-bold text-body"><u>Login here</u></a></p>
                   </form>
                 </div>
-
               </div>
             </div>
           </div>
@@ -83,4 +279,7 @@
       </div>
     </div>
   </section>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>

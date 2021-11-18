@@ -14,6 +14,7 @@ export class UserService {
   private userLoggedInStatus!: boolean;
 
   private urlBase = "http://localhost:9025/LifeSigns";
+  // private urlBase = "http://ec2-18-116-241-177.us-east-2.compute.amazonaws.com:9025/LifeSigns";
 
   private httpHead = {
     headers: new HttpHeaders({
@@ -32,10 +33,16 @@ export class UserService {
     return this.http.post<User>(this.urlBase + "/login", user, this.httpHead);
   }
 
-  public updateUserProfile(user:User): Observable<Object>{
-    let url = this.urlBase + "/users/update/" + user.userid;
-    return this.http.patch<String>(url, user, this.httpHead);
+  public updateUserProfile(user:User): Observable<User>{
+    let url = this.urlBase + "/user/update/" + user.userid;
+    return this.http.patch<User>(url, user, this.httpHead);
   }
+
+  public updatePassword(passwords:string): Observable<User[]> {
+    return this.http.post<User[]>(this.urlBase + "/changePassword", passwords, this.httpHead);
+  }
+
+
 
   userLoginStatus(user: User) {
     this.loggedInUser = user;
@@ -43,7 +50,11 @@ export class UserService {
   }
 
   getLoggedInUser():User {
+    // return JSON.parse(localStorage.getItem('currentUser'));
+    // return this.loggedInUser;
+    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser')!);
     return this.loggedInUser;
+
   }
 
   isUserLoggedIn():boolean {
@@ -52,11 +63,11 @@ export class UserService {
 
   logoutUser() {
     this.userLoggedInStatus = false;
+    localStorage.removeItem('currentUser');
   }
 
   setUserToCurrent() {
     // this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
   }
-
 }

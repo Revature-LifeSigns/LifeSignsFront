@@ -1,0 +1,46 @@
+.sideMenu{
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
+}
+
+.row{
+    height: 100%;
+}
+
+.usersContainer{
+    margin-top: 2%;
+    margin-left: 2%;
+    height: 75vh;
+    overflow: auto;
+    border: 2px var(--text-color) dotted;
+}
+
+.nav-link{
+    color: var(--menu-text-color);
+}
+
+.user{
+    font-size: 20px;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+.user:hover{
+    color: var(--menu-bg-color);
+}
+
+.modal-header, .modal-body{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.5s ease-in-out;
+}
+
+.updateBtn{
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-right:0;
+}

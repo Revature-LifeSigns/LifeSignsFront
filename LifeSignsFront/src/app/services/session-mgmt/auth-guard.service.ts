@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { LoginComponent } from 'src/app/login/login.component';
 import { UserService } from '../user/user.service';
 
 
@@ -10,10 +12,17 @@ export class AuthGuardService {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // deactive once user success login
-    if (this.userService.isUserLoggedIn()) {
-      return true;
+    // const userLoggedIn = this.userService.isUserLoggedIn();
+    let currentUser:any = this.userService.getLoggedInUser();
+    if (currentUser) {
+      // if (userLoggedIn) {
+      if(currentUser._role == 'admin' && (state.url =='/admin'))
+        return true;
+      if((currentUser._role == 'doctor' || currentUser._role == 'nurse') && (state.url != '/admin'))
+        return true;
+
     }
 
     this.userService.returnUrl = state.url;
