@@ -16,18 +16,22 @@ export class ChartsComponent implements OnInit {
   chartsList: Chart[] = [];
 
   chartGroup = new FormGroup({
+    doctor: new FormControl(''),
+    nurse: new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     dob: new FormControl(''),
     address: new FormControl(''),
     email: new FormControl(''),
     insuranceId: new FormControl(''),
-    room: new FormControl(''),
+    // room: new FormControl(''),
+    diagnosis: new FormControl(''),
     notes: new FormControl('')
   });
 
   // adding for redirect to patient's id once logged in
   patientID$: Observable<number>;
+  isVisible: boolean = false;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService) {
     this.patientID$ = this.route.params.pipe(
@@ -49,5 +53,10 @@ export class ChartsComponent implements OnInit {
         console.warn('Error Submitting Chart', error);
       }
     );
+  }
+
+  toggleForm() {
+  //console.log('button clicked');
+    this.isVisible = !this.isVisible;
   }
 }
