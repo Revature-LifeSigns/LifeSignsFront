@@ -4,7 +4,7 @@ import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
 import { AdminService } from '../services/admin/admin.service';
-
+import { StringLiteralLike } from 'typescript';
 
 @Component({
   selector: 'app-profiles',
@@ -46,7 +46,7 @@ export class ProfilesComponent implements OnInit {
     this.nurseServ.getPhoto(this.currentUser).subscribe(
       res => {
         console.log(res);
-        this.currentUser.image = "http://s3.amazonaws.com/lifesigns/" + res.imageFileName;
+        this.currentUser.image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
       }
     )
   }
@@ -84,4 +84,6 @@ export class ProfilesComponent implements OnInit {
       }
     )
   }
+
+
 }

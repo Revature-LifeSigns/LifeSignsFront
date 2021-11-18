@@ -23,7 +23,6 @@
             <div class="col-6">
 
                 <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="">
-
                 <img src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}" />
                 <form [formGroup] = "photoGroup" form-control = "formGroup">
                     <input #file class = "" type="file" formControlName="newPhoto" (change)="updatePhoto($event)"/>
