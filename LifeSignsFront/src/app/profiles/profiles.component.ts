@@ -68,7 +68,7 @@ export class ProfilesComponent implements OnInit {
 
   getAssignedUnit(){
     let currentUser:any = this.userServ.getLoggedInUser();
-    this.adminServ.getUnit(currentUser._userid).subscribe(
+    this.adminServ.getUnit(currentUser.userid).subscribe(
       response =>{
         this.unitName = response.unit;
       }
