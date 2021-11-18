@@ -25,7 +25,7 @@ export class ProfilesComponent implements OnInit {
   isNurse:boolean = false;
 
   file: any;
-  unitName:String;
+  unitName:String = "";
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 

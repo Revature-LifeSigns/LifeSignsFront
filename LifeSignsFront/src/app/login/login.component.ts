@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   public currentUser: Observable<any>;
 
   constructor(private userService: UserService, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')!));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
