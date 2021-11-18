@@ -18,7 +18,7 @@
                     <div *ngFor="let user of users">
                         <ng-template #viewUser let-modal>
                             <div appMode class="modal-header">
-                            <h4 class="modal-title" id="modal-basic-title">{{user.lastName}}, {{user.firstName}}</h4>
+                            <h4 class="modal-title" id="modal-basic-title">{{user.lastname}}, {{user.firstname}}</h4>
                             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -87,7 +87,7 @@
                                 </form>
                             </div>
                         </ng-template>
-                        <div *ngIf="user.role !='admin'"class="user" (click)="showUnitAssignModal(viewUser, user.userid)"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i> {{user.lastName}}, {{user.firstName}}</div>
+                        <div *ngIf="user.role !='admin'"class="user" (click)="showUnitAssignModal(viewUser, user.userid)"><i class="fa fa-user-md fa-1x" aria-hidden="true"></i> {{user.lastname}}, {{user.firstname}}</div>
                     </div>
                 </div>
             </div>

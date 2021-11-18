@@ -11,7 +11,7 @@ import { User } from '../services/util/user';
 })
 export class AccountComponent implements OnInit, OnChanges {
   storedUser!:string;
-  currentUser!:any;
+  currentUser!:User;
   street1!:string;
   street2!:string;
   city!:string;
@@ -32,10 +32,9 @@ export class AccountComponent implements OnInit, OnChanges {
   constructor(private modalServ:NgbModal, private userServ:UserService) { }
 
   ngOnInit(): void {
-    this.storedUser = window.localStorage.getItem('currentUser');
+    this.storedUser = window.localStorage.getItem('currentUser')!;
     this.currentUser = JSON.parse(this.storedUser);
-    let address:string[] = this.currentUser._address.split(';');
-    console.log(address);
+    let address:string[] = this.currentUser.address.split(';');
     this.street1 = address[0];
     this.street2 = address[1];
     this.city = address[2];
@@ -54,7 +53,7 @@ export class AccountComponent implements OnInit, OnChanges {
   updateEmail(emails:FormGroup) {
     let message: any = document.getElementById('message');
     if (this.validateEmail(emails.get('newEmail')!.value)) {
-      
+
     } else {
       // Invalid email
       message.setAttribute("style", "color:red");
@@ -64,7 +63,7 @@ export class AccountComponent implements OnInit, OnChanges {
 
   updatePwd(passwords:FormGroup) {
     let message: any = document.getElementById('message');
-    if (this.validatePwd(passwords.get('currentPassword')!.value) && 
+    if (this.validatePwd(passwords.get('currentPassword')!.value) &&
         this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
         passwords.get('username')!.setValue(this.currentUser.username);

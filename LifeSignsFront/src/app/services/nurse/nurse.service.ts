@@ -11,8 +11,8 @@ import { Photo } from '../util/photo';
 })
 export class NurseService {
 
-  // private urlBase = "http://localhost:9025/LifeSigns";
-  private urlBase = "http://ec2-18-116-241-177.us-east-2.compute.amazonaws.com:9025/LifeSigns";
+  private urlBase = "http://localhost:9025/LifeSigns";
+  // private urlBase = "http://ec2-18-116-241-177.us-east-2.compute.amazonaws.com:9025/LifeSigns";
   private httpHead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export class NurseService {
   constructor(private http:HttpClient) { }
 
 
-  public getPhoto(user:User): Observable<Photo>{
+  public getPhoto(user:any): Observable<Photo>{
     let url = this.urlBase + "/photo/" + user.userid ;
     return this.http.get<Photo>(url, this.httpHead);
   }
@@ -37,7 +37,7 @@ export class NurseService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    return this.http.post<Object>(url, photo, httpHead);
+    return this.http.post<String>(url, photo, httpHead);
   }
 
   public sendPatientChart(chart:Chart): Observable<Object>{

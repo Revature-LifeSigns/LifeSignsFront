@@ -1,5 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Survey } from '../survey/survey.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AccountComponent } from './account.component';
 
@@ -7,16 +8,23 @@ describe('AccountComponent', () => {
   let component: AccountComponent;
   let fixture: ComponentFixture<AccountComponent>;
 
-
-
-  beforeEach(() => {
-
-    fixture = TestBed.createComponent(AccountComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(async() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
+      declarations: [ AccountComponent ]
+    })
+    .compileComponents();
   });
 
-  it('should create', () => {
+  // beforeEach(() => {
+  //   fixture = TestBed.createComponent(AccountComponent);
+  //   component = fixture.componentInstance;
+  //   fixture.detectChanges();
+  // });
+
+  it('should be created', () => {
+    const fixture = TestBed.createComponent(AccountComponent);
+    const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   });
 });

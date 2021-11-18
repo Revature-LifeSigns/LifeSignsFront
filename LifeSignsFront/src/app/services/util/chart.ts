@@ -8,7 +8,7 @@ export interface Chart {
     address: string;
     email: string;
     insuranceId: number;
-    // room: number;
+    room: number;
     diagnosis: string;
     notes: string;
 
