@@ -21,7 +21,7 @@ export class ProfilesComponent implements OnInit {
     aboutMe: new FormControl('')
   })
 
-  currentUser!:User;
+  currentUser!:any;
   isNurse:boolean = false;
 
   file: any;
@@ -43,10 +43,10 @@ export class ProfilesComponent implements OnInit {
   }
 
   loadPhoto(){
-    this.nurseServ.getPhoto(this.currentUser).subscribe(
+    this.nurseServ.getPhoto(this.currentUser as User).subscribe(
       res => {
         console.log(res);
-        this.currentUser.image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
+        this.currentUser._image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
       }
     )
   }
@@ -57,7 +57,7 @@ export class ProfilesComponent implements OnInit {
     this.file = event.target.files[0];
     let formData = new FormData();
     formData.append("file", this.file);
-    formData.append("uploader", String(this.currentUser.userid));
+    formData.append("uploader", String(this.currentUser._userid));
 
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {

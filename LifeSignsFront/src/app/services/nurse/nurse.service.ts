@@ -23,8 +23,8 @@ export class NurseService {
   constructor(private http:HttpClient) { }
 
 
-  public getPhoto(user:User): Observable<Photo>{
-    let url = this.urlBase + "/photo/" + user.userid ;
+  public getPhoto(user:any): Observable<Photo>{
+    let url = this.urlBase + "/photo/" + user._userid ;
     return this.http.get<Photo>(url, this.httpHead);
   }
 
@@ -37,7 +37,7 @@ export class NurseService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    return this.http.post<Object>(url, photo, httpHead);
+    return this.http.post<String>(url, photo, httpHead);
   }
 
   public sendPatientChart(chart:Chart): Observable<Object>{

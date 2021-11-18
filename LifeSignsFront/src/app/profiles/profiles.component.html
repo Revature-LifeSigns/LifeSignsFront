@@ -18,12 +18,12 @@
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
     <div class="col-9 card">
-        <h2 id="greeting card-header">Welcome, {{ currentUser.role | titlecase }} {{ currentUser.lastname | titlecase }}</h2>
+        <h2 id="greeting card-header">Welcome, {{ this.currentUser._role | titlecase }} {{ this.currentUser._lname | titlecase }}</h2>
         <div class="row">
             <div class="col-6">
 
-                <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="">
-                <img src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}" />
+                <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="" *ngIf="currentUser._image == null">
+                <img src={{currentUser._image}} alt="{{currentUser._fname + ' ' + currentUser._lname}}" width= 400 *ngIf="currentUser._image != null"/>
                 <form [formGroup] = "photoGroup" form-control = "formGroup">
                     <input #file class = "" type="file" formControlName="newPhoto" (change)="updatePhoto($event)"/>
                     <!-- <button class = "btn btn-primary" type = "submit">Change Photo</button> -->
@@ -41,8 +41,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.lastname | titlecase}}</td>
-                            <td>{{ currentUser.firstname | titlecase}}</td>
+                            <td>{{ currentUser._lname | titlecase}}</td>
+                            <td>{{ currentUser.f_name | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -53,8 +53,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.role | titlecase}}</td>
-                            <td>{{ currentUser.specialty | titlecase}}</td>
+                            <td>{{ currentUser._role | titlecase}}</td>
+                            <td>{{ currentUser._specialty | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -65,13 +65,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.dob }}</td>
-                            <td>{{ currentUser.covidStatus }}</td>
+                            <td>{{ currentUser._dob }}</td>
+                            <td>{{ currentUser._covidstatus }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div id="address">
-                    <div>{{ currentUser.address }}</div>
+                    <div>{{ currentUser._address }}</div>
                     <!-- <div>Address Line 2</div> -->
                 </div>
             </div>
@@ -80,7 +80,7 @@
         <div id="aboutContainer">
             <h2>About me</h2>
             <p>
-                {{ currentUser.aboutMe }}
+                {{ currentUser._about }}
             </p>
             <!-- <h5>Update About Me</h5> -->
             <form [formGroup] = "aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
