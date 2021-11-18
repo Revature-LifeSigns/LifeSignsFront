@@ -13,13 +13,13 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
-          <li *ngIf="isUserLoggedIn._role != 'admin'" class="nav-item">
+          <li *ngIf="isUserLoggedIn.role != 'admin'" class="nav-item">
             <a class="nav-link" routerLink="/profiles">Profiles</a>
           </li>
-          <li *ngIf="isUserLoggedIn._role != 'admin'" class="nav-item">
+          <li *ngIf="isUserLoggedIn.role != 'admin'" class="nav-item">
             <a class="nav-link" routerLink="/charts">Charts</a>
           </li>
-          <li *ngIf="isUserLoggedIn._role != 'admin'" class="nav-item">
+          <li *ngIf="isUserLoggedIn.role != 'admin'" class="nav-item">
             <a class="nav-link disabled" href="#">Chat</a>
           </li>
         </ul>
