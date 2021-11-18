@@ -50,22 +50,22 @@ export class LoginComponent implements OnInit {
       )
       .subscribe((loginResp: any) => {
         if (loginResp) {
-          const userLogin = new User(
-            loginResp.role,
-            loginResp.username,
-            loginResp.pwd,
-            loginResp.email,
-            loginResp.firstName,
-            loginResp.lastName,
-            loginResp.dob,
-            loginResp.address,
-            loginResp.profile_image,
-            loginResp.aboutMe,
-            loginResp.viewPreference,
-            loginResp.specialty,
-            loginResp.covidStatus,
-            loginResp.userid
-          );
+          const userLogin:User = {
+            role: loginResp.role,
+            username: loginResp.username,
+            password: loginResp.pwd,
+            email: loginResp.email,
+            firstname: loginResp.firstName,
+            lastname: loginResp.lastName,
+            dob: loginResp.dob,
+            address: loginResp.address,
+            image: loginResp.profile_image,
+            aboutMe: loginResp.aboutMe,
+            viewPref: loginResp.viewPreference,
+            specialty: loginResp.specialty,
+            covidStatus: loginResp.covidStatus,
+            userid: loginResp.userid
+          };
           this.userService.userLoginStatus(userLogin);
           console.log(this.userService.getLoggedInUser());
           this.invalidLogin = false;
