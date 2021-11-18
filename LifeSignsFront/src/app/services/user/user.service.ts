@@ -33,7 +33,8 @@ export class UserService {
     return this.http.post<User>(this.urlBase + "/login", user, this.httpHead);
   }
 
-  public updateUserProfile(user:any): Observable<User>{
+  public updateUserProfile(user:User): Observable<User>{
+    console.log(user)
     let url = this.urlBase + "/user/update/" + user.userid;
     return this.http.patch<User>(url, user, this.httpHead);
   }
@@ -52,7 +53,7 @@ export class UserService {
   getLoggedInUser():User {
     // return JSON.parse(localStorage.getItem('currentUser'));
     // return this.loggedInUser;
-    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser')!);
+    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
     return this.loggedInUser;
 
   }
@@ -69,5 +70,10 @@ export class UserService {
   setUserToCurrent() {
     // this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
+  }
+
+  public updateUserPref(user:any): Observable<User>{
+    let url = this.urlBase + "/user/update/" + user.userid;
+    return this.http.patch<User>(url, user, this.httpHead);
   }
 }
