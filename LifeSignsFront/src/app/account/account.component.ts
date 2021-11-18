@@ -1,6 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
@@ -11,8 +10,17 @@ import { User } from '../services/util/user';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit, OnChanges {
-  currentUser!:User;
-  hiddenPwd!:string;
+  storedUser!:string;
+  currentUser!:any;
+  street1!:string;
+  street2!:string;
+  city!:string;
+  state!:string;
+  zip!:string;
+
+  emailForm = new FormGroup({
+    newEmail: new FormControl('')
+  });
 
   passwordForm = new FormGroup({
     username: new FormControl(''),
@@ -21,48 +29,71 @@ export class AccountComponent implements OnInit, OnChanges {
     passwordAgain: new FormControl('')
   });
 
-  constructor(private modalServ:NgbModal, private userServ:UserService, private router: Router) { }
+  constructor(private modalServ:NgbModal, private userServ:UserService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.userServ.getLoggedInUser();
-    console.log(this.currentUser);
+    this.storedUser = window.localStorage.getItem('currentUser')!;
+    this.currentUser = JSON.parse(this.storedUser);
+    let address:string[] = this.currentUser._address.split(';');
+    console.log(address);
+    this.street1 = address[0];
+    this.street2 = address[1];
+    this.city = address[2];
+    this.state = address[3];
+    this.zip = address[4];
   }
 
   ngOnChanges(): void {
-    this.currentUser = this.userServ.getLoggedInUser();
-    console.log(this.currentUser);
+
   }
 
   open(content:any) {
     this.modalServ.open(content);
   }
 
+  updateEmail(emails:FormGroup) {
+    let message: any = document.getElementById('message');
+    if (this.validateEmail(emails.get('newEmail')!.value)) {
+
+    } else {
+      // Invalid email
+      message.setAttribute("style", "color:red");
+      message.innerHTML = 'Invalid email. Please try again.'
+    }
+  }
+
   updatePwd(passwords:FormGroup) {
-    let errMess: any = document.getElementById('errorMessage');
-    if (this.validatePwd(passwords.get('currentPassword')!.value),
-        this.validatePwd(passwords.get('newPassword')!.value),
-        this.validatePwd(passwords.get('passwordAgain')!.value)) {
+    let message: any = document.getElementById('message');
+    if (this.validatePwd(passwords.get('currentPassword')!.value) &&
+        this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
         passwords.get('username')!.setValue(this.currentUser.username);
         this.userServ.updatePassword(JSON.stringify(passwords.value)).subscribe(
           response => {
             if (response) {
-              errMess.innerHTML = '';
-              document.getElementById('successMessage')!.innerHTML = 'Successfully changed password.'
-              this.router.navigateByUrl('/account-details');
+              message.setAttribute("style", "color:mediumseagreen");
+              message.innerHTML = 'Successfully changed password.';
             } else {
-              errMess.innerHTML = 'Current password does not match. Please try again.';
+              message.setAttribute("style", "color:red");
+              message.innerHTML = 'Current password does not match. Please try again.';
             }
           }
         );
       } else {
         // New password and confirmation don't match
-        errMess.innerHTML = 'Passwords do not match. Please try again.'
+        message.setAttribute("style", "color:red");
+        message.innerHTML = 'Passwords do not match. Please try again.'
       }
     } else {
       // Invalid fields
-      errMess.innerHTML = 'Invalid password. Please try again.'
+      message.setAttribute("style", "color:red");
+      message.innerHTML = 'Invalid password. Please try again.'
     }
+  }
+
+  private validateEmail(theEmail: string) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(theEmail).toLowerCase());
   }
 
   private validatePwd(thePwd: string) {
