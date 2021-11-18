@@ -29,25 +29,26 @@ export class AdminComponent implements OnInit {
   constructor(private modalServ: NgbModal, private router: Router, private adminServ: AdminService, private userServ: UserService) { }
 
   ngOnInit(): void {
-    let currentUser = this.userServ.getLoggedInUser();
-    // if(!currentUser || currentUser.role.toLocaleLowerCase() != "admin" )
-    //   this.router.navigate(["/home"]);
-    // else{
+    let currentUser:User = this.userServ.getLoggedInUser();
+    if(!currentUser || currentUser.role.toLocaleLowerCase() != "admin" )
+      this.router.navigate(["/home"]);
+    else{
       this.adminServ.getAllUsers().subscribe(
         response => {
           if(response != null){
             this.users = response;
+            console.log(this.users)
             this.sortUsers();
           }
       });
-  
+
       this.adminServ.getAllUnits().subscribe(
         response => {
           if(response != null){
             this.units = response;
           }
       });
-    // }
+    }
   }
 
   assignUnit(unitForm:FormGroup){

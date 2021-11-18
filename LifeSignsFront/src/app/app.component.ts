@@ -24,9 +24,6 @@ export class AppComponent{
     let currentUser:any = this.userService.getLoggedInUser();
     return currentUser;
   }
-  get userLoggedIn(){
-    return this.userService.getLoggedInUser();
-  }
   // ModeService is injected and toggleMode() is being called at each click event
   toggle(){
     this.modeService.toggleMode();
