@@ -23,7 +23,6 @@ export class User {
     public get username() {
         return this._username;
     }
-
     public set username(theUsername:string) {
         if (this.validateUsername(theUsername)) {
             this._username = theUsername;
