@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
+import { AdminService } from '../services/admin/admin.service';
+import { StringLiteralLike } from 'typescript';
 
 @Component({
   selector: 'app-profiles',
@@ -23,8 +25,9 @@ export class ProfilesComponent implements OnInit {
   isNurse:boolean = false;
 
   file: any;
+  unitName:String;
 
-  constructor(private userServ:UserService, private nurseServ:NurseService) { }
+  constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
@@ -36,6 +39,7 @@ export class ProfilesComponent implements OnInit {
     }
     console.log(this.currentUser);
     this.loadPhoto();
+    this.getAssignedUnit();
   }
 
   loadPhoto(){
@@ -54,7 +58,6 @@ export class ProfilesComponent implements OnInit {
     this.file = event.target.files[0];
     let formData = new FormData();
     formData.append("file", this.file, this.photoGroup.get("newPhoto")!.value);
-
     formData.append("uploader", String(this.currentUser.userid));
 
     this.nurseServ.uploadPhoto(formData).subscribe(
@@ -63,6 +66,16 @@ export class ProfilesComponent implements OnInit {
       }
     );
   }
+
+  getAssignedUnit(){
+    let currentUser:any = this.userServ.getLoggedInUser();
+    this.adminServ.getUnit(currentUser._userid).subscribe(
+      response =>{
+        this.unitName = response.unit;
+      }
+    );
+}
+
 
   updateAboutMe() {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;

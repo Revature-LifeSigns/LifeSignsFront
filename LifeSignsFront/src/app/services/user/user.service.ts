@@ -52,7 +52,8 @@ export class UserService {
   getLoggedInUser():User {
     // return JSON.parse(localStorage.getItem('currentUser'));
     // return this.loggedInUser;
-    return this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+    return this.loggedInUser;
 
   }
 
