@@ -28,7 +28,9 @@ export class ProfilesComponent implements OnInit {
   charts:Chart[];
 
   file: any;
+
   unitName:string = "";
+
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -67,6 +69,7 @@ export class ProfilesComponent implements OnInit {
     formData.append("file", this.file);
     formData.append("uploader", String(this.currentUser.userid));
 
+
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);
@@ -92,4 +95,6 @@ export class ProfilesComponent implements OnInit {
       }
     )
   }
+
+
 }

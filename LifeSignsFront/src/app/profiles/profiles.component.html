@@ -43,8 +43,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.lastname | titlecase}}</td>
-                            <td>{{ currentUser.firstname | titlecase}}</td>
+                            <td>{{ currentUser._lname | titlecase}}</td>
+                            <td>{{ currentUser.f_name | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -59,6 +59,7 @@
                             <td>{{ currentUser.role | titlecase}}</td>
                             <td>{{ currentUser.specialty | titlecase}}</td>
                             <td>{{ unitName | titlecase }}</td>
+
                         </tr>
                     </tbody>
                     <thead>
@@ -69,13 +70,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.dob }}</td>
-                            <td>{{ currentUser.covidStatus }}</td>
+                            <td>{{ currentUser._dob }}</td>
+                            <td>{{ currentUser._covidstatus }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div id="address">
-                    <div>{{ currentUser.address }}</div>
+                    <div>{{ currentUser._address }}</div>
                     <!-- <div>Address Line 2</div> -->
                 </div>
             </div>
@@ -84,7 +85,9 @@
         <div id="aboutContainer">
             <h2>About me</h2>
             <p>
+
                 {{ currentUser.about }}
+
             </p>
             <!-- <h5>Update About Me</h5> -->
             <form [formGroup] = "aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
