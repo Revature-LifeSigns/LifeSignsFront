@@ -12,6 +12,7 @@
                     <p><b>Full Name: </b>{{currentUser.firstname | titlecase}} {{currentUser.lastname | titlecase}}</p>
                     <p><b>Date of Birth: </b>{{currentUser.dob | date}}</p>
                     <p *ngIf="street2==' '; else elseBlock"><b>Home Address: </b>
+
                         <br>
                         {{street1}}
                         <br>
@@ -41,6 +42,7 @@
                     <button class="modal-btn" (click)="open(password)"><b>UPDATE PASSWORD</b></button>
                     <hr>
                 </div>
+
             </div>
             <div class="col"></div>
         </div>
