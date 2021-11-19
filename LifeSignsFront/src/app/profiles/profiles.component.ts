@@ -25,7 +25,7 @@ export class ProfilesComponent implements OnInit {
   currentUser!:any;
   isNurse:boolean = false;
 
-  charts:Chart[];
+  charts!:Chart[];
 
   file: any;
   unitName:string = "";

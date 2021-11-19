@@ -34,7 +34,7 @@ export class ChartsComponent implements OnInit {
   // adding for redirect to patient's id once logged in
   patientID$: Observable<number>;
   isVisible: boolean = false;
-  currentUser: User;
+  currentUser!: User;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
@@ -51,12 +51,12 @@ export class ChartsComponent implements OnInit {
   }
 
   public submitChart(chart: FormGroup) {
-    
+
     let formData = new FormData();
     formData.append("doctor", "unassign");
-    formData.append("nurse", null);//we need to add current user.
-    
-    
+    formData.append("nurse", JSON.stringify(this.currentUser));//we need to add current user.
+
+
     let formValues = this.chartGroup.value;
     //type formKey = 'hasSymptoms' | 'isExposed' | 'hasTraveled';
     for (let key in formValues) {
@@ -70,7 +70,7 @@ export class ChartsComponent implements OnInit {
     this.nurseServ.sendPatientChart(formDataString).subscribe(
 
       (response) => {
-        
+
         console.log(response);
         window.alert('your form has been submitted!');
       },
