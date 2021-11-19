@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { NurseService } from '../services/nurse/nurse.service';
+import { UserService } from '../services/user/user.service';
 import { Chart } from '../services/util/chart';
+import { User } from '../services/util/user';
 
 @Component({
   selector: 'app-charts',
@@ -32,14 +34,16 @@ export class ChartsComponent implements OnInit {
   // adding for redirect to patient's id once logged in
   patientID$: Observable<number>;
   isVisible: boolean = false;
+  currentUser: User;
 
-  constructor(private route: ActivatedRoute, private nurseServ: NurseService) {
+  constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
       map((params) => params['patientID'])
     );
   }
 
   ngOnInit(): void {
+    this.currentUser = this.userServ.getLoggedInUser();
     this.patientID$.pipe().subscribe((id) => {
       console.log(id);
       // call api to retrieve patient's chart data
@@ -47,8 +51,29 @@ export class ChartsComponent implements OnInit {
   }
 
   public submitChart(chart: FormGroup) {
-    this.nurseServ.sendPatientChart(chart.value).subscribe(
-      (response) => {},
+    
+    let formData = new FormData();
+    formData.append("doctor", "unassign");
+    formData.append("nurse", null);//we need to add current user.
+    
+    
+    let formValues = this.chartGroup.value;
+    //type formKey = 'hasSymptoms' | 'isExposed' | 'hasTraveled';
+    for (let key in formValues) {
+      formData.append(key, formValues[key]);
+      //console.log(key + value)
+
+    }
+
+    let formDataString = JSON.stringify(formData);
+
+    this.nurseServ.sendPatientChart(formDataString).subscribe(
+
+      (response) => {
+        
+        console.log(response);
+        window.alert('your form has been submitted!');
+      },
       (error) => {
         console.warn('Error Submitting Chart', error);
       }

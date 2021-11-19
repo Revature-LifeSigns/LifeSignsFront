@@ -40,8 +40,8 @@ export class NurseService {
     return this.http.post<String>(url, photo, httpHead);
   }
 
-  public sendPatientChart(chart:Chart): Observable<Object>{
+  public sendPatientChart(chart:String): Observable<Chart>{
     let url = this.urlBase + "/chart/insert" ;
-    return this.http.post<String>(url, chart, this.httpHead);
+    return this.http.post<Chart>(url, chart, this.httpHead);
   }
 }

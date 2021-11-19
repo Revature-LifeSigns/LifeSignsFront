@@ -28,7 +28,7 @@ export class Survey implements OnInit {
   };
 
   today = new Date().getDay();
-  dayToDisplay = 1;
+  dayToDisplay = 4;
   hasDisplayed = false;
 
   //Constructor
@@ -36,7 +36,7 @@ export class Survey implements OnInit {
 
   //Methods
   ngOnInit(): void {
-
+    //console.log(this.userServ.getLoggedInUser());
     if (this.today !== this.dayToDisplay) {
       this.hasDisplayed = false;
     }
