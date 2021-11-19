@@ -43,8 +43,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser._lname | titlecase}}</td>
-                            <td>{{ currentUser.f_name | titlecase}}</td>
+                            <td>{{ currentUser.lastname | titlecase}}</td>
+                            <td>{{ currentUser.firstname | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -70,13 +70,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser._dob }}</td>
-                            <td>{{ currentUser._covidstatus }}</td>
+                            <td>{{ currentUser.dob }}</td>
+                            <td>{{ currentUser.covidStatus }}</td>
                         </tr>
                     </tbody>
                 </table>
                 <div id="address">
-                    <div>{{ currentUser._address }}</div>
+                    <div>{{ currentUser.address }}</div>
                     <!-- <div>Address Line 2</div> -->
                 </div>
             </div>

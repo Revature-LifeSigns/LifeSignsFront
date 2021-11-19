@@ -32,6 +32,7 @@ export class ProfilesComponent implements OnInit {
   unitName:string = "";
 
 
+
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
   ngOnInit(): void {
@@ -95,6 +96,4 @@ export class ProfilesComponent implements OnInit {
       }
     )
   }
-
-
 }
