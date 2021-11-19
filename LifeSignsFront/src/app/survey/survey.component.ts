@@ -20,6 +20,8 @@ export class Survey implements OnInit {
     hasTraveled: new FormControl('', Validators.required),
   });
 
+
+
   covidSurvey: covidSurvey = {
     userId: null,
     hasSymptoms: false,
@@ -27,9 +29,9 @@ export class Survey implements OnInit {
     hasTraveled: false,
   };
 
+  hasDisplayed: boolean;
   today = new Date().getDay();
   dayToDisplay = 4;
-  hasDisplayed = false;
 
   //Constructor
   constructor(private userServ: UserService, private surveyServ: SurveyService) {}
@@ -37,12 +39,14 @@ export class Survey implements OnInit {
   //Methods
   ngOnInit(): void {
     //console.log(this.userServ.getLoggedInUser());
+    this.hasDisplayed = false;
     if (this.today !== this.dayToDisplay) {
       this.hasDisplayed = false;
     }
 
     if (this.today === this.dayToDisplay && this.hasDisplayed === false) {
       this.displayModal();
+      this.hasDisplayed = true;
     }
   }
 
