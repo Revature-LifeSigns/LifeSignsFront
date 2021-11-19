@@ -70,4 +70,9 @@ export class UserService {
     // this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
   }
+
+  public updateUserPref(user:any): Observable<User>{
+    let url = this.urlBase + "/user/update/" + user.userid;
+    return this.http.patch<User>(url, user, this.httpHead);
+  }
 }

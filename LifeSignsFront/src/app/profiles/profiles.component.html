@@ -1,11 +1,11 @@
-<div id="pageContainer row">
+<div appMode class = "toggleContainer" id="pageContainer row">
     <div class="d-flex">
     <div class="quick-nav col-3">
         <div>
         <h2>QuickNav</h2>
         <ul class="nav quick-nav flex-column col-12">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Chart Options</a>
+            <li *ngIf="isNurse" class="nav-item">
+                <a class="nav-link active" RouterLink="/charts">New Chart</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Discussion Board</a>
@@ -17,22 +17,24 @@
         </div>
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
-    <div class="col-9 card">
-        <h2 id="greeting card-header">Welcome, {{ this.currentUser._role | titlecase }} {{ this.currentUser._lname | titlecase }}</h2>
+    <div appMode class="col-9 card">
+        <h2 id="greeting card-header">Welcome, {{ this.currentUser.role | titlecase }} {{ this.currentUser.lastname | titlecase }}</h2>
         <div class="row">
             <div class="col-6">
 
-                <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="" *ngIf="currentUser._image == null">
-                <img src={{currentUser._image}} alt="{{currentUser._fname + ' ' + currentUser._lname}}" width= 400 *ngIf="currentUser._image != null"/>
+                <img class= "test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt="" *ngIf="currentUser.image == null">
+                <img src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}" width= 400 *ngIf="currentUser.image != null"/>
                 <form [formGroup] = "photoGroup" form-control = "formGroup">
-                    <input #file class = "" type="file" formControlName="newPhoto" (change)="updatePhoto($event)" *ngIf="currentUser._image == null"/>
+
+                    <input #file class = "" type="file" formControlName="newPhoto" (change)="updatePhoto($event)" *ngIf="currentUser.image == null"/>
+
                     <!-- <button class = "btn btn-primary" type = "submit">Change Photo</button> -->
                 </form>
 
 
             </div>
             <div class="col-6">
-                <table class="table">
+                <table appMode class="table">
                     <thead>
                         <tr>
                             <th scope="col">Last</th>
@@ -49,12 +51,15 @@
                         <tr>
                             <th scope="col">Role</th>
                             <th scope="col">Specialty</th>
+                            <th scope="col">Unit</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser._role | titlecase}}</td>
-                            <td>{{ currentUser._specialty | titlecase}}</td>
+                            <td>{{ currentUser.role | titlecase}}</td>
+                            <td>{{ currentUser.specialty | titlecase}}</td>
+                            <td>{{ unitName | titlecase }}</td>
+
                         </tr>
                     </tbody>
                     <thead>
@@ -80,7 +85,9 @@
         <div id="aboutContainer">
             <h2>About me</h2>
             <p>
-                {{ currentUser._about }}
+
+                {{ currentUser.about }}
+
             </p>
             <!-- <h5>Update About Me</h5> -->
             <form [formGroup] = "aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
@@ -88,9 +95,46 @@
                     <textarea class="form-control" placeholder="Add about me information here.." id="floatingTextarea" formControlName="aboutMe"></textarea>
                     <label for="floatingTextarea">Edit About Me</label>
                   </div>
-                <button class = "btn btn-primary" type = "submit">Update</button>
+                <button class = "updateBtn btn" type = "submit">Update</button>
             </form>
+        </div>
+         <!-- Chart List -->
+         <br>
+         <h5>Your Charts</h5>
+        <div class="list-group">
+            <a *ngFor="let chart of charts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <li class="list-group-item">Patient: {{ chart.firstname | titlecase }} {{ chart.lastname | titlecase }}</li>
+                <!-- <li class="list-group-item">Doctor: {{ chart.doctor | titlecase }}</li>
+                <li class="list-group-item">Nurse: {{ chart.nurse | titlecase }}</li> -->
+            </a>
         </div>
     </div>
 
+
+
 </div>
+
+<!-- Pop-ups -->
+
+<!-- Covid Survey -->
+<app-survey></app-survey>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-charts></app-charts>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -5,6 +5,7 @@ import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
 import { AdminService } from '../services/admin/admin.service';
 import { StringLiteralLike } from 'typescript';
+import { Chart } from "../services/util/chart";
 
 @Component({
   selector: 'app-profiles',
@@ -24,14 +25,18 @@ export class ProfilesComponent implements OnInit {
   currentUser!:any;
   isNurse:boolean = false;
 
+  charts:Chart[];
+
   file: any;
-  unitName:String = "";
+
+  unitName:string = "";
+
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
-    if(this.currentUser.role === 'nurse') {
+    if(this.currentUser._role === 'nurse') {
       this.isNurse = true;
     }
     else {
@@ -40,6 +45,11 @@ export class ProfilesComponent implements OnInit {
     console.log(this.currentUser);
     this.loadPhoto();
     this.getAssignedUnit();
+    this.nurseServ.getAllCharts().subscribe(
+      response => {
+        this.charts = response;
+      }
+    )
   }
 
   loadPhoto(){
@@ -57,7 +67,8 @@ export class ProfilesComponent implements OnInit {
     this.file = event.target.files[0];
     let formData = new FormData();
     formData.append("file", this.file);
-    formData.append("uploader", String(this.currentUser._userid));
+    formData.append("uploader", String(this.currentUser.userid));
+
 
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
@@ -68,7 +79,7 @@ export class ProfilesComponent implements OnInit {
 
   getAssignedUnit(){
     let currentUser:any = this.userServ.getLoggedInUser();
-    this.adminServ.getUnit(currentUser._userid).subscribe(
+    this.adminServ.getUnit(currentUser.userid).subscribe(
       response =>{
         this.unitName = response.unit;
       }
