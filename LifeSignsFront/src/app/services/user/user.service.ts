@@ -52,7 +52,7 @@ export class UserService {
   getLoggedInUser():User {
     // return JSON.parse(localStorage.getItem('currentUser'));
     // return this.loggedInUser;
-    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser')!);
+    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
     return this.loggedInUser;
 
   }
@@ -69,5 +69,10 @@ export class UserService {
   setUserToCurrent() {
     // this.loggedInUser = new User("", "", "", 0);
     this.userLoggedInStatus = false;
+  }
+
+  public updateUserPref(user:any): Observable<User>{
+    let url = this.urlBase + "/user/update/" + user.userid;
+    return this.http.patch<User>(url, user, this.httpHead);
   }
 }

@@ -11,7 +11,7 @@ import { User } from '../services/util/user';
 })
 export class AccountComponent implements OnInit, OnChanges {
   storedUser!:string;
-  currentUser!:any;
+  currentUser!:User;
   street1!:string;
   street2!:string;
   city!:string;
@@ -34,7 +34,7 @@ export class AccountComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.storedUser = window.localStorage.getItem('currentUser')!;
     this.currentUser = JSON.parse(this.storedUser);
-    let address:string[] = this.currentUser._address.split(';');
+    let address:string[] = this.currentUser.address.split(';');
     console.log(address);
     this.street1 = address[0];
     this.street2 = address[1];

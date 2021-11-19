@@ -28,7 +28,7 @@ export class ProfilesComponent implements OnInit {
   charts:Chart[];
 
   file: any;
-  unitName:String = "";
+  unitName:string = "";
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -54,7 +54,7 @@ export class ProfilesComponent implements OnInit {
     this.nurseServ.getPhoto(this.currentUser as User).subscribe(
       res => {
         console.log(res);
-        this.currentUser.image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
+        this.currentUser._image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
       }
     )
   }
@@ -65,7 +65,7 @@ export class ProfilesComponent implements OnInit {
     this.file = event.target.files[0];
     let formData = new FormData();
     formData.append("file", this.file);
-    formData.append("uploader", String(this.currentUser._userid));
+    formData.append("uploader", String(this.currentUser.userid));
 
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
@@ -76,7 +76,7 @@ export class ProfilesComponent implements OnInit {
 
   getAssignedUnit(){
     let currentUser:any = this.userServ.getLoggedInUser();
-    this.adminServ.getUnit(currentUser._userid).subscribe(
+    this.adminServ.getUnit(currentUser.userid).subscribe(
       response =>{
         this.unitName = response.unit;
       }
@@ -92,6 +92,4 @@ export class ProfilesComponent implements OnInit {
       }
     )
   }
-
-
 }
