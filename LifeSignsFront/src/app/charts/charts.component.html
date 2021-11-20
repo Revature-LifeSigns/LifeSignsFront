@@ -7,11 +7,12 @@
                 <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide
                     Chart Form' : 'Show Chart Form'}}</button>
             </div>
+            <br> <br>
             <div *ngIf="isVisible" class="card" id="chart">
                 <div class="card" id="outbord">
                     <div appMode class="card" id="inbord">
                         <div class="card-header">
-                            <img class="clipb" src="../../assets/img/clipboard.png" style="width:18%; height:25%;">
+                            <img class="clipb" src="../../assets/img/clipboard.png" style="width:35%; height:25%;">
                             <div class="card-heading">Patient Chart</div>
                         </div>
 
