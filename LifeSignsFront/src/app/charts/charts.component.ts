@@ -47,7 +47,7 @@ export class ChartsComponent implements OnInit, DoCheck {
 
   @Input() isEditChart: boolean;
   @Input() chartToEdit:Chart;
-  allowAutoFillChart = true;
+  @Input() allowAutoFillChart: boolean;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
