@@ -9,7 +9,7 @@ import { User } from '../services/util/user';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit, OnChanges {
+export class AccountComponent implements OnInit {
   storedUser!:string;
   currentUser!:User;
   street1!:string;
@@ -18,7 +18,21 @@ export class AccountComponent implements OnInit, OnChanges {
   state!:string;
   zip!:string;
 
+  infoForm = new FormGroup({
+    username: new FormControl(''),
+    firstname: new FormControl(''),
+    lastname: new FormControl(''),
+    dob: new FormControl(''),
+    address: new FormControl(''),
+    street1: new FormControl(''),
+    street2: new FormControl(''),
+    city: new FormControl(''),
+    state: new FormControl(''),
+    zip: new FormControl('')
+  });
+
   emailForm = new FormGroup({
+    username: new FormControl(''),
     newEmail: new FormControl('')
   });
 
@@ -35,16 +49,11 @@ export class AccountComponent implements OnInit, OnChanges {
     this.storedUser = window.localStorage.getItem('currentUser')!;
     this.currentUser = JSON.parse(this.storedUser);
     let address:string[] = this.currentUser.address.split(';');
-    console.log(address);
     this.street1 = address[0];
     this.street2 = address[1];
     this.city = address[2];
     this.state = address[3];
     this.zip = address[4];
-  }
-
-  ngOnChanges(): void {
-
   }
 
   open(content:any) {
@@ -73,6 +82,7 @@ export class AccountComponent implements OnInit, OnChanges {
             if (response) {
               message.setAttribute("style", "color:mediumseagreen");
               message.innerHTML = 'Successfully changed password.';
+              passwords.reset();
             } else {
               message.setAttribute("style", "color:red");
               message.innerHTML = 'Current password does not match. Please try again.';
