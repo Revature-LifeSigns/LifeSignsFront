@@ -85,7 +85,7 @@ export class ChartsComponent implements OnInit {
     }
 
     let formDataString = JSON.stringify(formData);
-
+    console.log(formDataString);
     this.nurseServ.sendPatientChart(formDataString).subscribe(
 
       (response) => {
