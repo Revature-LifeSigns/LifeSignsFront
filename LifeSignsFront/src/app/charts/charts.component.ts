@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UpdateExpression } from 'typescript';
 
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
@@ -20,11 +21,15 @@ export class ChartsComponent implements OnInit {
   nurseList: User[] = [];
 
   chartGroup = new FormGroup({
-    doctor: new FormControl(''),
-    nurse: new FormControl(''),
+    doctor: new FormControl({}),
+    nurse: new FormControl({}),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     dob: new FormControl(''),
+    street: new FormControl(''),
+    city: new FormControl(''),
+    state: new FormControl(''),
+    zipcode: new FormControl(''),
     address: new FormControl(''),
     email: new FormControl(''),
     insuranceId: new FormControl(''),
@@ -37,6 +42,8 @@ export class ChartsComponent implements OnInit {
   patientID$: Observable<number>;
   isVisible: boolean = false;
   currentUser!: User;
+  tempDoc!:User;
+  tempNurse!: User;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
@@ -69,22 +76,32 @@ export class ChartsComponent implements OnInit {
     console.log(this.doctorList);
   }
 
+  onDoctorSelect(doctorid: string){
+
+    this.tempDoc = this.doctorList.find(doctor => {
+      return doctor.userid == doctorid as undefined as number
+    } );
+
+  }
+
+  onNurseSelect(nurseid: string){
+    this.tempNurse = this.nurseList.find(nurse => {
+      return nurse.userid == nurseid as undefined as number
+    } );
+  }
+
   public submitChart(chart: FormGroup) {
+    let addressJoin= chart.get("street").value + "; " + chart.get("city").value + ", " + chart.get("state").value + " " + chart.get("zipcode").value;
+    chart.removeControl("street");
+    chart.removeControl("city");
+    chart.removeControl("state");
+    chart.removeControl("zipCode");
+    chart.patchValue({address: addressJoin});
+    chart.patchValue({nurse: this.tempNurse});
+    chart.patchValue({doctor: this.tempDoc});
 
-    let formData = new FormData();
-    formData.append("doctor", "unassign");
-    formData.append("nurse", JSON.stringify(this.currentUser));//we need to add current user.
-
-
-    let formValues = this.chartGroup.value;
-    //type formKey = 'hasSymptoms' | 'isExposed' | 'hasTraveled';
-    for (let key in formValues) {
-      formData.append(key, formValues[key]);
-      //console.log(key + value)
-
-    }
-
-    let formDataString = JSON.stringify(formData);
+    let formDataString = JSON.stringify(chart.value);
+    console.log(formDataString);
 
     this.nurseServ.sendPatientChart(formDataString).subscribe(
 
