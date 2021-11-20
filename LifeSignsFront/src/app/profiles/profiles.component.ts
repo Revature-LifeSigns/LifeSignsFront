@@ -60,7 +60,7 @@ export class ProfilesComponent implements OnInit {
   loadPhoto(){
     this.nurseServ.getPhoto(this.currentUser as User).subscribe(
       res => {
-        this.currentUser._image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
+        this.currentUser.image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
       }
     )
   }
@@ -71,7 +71,7 @@ export class ProfilesComponent implements OnInit {
     let formData = new FormData();
     formData.append("file", this.file);
     formData.append("uploader", String(this.currentUser.userid));
-
+    console.log(this.currentUser.userid);
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);

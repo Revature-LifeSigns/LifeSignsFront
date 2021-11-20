@@ -46,7 +46,7 @@ export class NurseService {
 
   public updatePatientChart(chart:String): Observable<Chart>{
     let url = this.urlBase + "/chart/update";
-    return this.http.post<Chart>(url, chart, this.httpHead);
+    return this.http.patch<Chart>(url, chart, this.httpHead);
   }
 
   public getAllCharts(): Observable<Chart[]> {

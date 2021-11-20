@@ -68,8 +68,9 @@ export class ChartsComponent implements OnInit, DoCheck {
     if(this.allowAutoFillChart && this.isEditChart && this.chartToEdit) {
       console.log("In Edit Chart " + this.chartToEdit.firstName);
       this.chartGroup = new FormGroup({
-        doctor: new FormControl({}), //need to add current doctor
-        nurse: new FormControl({}), //need to add current nurse
+        chartid: new FormControl(this.chartToEdit.chartid),
+        doctor: new FormControl(this.chartToEdit.doctor),
+        nurse: new FormControl(this.chartToEdit.nurse),
         firstName: new FormControl(this.chartToEdit.firstName),
         lastName: new FormControl(this.chartToEdit.lastName),
         dob: new FormControl(this.chartToEdit.dob),
@@ -82,7 +83,8 @@ export class ChartsComponent implements OnInit, DoCheck {
         insuranceId: new FormControl(this.chartToEdit.insuranceid),
         // room: new FormControl(''),
         diagnosis: new FormControl(this.chartToEdit.diagnosis),
-        notes: new FormControl(this.chartToEdit.notes)
+        notes: new FormControl(this.chartToEdit.notes),
+        treatment: new FormControl(this.chartToEdit.treatment)
       });
       this.allowAutoFillChart = false;
     }
@@ -118,6 +120,10 @@ export class ChartsComponent implements OnInit, DoCheck {
     } );
   }
 
+  public updateChart(chart:FormGroup){
+
+  }
+
   public submitChart(chart: FormGroup) {
     let addressJoin= chart.get("street").value + "; " + chart.get("city").value + ", " + chart.get("state").value + " " + chart.get("zipcode").value;
     chart.removeControl("street");
@@ -125,15 +131,9 @@ export class ChartsComponent implements OnInit, DoCheck {
     chart.removeControl("state");
     chart.removeControl("zipCode");
     chart.patchValue({address: addressJoin});
-    // chart.patchValue({nurse: this.tempNurse});
-    // chart.patchValue({doctor: this.tempDoc});
-    let testUser = this.userServ.getLoggedInUser();
-    chart.patchValue({nurse: testUser});
-    chart.patchValue({doctor: testUser});
+    chart.patchValue({nurse: this.tempNurse});
+    chart.patchValue({doctor: this.tempDoc});
 
-    if(this.isEditChart){
-      chart.patchValue({chartid: this.chartToEdit.chartid});
-    }
 
     let formDataString = JSON.stringify(chart.value);
     console.log(chart.value);
