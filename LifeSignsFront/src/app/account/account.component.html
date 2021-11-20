@@ -9,7 +9,7 @@
             <div class="col-6">
                 <div class="personal">
                     <h4><b>Personal Info</b></h4>
-                    <p><b>Full Name: </b>{{currentUser.firstname | titlecase}} {{currentUser.lastname | titlecase}}</p>
+                    <p><b>Full Name: </b>{{currentUser.firstName | titlecase}} {{currentUser.lastName | titlecase}}</p>
                     <p><b>Date of Birth: </b>{{currentUser.dob | date}}</p>
                     <p *ngIf="street2==' '; else elseBlock"><b>Home Address: </b>
                         <br>
@@ -63,13 +63,13 @@
                     <div class="form-outline">
                         <label class="form-label" for="firstname"><b>First Name: </b></label>
                         <input formControlName="firstname" type="text" class="form-control form-control-lg"
-                            placeholder="Change from '{{currentUser.firstname | titlecase}}'">
+                            placeholder="Change from '{{currentUser.firstName | titlecase}}'">
                     </div>
                     <br>
                     <div class="form-outline">
                         <label class="form-label" for="lastname"><b>Last Name: </b></label>
                         <input formControlName="lastname" type="text" class="form-control form-control-lg"
-                            placeholder="Change from '{{currentUser.lastname | titlecase}}'">
+                            placeholder="Change from '{{currentUser.lastName | titlecase}}'">
                     </div>
                     <br>
                     <div class="form-outline">

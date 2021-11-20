@@ -42,9 +42,12 @@ export class UserService {
     return this.http.post<User[]>(this.urlBase + "/changePassword", passwords, this.httpHead);
   }
 
-
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.urlBase+ "/user", this.httpHead);
+  }
 
   userLoginStatus(user: User) {
+
     this.loggedInUser = user;
     this.userLoggedInStatus = true;
   }

@@ -16,6 +16,8 @@ import { User } from '../services/util/user';
 })
 export class ChartsComponent implements OnInit {
   chartsList: Chart[] = [];
+  doctorList: User[] = [];
+  nurseList: User[] = [];
 
   chartGroup = new FormGroup({
     doctor: new FormControl(''),
@@ -48,6 +50,23 @@ export class ChartsComponent implements OnInit {
       console.log(id);
       // call api to retrieve patient's chart data
     });
+    this.getDoctors();
+  }
+
+  public getDoctors(){
+    this.userServ.getUsers().subscribe(
+      res => {
+        for(let i=0; i<res.length; i++){
+          if(res[i].role == "doctor"){
+            this.doctorList.push(res[i]);
+          }
+          if(res[i].role == 'nurse'){
+            this.nurseList.push(res[i]);
+          }
+        }
+      }
+    )
+    console.log(this.doctorList);
   }
 
   public submitChart(chart: FormGroup) {

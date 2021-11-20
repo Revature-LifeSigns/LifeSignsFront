@@ -18,7 +18,7 @@
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
     <div appMode class="col-9 card">
-        <h2 id="greeting card-header">Welcome, {{ this.currentUser.role | titlecase }} {{ this.currentUser.lastname | titlecase }}</h2>
+        <h2 id="greeting card-header">Welcome, {{ this.currentUser.role | titlecase }} {{ this.currentUser.lastName | titlecase }}</h2>
         <div class="row">
             <div class="col-6">
 
@@ -43,8 +43,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.lastname | titlecase}}</td>
-                            <td>{{ currentUser.firstname | titlecase}}</td>
+                            <td>{{ currentUser.lastName | titlecase}}</td>
+                            <td>{{ currentUser.firstName | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>

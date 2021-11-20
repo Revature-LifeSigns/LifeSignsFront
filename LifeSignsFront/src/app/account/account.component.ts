@@ -20,8 +20,8 @@ export class AccountComponent implements OnInit {
 
   infoForm = new FormGroup({
     username: new FormControl(''),
-    firstname: new FormControl(''),
-    lastname: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
     dob: new FormControl(''),
     address: new FormControl(''),
     street1: new FormControl(''),

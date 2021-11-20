@@ -3,8 +3,8 @@ export interface User {
   username: string;
   password: string;
   email: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   dob: string;
   address: string;
   image: string;
