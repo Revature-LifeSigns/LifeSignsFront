@@ -25,7 +25,7 @@ export class ProfilesComponent implements OnInit {
   currentUser!:any;
   isNurse:boolean = false;
 
-  charts!:Chart[];
+  charts:Chart[] = [];
 
   file: any;
   unitName:string = "";
@@ -50,9 +50,13 @@ export class ProfilesComponent implements OnInit {
     this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
-
-        this.charts = response;
-        console.log(response);
+        for(let i=0; i<response.length; i++){
+          if (response[i].doctor == null || response[i].nurse == null){
+            this.charts.push(response[i]);
+          } else if (response[i].doctor.userid == this.currentUser.userid || response[i].nurse.userid == this.currentUser.userid){
+            this.charts.push(response[i]);
+          }
+        }
       }
     )
     console.log(this.charts);
