@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ import { User } from '../services/util/user';
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css'],
 })
-export class ChartsComponent implements OnInit {
+export class ChartsComponent implements OnInit, DoCheck {
   chartsList: Chart[] = [];
   doctorList: User[] = [];
   nurseList: User[] = [];
@@ -45,8 +45,9 @@ export class ChartsComponent implements OnInit {
   tempDoc!:User;
   tempNurse!: User;
 
-  //Input()
-  isEditChart: boolean;
+  @Input() isEditChart: boolean;
+  @Input() chartToEdit:Chart;
+  allowAutoFillChart = true;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
@@ -61,24 +62,30 @@ export class ChartsComponent implements OnInit {
       // call api to retrieve patient's chart data
     });
     this.getDoctors();
+  }
 
-    this.chartGroup = new FormGroup({
-      doctor: new FormControl({}),
-      nurse: new FormControl({}),
-      firstName: new FormControl("Jim"),
-      lastName: new FormControl(''),
-      dob: new FormControl(''),
-      street: new FormControl(''),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      zipcode: new FormControl(''),
-      address: new FormControl(''),
-      email: new FormControl(''),
-      insuranceId: new FormControl(''),
-      // room: new FormControl(''),
-      diagnosis: new FormControl(''),
-      notes: new FormControl('')
-    });
+  ngDoCheck() {
+    if(this.allowAutoFillChart && this.isEditChart && this.chartToEdit) {
+      console.log("In Edit Chart " + this.chartToEdit.firstName);
+      this.chartGroup = new FormGroup({
+        doctor: new FormControl({}), //need to add current doctor
+        nurse: new FormControl({}), //need to add current nurse
+        firstName: new FormControl(this.chartToEdit.firstName),
+        lastName: new FormControl(this.chartToEdit.lastName),
+        dob: new FormControl(this.chartToEdit.dob),
+        street: new FormControl(""),
+        city: new FormControl(""),
+        state: new FormControl(''),
+        zipcode: new FormControl(''),
+        address: new FormControl(this.chartToEdit.address),
+        email: new FormControl(this.chartToEdit.email),
+        insuranceId: new FormControl(this.chartToEdit.insuranceid),
+        // room: new FormControl(''),
+        diagnosis: new FormControl(this.chartToEdit.diagnosis),
+        notes: new FormControl(this.chartToEdit.notes)
+      });
+      this.allowAutoFillChart = false;
+    }
   }
 
   public getDoctors(){
@@ -118,23 +125,42 @@ export class ChartsComponent implements OnInit {
     chart.removeControl("state");
     chart.removeControl("zipCode");
     chart.patchValue({address: addressJoin});
-    chart.patchValue({nurse: this.tempNurse});
-    chart.patchValue({doctor: this.tempDoc});
+    // chart.patchValue({nurse: this.tempNurse});
+    // chart.patchValue({doctor: this.tempDoc});
+    let testUser = this.userServ.getLoggedInUser();
+    chart.patchValue({nurse: testUser});
+    chart.patchValue({doctor: testUser});
+
+    if(this.isEditChart){
+      chart.patchValue({chartid: this.chartToEdit.chartid});
+    }
 
     let formDataString = JSON.stringify(chart.value);
-    console.log(formDataString);
+    console.log(chart.value);
 
-    this.nurseServ.sendPatientChart(formDataString).subscribe(
+    if(this.isEditChart){
+      this.nurseServ.updatePatientChart(formDataString).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.warn("Error Updating Chart", error);
+        }
+      )
 
-      (response) => {
+    } else {
+      this.nurseServ.sendPatientChart(formDataString).subscribe(
 
-        console.log(response);
-        window.alert('your form has been submitted!');
-      },
-      (error) => {
-        console.warn('Error Submitting Chart', error);
-      }
-    );
+        (response) => {
+
+          console.log(response);
+          window.alert('your form has been submitted!');
+        },
+        (error) => {
+          console.warn('Error Submitting Chart', error);
+        }
+      );
+    }
   }
 
   toggleForm() {

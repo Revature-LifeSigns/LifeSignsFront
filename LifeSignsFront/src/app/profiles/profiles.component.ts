@@ -33,6 +33,9 @@ export class ProfilesComponent implements OnInit {
   @Output()
   isEditChart: boolean = true;
 
+  @Output()
+  chartToEdit: Chart;
+
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
   ngOnInit(): void {
@@ -94,4 +97,14 @@ export class ProfilesComponent implements OnInit {
       }
     )
   }
+
+  getChartToEdit(chart:Chart){
+    this.chartToEdit = chart;
+    console.log(chart);
+  }
+
 }
+
+
+
+

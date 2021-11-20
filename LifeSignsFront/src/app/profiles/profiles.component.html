@@ -99,7 +99,7 @@
          <br>
          <h5>Your Charts</h5>
         <div class="list-group">
-            <a *ngFor="let chart of charts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a *ngFor="let chart of charts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
                 <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName | titlecase }}</li>
                 <li class="list-group-item">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
                 <li class="list-group-item">Nurse: {{ chart.nurse.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
@@ -125,7 +125,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <app-charts></app-charts>
+          <app-charts [isEditChart]="isEditChart" [chartToEdit]="chartToEdit"></app-charts>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
