@@ -32,7 +32,6 @@
                                     </div>
 
                                     <select formControlName= "nurse" class="form-controlform-select shadow-sm mr-3" style="width:35%" #nurseSelect (change)=onNurseSelect(nurseSelect.value)>
-                                      <option>---------</option>
                                       <option *ngIf="currentUser.role == 'nurse'"  value= {{currentUser.userid}}>{{(currentUser.firstName + " " + currentUser.lastName)}}</option>
                                       <option *ngFor="let nurse of nurseList" value = {{nurse.userid}}>{{(nurse.firstName + " " + nurse.lastName)}}</option>
                                     </select>
