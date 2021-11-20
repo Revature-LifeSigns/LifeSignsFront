@@ -40,7 +40,6 @@ export class ProfilesComponent implements OnInit {
     else {
       this.isNurse = false;
     }
-    console.log(this.currentUser);
     this.loadPhoto();
     this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
@@ -53,7 +52,6 @@ export class ProfilesComponent implements OnInit {
   loadPhoto(){
     this.nurseServ.getPhoto(this.currentUser as User).subscribe(
       res => {
-        console.log(res);
         this.currentUser._image = String("http://s3.amazonaws.com/lifesigns/" + res.imageFileName);
       }
     )
@@ -61,7 +59,6 @@ export class ProfilesComponent implements OnInit {
 
   //onChange, create formdata object, then append file
   updatePhoto(event:any) {
-    console.log(event.target.files[0]);
     this.file = event.target.files[0];
     let formData = new FormData();
     formData.append("file", this.file);
@@ -88,7 +85,7 @@ export class ProfilesComponent implements OnInit {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
     this.userServ.updateUserProfile(this.currentUser).subscribe(
       response => {
-        console.log(response);
+
       }
     )
   }

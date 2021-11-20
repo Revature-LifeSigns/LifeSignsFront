@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Nurse } from "../util/nurse";
 import { Chart } from '../util/chart';
 import { User } from '../util/user';
 import { Photo } from '../util/photo';
@@ -11,8 +10,8 @@ import { Photo } from '../util/photo';
 })
 export class NurseService {
 
-  private urlBase = "http://localhost:9025/LifeSigns";
-  // private urlBase = "http://ec2-18-116-241-177.us-east-2.compute.amazonaws.com:9025/LifeSigns";
+  // private urlBase = "http://localhost:9025/LifeSigns";
+  private urlBase = "http://ec2-18-116-241-177.us-east-2.compute.amazonaws.com:9025/LifeSigns";
   private httpHead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

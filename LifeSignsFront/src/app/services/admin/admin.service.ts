@@ -8,8 +8,8 @@ import { User } from '../util/user';
   providedIn: 'root'
 })
 export class AdminService {
-  private host = "localhost";
-  // private host = "ec2-18-116-241-177.us-east-2.compute.amazonaws.com";
+  // private host = "localhost";
+  private host = "ec2-18-116-241-177.us-east-2.compute.amazonaws.com";
   private port = "9025"
   private userUrl = `http://${this.host}:${this.port}/LifeSigns/user`;
   private adminUrl = `http://${this.host}:${this.port}/LifeSigns/admin`;
