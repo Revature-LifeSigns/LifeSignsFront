@@ -100,9 +100,9 @@
          <h5>Your Charts</h5>
         <div class="list-group">
             <a *ngFor="let chart of charts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <li class="list-group-item">Patient: {{ chart.firstname | titlecase }} {{ chart.lastname | titlecase }}</li>
-                <!-- <li class="list-group-item">Doctor: {{ chart.doctor | titlecase }}</li>
-                <li class="list-group-item">Nurse: {{ chart.nurse | titlecase }}</li> -->
+                <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName | titlecase }}</li>
+                <li class="list-group-item">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                <li class="list-group-item">Nurse: {{ chart.nurse.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
             </a>
         </div>
     </div>

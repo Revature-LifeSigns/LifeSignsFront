@@ -23,7 +23,7 @@ export class ChartsComponent implements OnInit {
   chartGroup = new FormGroup({
     doctor: new FormControl({}),
     nurse: new FormControl({}),
-    firstName: new FormControl(''),
+    firstName: new FormControl(),
     lastName: new FormControl(''),
     dob: new FormControl(''),
     street: new FormControl(''),
@@ -45,6 +45,9 @@ export class ChartsComponent implements OnInit {
   tempDoc!:User;
   tempNurse!: User;
 
+  //Input()
+  isEditChart: boolean;
+
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
       map((params) => params['patientID'])
@@ -58,6 +61,24 @@ export class ChartsComponent implements OnInit {
       // call api to retrieve patient's chart data
     });
     this.getDoctors();
+
+    this.chartGroup = new FormGroup({
+      doctor: new FormControl({}),
+      nurse: new FormControl({}),
+      firstName: new FormControl("Jim"),
+      lastName: new FormControl(''),
+      dob: new FormControl(''),
+      street: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zipcode: new FormControl(''),
+      address: new FormControl(''),
+      email: new FormControl(''),
+      insuranceId: new FormControl(''),
+      // room: new FormControl(''),
+      diagnosis: new FormControl(''),
+      notes: new FormControl('')
+    });
   }
 
   public getDoctors(){

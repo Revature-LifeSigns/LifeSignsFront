@@ -13,6 +13,7 @@ export interface User {
   specialty: string;
   covidStatus: string;
   userid?: number;
+  profile_image?: null;
 }
 
 

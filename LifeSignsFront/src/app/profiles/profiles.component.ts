@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
@@ -30,6 +30,9 @@ export class ProfilesComponent implements OnInit {
   file: any;
   unitName:string = "";
 
+  @Output()
+  isEditChart: boolean = true;
+
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
   ngOnInit(): void {
@@ -45,8 +48,10 @@ export class ProfilesComponent implements OnInit {
     this.nurseServ.getAllCharts().subscribe(
       response => {
         this.charts = response;
+        console.log(response);
       }
     )
+    console.log(this.charts);
   }
 
   loadPhoto(){
