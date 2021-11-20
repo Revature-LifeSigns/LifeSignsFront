@@ -84,7 +84,6 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('currentUser', JSON.stringify(userLogin));
               this.router.navigate(['/admin']);
               // user session
-              localStorage.setItem('currentUser', JSON.stringify(user));
             } else {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
