@@ -120,9 +120,7 @@ export class ChartsComponent implements OnInit, DoCheck {
     } );
   }
 
-  public updateChart(chart:FormGroup){
 
-  }
 
   public submitChart(chart: FormGroup) {
     let addressJoin= chart.get("street").value + "; " + chart.get("city").value + ", " + chart.get("state").value + " " + chart.get("zipcode").value;

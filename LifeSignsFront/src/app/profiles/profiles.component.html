@@ -101,8 +101,10 @@
         <div class="list-group">
             <a *ngFor="let chart of charts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
                 <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName | titlecase }}</li>
-                <li class="list-group-item">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
-                <li class="list-group-item">Nurse: {{ chart.nurse.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                <li class="list-group-item"*ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                <li class="list-group-item"*ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName | titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
+                <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
             </a>
         </div>
     </div>

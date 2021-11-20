@@ -50,6 +50,7 @@ export class ProfilesComponent implements OnInit {
     this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
+
         this.charts = response;
         console.log(response);
       }
