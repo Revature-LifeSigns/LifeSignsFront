@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, FormGroup } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs';
 import { NurseService } from '../services/nurse/nurse.service';
@@ -78,11 +79,61 @@ describe('ChartsComponent', () => {
       declarations: [ ChartsComponent ]
     })
     .compileComponents();
+    fixture = TestBed.createComponent(ChartsComponent);
+    component = fixture.debugElement.componentInstance;
   });
 
   it('should be created', () => {
-    const fixture = TestBed.createComponent(ChartsComponent);
-    const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
+  });
+
+  it('should not show chart', ()=> {
+    expect(component.isVisible).toBeFalsy();
+  });
+
+  it('should toggle form', ()=> {
+    let spyOnMethod = spyOn(component, "toggleForm").and.callThrough();
+    component.toggleForm();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should return a list of doctors', ()=>{
+    let spyOnMethod = spyOn(component, "getDoctors").and.callThrough();
+    component.getDoctors();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should invoke chart submission', ()=>{
+    let spyOnMethod = spyOn(component, "submitChart").and.callThrough();
+    component.submitChart(new FormGroup({
+      doctor: new FormControl({}),
+      nurse: new FormControl({}),
+      firstName: new FormControl(),
+      lastName: new FormControl(''),
+      dob: new FormControl(''),
+      street: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zipcode: new FormControl(''),
+      address: new FormControl(''),
+      email: new FormControl(''),
+      insuranceId: new FormControl(''),
+      diagnosis: new FormControl(''),
+      notes: new FormControl(''),
+      treatment: new FormControl('')
+    }));
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should call onDoctorSelect()', ()=> {
+    let spyOnMethod = spyOn(component, "onDoctorSelect").and.callThrough();
+    component.onDoctorSelect('');
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should call onNurseSelect()', ()=> {
+    let spyOnMethod = spyOn(component, "onNurseSelect").and.callThrough();
+    component.onNurseSelect('');
+    expect(spyOnMethod).toHaveBeenCalled();
   });
 });

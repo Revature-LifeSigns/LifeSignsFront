@@ -16,6 +16,23 @@ describe('LoginComponent', () => {
     password: new FormControl('admin')
   });
 
+  const loggedInUser: User = {
+    role: 'admin',
+    username: "admin",
+    password: "",
+    email: "",
+    firstName: "Admin",
+    lastName: "User",
+    dob: "",
+    address: "",
+    image: "",
+    aboutMe: "",
+    specialty: "",
+    viewPref: false,
+    covidStatus: "",
+    userid: 1
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -41,6 +58,6 @@ describe('LoginComponent', () => {
 
   it('should login successfully', ()=> {
     component.userLogin(loginForm);
-    
+    expect(component.invalidLogin).toBeTruthy();
   });
 });

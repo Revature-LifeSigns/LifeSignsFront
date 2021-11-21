@@ -76,5 +76,25 @@ describe('UserService', () => {
     req.flush(dummyUser);
   })
 
+  it('should have getUsers() return response', () => {
+    service.getUsers().subscribe(response => {
+      expect(response.toString().length).toBeGreaterThan(1);
+    })
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user");
+    expect(req.request.method).toBe("GET");
+  });
+
+  it('should have local storage empty on logout', () => {
+    service.logoutUser();
+    expect(localStorage.length).toBe(0);
+  });
+
+  it('should have updateUserPref() return response', () => {
+    service.updateUserPref(dummyUser).subscribe(response => {
+      expect(response.viewPref).toBeFalsy();
+    })
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user/update/1");
+    expect(req.request.method).toBe("PATCH");
+  });
 });
 
