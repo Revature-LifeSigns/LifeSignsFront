@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user/user.service';
 
@@ -11,14 +12,6 @@ describe('AccountComponent', () => {
   let modalServ: NgbModal;
   let userServ: UserService;
 
-  // beforeEach(async() => {
-  //   TestBed.configureTestingModule({
-  //     imports: [ HttpClientTestingModule ],
-  //     declarations: [ AccountComponent ]
-  //   })
-  //   .compileComponents();
-  // });
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AccountComponent],
@@ -29,12 +22,6 @@ describe('AccountComponent', () => {
     fixture = TestBed.createComponent(AccountComponent);
     component = fixture.componentInstance;
   });
-
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(AccountComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
 
   it('should be created', () => {
     const fixture = TestBed.createComponent(AccountComponent);
@@ -48,5 +35,25 @@ describe('AccountComponent', () => {
 
   it('should be invalid password', ()=> {
     expect(component.validatePwd('password')).toBeFalsy();
+  });
+
+  it('should display personal info', ()=> {
+    const personal = fixture.debugElement.nativeElement.querySelector('.personal');
+    expect(personal.childNodes[0].childNodes[0].innerHTML).toBe('Personal Info');
+  });
+
+  it('should display user email', ()=> {
+    const email = fixture.debugElement.nativeElement.querySelector('.email');
+    expect(email.childNodes[0].childNodes[0].innerHTML).toBe('Email');
+  });
+
+  it('should display reset password area', ()=> {
+    const password = fixture.debugElement.nativeElement.querySelector('.password');
+    expect(password.childNodes[0].childNodes[0].innerHTML).toBe('Password');
+  })
+
+  it('should have Update Password in button', () => {
+    const btn = fixture.debugElement.nativeElement.querySelector('button');
+    expect(btn.childNodes[0].innerHTML).toBe('UPDATE PASSWORD');
   });
 });

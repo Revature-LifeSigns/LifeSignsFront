@@ -30,7 +30,6 @@ export class UserService {
   }
 
   loginUser(user:string):Observable<User> {
-    console.log("made it to service");
     return this.http.post<User>(this.urlBase + "/login", user, this.httpHead);
   }
 
