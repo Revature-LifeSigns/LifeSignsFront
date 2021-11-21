@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { LightTheme } from 'src/app/mode/theme/lightTheme';
+import { ThemeMode } from 'src/app/mode/theme/theme';
 
 import { ModeService } from './mode.service';
 
