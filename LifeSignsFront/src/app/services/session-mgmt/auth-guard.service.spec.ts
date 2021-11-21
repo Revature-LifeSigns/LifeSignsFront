@@ -74,5 +74,13 @@ describe('AuthGuardService', () => {
     spyOn(userService, 'getLoggedInUser').and.returnValue(dummyUser);
     expect(authService.canActivate(routeMock, routeStateMock)).toEqual(true);
   });
+
+  it('should invoke canActivate', ()=> {
+    let route: ActivatedRouteSnapshot;
+    let state: RouterStateSnapshot;
+    let spyOnMethod = spyOn(authService, 'canActivate').and.callThrough();
+    authService.canActivate(route, state);
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
 });
 

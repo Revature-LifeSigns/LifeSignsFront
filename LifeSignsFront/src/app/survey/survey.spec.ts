@@ -97,11 +97,13 @@ describe('SurveyComponent', () => {
         component.hasDisplayed = false;
         component.today = new Date().getDay();
         component.dayToDisplay = new Date().getDay();
-        spyOn(component, "displayModal").and.callThrough();
-        component.ngOnInit();
-        fixture.whenStable().then(() => {
-            expect(component.displayModal).toHaveBeenCalled();
-        })
+        let spyOnMethod = spyOn(component, "displayModal").and.callThrough();
+        component.displayModal();
+        expect(spyOnMethod).toHaveBeenCalled();
+        // component.ngOnInit();
+        // fixture.whenStable().then(() => {
+        //     expect(component.displayModal).toHaveBeenCalled();
+        // })
     });
 
     it('should not show modal when the date is not correct', () => {

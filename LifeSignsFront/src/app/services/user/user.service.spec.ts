@@ -96,5 +96,17 @@ describe('UserService', () => {
     const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user/update/1");
     expect(req.request.method).toBe("PATCH");
   });
+
+  it('should invoke isUserLoggedIn()', ()=> {
+    let spyOnMethod = spyOn(service, 'isUserLoggedIn').and.callThrough();
+    service.isUserLoggedIn();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should invoke setUserToCurrent()', ()=> {
+    let spyOnMethod = spyOn(service, 'setUserToCurrent').and.callThrough();
+    service.setUserToCurrent();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
 });
 

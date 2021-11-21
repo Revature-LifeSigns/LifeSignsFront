@@ -83,4 +83,13 @@ describe('NurseService', () => {
     expect(req.request.method).toBe("PATCH");
     req.flush(file);
   });
+
+  it('should have getAllCharts() return response', () => {
+    service.getAllCharts().subscribe(response => {
+      expect(response).toBeTruthy();
+    })
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/chart");
+    expect(req.request.method).toBe("GET");
+    req.flush(file);
+  });
 });
