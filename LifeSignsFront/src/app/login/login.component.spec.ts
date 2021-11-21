@@ -5,12 +5,16 @@ import { User } from '../services/util/user';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormControl, FormGroup } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let userService: UserService;
-
+  const loginForm = new FormGroup({
+    username: new FormControl('admin'),
+    password: new FormControl('admin')
+  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,5 +37,10 @@ describe('LoginComponent', () => {
     const fixture = TestBed.createComponent(LoginComponent);
     const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
+  });
+
+  it('should login successfully', ()=> {
+    component.userLogin(loginForm);
+    
   });
 });
