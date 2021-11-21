@@ -49,8 +49,8 @@
                             <th id="th1" colspan="4"></th>
                         </tr>
                         <tr>
-                            <td scope="col">{{ currentUser.lastName | titlecase}}</td>
-                            <td scope="col">{{ currentUser.firstName | titlecase}}</td>
+                            <td class = "lastName" scope="col">{{ currentUser.lastName | titlecase}}</td>
+                            <td class = "firstName" scope="col">{{ currentUser.firstName | titlecase}}</td>
                             <td colspan="4"></td>
                         </tr>
                         <tr>
@@ -60,7 +60,7 @@
                             <th colspan="4"></th>
                         </tr>
                         <tr>
-                            <td scope="col">{{ currentUser.role | titlecase}}</td>
+                            <td class = "role" scope="col">{{ currentUser.role | titlecase}}</td>
                             <td scope="col">{{ currentUser.specialty | titlecase}}</td>
                             <td scope="col">{{ unitName | titlecase }}</td>
                             <td colspan="4"></td>
@@ -71,8 +71,8 @@
                             <th colspan="4"></th>
                         </tr>
                         <tr>
-                            <td scope="col">{{ currentUser.dob | date}}</td>
-                            <td scope="col">{{ currentUser.covidStatus }}</td>
+                            <td class="dob" scope="col">{{ currentUser.dob | date}}</td>
+                            <td class = "covid"scope="col">{{ currentUser.covidStatus }}</td>
                             <td colspan="4"></td>
                         </tr>
                         <tr>
@@ -103,9 +103,7 @@
             <!--This is a container that will hold the "About Me" information for the individual-->
             <div id="aboutContainer">
                 <h2>About me</h2>
-                <p>
-                    {{ currentUser.about }}
-                </p>
+                <p>{{ currentUser.aboutMe }}</p>
                 <!-- <h5>Update About Me</h5> -->
                 <form [formGroup]="aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
                     <div class="form-floating">

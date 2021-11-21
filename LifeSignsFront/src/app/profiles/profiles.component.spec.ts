@@ -107,6 +107,7 @@ class SurveyStub {
     fixture = TestBed.createComponent(ProfilesComponent);
     component = fixture.componentInstance;
     component.currentUser = dummyUser;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -118,52 +119,52 @@ class SurveyStub {
     component.currentUser.image= "http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg"
     component.ngOnInit();
      fixture.whenStable();
-    let userImage = fixture.debugElement.query(By.css('#img')).nativeElement
+    let userImage = fixture.debugElement.query(By.css('.user-image')).nativeElement
     expect(userImage.alt).toBe(dummyUser.firstName + " " + dummyUser.lastName);
   });
 
   it('should have current user image with proper src atribute', () => {
-    component.currentUser = dummyUser;
+    component.currentUser.image= "http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg"
     component.ngOnInit();
      fixture.whenStable();
-    let userImage = fixture.nativeElement.querySelector('#img');
-    expect(userImage.src).toBe("http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg");
+    let userImage = fixture.debugElement.query(By.css('.user-image')).nativeElement
+    expect(userImage.src).toBe("http://s3.amazonaws.com/lifesigns/src");
   });
 
   it('should have current user span tag with id: "lastName" has proper innerHTML', () => {
     fixture.detectChanges();
-    let span = fixture.debugElement.query(By.css('#lastName')).nativeElement;
-    expect(span.innerHTML).toBe("First Name: " + dummyUser.firstName);
+    let span = fixture.debugElement.query(By.css('.lastName')).nativeElement;
+    expect(span.innerHTML).toBe("Testlastname");
   });
 
   it('should have current user span tag with id: "firstName" has proper innerHTML', () => {
     fixture.detectChanges();
-    let span = fixture.debugElement.query(By.css('#firstName')).nativeElement;
-    expect(span.innerHTML).toBe("Last Name: " + dummyUser.lastName);
+    let span = fixture.debugElement.query(By.css('.firstName')).nativeElement;
+    expect(span.innerHTML).toBe("Testfirstname");
   });
 
   it('should have current user div tag with id: "professionDetails" has proper innerHTML', () => {
     fixture.detectChanges();
-    let div = fixture.debugElement.query(By.css('#professionDetails')).nativeElement;
-    expect(div.innerHTML).toBe(" Type: " + dummyUser.role + " ");
+    let div = fixture.debugElement.query(By.css('.role')).nativeElement;
+    expect(div.innerHTML).toBe("Doctor");
   });
 
   it('should have current user div tag with id: "covid" has proper innerHTML', () => {
     fixture.detectChanges();
-    let div = fixture.debugElement.query(By.css('#covid')).nativeElement;
-    expect(div.innerHTML).toBe(" Covid Status: " + dummyUser.covidStatus + " ");
+    let div = fixture.debugElement.query(By.css('.covid')).nativeElement;
+    expect(div.innerHTML).toBe("TestCovidStatus");
   });
 
   it('should have current user div tag with id: "dob" has proper innerHTML', () => {
     fixture.detectChanges();
-    let div = fixture.debugElement.query(By.css('#dob')).nativeElement;
-    expect(div.innerHTML).toBe(" DOB: " + dummyUser.dob + " ");
+    let div = fixture.debugElement.query(By.css('.dob')).nativeElement;
+    expect(div.innerHTML).toBe("Oct 10, 2020");
   });
 
   it('should have current user p tag in div with id: "aboutContainer" has proper innerHTML', () => {
     fixture.detectChanges();
     let p = fixture.debugElement.query(By.css('p')).nativeElement;
-    expect(p.innerHTML).toBe(" " + dummyUser.aboutMe + " ");
+    expect(p.innerHTML).toBe("TestAbout");
   });
 
 //   it('should call updatePhoto method', () => {
