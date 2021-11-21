@@ -60,7 +60,7 @@ export class ProfilesComponent implements OnInit {
       this.isNurse = false;
     }
     this.loadPhoto();
-    this.getAssignedUnit();
+    // this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
         for(let i=0; i<response.length; i++){
