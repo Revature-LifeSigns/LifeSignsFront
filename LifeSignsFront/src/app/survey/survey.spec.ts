@@ -1,4 +1,4 @@
-// <<<<<<< HEAD
+
 // import { HttpClient } from '@angular/common/http';
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 // import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,9 +18,23 @@
 //   let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
 
 //   const imgStr = 'src';
-//   const dummyUser = new User("1","TestUsername", "TestPassword", "TestEmail", "TestFirstName",
-//     "TestLastName", "TestDoB", "TestAddress", "http://s3.amazonaws.com/lifesigns/" + imgStr,
-//     "TestAbout", false, "TestCovidStatus", "1");
+
+//   const dummyUser: User = {
+//     role:"doctor",
+//     username:"TestUsername",
+//     password: "TestPassword",
+//     email: "TestEmail",
+//     firstname: "TestFirstname",
+//     lastname: "TestLastname",
+//     dob: "TestDob",
+//     address: "TestAddress",
+//     image: "http://s3.amazonaws.com/lifesigns/" + imgStr,
+//     aboutMe:"TestAbout",
+//     specialty: "TestSpecialty",
+//     viewPref: false,
+//     covidStatus: "TestCovidStatus",
+//     userid:1
+//   };
 
 //   class UserServiceMock {
 //     getLoggedInUser(): User{
@@ -55,49 +69,11 @@
 //     fixture = TestBed.createComponent(Survey);
 //     component = fixture.componentInstance;
 
-// =======
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-// <<<<<<< HEAD:LifeSignsFront/src/app/account/account.component.spec.ts
-// import { AccountComponent } from './account.component';
-
-// describe('AccountComponent', () => {
-//   let component: AccountComponent;
-//   let fixture: ComponentFixture<AccountComponent>;
-
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [ AccountComponent ]
-// =======
-// import { Survey } from './survey.component';
-
-// describe('DoctorCovidStatusComponent', () => {
-//   let component: Survey;
-//   let fixture: ComponentFixture<Survey>;
-
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [ Survey ]
-// >>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa:LifeSignsFront/src/app/survey/survey.spec.ts
-//     })
-//     .compileComponents();
-//   });
-
-//   beforeEach(() => {
-// <<<<<<< HEAD:LifeSignsFront/src/app/account/account.component.spec.ts
-//     fixture = TestBed.createComponent(AccountComponent);
-// =======
-//     fixture = TestBed.createComponent(Survey);
-// >>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa:LifeSignsFront/src/app/survey/survey.spec.ts
-//     component = fixture.componentInstance;
-// >>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa
-//     fixture.detectChanges();
-//   });
 
 //   it('should create', () => {
 //     expect(component).toBeTruthy();
 //   });
-// <<<<<<< HEAD
+
 
 //   it('should set today date after init', () => {
 //     component.ngOnInit();
@@ -165,6 +141,5 @@
 //     expect(component.covidSurvey.userId).toBe(dummyUser.userid);
 //   });
 
-// =======
-// >>>>>>> 57fe4813f1f247b872103a64adcbbb467a9341fa
 // });
+

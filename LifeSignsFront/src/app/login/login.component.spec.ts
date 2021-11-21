@@ -29,7 +29,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     const fixture = TestBed.createComponent(LoginComponent);
     const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();

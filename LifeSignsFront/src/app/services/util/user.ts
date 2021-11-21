@@ -3,8 +3,8 @@ export interface User {
   username: string;
   password: string;
   email: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   dob: string;
   address: string;
   image: string;
@@ -13,6 +13,7 @@ export interface User {
   specialty: string;
   covidStatus: string;
   userid?: number;
+  profile_image?: null;
 }
 
 

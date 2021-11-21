@@ -55,8 +55,8 @@ export class LoginComponent implements OnInit {
             username: loginResp.username,
             password: loginResp.pwd,
             email: loginResp.email,
-            firstname: loginResp.firstName,
-            lastname: loginResp.lastName,
+            firstName: loginResp.firstName,
+            lastName: loginResp.lastName,
             dob: loginResp.dob,
             address: loginResp.address,
             image: loginResp.profile_image,
@@ -84,7 +84,6 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('currentUser', JSON.stringify(userLogin));
               this.router.navigate(['/admin']);
               // user session
-              localStorage.setItem('currentUser', JSON.stringify(user));
             } else {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
