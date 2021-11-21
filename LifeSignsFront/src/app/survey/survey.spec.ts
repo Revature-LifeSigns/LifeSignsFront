@@ -1,3 +1,4 @@
+
 // import { HttpClient } from '@angular/common/http';
 // import { ComponentFixture, TestBed } from '@angular/core/testing';
 // import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@
 //   let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
 
 //   const imgStr = 'src';
+
 //   const dummyUser: User = {
 //     role:"doctor",
 //     username:"TestUsername",
@@ -33,9 +35,6 @@
 //     covidStatus: "TestCovidStatus",
 //     userid:1
 //   };
-//   // const dummyUser = new User("1","TestUsername", "TestPassword", "TestEmail", "TestFirstName",
-//   //   "TestLastName", "TestDoB", "TestAddress", "http://s3.amazonaws.com/lifesigns/" + imgStr,
-//   //   "TestAbout", false, "TestCovidStatus", "1");
 
 //   class UserServiceMock {
 //     getLoggedInUser(): User{
@@ -62,7 +61,7 @@
 //       ]
 //     })
 //     .compileComponents();
-  
+
 //     userServ = TestBed.inject(UserService);
 //     surveyServ = TestBed.inject(SurveyService);
 //     mockClient =  TestBed.get(HttpClient);
@@ -70,12 +69,11 @@
 //     fixture = TestBed.createComponent(Survey);
 //     component = fixture.componentInstance;
 
-//     fixture.detectChanges();
-//   });
 
 //   it('should create', () => {
 //     expect(component).toBeTruthy();
 //   });
+
 
 //   it('should set today date after init', () => {
 //     component.ngOnInit();
@@ -144,3 +142,4 @@
 //   });
 
 // });
+
