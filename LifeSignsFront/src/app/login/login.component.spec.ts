@@ -56,8 +56,12 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should login successfully', ()=> {
-    component.userLogin(loginForm);
-    expect(component.invalidLogin).toBeTruthy();
+  it('should login user', ()=> {
+    let spyOnMethod = spyOn(component, 'userLogin').and.callThrough();
+    component.userLogin(new FormGroup({
+      username: new FormControl(''),
+      password: new FormControl('')
+    }));
+    expect(spyOnMethod).toHaveBeenCalled();
   });
 });

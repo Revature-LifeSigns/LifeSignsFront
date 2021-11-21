@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user/user.service';
 
@@ -56,4 +56,15 @@ describe('AccountComponent', () => {
     const btn = fixture.debugElement.nativeElement.querySelector('button');
     expect(btn.childNodes[0].innerHTML).toBe('UPDATE PASSWORD');
   });
+
+  // it('should update password', ()=> {
+  //   let spyOnMethod = spyOn(component, 'updatePwd').and.callThrough();
+  //   component.updatePwd(new FormGroup({
+  //     username: new FormControl(''),
+  //     currentPassword: new FormControl(''),
+  //     newPassword: new FormControl(''),
+  //     passwordAgain: new FormControl('')
+  //   }));
+  //   expect(spyOnMethod).toHaveBeenCalled();
+  // });
 });

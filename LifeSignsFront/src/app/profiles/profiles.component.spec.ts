@@ -176,4 +176,22 @@ class SurveyStub {
 //       expect(component.updatePhoto).toHaveBeenCalled();
 //     })
 //   });
+
+  it('should invoke loadPhoto()', ()=> {
+    let spyOnMethod = spyOn(component, 'loadPhoto').and.callThrough();
+    component.loadPhoto();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should display charts', ()=> {
+    let spyOnMethod = spyOn(component, 'displayMyCharts').and.callThrough();
+    component.displayMyCharts();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should display unassigned charts', ()=> {
+    let spyOnMethod = spyOn(component, 'displayUnassignedCharts').and.callThrough();
+    component.displayUnassignedCharts();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
 });

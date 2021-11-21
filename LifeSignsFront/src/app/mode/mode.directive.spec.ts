@@ -1,7 +1,9 @@
 import { ElementRef } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { ModeService } from '../services/mode/mode.service';
 import { UserService } from '../services/user/user.service';
 import { ModeDirective } from './mode.directive';
+import { DarkTheme } from './theme/darkTheme';
 
 describe('ModeDirective', () => {
     let modeServ: ModeService;

@@ -43,6 +43,8 @@ export class AccountComponent implements OnInit {
     passwordAgain: new FormControl('')
   });
 
+  message: any = document.getElementById('message');
+
   constructor(private modalServ:NgbModal, private userServ:UserService) { }
 
   ngOnInit(): void {
@@ -72,7 +74,6 @@ export class AccountComponent implements OnInit {
   }
 
   updatePwd(passwords:FormGroup) {
-    let message: any = document.getElementById('message');
     if (this.validatePwd(passwords.get('currentPassword')!.value) &&
         this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
@@ -80,24 +81,24 @@ export class AccountComponent implements OnInit {
         this.userServ.updatePassword(JSON.stringify(passwords.value)).subscribe(
           response => {
             if (response) {
-              message.setAttribute("style", "color:mediumseagreen");
-              message.innerHTML = 'Successfully changed password.';
+              this.message.setAttribute("style", "color:mediumseagreen");
+              this.message.innerHTML = 'Successfully changed password.';
               passwords.reset();
             } else {
-              message.setAttribute("style", "color:red");
-              message.innerHTML = 'Current password does not match. Please try again.';
+              this.message.setAttribute("style", "color:red");
+              this.message.innerHTML = 'Current password does not match. Please try again.';
             }
           }
         );
       } else {
         // New password and confirmation don't match
-        message.setAttribute("style", "color:red");
-        message.innerHTML = 'Passwords do not match. Please try again.'
+        this.message.setAttribute("style", "color:red");
+        this.message.innerHTML = 'Passwords do not match. Please try again.'
       }
     } else {
       // Invalid fields
-      message.setAttribute("style", "color:red");
-      message.innerHTML = 'Invalid password. Please try again.'
+      this.message.setAttribute("style", "color:red");
+      this.message.innerHTML = 'Invalid password. Please try again.'
     }
   }
 

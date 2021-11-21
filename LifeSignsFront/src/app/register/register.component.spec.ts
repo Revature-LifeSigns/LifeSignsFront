@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, FormGroup } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { RegisterComponent } from './register.component';
@@ -61,5 +62,26 @@ describe('RegisterComponent', () => {
 
   it('should be invalid email', ()=> {
     expect(component.validateEmail('email')).toBeFalsy();
+  });
+
+  it('should submit user form', ()=> {
+    let spyOnMethod = spyOn(component, "submitUser").and.callThrough();
+    component.submitUser(new FormGroup({
+      role: new FormControl(''),
+      firstname: new FormControl(''),
+      lastname: new FormControl(''),
+      dob: new FormControl(''),
+      address: new FormControl(''),
+      street1: new FormControl(''),
+      street2: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zipcode: new FormControl(''),
+      email: new FormControl(''),
+      username: new FormControl(''),
+      password: new FormControl(''),
+      confirmed: new FormControl('')
+    }));
+    expect(spyOnMethod).toHaveBeenCalled();
   });
 });

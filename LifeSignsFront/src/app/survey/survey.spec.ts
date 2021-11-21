@@ -97,7 +97,7 @@ describe('SurveyComponent', () => {
         component.hasDisplayed = false;
         component.today = new Date().getDay();
         component.dayToDisplay = new Date().getDay();
-        spyOn(component, "displayModal");
+        spyOn(component, "displayModal").and.callThrough();
         component.ngOnInit();
         fixture.whenStable().then(() => {
             expect(component.displayModal).toHaveBeenCalled();
@@ -108,7 +108,7 @@ describe('SurveyComponent', () => {
         component.hasDisplayed = false;
         component.today = 1;
         component.dayToDisplay = 2;
-        spyOn(component, "displayModal");
+        spyOn(component, "displayModal").and.callThrough();
         component.ngOnInit();
         fixture.whenStable().then(() => {
             expect(component.displayModal).toHaveBeenCalled();

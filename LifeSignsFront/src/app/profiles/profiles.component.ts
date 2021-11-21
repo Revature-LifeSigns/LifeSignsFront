@@ -121,7 +121,6 @@ export class ProfilesComponent implements OnInit {
   }
 
   displayMyCharts() {
-
     this.myChartsVis = !this.myChartsVis;
     this.nurseServ.getAllCharts();
   }

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import {HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
 import { NurseService } from './nurse.service';
@@ -11,8 +11,8 @@ describe('NurseService', () => {
   let httpMock: HttpTestingController;
   const dummyNurseProfile: User = {
 
-    role:'nurse',
-    username:"TestUsername",
+    role: 'nurse',
+    username: "TestUsername",
     password: "TestPassword",
     email: "TestEmail",
     firstName: "TestFirstName",
@@ -20,13 +20,13 @@ describe('NurseService', () => {
     dob: "TestDoB",
     address: "TestAddress",
     image: "http://s3.amazonaws.com/lifesigns/example.jpg",
-    aboutMe:"TestAbout",
+    aboutMe: "TestAbout",
     specialty: "none",
     viewPref: false,
     covidStatus: "TestCovidStatus",
-    userid:1
+    userid: 1
   };
-  const testPhoto:Photo = {
+  const testPhoto: Photo = {
     photoId: 1,
     imagePath: "/lifesigns/",
     imageFileName: "tree.jpg",
@@ -36,8 +36,8 @@ describe('NurseService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule],
-      providers:[NurseService]
+      imports: [HttpClientTestingModule],
+      providers: [NurseService]
     });
     service = TestBed.inject(NurseService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -49,20 +49,38 @@ describe('NurseService', () => {
   });
 
   it('should have getPhoto() return data', () => {
-    service.getPhoto(dummyNurseProfile).subscribe( response =>{
-    expect(response.toString()).toEqual(testPhoto.toString());
+    service.getPhoto(dummyNurseProfile).subscribe(response => {
+      expect(response.toString()).toEqual(testPhoto.toString());
+    })
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo/1");
+    expect(req.request.method).toBe("GET");
+    req.flush(testPhoto);
   })
-  const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo/1");
-  expect(req.request.method).toBe("GET");
-  req.flush(testPhoto);
-})
 
-it('should have uploadPhoto() return response', () => {
-  service.uploadPhoto(file).subscribe( response =>{
-  expect(response.toString()).toEqual(file.toString());
-})
-const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo");
-expect(req.request.method).toBe("POST");
-req.flush(file);
-})
+  it('should have uploadPhoto() return response', () => {
+    service.uploadPhoto(file).subscribe(response => {
+      expect(response.toString()).toEqual(file.toString());
+    })
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo");
+    expect(req.request.method).toBe("POST");
+    req.flush(file);
+  });
+
+  it('should have sendPatientChart() return response', () => {
+    service.sendPatientChart('').subscribe(response => {
+      expect(response).toBeTruthy();
+    })
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/chart/insert");
+    expect(req.request.method).toBe("POST");
+    req.flush(file);
+  });
+
+  it('should have updatePatientChart() return response', () => {
+    service.updatePatientChart('').subscribe(response => {
+      expect(response).toBeTruthy();
+    })
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/chart/update");
+    expect(req.request.method).toBe("PATCH");
+    req.flush(file);
+  });
 });
