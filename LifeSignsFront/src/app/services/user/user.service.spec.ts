@@ -45,7 +45,7 @@ describe('UserService', () => {
     service.updateUserProfile(dummyUser).subscribe(response => {
       expect(response.toString()).toEqual(dummyUser.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/users/update/1");
+    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user/update/1");
     expect(req.request.method).toBe("PATCH");
     req.flush(dummyUser);
   })
