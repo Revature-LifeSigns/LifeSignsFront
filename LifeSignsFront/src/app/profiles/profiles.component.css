@@ -3,6 +3,13 @@
     margin-left: 10px;
     margin: auto auto;
 }
+.sideMenu{
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
+}
+.d-flex {
+    height:100%;
+}
 
 .card-header {
     background-color: #72A4C2;
