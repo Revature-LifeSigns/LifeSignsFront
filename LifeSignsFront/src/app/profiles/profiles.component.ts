@@ -53,14 +53,14 @@ export class ProfilesComponent implements OnInit {
     this.city = address[2];
     this.state = address[3];
     this.zip = address[4];
-    if(this.currentUser._role === 'nurse') {
+    if(this.currentUser.role === 'nurse') {
       this.isNurse = true;
     }
     else {
       this.isNurse = false;
     }
     this.loadPhoto();
-    this.getAssignedUnit();
+    // this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
         for(let i=0; i<response.length; i++){
