@@ -79,4 +79,9 @@ export class UserService {
     let url = this.urlBase + "/user/update/" + user.userid;
     return this.http.patch<User>(url, user, this.httpHead);
   }
+
+  public updateUserPref(user:any): Observable<User>{
+    let url = this.urlBase + "/user/update/" + user.userid;
+    return this.http.patch<User>(url, user, this.httpHead);
+  }
 }

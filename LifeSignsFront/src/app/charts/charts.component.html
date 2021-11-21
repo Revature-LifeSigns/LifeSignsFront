@@ -1,8 +1,10 @@
 <div appMode class="toggleContainer">
+
     <div class="toggleContainer container align-items-center p-3 w-75">
 
     <div *ngIf="null == null; then loggedIn else loggedOut"></div>
         <ng-template #loggedIn>
+
             <!-- <div class="col text-center">
                 <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide
                     Chart Form' : 'Show Chart Form'}}</button>
@@ -13,6 +15,7 @@
                     <div appMode class="card" id="inbord">
                         <div class="card-header">
                             <img class="clipb" src="../../assets/img/clipboard.png" style="width:35%; height:25%;">
+
                             <div class="card-heading">Patient Chart</div>
                         </div>
 
@@ -135,13 +138,13 @@
 
                                 </div>
 
+
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Date of Birth</span>
                                     </div>
                                     <input type="text" class="form-control shadow-sm px-4" onfocus="(this.type='date')"
                                         onblur="(this.type='text')" placeholder="MM/DD/YYYY"
                                         onClick="event.preventDefault()">
-
 
 
                                 <div class="input-group mb-4">
@@ -181,6 +184,7 @@
                                     <button class="btn btn-block text-uppercase mt-4 mb-2 shadow-sm w-25"
                                         (click)="submitChart(chartGroup)">Submit</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>

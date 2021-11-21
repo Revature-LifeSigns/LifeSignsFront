@@ -49,6 +49,7 @@ export class AccountComponent implements OnInit {
     this.storedUser = window.localStorage.getItem('currentUser')!;
     this.currentUser = JSON.parse(this.storedUser);
     let address:string[] = this.currentUser.address.split(';');
+
     this.street1 = address[0];
     this.street2 = address[1];
     this.city = address[2];

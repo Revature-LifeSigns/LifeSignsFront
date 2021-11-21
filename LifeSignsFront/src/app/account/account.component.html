@@ -9,9 +9,11 @@
             <div class="col-6">
                 <div class="personal">
                     <h4><b>Personal Info</b></h4>
+
                     <p><b>Full Name: </b>{{currentUser.firstName | titlecase}} {{currentUser.lastName | titlecase}}</p>
                     <p><b>Date of Birth: </b>{{currentUser.dob | date}}</p>
                     <p *ngIf="street2==' '; else elseBlock"><b>Home Address: </b>
+
                         <br>
                         {{street1}}
                         <br>
@@ -41,6 +43,7 @@
                     <button class="modal-btn" (click)="open(password)"><b>UPDATE PASSWORD</b></button>
                     <hr>
                 </div>
+
             </div>
             <div class="col"></div>
         </div>

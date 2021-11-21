@@ -78,6 +78,7 @@ export class ProfilesComponent implements OnInit {
     formData.append("file", this.file);
     formData.append("uploader", String(this.currentUser.userid));
     console.log(this.currentUser.userid);
+
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
         this.loadPhoto();

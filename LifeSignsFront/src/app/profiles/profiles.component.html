@@ -21,7 +21,9 @@
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
     <div appMode class="col-9 card">
+
         <h2 id="greeting card-header">Welcome, {{ this.currentUser.role | titlecase }} {{ this.currentUser.lastName | titlecase }}</h2>
+
         <div class="row">
             <div class="col-6">
 
@@ -62,6 +64,7 @@
                             <td>{{ currentUser.role | titlecase}}</td>
                             <td>{{ currentUser.specialty | titlecase}}</td>
                             <td>{{ unitName | titlecase }}</td>
+
                         </tr>
                     </tbody>
                     <thead>
@@ -87,7 +90,9 @@
         <div id="aboutContainer">
             <h2>About me</h2>
             <p>
+
                 {{ currentUser.about }}
+
             </p>
             <!-- <h5>Update About Me</h5> -->
             <form [formGroup] = "aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
@@ -100,6 +105,7 @@
         </div>
          <!-- Chart List -->
          <br>
+
         <div *ngIf="myChartsVis">
          <h5>My Charts</h5>
         <div class="list-group">
@@ -124,6 +130,7 @@
              </a>
          </div>
          </div>
+
     </div>
 
 
@@ -145,6 +152,7 @@
         </div>
         <div class="modal-body">
           <app-charts [isEditChart]="isEditChart" [chartToEdit]="chartToEdit"></app-charts>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -41,6 +41,7 @@ export class ChartsComponent implements OnInit, DoCheck {
   // adding for redirect to patient's id once logged in
   patientID$: Observable<number>;
   isVisible: boolean = false;
+
   currentUser!: User;
   tempDoc!:User;
   tempNurse!: User;
@@ -48,6 +49,7 @@ export class ChartsComponent implements OnInit, DoCheck {
   @Input() isEditChart: boolean;
   @Input() chartToEdit:Chart;
   allowAutoFillChart = true;
+
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
@@ -101,6 +103,7 @@ export class ChartsComponent implements OnInit, DoCheck {
             this.nurseList.push(res[i]);
           }
         }
+
       }
     )
   }
