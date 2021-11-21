@@ -2,6 +2,7 @@
     <div class="d-flex">
     <div class="quick-nav col-3">
         <div>
+        <br>
         <h2>Quick Links</h2>
         <ul class="nav quick-nav flex-column col-12">
             <li *ngIf="isNurse" class="nav-item">
@@ -17,6 +18,7 @@
               <a class="nav-link" (click)= displayUnassignedCharts()>Unassigned Charts</a>
           </li>
         </ul>
+        <br>
         </div>
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
@@ -36,51 +38,63 @@
 
 
             </div>
-            <div class="col-6">
+            <div class="col">
                 <table appMode class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Last</th>
-                            <th scope="col">First</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ currentUser.lastName | titlecase}}</td>
-                            <td>{{ currentUser.firstName | titlecase}}</td>
-                        </tr>
-                    </tbody>
-                    <thead>
-                        <tr>
-                            <th scope="col">Role</th>
-                            <th scope="col">Specialty</th>
-                            <th scope="col">Unit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ currentUser.role | titlecase}}</td>
-                            <td>{{ currentUser.specialty | titlecase}}</td>
-                            <td>{{ unitName | titlecase }}</td>
-                        </tr>
-                    </tbody>
-                    <thead>
-                        <tr>
-                            <th scope="col">DOB</th>
-                            <th scope="col">Covid Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ currentUser.dob | date}}</td>
-                            <td>{{ currentUser.covidStatus }}</td>
-                        </tr>
-                    </tbody>
+                    <tr>
+                        <th id="th1" scope="col">Last</th>
+                        <th id="th1" scope="col">First</th>
+                        <th id="th1" colspan="4"></th>
+                    </tr>
+                    <tr>
+                        <td scope="col">{{ currentUser.lastName | titlecase}}</td>
+                        <td scope="col">{{ currentUser.firstName | titlecase}}</td>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Role</th>
+                        <th scope="col">Specialty</th>
+                        <th scope="col">Unit</th>
+                        <th colspan="4"></th>
+                    </tr>
+                    <tr>
+                        <td scope="col">{{ currentUser.role | titlecase}}</td>
+                        <td scope="col">{{ currentUser.specialty | titlecase}}</td>
+                        <td scope="col">{{ unitName | titlecase }}</td>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Covid Status</th>
+                        <th colspan="4"></th>
+                    </tr>
+                    <tr>
+                        <td scope="col">{{ currentUser.dob | date}}</td>
+                        <td scope="col">{{ currentUser.covidStatus }}</td>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Address</th>
+                        <th colspan="6"></th>
+                    </tr>
+                    <tr>
+                        <td id="td4" scope="col" *ngIf="street2==' '; else elseBlock">
+                            {{street1}}
+                            <br>
+                            {{city}}, {{state}} {{zip}}
+                        </td>
+                        <td id="td4" colspan="4"></td>
+                        <ng-template #elseBlock>
+                            <td id="td4" scope="col">
+                                {{street1}}
+                                <br>
+                                {{street2}}
+                                <br>
+                                {{city}}, {{state}} {{zip}}
+                            </td>
+                            <td id="td4" colspan="4"></td>
+                        </ng-template>
+                    </tr>
                 </table>
-                <div id="address">
-                    <div>{{ currentUser.address }}</div>
-                    <!-- <div>Address Line 2</div> -->
-                </div>
             </div>
         </div>
         <!--This is a container that will hold the "About Me" information for the individual-->
@@ -93,7 +107,7 @@
             <form [formGroup] = "aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
                 <div class="form-floating">
                     <textarea class="form-control" placeholder="Add about me information here.." id="floatingTextarea" formControlName="aboutMe"></textarea>
-                    <label for="floatingTextarea">Edit About Me</label>
+                    <label style="color:black" for="floatingTextarea">Edit About Me</label>
                   </div>
                 <button class = "updateBtn btn" type = "submit">Update</button>
             </form>

@@ -12,6 +12,11 @@ import { Chart } from "../services/util/chart";
   styleUrls: ['./profiles.component.css']
 })
 export class ProfilesComponent implements OnInit {
+  street1!:string;
+  street2!:string;
+  city!:string;
+  state!:string;
+  zip!:string;
 
   photoGroup = new FormGroup({
     newPhoto: new FormControl('')
@@ -42,6 +47,12 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
+    let address:string[] = this.currentUser.address.split(';');
+    this.street1 = address[0];
+    this.street2 = address[1];
+    this.city = address[2];
+    this.state = address[3];
+    this.zip = address[4];
     if(this.currentUser._role === 'nurse') {
       this.isNurse = true;
     }
