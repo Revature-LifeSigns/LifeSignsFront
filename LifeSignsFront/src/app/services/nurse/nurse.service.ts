@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Nurse } from "../util/nurse";
 import { Chart } from '../util/chart';
 import { User } from '../util/user';
 import { Photo } from '../util/photo';
@@ -44,6 +43,11 @@ export class NurseService {
   public sendPatientChart(chart:String): Observable<Chart>{
     let url = this.urlBase + "/chart/insert" ;
     return this.http.post<Chart>(url, chart, this.httpHead);
+  }
+
+  public updatePatientChart(chart:String): Observable<Chart>{
+    let url = this.urlBase + "/chart/update";
+    return this.http.patch<Chart>(url, chart, this.httpHead);
   }
 
   public getAllCharts(): Observable<Chart[]> {

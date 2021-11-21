@@ -1,17 +1,21 @@
-<div appMode class="toggleContainer">    
+<div appMode class="toggleContainer">
+
     <div class="toggleContainer container align-items-center p-3 w-75">
 
     <div *ngIf="null == null; then loggedIn else loggedOut"></div>
         <ng-template #loggedIn>
-            <div class="col text-center">
+
+            <!-- <div class="col text-center">
                 <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide
                     Chart Form' : 'Show Chart Form'}}</button>
-            </div>
-            <div *ngIf="isVisible" class="card" id="chart">
+            </div> -->
+            <br> <br>
+            <div class="card" id="chart">
                 <div class="card" id="outbord">
                     <div appMode class="card" id="inbord">
                         <div class="card-header">
-                            <img class="clipb" src="../../assets/img/clipboard.png" style="width:18%; height:25%;">
+                            <img class="clipb" src="../../assets/img/clipboard.png" style="width:35%; height:25%;">
+
                             <div class="card-heading">Patient Chart</div>
                         </div>
 
@@ -21,49 +25,55 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Doctor</span>
                                     </div>
-
-                                    <input type="text" class="form-control shadow-sm px-4" placeholder="First Name">
-                                    <input type="text" class="form-control shadow-sm px-4 mr-2" placeholder="Last Name">
+                                        <select formControlName = "doctor" class="form-control form-select shadow-sm mr-3"style="width:35%" #doctorSelect (change)=onDoctorSelect(doctorSelect.value)>
+                                          <option>---------</option>
+                                          <option value = "">Unassigned</option>
+                                          <option *ngFor="let doctor of doctorList" value = {{doctor.userid}}>{{(doctor.firstName + " " + doctor.lastName)}}</option>
+                                        </select>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Nurse</span>
                                     </div>
 
-                                    <input type="text" class="form-control shadow-sm px-4" onfocus="(this.type='Name')"
-                                        onblur="(this.type='text')" placeholder="Name"
-                                        onClick="event.preventDefault()">
-
+                                    <select formControlName= "nurse" class="form-controlform-select shadow-sm mr-3" style="width:35%" #nurseSelect (change)=onNurseSelect(nurseSelect.value)>
+                                      <option *ngIf="currentUser.role == 'nurse'"  value= {{currentUser.userid}}>{{(currentUser.firstName + " " + currentUser.lastName)}}</option>
+                                      <option *ngFor="let nurse of nurseList" value = {{nurse.userid}}>{{(nurse.firstName + " " + nurse.lastName)}}</option>
+                                    </select>
                                 </div>
-                                <div class="input-group mb-3">
+
+                                  <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Patient Name</span>
+                                    </div>
+
+                                    <input value="Jim" formControlName = "firstName"type="text" class="form-control shadow-sm px-4" placeholder="First Name">
+                                    <input formControlName = "lastName"type="text" class="form-control shadow-sm px-4 mr-2" placeholder="Last Name">
 
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Date of Birth</span>
                                     </div>
-                                    <input type="text" class="form-control shadow-sm px-4" onfocus="(this.type='date')"
+                                    <input formControlName = "dob" type="text" class="form-control shadow-sm px-4" onfocus="(this.type='date')"
                                         onblur="(this.type='text')" placeholder="MM/DD/YYYY"
                                         onClick="event.preventDefault()">
+                                  </div>
 
+                                  <div class="input-group mb-3">
 
-                                </div>
-                                <input formControlName="address" type="text" class="form-control shadow-sm">
-
-
-                                <div class="input-group mb-3">
                                     <div class="input-group-prepend">
 
                                         <span class="input-group-text" id="">Address</span>
                                     </div>
-                                    <input type="text" class="form-control shadow-sm px-4 mr-2"
+                                    <input formControlName = "street" type="text" class="form-control shadow-sm px-4 mr-2"
                                         placeholder="123 Main Street">
-
-
+                                  </div>
+                                  <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">City</span>
                                     </div>
-                                    <input formControlName="address" type="text" class="form-control shadow-sm mr-3">
+                                    <input formControlName="city" type="text" class="form-control shadow-sm mr-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">State</span>
                                     </div>
-                                    <select formControlName="address" class="form-select shadow-sm mr-3">
+                                    <select formControlName="state" class="form-select shadow-sm mr-3">
                                         <option value="" disabled selected>Select a state</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
@@ -124,13 +134,19 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Zip Code</span>
                                     </div>
-                                    <input formControlName="address" type="text" class="form-control shadow-sm">
+                                    <input formControlName="zipcode" type="text" class="form-control shadow-sm">
+
                                 </div>
-                                <div class="input-group mb-3">
+
+
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="">Policy Number</span>
+                                        <span class="input-group-text" id="">Date of Birth</span>
                                     </div>
-                                </div>
+                                    <input type="text" class="form-control shadow-sm px-4" onfocus="(this.type='date')"
+                                        onblur="(this.type='text')" placeholder="MM/DD/YYYY"
+                                        onClick="event.preventDefault()">
+
+
                                 <div class="input-group mb-4">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Email</span>
@@ -154,6 +170,12 @@
                                     </div>
                                     <input formControlName="diagnosis" type="text" class="form-control shadow-sm">
                                 </div>
+                                <div class="input-group mb-4">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text" id="">Treatment</span>
+                                  </div>
+                                  <input formControlName="treatment" type="text" class="form-control shadow-sm">
+                              </div>
                                 <div class="input-group mb-3">
                                     <textarea formControlName="notes" class="form-control shadow-sm"
                                         placeholder="Notes"></textarea>
@@ -162,6 +184,7 @@
                                     <button class="btn btn-block text-uppercase mt-4 mb-2 shadow-sm w-25"
                                         (click)="submitChart(chartGroup)">Submit</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -173,3 +196,4 @@
         </ng-template>
     </div>
 </div>
+
