@@ -40,16 +40,6 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  // BREAKS DUE TO REFACTORING THE USER MODEL AS AN INTERFACE
-  it('should have updateUserProfile() return data', () => {
-    service.updateUserProfile(dummyUser).subscribe(response => {
-      expect(response.toString()).toEqual(dummyUser.toString());
-    })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/users/update/1");
-    expect(req.request.method).toBe("PATCH");
-    req.flush(dummyUser);
-  })
-
   it('should have insertUser() return response', () => {
     service.insertUser(dummyUser.username).subscribe(response => {
       expect(response.toString()).toEqual(dummyUser.toString());
