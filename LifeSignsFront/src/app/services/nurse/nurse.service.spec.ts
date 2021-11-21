@@ -3,7 +3,6 @@ import {HttpClientTestingModule, HttpTestingController } from '@angular/common/h
 
 
 import { NurseService } from './nurse.service';
-import { Nurse } from '../util/nurse';
 import { User } from '../util/user';
 import { Photo } from '../util/photo';
 
@@ -16,8 +15,8 @@ describe('NurseService', () => {
     username:"TestUsername",
     password: "TestPassword",
     email: "TestEmail",
-    firstname: "TestFirstName",
-    lastname: "TestLastName",
+    firstName: "TestFirstName",
+    lastName: "TestLastName",
     dob: "TestDoB",
     address: "TestAddress",
     image: "http://s3.amazonaws.com/lifesigns/example.jpg",
