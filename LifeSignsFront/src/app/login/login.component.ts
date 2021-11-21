@@ -55,8 +55,8 @@ export class LoginComponent implements OnInit {
             username: loginResp.username,
             password: loginResp.pwd,
             email: loginResp.email,
-            firstname: loginResp.firstName,
-            lastname: loginResp.lastName,
+            firstName: loginResp.firstName,
+            lastName: loginResp.lastName,
             dob: loginResp.dob,
             address: loginResp.address,
             image: loginResp.profile_image,
@@ -96,7 +96,6 @@ export class LoginComponent implements OnInit {
     if (this.userService.getLoggedInUser()) {
       let currentUser: any = this.userService.getLoggedInUser();
       if (currentUser.role == 'doctor' || currentUser.role == 'nurse') {
-
         this.router.navigate(['/profiles']);
       } else if (currentUser.role == 'admin') {
         this.router.navigate(['/admin']);

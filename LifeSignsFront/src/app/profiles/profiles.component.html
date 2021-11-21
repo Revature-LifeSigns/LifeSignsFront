@@ -2,23 +2,26 @@
     <div class="d-flex">
     <div class="quick-nav col-3">
         <div>
-        <h2>QuickNav</h2>
+        <h2>Quick Links</h2>
         <ul class="nav quick-nav flex-column col-12">
             <li *ngIf="isNurse" class="nav-item">
                 <a class="nav-link active" RouterLink="/charts">New Chart</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Discussion Board</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" (click)= displayMyCharts()>My Charts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Other</a>
-            </li>
+              <a class="nav-link" (click)= displayUnassignedCharts()>Unassigned Charts</a>
+          </li>
         </ul>
         </div>
     </div>
     <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
     <div appMode class="col-9 card">
-        <h2 id="greeting card-header">Welcome, {{ this.currentUser.role | titlecase }} {{ this.currentUser.lastname | titlecase }}</h2>
+        <h2 id="greeting card-header">Welcome, {{ this.currentUser.role | titlecase }} {{ this.currentUser.lastName | titlecase }}</h2>
         <div class="row">
             <div class="col-6">
 
@@ -43,8 +46,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.lastname | titlecase}}</td>
-                            <td>{{ currentUser.firstname | titlecase}}</td>
+                            <td>{{ currentUser.lastName | titlecase}}</td>
+                            <td>{{ currentUser.firstName | titlecase}}</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -59,7 +62,6 @@
                             <td>{{ currentUser.role | titlecase}}</td>
                             <td>{{ currentUser.specialty | titlecase}}</td>
                             <td>{{ unitName | titlecase }}</td>
-
                         </tr>
                     </tbody>
                     <thead>
@@ -70,7 +72,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ currentUser.dob }}</td>
+                            <td>{{ currentUser.dob | date}}</td>
                             <td>{{ currentUser.covidStatus }}</td>
                         </tr>
                     </tbody>
@@ -85,9 +87,7 @@
         <div id="aboutContainer">
             <h2>About me</h2>
             <p>
-
                 {{ currentUser.about }}
-
             </p>
             <!-- <h5>Update About Me</h5> -->
             <form [formGroup] = "aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
@@ -100,14 +100,30 @@
         </div>
          <!-- Chart List -->
          <br>
-         <h5>Your Charts</h5>
+        <div *ngIf="myChartsVis">
+         <h5>My Charts</h5>
         <div class="list-group">
-            <a *ngFor="let chart of charts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <li class="list-group-item">Patient: {{ chart.firstname | titlecase }} {{ chart.lastname | titlecase }}</li>
-                <!-- <li class="list-group-item">Doctor: {{ chart.doctor | titlecase }}</li>
-                <li class="list-group-item">Nurse: {{ chart.nurse | titlecase }}</li> -->
+            <a *ngFor="let chart of myCharts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
+                <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName | titlecase }}</li>
+                <li class="list-group-item"*ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                <li class="list-group-item"*ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName | titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
+                <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
             </a>
         </div>
+        </div>
+        <div *ngIf="unassignedChartsVis">
+          <h5>Unassigned Charts</h5>
+         <div class="list-group">
+             <a *ngFor="let chart of unassignedCharts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
+                 <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName | titlecase }}</li>
+                 <li class="list-group-item"*ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                 <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                 <li class="list-group-item"*ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName | titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
+                 <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
+             </a>
+         </div>
+         </div>
     </div>
 
 
@@ -128,7 +144,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <app-charts></app-charts>
+          <app-charts [isEditChart]="isEditChart" [chartToEdit]="chartToEdit"></app-charts>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
