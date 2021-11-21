@@ -1,87 +1,85 @@
-// import { HttpClient } from '@angular/common/http';
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-// import { Observable, Subscriber } from 'rxjs';
-// import { NurseService } from '../services/nurse/nurse.service';
-// import { UserService } from '../services/user/user.service';
-// import { User } from '../services/util/user';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Observable, Subscriber } from 'rxjs';
+import { NurseService } from '../services/nurse/nurse.service';
+import { UserService } from '../services/user/user.service';
+import { User } from '../services/util/user';
 
-// import { ProfilesComponent } from './profiles.component';
+import { ProfilesComponent } from './profiles.component';
 
-// describe('ProfilesComponent', () => {
-//   let component: ProfilesComponent;
-//   let fixture: ComponentFixture<ProfilesComponent>;
-//   let userServ: UserService;
-//   let nurseServ: NurseService;
-//   let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
+describe('ProfilesComponent', () => {
+  let component: ProfilesComponent;
+  let fixture: ComponentFixture<ProfilesComponent>;
+  let userServ: UserService;
+  let nurseServ: NurseService;
+  let mockClient: { get: jasmine.Spy, post: jasmine.Spy };
 
-//   const imgStr = 'src';
-//   const dummyUser: User = {
+  const imgStr = 'src';
+  const dummyUser: User = {
 
-//   role:'doctor',
-//   username:"TestUsername",
-//   password: "TestPassword",
-//   email: "TestEmail",
-//   firstname: "TestFirstName",
-//   lastname: "TestLastName",
-//   dob: "TestDoB",
-//   address: "TestAddress",
-//   image: "http://s3.amazonaws.com/lifesigns/" + imgStr,
-//   aboutMe:"TestAbout",
-//   specialty: "none",
-//   viewPref: false,
-//   covidStatus: "TestCovidStatus",
-//   userid:1
-// };
+  role:'doctor',
+  username:"TestUsername",
+  password: "TestPassword",
+  email: "TestEmail",
+  firstName: "TestFirstName",
+  lastName: "TestLastName",
+  dob: "TestDoB",
+  address: "TestAddress",
+  image: "http://s3.amazonaws.com/lifesigns/" + imgStr,
+  aboutMe:"TestAbout",
+  specialty: "none",
+  viewPref: false,
+  covidStatus: "TestCovidStatus",
+  userid:1
+};
 
-//     class MockServiceUser {
-//     getLoggedInUser(): User{
-//       return dummyUser;
-//     }
-//   }
+    class MockServiceUser {
+    getLoggedInUser(): User{
+      return dummyUser;
+    }
+  }
 
-//   class MockServiceNurse {
-//     getPhoto(user: User): Observable<Object>{
-//       return new Observable(/*subscriber => {
-//         subscriber.next({
-//           imageFileName: imgStr
-//         })
-//         subscriber.complete();
-//       }*/)
-//     }
-//   }
+  class MockServiceNurse {
+    getPhoto(user: User): Observable<Object>{
+      return new Observable(/*subscriber => {
+        subscriber.next({
+          imageFileName: imgStr
+        })
+        subscriber.complete();
+      }*/)
+    }
+  }
 
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ProfilesComponent ],
-//       providers:[
-//         {provide: UserService, useClass: MockServiceUser},
-//         {provide: NurseService, useClass: MockServiceNurse},
-//         {provide: HttpClient, useValue: mockClient}
-//       ]
-//     })
-//     .compileComponents();
-//   });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ProfilesComponent ],
+      imports: [HttpClientTestingModule],
+      providers:[
+        {provide: UserService, useClass: MockServiceUser},
+        {provide: NurseService, useClass: MockServiceNurse}
+      ]
+    })
+    .compileComponents();
+    userServ = TestBed.inject(UserService);
+    nurseServ = TestBed.inject(NurseService);
 
-//   beforeEach(() => {
-//     userServ = TestBed.inject(UserService);
-//     nurseServ = TestBed.inject(NurseService);
-//     mockClient =  TestBed.get(HttpClient);
+    fixture = TestBed.createComponent(ProfilesComponent);
+    component = fixture.componentInstance;
+  });
 
-//     fixture = TestBed.createComponent(ProfilesComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges()
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
 //   it('should have current user image with proper alt atribute', () => {
 //     fixture.detectChanges();
-//     let userImage = fixture.debugElement.query(By.css('img')).nativeElement;
-//     expect(userImage.alt).toBe(dummyUser.firstname + " " + dummyUser.lastname);
+//     let img = fixture.debugElement.query(By.css('.user-image')).nativeElement;
+//     expect(img.alt).toBe(dummyUser.firstName + " " + dummyUser.lastName);
+//     // let userImage = fixture.debugElement.query(By.css('img')).nativeElement;
+//     // expect(userImage.alt).toBe(dummyUser.firstName + " " + dummyUser.lastName);
 //   });
 
 //   it('should have current user image with proper src atribute', () => {
@@ -93,13 +91,13 @@
 //   it('should have current user span tag with id: "lastName" has proper innerHTML', () => {
 //     fixture.detectChanges();
 //     let span = fixture.debugElement.query(By.css('#lastName')).nativeElement;
-//     expect(span.innerHTML).toBe("First Name: " + dummyUser.firstname);
+//     expect(span.innerHTML).toBe("First Name: " + dummyUser.firstName);
 //   });
 
 //   it('should have current user span tag with id: "firstName" has proper innerHTML', () => {
 //     fixture.detectChanges();
 //     let span = fixture.debugElement.query(By.css('#firstName')).nativeElement;
-//     expect(span.innerHTML).toBe("Last Name: " + dummyUser.lastname);
+//     expect(span.innerHTML).toBe("Last Name: " + dummyUser.lastName);
 //   });
 
 //   it('should have current user div tag with id: "professionDetails" has proper innerHTML', () => {
@@ -135,4 +133,4 @@
 //       expect(component.updatePhoto).toHaveBeenCalled();
 //     })
 //   });
-// });
+});

@@ -30,4 +30,36 @@ describe('RegisterComponent', () => {
     const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   });
+
+  it('should be valid name', ()=> {
+    expect(component.validateName('Test', 'Name')).toBeTruthy();
+  });
+
+  it('should be invalid name', ()=> {
+    expect(component.validateName('123', 'Name')).toBeFalsy();
+  });
+
+  it('should be valid zipcode', ()=> {
+    expect(component.validateZip('20740')).toBeTruthy();
+  });
+
+  it('should be invalid zipcode', ()=> {
+    expect(component.validateZip('abcde')).toBeFalsy();
+  });
+
+  it('should be valid username', ()=> {
+    expect(component.validateUsername('user123')).toBeTruthy();
+  });
+
+  it('should be invalid username', ()=> {
+    expect(component.validateUsername('user')).toBeFalsy();
+  });
+
+  it('should be valid email', ()=> {
+    expect(component.validateEmail('name@domain.com')).toBeTruthy();
+  });
+
+  it('should be invalid email', ()=> {
+    expect(component.validateEmail('email')).toBeFalsy();
+  });
 });

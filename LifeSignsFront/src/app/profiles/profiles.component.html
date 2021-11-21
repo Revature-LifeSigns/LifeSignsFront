@@ -33,7 +33,7 @@
 
                     <img class="test-image" src="https://i.stack.imgur.com/34AD2.jpg" alt=""
                         *ngIf="currentUser.image == null">
-                    <img src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}"
+                    <img class="user-image" src={{currentUser.image}} alt="{{currentUser.firstname + ' ' + currentUser.lastname}}"
                         width=400 *ngIf="currentUser.image != null" />
                     <form [formGroup]="photoGroup" form-control="formGroup">
 

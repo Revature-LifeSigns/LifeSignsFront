@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   });
 
-  invalidLogin: boolean = false;
+  invalidLogin: boolean = true;
 
   //storing user loc stor
   private currentUserSubject: BehaviorSubject<any>;
@@ -34,20 +34,10 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(input: FormGroup) {
-    let errMess: any = document.getElementById('errorMessage');
-
+    let errMess = document.getElementById("errorMessage");
     let user = JSON.stringify(input.value);
     this.userService
       .loginUser(user)
-      .pipe(
-        take(1),
-        // catchError((error) => {
-        //   console.log(error);
-        //   errMess.innerHTML = 'Invalid login.  Please try again.';
-        //   this.invalidLogin = true;
-        //   return null;
-        // })
-      )
       .subscribe((loginResp: any) => {
         if (loginResp) {
           const userLogin:User = {
@@ -88,8 +78,13 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
           }
-        }
+        } 
       });
+    if (this.invalidLogin) {
+      errMess.innerHTML = 'Invalid login. Please try again.'
+    } else {
+      errMess.innerHTML = '';
+    }
   }
 
   ngOnInit(): void {
