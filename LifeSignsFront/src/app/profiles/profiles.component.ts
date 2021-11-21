@@ -4,7 +4,6 @@ import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
 import { AdminService } from '../services/admin/admin.service';
-import { StringLiteralLike } from 'typescript';
 import { Chart } from "../services/util/chart";
 
 @Component({
@@ -25,7 +24,10 @@ export class ProfilesComponent implements OnInit {
   currentUser!:any;
   isNurse:boolean = false;
 
-  charts:Chart[] = [];
+  myCharts:Chart[] = [];
+  unassignedCharts:Chart[] = [];
+  myChartsVis:boolean = false;
+  unassignedChartsVis:boolean = false;
 
   file: any;
   unitName:string = "";
@@ -52,14 +54,13 @@ export class ProfilesComponent implements OnInit {
       response => {
         for(let i=0; i<response.length; i++){
           if (response[i].doctor == null || response[i].nurse == null){
-            this.charts.push(response[i]);
+            this.unassignedCharts.push(response[i]);
           } else if (response[i].doctor.userid == this.currentUser.userid || response[i].nurse.userid == this.currentUser.userid){
-            this.charts.push(response[i]);
+            this.myCharts.push(response[i]);
           }
         }
       }
     )
-    console.log(this.charts);
   }
 
   loadPhoto(){
@@ -79,7 +80,7 @@ export class ProfilesComponent implements OnInit {
     console.log(this.currentUser.userid);
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
-        console.log(response);
+        this.loadPhoto();
       }
     );
   }
@@ -108,6 +109,15 @@ export class ProfilesComponent implements OnInit {
     console.log(chart);
   }
 
+  displayMyCharts() {
+
+    this.myChartsVis = !this.myChartsVis;
+    this.nurseServ.getAllCharts();
+  }
+  displayUnassignedCharts() {
+    this.unassignedChartsVis = !this.unassignedChartsVis;
+    this.nurseServ.getAllCharts();
+  }
 }
 
 

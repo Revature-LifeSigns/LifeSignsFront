@@ -2,17 +2,20 @@
     <div class="d-flex">
     <div class="quick-nav col-3">
         <div>
-        <h2>QuickNav</h2>
+        <h2>Quick Links</h2>
         <ul class="nav quick-nav flex-column col-12">
             <li *ngIf="isNurse" class="nav-item">
                 <a class="nav-link active" RouterLink="/charts">New Chart</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Discussion Board</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" (click)= displayMyCharts()>My Charts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Other</a>
-            </li>
+              <a class="nav-link" (click)= displayUnassignedCharts()>Unassigned Charts</a>
+          </li>
         </ul>
         </div>
     </div>
@@ -97,9 +100,10 @@
         </div>
          <!-- Chart List -->
          <br>
-         <h5>Your Charts</h5>
+        <div *ngIf="myChartsVis">
+         <h5>My Charts</h5>
         <div class="list-group">
-            <a *ngFor="let chart of charts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
+            <a *ngFor="let chart of myCharts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
                 <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName | titlecase }}</li>
                 <li class="list-group-item"*ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
                 <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
@@ -107,6 +111,19 @@
                 <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
             </a>
         </div>
+        </div>
+        <div *ngIf="unassignedChartsVis">
+          <h5>Unassigned Charts</h5>
+         <div class="list-group">
+             <a *ngFor="let chart of unassignedCharts" class="list-group-item list-group-item-action"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
+                 <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName | titlecase }}</li>
+                 <li class="list-group-item"*ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName | titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                 <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                 <li class="list-group-item"*ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName | titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
+                 <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
+             </a>
+         </div>
+         </div>
     </div>
 
 

@@ -3,12 +3,12 @@
 
     <div *ngIf="null == null; then loggedIn else loggedOut"></div>
         <ng-template #loggedIn>
-            <div class="col text-center">
+            <!-- <div class="col text-center">
                 <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide
                     Chart Form' : 'Show Chart Form'}}</button>
-            </div>
+            </div> -->
             <br> <br>
-            <div *ngIf="isVisible" class="card" id="chart">
+            <div class="card" id="chart">
                 <div class="card" id="outbord">
                     <div appMode class="card" id="inbord">
                         <div class="card-header">
@@ -24,7 +24,7 @@
                                     </div>
                                         <select formControlName = "doctor" class="form-control form-select shadow-sm mr-3"style="width:35%" #doctorSelect (change)=onDoctorSelect(doctorSelect.value)>
                                           <option>---------</option>
-                                          <option>Unassigned</option>
+                                          <option value = "">Unassigned</option>
                                           <option *ngFor="let doctor of doctorList" value = {{doctor.userid}}>{{(doctor.firstName + " " + doctor.lastName)}}</option>
                                         </select>
                                     <div class="input-group-prepend">

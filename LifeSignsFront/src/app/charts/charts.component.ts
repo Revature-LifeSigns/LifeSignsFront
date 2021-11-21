@@ -35,7 +35,8 @@ export class ChartsComponent implements OnInit, DoCheck {
     insuranceId: new FormControl(''),
     // room: new FormControl(''),
     diagnosis: new FormControl(''),
-    notes: new FormControl('')
+    notes: new FormControl(''),
+    treatment: new FormControl('')
   });
 
   // adding for redirect to patient's id once logged in
@@ -103,7 +104,6 @@ export class ChartsComponent implements OnInit, DoCheck {
         }
       }
     )
-    console.log(this.doctorList);
   }
 
   onDoctorSelect(doctorid: string){
@@ -134,7 +134,7 @@ export class ChartsComponent implements OnInit, DoCheck {
 
 
     let formDataString = JSON.stringify(chart.value);
-    console.log(chart.value);
+
 
     if(this.isEditChart){
       this.nurseServ.updatePatientChart(formDataString).subscribe(
