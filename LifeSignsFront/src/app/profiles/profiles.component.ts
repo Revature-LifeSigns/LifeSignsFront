@@ -53,7 +53,7 @@ export class ProfilesComponent implements OnInit {
     this.city = address[2];
     this.state = address[3];
     this.zip = address[4];
-    if(this.currentUser._role === 'nurse') {
+    if(this.currentUser.role === 'nurse') {
       this.isNurse = true;
     }
     else {
