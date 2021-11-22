@@ -9,7 +9,7 @@ import { User } from '../util/user';
 })
 export class AdminService {
   // private host = "localhost";
-  private host = "ec2-3-90-86-121.compute-1.amazonaws.com";
+  private host = "http://3.84.182.36";
   private port = "9025"
   private userUrl = `http://${this.host}:${this.port}/LifeSigns/user`;
   private adminUrl = `http://${this.host}:${this.port}/LifeSigns/admin`;

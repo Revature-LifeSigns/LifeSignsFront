@@ -5,7 +5,7 @@ p {
     padding-top: 5%;
 }
 
-input[type=password] {
+input[type=text], input[type=password] {
     font-size: medium;
 }
 
@@ -13,19 +13,24 @@ input[type=password] {
     transition-duration: 0.4s;
     border:none;
     color: #f09467;
-    background-color: white;
+    background-color: var(--bg-color);
 }
 
 .modal-title, .modal-btn:hover {
     color:#F26925;
 }
 
-#successMessage {
+#message {
     text-align: center;
-    color: mediumseagreen;
 }
 
-#errorMessage {
-    text-align: center;
-    color: red;
+.modal-header, .modal-body, .modal-footer{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.5s ease-in-out;
+}
+
+.saveBtn{
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
 }

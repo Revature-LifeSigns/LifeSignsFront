@@ -98,30 +98,30 @@ export class RegisterComponent implements OnInit {
   }
 
   // Validate name
-  private validateName(fname: string, lname: string) {
+  public validateName(fname: string, lname: string) {
     return /^[a-zA-Z]+ [a-zA-Z]+$/.test(fname + " " + lname);
   }
   // Validate zipcode
-  private validateZip(theZipcode: string) {
+  public validateZip(theZipcode: string) {
     return /^\d{5}(-\d{4})?$/.test(theZipcode);
   }
 
   // Username requirement: Must be lowercase, start with a letter, and can
   // contain numbers, underscores, and periods (5-20 characters).
-  private validateUsername(theUsername: string) {
+  public validateUsername(theUsername: string) {
     const re = /^[a-z]{1}[a-z0-9_.]{4,20}$/;
     return re.test(String(theUsername));
   }
 
   // Password requirement: Must include at least 1 lowercase, 1 uppercase,
   // 1 number, and 1 special character (8-20 characters).
-  private validatePwd(thePwd: string) {
+  public validatePwd(thePwd: string) {
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/;
     return re.test(String(thePwd));
   }
 
   // Email requirement: Must be a valid email [name@domain] (3-50 characters).
-  private validateEmail(theEmail: string) {
+  public validateEmail(theEmail: string) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(theEmail).toLowerCase());
   }
