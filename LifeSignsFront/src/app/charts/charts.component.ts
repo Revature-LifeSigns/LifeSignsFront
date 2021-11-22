@@ -82,7 +82,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
 
   ngDoCheck() {
     if(this.allowAutoFillChart && this.isEditChart && this.chartToEdit) {
-      console.log(this.chartToEdit.address);
+      console.log(this.chartToEdit);
       let address:string[] = this.chartToEdit.address.split(';');
       console.log(address);
       let street = address[0];
