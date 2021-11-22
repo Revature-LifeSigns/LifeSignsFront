@@ -2,6 +2,7 @@ export interface User {
   role: string;
   username: string;
   password: string;
+  email: string;
   firstName: string;
   lastName: string;
   dob: string;
@@ -13,7 +14,6 @@ export interface User {
   covidStatus: string;
   userid?: number;
   profile_image?: null;
-
 }
 
 

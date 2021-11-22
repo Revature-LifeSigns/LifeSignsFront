@@ -3,9 +3,9 @@ import { User } from './user';
 export interface Chart {
 
     address: string,
-    chartid: 5,
+    chartid: number,
     diagnosis: string,
-    diagnosis_approved: true,
+    diagnosis_approved: false,
     dob: string,
     doctor?: User,
     email: string,
@@ -18,14 +18,3 @@ export interface Chart {
 }
 
 
-// doctor: string;
-// nurse: string;
-// firstname: string;
-// lastname: string;
-// dob: Date;
-// address: string;
-// email: string;
-// insuranceId: number;
-// room: number;
-// diagnosis: string;
-// notes: string;

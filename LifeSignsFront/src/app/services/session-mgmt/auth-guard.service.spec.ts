@@ -22,8 +22,8 @@ describe('AuthGuardService', () => {
     username:"TestUsername",
     password: "TestPassword",
     email: "TestEmail",
-    firstname: "TestFirstName",
-    lastname: "TestLastName",
+    firstName: "TestFirstName",
+    lastName: "TestLastName",
     dob: "TestDoB",
     address: "TestAddress",
     image: "http://s3.amazonaws.com/lifesigns/example.jpg",
@@ -74,5 +74,14 @@ describe('AuthGuardService', () => {
     spyOn(userService, 'getLoggedInUser').and.returnValue(dummyUser);
     expect(authService.canActivate(routeMock, routeStateMock)).toEqual(true);
   });
+
+  it('should invoke canActivate', ()=> {
+    let route: ActivatedRouteSnapshot;
+    let state: RouterStateSnapshot;
+    let spyOnMethod = spyOn(authService, 'canActivate').and.callThrough();
+    authService.canActivate(route, state);
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
 });
 

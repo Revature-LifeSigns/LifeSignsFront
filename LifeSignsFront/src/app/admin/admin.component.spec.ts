@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, FormGroup } from '@angular/forms';
+
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AdminComponent } from './admin.component';
@@ -14,17 +16,26 @@ describe('AdminComponent', () => {
       declarations: [ AdminComponent ]
     })
     .compileComponents();
+    
+    fixture = TestBed.createComponent(AdminComponent);
+    component = fixture.componentInstance;
   });
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(AdminComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
-
   it('should be created', () => {
-    const fixture = TestBed.createComponent(AdminComponent);
-    const component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
+  });
+
+  it('should assign unit', ()=> {
+    let spyOnMethod = spyOn(component, "assignUnit").and.callThrough();
+    component.assignUnit(new FormGroup({
+      unit: new FormControl('')
+    }));
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should get assigned unit', ()=> {
+    let spyOnMethod = spyOn(component, 'getAssignedUnit').and.callThrough();
+    component.getAssignedUnit();
+    expect(spyOnMethod).toHaveBeenCalled();
   });
 });
