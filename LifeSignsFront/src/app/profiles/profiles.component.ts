@@ -1,11 +1,13 @@
 
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
 import { AdminService } from '../services/admin/admin.service';
 import { Chart } from "../services/util/chart";
+import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-profiles',
@@ -46,7 +48,7 @@ export class ProfilesComponent implements OnInit {
 
   // @Output()
   // allowAutoFillChart: boolean;
-
+  private router: Router;
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -117,6 +119,25 @@ export class ProfilesComponent implements OnInit {
       response => {
         if (response) {
           this.aboutMeGroup.reset();
+          console.log(response);
+          const updatedUser:User = {
+            role: response.role,
+            username: response.username,
+            password: response.password,
+            email: response.email,
+            firstName: response.firstName,
+            lastName: response.lastName,
+            dob: response.dob,
+            address: response.address,
+            image: response.profile_image,
+            aboutMe: response.aboutMe,
+            viewPref: response.viewPref,
+            specialty: response.specialty,
+            covidStatus: response.covidStatus,
+            userid: response.userid
+          };
+          localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+          this.currentUser = updatedUser;
         }
       }
     )

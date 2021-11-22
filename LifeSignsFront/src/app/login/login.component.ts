@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           const userLogin:User = {
             role: loginResp.role,
             username: loginResp.username,
-            password: loginResp.pwd,
+            password: loginResp.password,
             email: loginResp.email,
             firstName: loginResp.firstName,
             lastName: loginResp.lastName,
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             address: loginResp.address,
             image: loginResp.profile_image,
             aboutMe: loginResp.aboutMe,
-            viewPref: loginResp.viewPreference,
+            viewPref: loginResp.viewPref,
             specialty: loginResp.specialty,
             covidStatus: loginResp.covidStatus,
             userid: loginResp.userid
