@@ -159,6 +159,8 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
           console.warn("Error Updating Chart", error);
         }
       )
+      alert("Chart Updated.");
+      window.location.reload();
 
     } else {
       this.nurseServ.sendPatientChart(formDataString).subscribe(
@@ -173,12 +175,6 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         }
       );
     }
-
-    //this.allowAutoFillChart = true;
-    //console.log(this.allowAutoFillChart);
-    alert("Chart Updated.");
-    window.location.reload();
-
   }
 
   toggleForm() {
