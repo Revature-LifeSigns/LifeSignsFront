@@ -168,15 +168,15 @@ class SurveyStub {
   });
 
 
-//   it('should call updatePhoto method', () => {
-//     fixture.detectChanges();
-//     let button =  fixture.debugElement.query(By.css('button')).nativeElement;
-//     spyOn(component, 'updatePhoto');
-//     button.click();
-//     fixture.whenStable().then(()=>{
-//       expect(component.updatePhoto).toHaveBeenCalled();
-//     })
-//   });
+  it('should call updatePhoto method', () => {
+    fixture.detectChanges();
+    let button =  fixture.debugElement.query(By.css('button')).nativeElement;
+    let spyOnMethod = spyOn(component, 'updatePhoto');
+    component.updatePhoto(event);
+    fixture.whenStable().then(()=>{
+      expect(spyOnMethod).toHaveBeenCalled();
+    })
+  });
 
   it('should invoke loadPhoto()', ()=> {
     let spyOnMethod = spyOn(component, 'loadPhoto').and.callThrough();
