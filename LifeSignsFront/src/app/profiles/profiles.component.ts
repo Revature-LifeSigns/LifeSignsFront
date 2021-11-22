@@ -1,5 +1,5 @@
 
-import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
@@ -14,7 +14,7 @@ import { ThrowStmt } from '@angular/compiler';
   templateUrl: './profiles.component.html',
   styleUrls: ['./profiles.component.css']
 })
-export class ProfilesComponent implements OnInit {
+export class ProfilesComponent implements OnInit, DoCheck {
   street1!:string;
   street2!:string;
   city!:string;
@@ -46,6 +46,8 @@ export class ProfilesComponent implements OnInit {
   @Output()
   chartToEdit: Chart | undefined;
 
+ aboutMe: string;
+
   // @Output()
   // allowAutoFillChart: boolean;
   // private router: Router;
@@ -54,6 +56,7 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
+    console.log(this.currentUser);
     let address:string[] = this.currentUser.address.split(';');
     this.street1 = address[0];
     this.street2 = address[1];
@@ -79,6 +82,10 @@ export class ProfilesComponent implements OnInit {
         }
       }
     )
+  }
+
+  ngDoCheck() {
+    this.aboutMe = this.currentUser.aboutMe;
   }
 
   loadPhoto(){
@@ -118,6 +125,7 @@ export class ProfilesComponent implements OnInit {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
     this.userServ.updateUserProfile(this.currentUser).subscribe(
       response => {
+        console.log(response);
         if (response) {
           this.aboutMeGroup.reset();
           // console.log(response);

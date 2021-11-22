@@ -74,3 +74,7 @@ a:hover, button:hover {
 .custom-background-color {
     background-color: #474C55;
 }
+
+.list-group-item:hover {
+    text-decoration: wavy;
+}
