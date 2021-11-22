@@ -67,7 +67,7 @@ export class ProfilesComponent implements OnInit {
       this.isNurse = false;
     }
     this.loadPhoto();
-    // this.getAssignedUnit();
+    this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
         for(let i=0; i<response.length; i++){
@@ -95,7 +95,7 @@ export class ProfilesComponent implements OnInit {
     let formData = new FormData();
     formData.append("file", this.file);
     formData.append("uploader", String(this.currentUser.userid));
-    console.log(this.currentUser.userid);
+    // console.log(this.currentUser.userid);
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
         this.loadPhoto();
@@ -107,6 +107,7 @@ export class ProfilesComponent implements OnInit {
     let currentUser:any = this.userServ.getLoggedInUser();
     this.adminServ.getUnit(currentUser.userid).subscribe(
       response =>{
+        // console.log(response);
         this.unitName = response.unit;
       }
     );
@@ -119,7 +120,7 @@ export class ProfilesComponent implements OnInit {
       response => {
         if (response) {
           this.aboutMeGroup.reset();
-          console.log(response);
+          // console.log(response);
           const updatedUser:User = {
             role: response.role,
             username: response.username,
@@ -147,7 +148,7 @@ export class ProfilesComponent implements OnInit {
     this.chartToEdit = chart;
     //this.allowAutoFillChart = true;
 
-    console.log(chart);
+    // console.log(chart);
   }
 
   displayMyCharts() {
