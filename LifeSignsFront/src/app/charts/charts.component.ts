@@ -82,7 +82,14 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
 
   ngDoCheck() {
     if(this.allowAutoFillChart && this.isEditChart && this.chartToEdit) {
-      console.log("In Edit Chart " + this.chartToEdit.firstName);
+      console.log(this.chartToEdit.address);
+      let address:string[] = this.chartToEdit.address.split(';');
+      console.log(address);
+      let street = address[0];
+      let city = address[1];
+      let state = address[2];
+      let zip = address[3];
+
       this.chartGroup = new FormGroup({
         chartid: new FormControl(this.chartToEdit.chartid),
         doctor: new FormControl(this.chartToEdit.doctor),
@@ -90,10 +97,10 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         firstName: new FormControl(this.chartToEdit.firstName),
         lastName: new FormControl(this.chartToEdit.lastName),
         dob: new FormControl(this.chartToEdit.dob),
-        street: new FormControl(""),
-        city: new FormControl(""),
-        state: new FormControl(''),
-        zipcode: new FormControl(''),
+        street: new FormControl(street),
+        city: new FormControl(city),
+        state: new FormControl(state),
+        zipcode: new FormControl(zip),
         address: new FormControl(this.chartToEdit.address),
         email: new FormControl(this.chartToEdit.email),
         insuranceId: new FormControl(this.chartToEdit.insuranceid),
@@ -140,7 +147,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
 
 
   public submitChart(chart: FormGroup) {
-    let addressJoin= chart.get("street").value + "; " + chart.get("city").value + ", " + chart.get("state").value + " " + chart.get("zipcode").value;
+    let addressJoin= chart.get("street").value + "; " + chart.get("city").value + "; " + chart.get("state").value + "; " + chart.get("zipcode").value;
     chart.removeControl("street");
     chart.removeControl("city");
     chart.removeControl("state");
