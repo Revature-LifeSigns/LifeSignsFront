@@ -82,5 +82,6 @@ describe('AuthGuardService', () => {
     authService.canActivate(route, state);
     expect(spyOnMethod).toHaveBeenCalled();
   });
+
 });
 

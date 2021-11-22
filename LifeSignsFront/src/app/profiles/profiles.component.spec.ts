@@ -167,6 +167,7 @@ class SurveyStub {
     expect(p.innerHTML).toBe("TestAbout");
   });
 
+
 //   it('should call updatePhoto method', () => {
 //     fixture.detectChanges();
 //     let button =  fixture.debugElement.query(By.css('button')).nativeElement;
@@ -195,3 +196,5 @@ class SurveyStub {
     expect(spyOnMethod).toHaveBeenCalled();
   });
 });
+
+

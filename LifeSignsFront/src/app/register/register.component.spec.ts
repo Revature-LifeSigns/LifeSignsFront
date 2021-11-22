@@ -1,9 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-<<<<<<< HEAD
-=======
 import { FormControl, FormGroup } from '@angular/forms';
->>>>>>> development
+
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { RegisterComponent } from './register.component';

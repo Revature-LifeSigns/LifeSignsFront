@@ -7,7 +7,6 @@ import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { Chart } from '../services/util/chart';
 import { User } from '../services/util/user';
-
 import { ChartsComponent } from './charts.component';
 
 describe('ChartsComponent', () => {
@@ -79,11 +78,13 @@ describe('ChartsComponent', () => {
       declarations: [ ChartsComponent ]
     })
     .compileComponents();
+
     fixture = TestBed.createComponent(ChartsComponent);
     component = fixture.debugElement.componentInstance;
   });
 
   it('should be created', () => {
+
     expect(component).toBeTruthy();
   });
 
