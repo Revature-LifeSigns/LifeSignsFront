@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             address: loginResp.address,
             image: loginResp.profile_image,
             aboutMe: loginResp.aboutMe,
-            viewPref: loginResp.viewPref,
+            viewPref: loginResp.viewPreference,
             specialty: loginResp.specialty,
             covidStatus: loginResp.covidStatus,
             userid: loginResp.userid
