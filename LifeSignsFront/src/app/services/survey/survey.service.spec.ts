@@ -32,7 +32,7 @@ describe('SurveyService', () => {
     service.insertSurvey(dummySurvey.toString()).subscribe(response => {
       expect(response.toString()).toEqual(dummySurvey.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/survey/insert");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/survey/insert");
     expect(req.request.method).toBe("POST");
     req.flush(dummySurvey);
   });
