@@ -25,7 +25,7 @@ describe('AdminService', () => {
     service.getAllUsers().subscribe(response => {
       expect(response.length).toBeGreaterThan(1);
     });
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/user");
     expect(req.request.method).toBe("GET");
   });
 
@@ -33,7 +33,7 @@ describe('AdminService', () => {
     service.getAllUnits().subscribe(response => {
       expect(response.length).toBeGreaterThan(1);
     });
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/admin/units");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/admin/units");
     expect(req.request.method).toBe("GET");
   });
 
@@ -41,7 +41,7 @@ describe('AdminService', () => {
     service.getUnit(1).subscribe(response => {
       expect(response).toBeTruthy();
     });
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/admin/assigned-unit/1");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/admin/assigned-unit/1");
     expect(req.request.method).toBe("GET");
   });
 
@@ -49,7 +49,7 @@ describe('AdminService', () => {
     service.insertOrUpdateUnitAssignment(1, new Unit('', 1)).subscribe(response => {
       expect(response).toBeTruthy();
     });
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/admin/assign-units/1");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/admin/assign-units/1");
     expect(req.request.method).toBe("POST");
   });
 });

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           const userLogin:User = {
             role: loginResp.role,
             username: loginResp.username,
-            password: loginResp.pwd,
+            password: loginResp.password,
             email: loginResp.email,
             firstName: loginResp.firstName,
             lastName: loginResp.lastName,
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
             address: loginResp.address,
             image: loginResp.profile_image,
             aboutMe: loginResp.aboutMe,
-            viewPref: loginResp.viewPreference,
+            viewPref: loginResp.viewPref,
             specialty: loginResp.specialty,
             covidStatus: loginResp.covidStatus,
             userid: loginResp.userid
@@ -77,12 +77,12 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
           }
-        } 
+        }
       });
     if (this.invalidLogin) {
-      errMess.innerHTML = 'Invalid login. Please try again.'
+      errMess!.innerHTML = 'Invalid login. Please try again.'
     } else {
-      errMess.innerHTML = '';
+      errMess!.innerHTML = '';
     }
   }
 

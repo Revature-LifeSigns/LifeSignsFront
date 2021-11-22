@@ -3,6 +3,7 @@ import { Route } from '@angular/compiler/src/core';
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { Router, RouterStateSnapshot,ActivatedRouteSnapshot } from '@angular/router';
 import {RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from 'src/app/app.component';
 import { UserService } from '../user/user.service';
 import { User } from '../util/user';
 
@@ -37,6 +38,12 @@ describe('AuthGuardService', () => {
 
   let routerMock = {navigate: jasmine.createSpy('navigate')}
   let router: Router;
+
+  function fakeRouterState(url: string): RouterStateSnapshot {
+    return {
+      url,
+    } as RouterStateSnapshot;
+  }
 
   let routeMock: any = { snapshot: {}};
   let routeStateMock: any = { snapshot: {}, url: '/cookies'};
@@ -76,8 +83,8 @@ describe('AuthGuardService', () => {
   });
 
   it('should invoke canActivate', ()=> {
-    let route: ActivatedRouteSnapshot;
-    let state: RouterStateSnapshot;
+    let route: ActivatedRouteSnapshot= new ActivatedRouteSnapshot();
+    let state: RouterStateSnapshot = fakeRouterState("http://3.84.182.36:9025/LifeSigns");
     let spyOnMethod = spyOn(authService, 'canActivate').and.callThrough();
     authService.canActivate(route, state);
     expect(spyOnMethod).toHaveBeenCalled();
