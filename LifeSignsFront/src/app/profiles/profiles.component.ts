@@ -113,7 +113,7 @@ export class ProfilesComponent implements OnInit {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
     this.userServ.updateUserProfile(this.currentUser).subscribe(
       response => {
-
+        console.log(response);
       }
     )
   }
@@ -132,6 +132,10 @@ export class ProfilesComponent implements OnInit {
     this.unassignedChartsVis = !this.unassignedChartsVis;
     this.nurseServ.getAllCharts();
   }
+
+  reloadCurrentPage() {
+    window.location.reload();
+   }
 }
 
 
