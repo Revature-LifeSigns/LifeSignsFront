@@ -140,7 +140,7 @@
             <!--This is a container that will hold the "About Me" information for the individual-->
             <div id="aboutContainer">
                 <h2>About me</h2>
-                <p>{{ currentUser.aboutMe }}</p>
+                <p id="about">{{currentUser.aboutMe}}</p>
                 <!-- <h5>Update About Me</h5> -->
                 <form [formGroup]="aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
                     <div class="form-floating">
