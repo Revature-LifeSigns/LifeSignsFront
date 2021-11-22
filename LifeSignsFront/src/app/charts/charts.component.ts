@@ -67,12 +67,16 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
     });
     this.getDoctors();
 
-    this.allowAutoFillChart = true;
+    if(this.isEditChart) {
+      this.allowAutoFillChart = true;
+    }
     //console.log(this.allowAutoFillChart);
   }
 
   ngOnChanges() {
-    this.allowAutoFillChart = true;
+    if(this.isEditChart) {
+      this.allowAutoFillChart = true;
+    }
     //console.log(this.allowAutoFillChart);
   }
 
