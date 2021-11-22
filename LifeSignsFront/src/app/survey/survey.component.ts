@@ -67,7 +67,7 @@ export class Survey implements OnInit {
     let surveyJson = JSON.stringify(this.covidSurvey);
     this.surveyServ.insertSurvey(surveyJson).subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
       },
       error => {
         console.error(error);

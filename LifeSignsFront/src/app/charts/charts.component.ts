@@ -62,7 +62,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
     this.patientID$.pipe().subscribe((id) => {
-      console.log(id);
+      // console.log(id);
       // call api to retrieve patient's chart data
     });
     this.getDoctors();
@@ -153,7 +153,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
     if(this.isEditChart){
       this.nurseServ.updatePatientChart(formDataString).subscribe(
         (response) => {
-          console.log(response);
+          // console.log(response);
         },
         (error) => {
           console.warn("Error Updating Chart", error);
@@ -165,7 +165,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
 
         (response) => {
 
-          console.log(response);
+          // console.log(response);
           window.alert('your form has been submitted!');
         },
         (error) => {
