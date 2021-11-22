@@ -44,11 +44,11 @@ export class ProfilesComponent implements OnInit {
   isEditChart: boolean = true;
 
   @Output()
-  chartToEdit: Chart;
+  chartToEdit: Chart | undefined;
 
   // @Output()
   // allowAutoFillChart: boolean;
-  private router: Router;
+  // private router: Router;
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -73,7 +73,7 @@ export class ProfilesComponent implements OnInit {
         for(let i=0; i<response.length; i++){
           if (response[i].doctor == null || response[i].nurse == null){
             this.unassignedCharts.push(response[i]);
-          } else if (response[i].doctor.userid == this.currentUser.userid || response[i].nurse.userid == this.currentUser.userid){
+          } else if (response[i].doctor!.userid == this.currentUser.userid || response[i].nurse!.userid == this.currentUser.userid){
             this.myCharts.push(response[i]);
           }
         }
@@ -130,7 +130,7 @@ export class ProfilesComponent implements OnInit {
             lastName: response.lastName,
             dob: response.dob,
             address: response.address,
-            image: response.profile_image,
+            image: response.profile_image!,
             aboutMe: response.aboutMe,
             viewPref: response.viewPref,
             specialty: response.specialty,
