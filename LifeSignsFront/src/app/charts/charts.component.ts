@@ -1,6 +1,7 @@
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,7 +15,7 @@ import { User } from '../services/util/user';
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css'],
 })
-export class ChartsComponent implements OnInit, DoCheck {
+export class ChartsComponent implements OnInit, DoCheck, OnChanges {
   chartsList: Chart[] = [];
   doctorList: User[] = [];
   nurseList: User[] = [];
@@ -47,7 +48,7 @@ export class ChartsComponent implements OnInit, DoCheck {
 
   @Input() isEditChart: boolean;
   @Input() chartToEdit:Chart;
-  allowAutoFillChart = true;
+  allowAutoFillChart: boolean;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
@@ -62,6 +63,14 @@ export class ChartsComponent implements OnInit, DoCheck {
       // call api to retrieve patient's chart data
     });
     this.getDoctors();
+
+    this.allowAutoFillChart = true;
+    //console.log(this.allowAutoFillChart);
+  }
+
+  ngOnChanges() {
+    this.allowAutoFillChart = true;
+    //console.log(this.allowAutoFillChart);
   }
 
   ngDoCheck() {
@@ -87,8 +96,10 @@ export class ChartsComponent implements OnInit, DoCheck {
         treatment: new FormControl(this.chartToEdit.treatment)
       });
       this.allowAutoFillChart = false;
+      //console.log(this.allowAutoFillChart);
     }
   }
+
 
   public getDoctors(){
     this.userServ.getUsers().subscribe(
@@ -145,6 +156,8 @@ export class ChartsComponent implements OnInit, DoCheck {
         }
       )
 
+
+
     } else {
       this.nurseServ.sendPatientChart(formDataString).subscribe(
 
@@ -158,6 +171,10 @@ export class ChartsComponent implements OnInit, DoCheck {
         }
       );
     }
+    //this.allowAutoFillChart = true;
+    //console.log(this.allowAutoFillChart);
+    alert("Chart Updated.");
+    window.location.reload();
   }
 
   toggleForm() {

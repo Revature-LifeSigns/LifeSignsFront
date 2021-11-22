@@ -18,6 +18,40 @@
           </li>
         </ul>
         </div>
+        <br> <!-- Charts -->
+        <div *ngIf="myChartsVis">
+            <h5>My Charts</h5>
+            <div class="list-group">
+                <a *ngFor="let chart of myCharts" class="list-group-item list-group-item-action"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
+                    <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName |
+                        titlecase }}</li>
+                    <li class="list-group-item" *ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName |
+                        titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                    <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                    <li class="list-group-item" *ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName |
+                        titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
+                    <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div *ngIf="unassignedChartsVis">
+            <h5>Unassigned Charts</h5>
+            <div class="list-group">
+                <a *ngFor="let chart of unassignedCharts" class="list-group-item list-group-item-action"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
+                    <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName |
+                        titlecase }}</li>
+                    <li class="list-group-item" *ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName |
+                        titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
+                    <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                    <li class="list-group-item" *ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName |
+                        titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
+                    <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
+                </a>
+            </div>
+        </div>
         </div>
 
         <!--This container holds all personal info, name, address, photo, dob, specialty, etc-->
@@ -111,11 +145,12 @@
                             id="floatingTextarea" formControlName="aboutMe"></textarea>
                         <label style="color:black" for="floatingTextarea">Edit About Me</label>
                     </div>
+                    <br>
                     <button class="updateBtn btn" type="submit">Update</button>
                 </form>
             </div>
             <!-- Chart List -->
-            <br>
+            <!-- <br>
             <div *ngIf="myChartsVis">
                 <h5>My Charts</h5>
                 <div class="list-group">
@@ -148,7 +183,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -163,15 +198,15 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-header custom-background-color custom-header-color">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Chart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (onclick)="reloadCurrentPage()"></button>
         </div>
         <div class="modal-body">
           <app-charts [isEditChart]="isEditChart" [chartToEdit]="chartToEdit"></app-charts>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="m-5 p-5">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
         </div>
     </div>
 </div>

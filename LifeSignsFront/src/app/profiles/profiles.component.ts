@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
@@ -42,6 +42,9 @@ export class ProfilesComponent implements OnInit {
 
   @Output()
   chartToEdit: Chart;
+
+  // @Output()
+  // allowAutoFillChart: boolean;
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -110,13 +113,14 @@ export class ProfilesComponent implements OnInit {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
     this.userServ.updateUserProfile(this.currentUser).subscribe(
       response => {
-
+        console.log(response);
       }
     )
   }
 
   getChartToEdit(chart:Chart){
     this.chartToEdit = chart;
+    //this.allowAutoFillChart = true;
     console.log(chart);
   }
 
@@ -128,6 +132,10 @@ export class ProfilesComponent implements OnInit {
     this.unassignedChartsVis = !this.unassignedChartsVis;
     this.nurseServ.getAllCharts();
   }
+
+  reloadCurrentPage() {
+    window.location.reload();
+   }
 }
 
 

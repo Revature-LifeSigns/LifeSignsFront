@@ -62,3 +62,15 @@ td {
 a:hover, button:hover {
     cursor: pointer;
 }
+
+.custom-header-color {
+    color: #ffffff;
+}
+
+.custom-secondary-color {
+    color:  #F26925;
+}
+
+.custom-background-color {
+    background-color: #474C55;
+}
