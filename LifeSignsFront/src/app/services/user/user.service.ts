@@ -13,8 +13,8 @@ export class UserService {
   private loggedInUser!: User;
   private userLoggedInStatus!: boolean;
 
-  private urlBase = "http://localhost:9025/LifeSigns";
-  // private urlBase = "http://ec2-18-116-241-177.us-east-2.compute.amazonaws.com:9025/LifeSigns";
+  // private urlBase = "http://localhost:9025/LifeSigns";
+  private urlBase = "http://3.84.182.36:9025/LifeSigns";
 
   private httpHead = {
     headers: new HttpHeaders({
@@ -56,7 +56,7 @@ export class UserService {
   getLoggedInUser():User {
     // return JSON.parse(localStorage.getItem('currentUser'));
     // return this.loggedInUser;
-    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loggedInUser = JSON.parse(localStorage.getItem('currentUser')!);
     return this.loggedInUser;
 
   }

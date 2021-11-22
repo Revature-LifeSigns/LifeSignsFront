@@ -15,7 +15,9 @@ import { User } from '../services/util/user';
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css'],
 })
+
 export class ChartsComponent implements OnInit, DoCheck, OnChanges {
+
   chartsList: Chart[] = [];
   doctorList: User[] = [];
   nurseList: User[] = [];
@@ -49,6 +51,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
   @Input() isEditChart: boolean;
   @Input() chartToEdit:Chart;
   allowAutoFillChart: boolean;
+
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
@@ -150,6 +153,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
     let formDataString = JSON.stringify(chart.value);
 
 
+
     if(this.isEditChart){
       this.nurseServ.updatePatientChart(formDataString).subscribe(
         (response) => {
@@ -159,8 +163,6 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
           console.warn("Error Updating Chart", error);
         }
       )
-
-
 
     } else {
       this.nurseServ.sendPatientChart(formDataString).subscribe(
@@ -175,12 +177,12 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         }
       );
     }
+
     //this.allowAutoFillChart = true;
     //console.log(this.allowAutoFillChart);
-    if(this.isEditChart) {
-      alert("Chart Updated.");
-      window.location.reload();
-    }
+    alert("Chart Updated.");
+    window.location.reload();
+
   }
 
   toggleForm() {
