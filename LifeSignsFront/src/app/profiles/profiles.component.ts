@@ -36,8 +36,8 @@ export class ProfilesComponent implements OnInit {
   @Output()
   chartToEdit: Chart;
 
-  @Output()
-  allowAutoFillChart: boolean;
+  // @Output()
+  // allowAutoFillChart: boolean;
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
@@ -103,7 +103,7 @@ export class ProfilesComponent implements OnInit {
 
   getChartToEdit(chart:Chart){
     this.chartToEdit = chart;
-    this.allowAutoFillChart = true;
+    //this.allowAutoFillChart = true;
     console.log(chart);
   }
 

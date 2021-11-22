@@ -47,7 +47,7 @@ export class ChartsComponent implements OnInit, DoCheck {
 
   @Input() isEditChart: boolean;
   @Input() chartToEdit:Chart;
-  @Input() allowAutoFillChart: boolean;
+  allowAutoFillChart: boolean;
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
     this.patientID$ = this.route.params.pipe(
@@ -62,6 +62,8 @@ export class ChartsComponent implements OnInit, DoCheck {
       // call api to retrieve patient's chart data
     });
     this.getDoctors();
+
+    this.allowAutoFillChart = true;
   }
 
   ngDoCheck() {
@@ -147,6 +149,8 @@ export class ChartsComponent implements OnInit, DoCheck {
           console.warn("Error Updating Chart", error);
         }
       )
+
+      this.allowAutoFillChart = true;
 
     } else {
       this.nurseServ.sendPatientChart(formDataString).subscribe(
