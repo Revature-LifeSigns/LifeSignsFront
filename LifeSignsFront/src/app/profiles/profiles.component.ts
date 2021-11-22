@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
@@ -12,6 +12,11 @@ import { Chart } from "../services/util/chart";
   styleUrls: ['./profiles.component.css']
 })
 export class ProfilesComponent implements OnInit {
+  street1!:string;
+  street2!:string;
+  city!:string;
+  state!:string;
+  zip!:string;
 
   photoGroup = new FormGroup({
     newPhoto: new FormControl('')
@@ -38,18 +43,27 @@ export class ProfilesComponent implements OnInit {
   @Output()
   chartToEdit: Chart;
 
+  // @Output()
+  // allowAutoFillChart: boolean;
+
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
-    if(this.currentUser._role === 'nurse') {
+    let address:string[] = this.currentUser.address.split(';');
+    this.street1 = address[0];
+    this.street2 = address[1];
+    this.city = address[2];
+    this.state = address[3];
+    this.zip = address[4];
+    if(this.currentUser.role === 'nurse') {
       this.isNurse = true;
     }
     else {
       this.isNurse = false;
     }
     this.loadPhoto();
-    this.getAssignedUnit();
+    // this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
         for(let i=0; i<response.length; i++){
@@ -78,7 +92,6 @@ export class ProfilesComponent implements OnInit {
     formData.append("file", this.file);
     formData.append("uploader", String(this.currentUser.userid));
     console.log(this.currentUser.userid);
-
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
         this.loadPhoto();
@@ -107,11 +120,11 @@ export class ProfilesComponent implements OnInit {
 
   getChartToEdit(chart:Chart){
     this.chartToEdit = chart;
+    //this.allowAutoFillChart = true;
     console.log(chart);
   }
 
   displayMyCharts() {
-
     this.myChartsVis = !this.myChartsVis;
     this.nurseServ.getAllCharts();
   }
@@ -119,6 +132,10 @@ export class ProfilesComponent implements OnInit {
     this.unassignedChartsVis = !this.unassignedChartsVis;
     this.nurseServ.getAllCharts();
   }
+
+  reloadCurrentPage() {
+    window.location.reload();
+   }
 }
 
 
