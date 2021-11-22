@@ -36,7 +36,7 @@ describe('AppComponent', () => {
   });
 
   it('should invoke toggleUserMenu()', ()=> {
-    let spyOnMethod = spyOn(component, "toggleUserMenu");
+    let spyOnMethod = spyOn(component, "toggleUserMenu").and.callThrough();
     component.toggleUserMenu();
     expect(spyOnMethod).toHaveBeenCalled();
   });
