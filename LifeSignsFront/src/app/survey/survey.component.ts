@@ -31,7 +31,7 @@ export class Survey implements OnInit {
 
   hasDisplayed: boolean;
   today = new Date().getDay();
-  dayToDisplay = 4;
+  dayToDisplay = 1;
 
   //Constructor
   constructor(private userServ: UserService, private surveyServ: SurveyService) {}

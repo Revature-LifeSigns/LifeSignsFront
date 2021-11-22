@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
@@ -12,7 +12,7 @@ import { Chart } from "../services/util/chart";
   templateUrl: './profiles.component.html',
   styleUrls: ['./profiles.component.css']
 })
-export class ProfilesComponent implements OnInit {
+export class ProfilesComponent implements OnInit, DoCheck {
   street1!:string;
   street2!:string;
   city!:string;
@@ -44,14 +44,14 @@ export class ProfilesComponent implements OnInit {
   @Output()
   chartToEdit: Chart;
 
-  // @Output()
-  // allowAutoFillChart: boolean;
+ aboutMe: string;
 
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
+    console.log(this.currentUser);
     let address:string[] = this.currentUser.address.split(';');
     this.street1 = address[0];
     this.street2 = address[1];
@@ -77,6 +77,10 @@ export class ProfilesComponent implements OnInit {
         }
       }
     )
+  }
+
+  ngDoCheck() {
+    this.aboutMe = this.currentUser.aboutMe;
   }
 
   loadPhoto(){

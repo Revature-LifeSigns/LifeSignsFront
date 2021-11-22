@@ -22,34 +22,34 @@
         <div *ngIf="myChartsVis">
             <h5>My Charts</h5>
             <div class="list-group">
-                <a *ngFor="let chart of myCharts" class="list-group-item list-group-item-action"
+                <ul *ngFor="let chart of myCharts" class="list-group-item list-group-item-action"
                     data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
-                    <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName |
+                    <li class="list-group-item" style="pointer-events: none;">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName |
                         titlecase }}</li>
-                    <li class="list-group-item" *ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName |
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName |
                         titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
-                    <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
-                    <li class="list-group-item" *ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName |
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName |
                         titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
-                    <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
-                </a>
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
+                </ul>
             </div>
         </div>
         <br>
         <div *ngIf="unassignedChartsVis">
             <h5>Unassigned Charts</h5>
             <div class="list-group">
-                <a *ngFor="let chart of unassignedCharts" class="list-group-item list-group-item-action"
+                <ul *ngFor="let chart of unassignedCharts" class="list-group-item list-group-item-action"
                     data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=getChartToEdit(chart)>
-                    <li class="list-group-item">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName |
+                    <li class="list-group-item" style="pointer-events: none;">Patient: {{ chart.firstName | titlecase }} {{ chart.lastName |
                         titlecase }}</li>
-                    <li class="list-group-item" *ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName |
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.doctor != null">Doctor: {{ chart.doctor.firstName |
                         titlecase }} {{ chart.doctor.lastName | titlecase }}</li>
-                    <li class="list-group-item" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
-                    <li class="list-group-item" *ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName |
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.doctor == null"> Doctor: Unassigned</li>
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.nurse != null">Nurse: {{ chart.nurse.firstName |
                         titlecase }} {{ chart.nurse.lastName | titlecase }}</li>
-                    <li class="list-group-item" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
-                </a>
+                    <li class="list-group-item" style="pointer-events: none;" *ngIf="chart.nurse == null"> Nurse: Unassigned</li>
+                </ul>
             </div>
         </div>
         </div>
@@ -139,7 +139,7 @@
             <!--This is a container that will hold the "About Me" information for the individual-->
             <div id="aboutContainer">
                 <h2>About me</h2>
-                <p>{{ currentUser.aboutMe }}</p>
+                <p>{{ aboutMe }}</p>
                 <!-- <h5>Update About Me</h5> -->
                 <form [formGroup]="aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
                     <div class="form-floating">
