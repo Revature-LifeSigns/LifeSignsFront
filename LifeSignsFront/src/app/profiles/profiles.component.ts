@@ -115,7 +115,9 @@ export class ProfilesComponent implements OnInit {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
     this.userServ.updateUserProfile(this.currentUser).subscribe(
       response => {
-
+        if (response) {
+          this.aboutMeGroup.reset();
+        }
       }
     )
   }
