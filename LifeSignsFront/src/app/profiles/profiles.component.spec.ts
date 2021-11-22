@@ -1,130 +1,171 @@
-// import { HttpClient } from '@angular/common/http';
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-// import { Observable, Subscriber } from 'rxjs';
-// import { NurseService } from '../services/nurse/nurse.service';
-// import { UserService } from '../services/user/user.service';
-// import { User } from '../services/util/user';
+import { HttpClient } from '@angular/common/http';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Observable, Subscriber } from 'rxjs';
+import { ChartsComponent } from '../charts/charts.component';
+import { NurseService } from '../services/nurse/nurse.service';
+import { UserService } from '../services/user/user.service';
+import { Chart } from '../services/util/chart';
+import { User } from '../services/util/user';
+import { Survey } from '../survey/survey.component';
 
-// import { ProfilesComponent } from './profiles.component';
+import { ProfilesComponent } from './profiles.component';
 
-// describe('ProfilesComponent', () => {
-//   let component: ProfilesComponent;
-//   let fixture: ComponentFixture<ProfilesComponent>;
-//   let userServ: UserService;
-//   let nurseServ: NurseService;
-//   let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
+describe('ProfilesComponent', () => {
+  let component: ProfilesComponent;
+  let fixture: ComponentFixture<ProfilesComponent>;
+  let userServ: UserService;
+  let nurseServ: NurseService;
+  let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
 
-//   const imgStr = 'src';
-//   const dummyUser: User = {
+  const imgStr = 'src';
+  const dummyUser: User = {
 
-//   role:'doctor',
-//   username:"TestUsername",
-//   password: "TestPassword",
-//   email: "TestEmail",
-//   firstname: "TestFirstName",
-//   lastname: "TestLastName",
-//   dob: "TestDoB",
-//   address: "TestAddress",
-//   image: "http://s3.amazonaws.com/lifesigns/" + imgStr,
-//   aboutMe:"TestAbout",
-//   specialty: "none",
-//   viewPref: false,
-//   covidStatus: "TestCovidStatus",
-//   userid:1
-// };
+  role:'doctor',
+  username:"TestUsername",
+  password: "TestPassword",
+  email: "TestEmail",
+  firstName: "TestFirstName",
+  lastName: "TestLastName",
+  dob: "2020-10-10",
+  address: "TestAddress",
+  image: "http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg",
+  aboutMe:"TestAbout",
+  specialty: "none",
+  viewPref: false,
+  covidStatus: "TestCovidStatus",
+  userid:1
+};
 
-//     class MockServiceUser {
-//     getLoggedInUser(): User{
-//       return dummyUser;
-//     }
-//   }
+const dummyCharts: Chart = {
 
-//   class MockServiceNurse {
-//     getPhoto(user: User): Observable<Object>{
-//       return new Observable(/*subscriber => {
-//         subscriber.next({
-//           imageFileName: imgStr
-//         })
-//         subscriber.complete();
-//       }*/)
-//     }
-//   }
+  address: "TestAddress",
+  chartid: 1,
+  diagnosis: "Test Diagnosis",
+  diagnosis_approved: false,
+  dob: "2020-10-10",
+  doctor: dummyUser,
+  email: "fake@test.com",
+  firstName: "Test",
+  insuranceid: "12345-13",
+  lastName: "Patient",
+  notes: "test notes here",
+  nurse: dummyUser,
+  treatment: "this is a treatment"
+}
 
+    class MockServiceUser {
+    getLoggedInUser(): User{
+      return dummyUser;
+    }
+  }
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ProfilesComponent ],
-//       providers:[
-//         {provide: UserService, useClass: MockServiceUser},
-//         {provide: NurseService, useClass: MockServiceNurse},
-//         {provide: HttpClient, useValue: mockClient}
-//       ]
-//     })
-//     .compileComponents();
-//   });
+  class MockServiceNurse {
+    updatePhoto(){}
+    getPhoto(user: User): Observable<Object>{
+      return new Observable(subscriber => {
+        subscriber.next({
+          imageFileName: imgStr
+        })
+        subscriber.complete();
+      })
+    }
+    getAllCharts(): Observable<Object>{
+      return new Observable(subscriber => {
+        subscriber.next({
+          dummyCharts
+        })
+        subscriber.complete();
+      })
+    }
+  }
 
-//   beforeEach(() => {
-//     userServ = TestBed.inject(UserService);
-//     nurseServ = TestBed.inject(NurseService);
-//     mockClient =  TestBed.get(HttpClient);
+  @Component({selector: 'app-charts', template: ''})
+class ChartComponentStub{
+}
 
-//     fixture = TestBed.createComponent(ProfilesComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges()
-//   });
+@Component({selector: 'app-survey', template: ''})
+class SurveyStub {
+}
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ProfilesComponent, SurveyStub, ChartComponentStub ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers:[
+        {provide: UserService, useClass: MockServiceUser},
+        {provide: NurseService, useClass: MockServiceNurse},
+        {provide: HttpClient, useValue: mockClient}
+      ]
+    })
+      .compileComponents();
 
-//   it('should have current user image with proper alt atribute', () => {
-//     fixture.detectChanges();
-//     let userImage = fixture.debugElement.query(By.css('img')).nativeElement;
-//     expect(userImage.alt).toBe(dummyUser.firstname + " " + dummyUser.lastname);
-//   });
+    userServ = TestBed.inject(UserService);
+    nurseServ = TestBed.inject(NurseService);
+    mockClient =  TestBed.get(HttpClient);
+    fixture = TestBed.createComponent(ProfilesComponent);
+    component = fixture.componentInstance;
+    component.currentUser = dummyUser;
+    fixture.detectChanges();
+  });
 
-//   it('should have current user image with proper src atribute', () => {
-//     fixture.detectChanges();
-//     let userImage = fixture.debugElement.query(By.css('img')).nativeElement;
-//     expect(userImage.src).toBe("http://s3.amazonaws.com/lifesigns/" + imgStr);
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-//   it('should have current user span tag with id: "lastName" has proper innerHTML', () => {
-//     fixture.detectChanges();
-//     let span = fixture.debugElement.query(By.css('#lastName')).nativeElement;
-//     expect(span.innerHTML).toBe("First Name: " + dummyUser.firstname);
-//   });
+  it('should have current user image with proper alt atribute',  () => {
 
-//   it('should have current user span tag with id: "firstName" has proper innerHTML', () => {
-//     fixture.detectChanges();
-//     let span = fixture.debugElement.query(By.css('#firstName')).nativeElement;
-//     expect(span.innerHTML).toBe("Last Name: " + dummyUser.lastname);
-//   });
+    component.currentUser.image= "http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg"
+    component.ngOnInit();
+     fixture.whenStable();
+    let userImage = fixture.debugElement.query(By.css('.user-image')).nativeElement
+    expect(userImage.alt).toBe(dummyUser.firstName + " " + dummyUser.lastName);
+  });
 
-//   it('should have current user div tag with id: "professionDetails" has proper innerHTML', () => {
-//     fixture.detectChanges();
-//     let div = fixture.debugElement.query(By.css('#professionDetails')).nativeElement;
-//     expect(div.innerHTML).toBe(" Type: " + dummyUser.role + " ");
-//   });
+  it('should have current user image with proper src atribute', () => {
+    component.currentUser.image= "http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg"
+    component.ngOnInit();
+     fixture.whenStable();
+    let userImage = fixture.debugElement.query(By.css('.user-image')).nativeElement
+    expect(userImage.src).toBe("http://s3.amazonaws.com/lifesigns/src");
+  });
 
-//   it('should have current user div tag with id: "covid" has proper innerHTML', () => {
-//     fixture.detectChanges();
-//     let div = fixture.debugElement.query(By.css('#covid')).nativeElement;
-//     expect(div.innerHTML).toBe(" Covid Status: " + dummyUser.covidStatus + " ");
-//   });
+  it('should have current user span tag with id: "lastName" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let span = fixture.debugElement.query(By.css('.lastName')).nativeElement;
+    expect(span.innerHTML).toBe("Testlastname");
+  });
 
-//   it('should have current user div tag with id: "dob" has proper innerHTML', () => {
-//     fixture.detectChanges();
-//     let div = fixture.debugElement.query(By.css('#dob')).nativeElement;
-//     expect(div.innerHTML).toBe(" DOB: " + dummyUser.dob + " ");
-//   });
+  it('should have current user span tag with id: "firstName" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let span = fixture.debugElement.query(By.css('.firstName')).nativeElement;
+    expect(span.innerHTML).toBe("Testfirstname");
+  });
 
-//   it('should have current user p tag in div with id: "aboutContainer" has proper innerHTML', () => {
-//     fixture.detectChanges();
-//     let p = fixture.debugElement.query(By.css('#aboutContainer p')).nativeElement;
-//     expect(p.innerHTML).toBe(" " + dummyUser.aboutMe + " ");
-//   });
+  it('should have current user div tag with id: "professionDetails" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let div = fixture.debugElement.query(By.css('.role')).nativeElement;
+    expect(div.innerHTML).toBe("Doctor");
+  });
+
+  it('should have current user div tag with id: "covid" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let div = fixture.debugElement.query(By.css('.covid')).nativeElement;
+    expect(div.innerHTML).toBe("TestCovidStatus");
+  });
+
+  it('should have current user div tag with id: "dob" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let div = fixture.debugElement.query(By.css('.dob')).nativeElement;
+    expect(div.innerHTML).toBe("Oct 10, 2020");
+  });
+
+  it('should have current user p tag in div with id: "aboutContainer" has proper innerHTML', () => {
+    fixture.detectChanges();
+    let p = fixture.debugElement.query(By.css('p')).nativeElement;
+    expect(p.innerHTML).toBe("TestAbout");
+  });
 
 //   it('should call updatePhoto method', () => {
 //     fixture.detectChanges();
@@ -135,4 +176,22 @@
 //       expect(component.updatePhoto).toHaveBeenCalled();
 //     })
 //   });
-// });
+
+  it('should invoke loadPhoto()', ()=> {
+    let spyOnMethod = spyOn(component, 'loadPhoto').and.callThrough();
+    component.loadPhoto();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should display charts', ()=> {
+    let spyOnMethod = spyOn(component, 'displayMyCharts').and.callThrough();
+    component.displayMyCharts();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+
+  it('should display unassigned charts', ()=> {
+    let spyOnMethod = spyOn(component, 'displayUnassignedCharts').and.callThrough();
+    component.displayUnassignedCharts();
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
+});

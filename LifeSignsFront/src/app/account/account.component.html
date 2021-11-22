@@ -17,7 +17,6 @@
                         <br>
                         {{city}}, {{state}} {{zip}}
                     </p>
-
                     <ng-template #elseBlock>
                         <p><b>Home Address: </b>
                             <br>
@@ -28,13 +27,13 @@
                             {{city}}, {{state}} {{zip}}
                         </p>
                     </ng-template>
-                    <button class="modal-btn" (click)="open(personal)"><b>UPDATE PERSONAL INFO</b></button>
+                    <!-- <button class="modal-btn" (click)="open(personal)"><b>UPDATE PERSONAL INFO</b></button> -->
                     <hr>
                 </div>
                 <div class="email">
                     <h4><b>Email</b></h4>
                     <p>{{currentUser.email}}</p>
-                    <button class="modal-btn" (click)="open(email)"><b>UPDATE EMAIL</b></button>
+                    <!-- <button class="modal-btn" (click)="open(email)"><b>UPDATE EMAIL</b></button> -->
                     <hr>
                 </div>
                 <div class="password">
@@ -55,7 +54,6 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-
     <div appMode class="modal-body">
         <form [formGroup]="">
             <div class="row">

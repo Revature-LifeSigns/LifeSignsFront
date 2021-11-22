@@ -3,16 +3,16 @@
 
     <div *ngIf="null == null; then loggedIn else loggedOut"></div>
         <ng-template #loggedIn>
-            <div class="col text-center">
+            <!-- <div class="col text-center">
                 <button class="btn btn-block text-uppercase shadow-sm w-25 mb-2" (click)='toggleForm()'>{{isVisible ? 'Hide
                     Chart Form' : 'Show Chart Form'}}</button>
-            </div>
-            <br> <br>
-            <div *ngIf="isVisible" class="card" id="chart">
+            </div> -->
+            <br>
+            <div class="card" id="chart">
                 <div class="card" id="outbord">
                     <div appMode class="card" id="inbord">
                         <div class="card-header">
-                            <img class="clipb" src="../../assets/img/clipboard.png" style="width:35%; height:25%;">
+                            <img class="clipb" src="../../assets/img/clipboard.png" style="width:33%; height:25%;">
                             <div class="card-heading">Patient Chart</div>
                         </div>
 
@@ -24,7 +24,7 @@
                                     </div>
                                         <select formControlName = "doctor" class="form-control form-select shadow-sm mr-3"style="width:35%" #doctorSelect (change)=onDoctorSelect(doctorSelect.value)>
                                           <option>---------</option>
-                                          <option>Unassigned</option>
+                                          <option value = "">Unassigned</option>
                                           <option *ngFor="let doctor of doctorList" value = {{doctor.userid}}>{{(doctor.firstName + " " + doctor.lastName)}}</option>
                                         </select>
                                     <div class="input-group-prepend">
@@ -135,6 +135,12 @@
 
                                 </div>
 
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Date of Birth</span>
+                                    </div>
+                                    <input type="text" class="form-control shadow-sm px-4" onfocus="(this.type='date')"
+                                        onblur="(this.type='text')" placeholder="MM/DD/YYYY"
+                                        onClick="event.preventDefault()">
 
 
 
@@ -161,6 +167,12 @@
                                     </div>
                                     <input formControlName="diagnosis" type="text" class="form-control shadow-sm">
                                 </div>
+                                <div class="input-group mb-4">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text" id="">Treatment</span>
+                                  </div>
+                                  <input formControlName="treatment" type="text" class="form-control shadow-sm">
+                              </div>
                                 <div class="input-group mb-3">
                                     <textarea formControlName="notes" class="form-control shadow-sm"
                                         placeholder="Notes"></textarea>
@@ -180,3 +192,4 @@
         </ng-template>
     </div>
 </div>
+

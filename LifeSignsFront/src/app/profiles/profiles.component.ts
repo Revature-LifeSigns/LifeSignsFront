@@ -4,7 +4,6 @@ import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
 import { AdminService } from '../services/admin/admin.service';
-import { StringLiteralLike } from 'typescript';
 import { Chart } from "../services/util/chart";
 
 @Component({
@@ -13,6 +12,11 @@ import { Chart } from "../services/util/chart";
   styleUrls: ['./profiles.component.css']
 })
 export class ProfilesComponent implements OnInit {
+  street1!:string;
+  street2!:string;
+  city!:string;
+  state!:string;
+  zip!:string;
 
   photoGroup = new FormGroup({
     newPhoto: new FormControl('')
@@ -25,7 +29,10 @@ export class ProfilesComponent implements OnInit {
   currentUser!:any;
   isNurse:boolean = false;
 
-  charts!:Chart[];
+  myCharts:Chart[] = [];
+  unassignedCharts:Chart[] = [];
+  myChartsVis:boolean = false;
+  unassignedChartsVis:boolean = false;
 
   file: any;
   unitName:string = "";
@@ -43,21 +50,31 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.userServ.getLoggedInUser();
-    if(this.currentUser._role === 'nurse') {
+    let address:string[] = this.currentUser.address.split(';');
+    this.street1 = address[0];
+    this.street2 = address[1];
+    this.city = address[2];
+    this.state = address[3];
+    this.zip = address[4];
+    if(this.currentUser.role === 'nurse') {
       this.isNurse = true;
     }
     else {
       this.isNurse = false;
     }
     this.loadPhoto();
-    this.getAssignedUnit();
+    // this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
-        this.charts = response;
-        console.log(response);
+        for(let i=0; i<response.length; i++){
+          if (response[i].doctor == null || response[i].nurse == null){
+            this.unassignedCharts.push(response[i]);
+          } else if (response[i].doctor.userid == this.currentUser.userid || response[i].nurse.userid == this.currentUser.userid){
+            this.myCharts.push(response[i]);
+          }
+        }
       }
     )
-    console.log(this.charts);
   }
 
   loadPhoto(){
@@ -77,7 +94,7 @@ export class ProfilesComponent implements OnInit {
     console.log(this.currentUser.userid);
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
-        console.log(response);
+        this.loadPhoto();
       }
     );
   }
@@ -107,6 +124,14 @@ export class ProfilesComponent implements OnInit {
     console.log(chart);
   }
 
+  displayMyCharts() {
+    this.myChartsVis = !this.myChartsVis;
+    this.nurseServ.getAllCharts();
+  }
+  displayUnassignedCharts() {
+    this.unassignedChartsVis = !this.unassignedChartsVis;
+    this.nurseServ.getAllCharts();
+  }
 }
 
 
