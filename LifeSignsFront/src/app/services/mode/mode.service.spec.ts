@@ -41,7 +41,7 @@ describe('ModeService', () => {
 
   it('should toggle theme', ()=> {
     let currentUser = dummyUser;
-    let spyOnMethod = spyOn(service, 'toggleMode').and.callThrough();
+    let spyOnMethod = spyOn(service, 'toggleMode');
     service.toggleMode();
     expect(spyOnMethod).toHaveBeenCalled();
   });

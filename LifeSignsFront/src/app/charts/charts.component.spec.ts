@@ -104,27 +104,27 @@ describe('ChartsComponent', () => {
     expect(spyOnMethod).toHaveBeenCalled();
   });
 
-  // it('should invoke chart submission', ()=>{
-  //   let spyOnMethod = spyOn(component, "submitChart").and.callThrough();
-  //   component.submitChart(new FormGroup({
-  //     doctor: new FormControl({}),
-  //     nurse: new FormControl({}),
-  //     firstName: new FormControl(),
-  //     lastName: new FormControl(''),
-  //     dob: new FormControl(''),
-  //     street: new FormControl(''),
-  //     city: new FormControl(''),
-  //     state: new FormControl(''),
-  //     zipcode: new FormControl(''),
-  //     address: new FormControl(''),
-  //     email: new FormControl(''),
-  //     insuranceId: new FormControl(''),
-  //     diagnosis: new FormControl(''),
-  //     notes: new FormControl(''),
-  //     treatment: new FormControl('')
-  //   }));
-  //   expect(spyOnMethod).toHaveBeenCalled();
-  // });
+  it('should invoke chart submission', ()=>{
+    let spyOnMethod = spyOn(component, "submitChart");
+    component.submitChart(new FormGroup({
+      doctor: new FormControl({}),
+      nurse: new FormControl({}),
+      firstName: new FormControl(),
+      lastName: new FormControl(''),
+      dob: new FormControl(''),
+      street: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zipcode: new FormControl(''),
+      address: new FormControl(''),
+      email: new FormControl(''),
+      insuranceId: new FormControl(''),
+      diagnosis: new FormControl(''),
+      notes: new FormControl(''),
+      treatment: new FormControl('')
+    }));
+    expect(spyOnMethod).toHaveBeenCalled();
+  });
 
   it('should call onDoctorSelect()', ()=> {
     let spyOnMethod = spyOn(component, "onDoctorSelect").and.callThrough();
@@ -137,4 +137,6 @@ describe('ChartsComponent', () => {
     component.onNurseSelect('');
     expect(spyOnMethod).toHaveBeenCalled();
   });
+
+
 });
