@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
   unitGroup = new FormGroup({
     unit: new FormControl('', Validators.required)
   });
-  chosenUserId:number;
+  chosenUserId!:number;
 
   unitAssigned:boolean = false;
   @ViewChild('unitAssignedModal') unitAssignedModal:any;
@@ -29,18 +29,19 @@ export class AdminComponent implements OnInit {
   constructor(private modalServ: NgbModal, private router: Router, private adminServ: AdminService, private userServ: UserService) { }
 
   ngOnInit(): void {
-    let currentUser:any = this.userServ.getLoggedInUser();
-    if(!currentUser || currentUser._role.toLocaleLowerCase() != "admin" )
+    let currentUser:User = this.userServ.getLoggedInUser();
+    if(!currentUser || currentUser.role.toLocaleLowerCase() != "admin" )
       this.router.navigate(["/home"]);
     else{
       this.adminServ.getAllUsers().subscribe(
         response => {
           if(response != null){
             this.users = response;
+            // console.log(this.users)
             this.sortUsers();
           }
       });
-  
+
       this.adminServ.getAllUnits().subscribe(
         response => {
           if(response != null){
@@ -53,10 +54,10 @@ export class AdminComponent implements OnInit {
   assignUnit(unitForm:FormGroup){
     let chosenUnit: Unit =  new Unit(unitForm.value.unit);
     this.modalServ.dismissAll();
-    
+
     this.adminServ.insertOrUpdateUnitAssignment(this.chosenUserId, chosenUnit).subscribe(
       response =>{
-        if(response != null){ 
+        if(response != null){
           this.unitAssigned = true;
           this.modalServ.open(this.unitAssignedModal, {size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result;
         }

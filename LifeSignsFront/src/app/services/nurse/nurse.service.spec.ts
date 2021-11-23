@@ -1,19 +1,32 @@
 import { TestBed } from '@angular/core/testing';
-import {HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
 import { NurseService } from './nurse.service';
-import { Nurse } from '../util/nurse';
 import { User } from '../util/user';
 import { Photo } from '../util/photo';
 
 describe('NurseService', () => {
   let service: NurseService;
   let httpMock: HttpTestingController;
-  const dummyNurseProfile = new User(
-    "Nurse", "testNurse", "","test@test.com","Test","Nurse","01-01-1900","100 E Main St; Buffalo, NY 00000",
-    "http://s3.amazonaws.com/lifesigns/trees-adobespark.jpg","This is my totally cool description of me.", false,"Pediatrics","unknown",1)
-  const testPhoto:Photo = {
+  const dummyNurseProfile: User = {
+
+    role: 'nurse',
+    username: "TestUsername",
+    password: "TestPassword",
+    email: "TestEmail",
+    firstName: "TestFirstName",
+    lastName: "TestLastName",
+    dob: "TestDoB",
+    address: "TestAddress",
+    image: "http://s3.amazonaws.com/lifesigns/example.jpg",
+    aboutMe: "TestAbout",
+    specialty: "none",
+    viewPref: false,
+    covidStatus: "TestCovidStatus",
+    userid: 1
+  };
+  const testPhoto: Photo = {
     photoId: 1,
     imagePath: "/lifesigns/",
     imageFileName: "tree.jpg",
@@ -23,8 +36,8 @@ describe('NurseService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule],
-      providers:[NurseService]
+      imports: [HttpClientTestingModule],
+      providers: [NurseService]
     });
     service = TestBed.inject(NurseService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -36,20 +49,47 @@ describe('NurseService', () => {
   });
 
   it('should have getPhoto() return data', () => {
-    service.getPhoto(dummyNurseProfile).subscribe( response =>{
-    expect(response.toString()).toEqual(testPhoto.toString());
+    service.getPhoto(dummyNurseProfile).subscribe(response => {
+      expect(response.toString()).toEqual(testPhoto.toString());
+    })
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/photo/1");
+    expect(req.request.method).toBe("GET");
+    req.flush(testPhoto);
   })
-  const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo/1");
-  expect(req.request.method).toBe("GET");
-  req.flush(testPhoto);
-})
 
-it('should have uploadPhoto() return response', () => {
-  service.uploadPhoto(file).subscribe( response =>{
-  expect(response.toString()).toEqual(file.toString());
-})
-const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo");
-expect(req.request.method).toBe("POST");
-req.flush(file);
-})
+  it('should have uploadPhoto() return response', () => {
+    service.uploadPhoto(file).subscribe(response => {
+      expect(response.toString()).toEqual(file.toString());
+    })
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/photo");
+    expect(req.request.method).toBe("POST");
+    req.flush(file);
+  });
+
+  it('should have sendPatientChart() return response', () => {
+    service.sendPatientChart('').subscribe(response => {
+      expect(response).toBeTruthy();
+    })
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/chart/insert");
+    expect(req.request.method).toBe("POST");
+    req.flush(file);
+  });
+
+  it('should have updatePatientChart() return response', () => {
+    service.updatePatientChart('').subscribe(response => {
+      expect(response).toBeTruthy();
+    })
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/chart/update");
+    expect(req.request.method).toBe("PATCH");
+    req.flush(file);
+  });
+
+  it('should have getAllCharts() return response', () => {
+    service.getAllCharts().subscribe(response => {
+      expect(response).toBeTruthy();
+    })
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/chart");
+    expect(req.request.method).toBe("GET");
+    req.flush(file);
+  });
 });

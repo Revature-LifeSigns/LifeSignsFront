@@ -1,6 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
@@ -10,7 +9,8 @@ import { User } from '../services/util/user';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit, OnChanges {
+export class AccountComponent implements OnInit {
+  storedUser!:string;
   currentUser!:User;
   street1!:string;
   street2!:string;
@@ -18,7 +18,21 @@ export class AccountComponent implements OnInit, OnChanges {
   state!:string;
   zip!:string;
 
+  infoForm = new FormGroup({
+    username: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    dob: new FormControl(''),
+    address: new FormControl(''),
+    street1: new FormControl(''),
+    street2: new FormControl(''),
+    city: new FormControl(''),
+    state: new FormControl(''),
+    zip: new FormControl('')
+  });
+
   emailForm = new FormGroup({
+    username: new FormControl(''),
     newEmail: new FormControl('')
   });
 
@@ -29,32 +43,20 @@ export class AccountComponent implements OnInit, OnChanges {
     passwordAgain: new FormControl('')
   });
 
-  constructor(private modalServ:NgbModal, private userServ:UserService, private router: Router) { }
+  message: any = document.getElementById('message');
+
+  constructor(private modalServ:NgbModal, private userServ:UserService) { }
 
   ngOnInit(): void {
-    this.currentUser = this.userServ.getLoggedInUser();
+    this.storedUser = window.localStorage.getItem('currentUser')!;
+    this.currentUser = JSON.parse(this.storedUser);
     let address:string[] = this.currentUser.address.split(';');
-    if (address.length == 4) {
-      // address does not have a street2 field
-      this.street1 = address[0];
-      this.street2 = '';
-      this.city = address[1];
-      this.state = address[2];
-      this.zip = address[3];
-    } else if (address.length == 5) {
-      // address does have a street2 field
-      this.street1 = address[0];
-      this.street2 = address[1];
-      this.city = address[2];
-      this.state = address[3];
-      this.zip = address[4];
-    }
-  }
 
-  ngOnChanges(): void {
-    // this.currentUser = this.userServ.getLoggedInUser();
-    // console.log(this.currentUser);
-    console.log("change made");
+    this.street1 = address[0];
+    this.street2 = address[1];
+    this.city = address[2];
+    this.state = address[3];
+    this.zip = address[4];
   }
 
   open(content:any) {
@@ -73,7 +75,6 @@ export class AccountComponent implements OnInit, OnChanges {
   }
 
   updatePwd(passwords:FormGroup) {
-    let message: any = document.getElementById('message');
     if (this.validatePwd(passwords.get('currentPassword')!.value) &&
         this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
@@ -81,33 +82,34 @@ export class AccountComponent implements OnInit, OnChanges {
         this.userServ.updatePassword(JSON.stringify(passwords.value)).subscribe(
           response => {
             if (response) {
-              message.setAttribute("style", "color:mediumseagreen");
-              message.innerHTML = 'Successfully changed password.';
-              console.log(response);
+              this.message.setAttribute("style", "color:mediumseagreen");
+              this.message.innerHTML = 'Successfully changed password.';
+
+              passwords.reset();
             } else {
-              message.setAttribute("style", "color:red");
-              message.innerHTML = 'Current password does not match. Please try again.';
+              this.message.setAttribute("style", "color:red");
+              this.message.innerHTML = 'Current password does not match. Please try again.';
             }
           }
         );
       } else {
         // New password and confirmation don't match
-        message.setAttribute("style", "color:red");
-        message.innerHTML = 'Passwords do not match. Please try again.'
+        this.message.setAttribute("style", "color:red");
+        this.message.innerHTML = 'Passwords do not match. Please try again.'
       }
     } else {
       // Invalid fields
-      message.setAttribute("style", "color:red");
-      message.innerHTML = 'Invalid password. Please try again.'
+      this.message.setAttribute("style", "color:red");
+      this.message.innerHTML = 'Invalid password. Please try again.'
     }
   }
 
-  private validateEmail(theEmail: string) {
+  public validateEmail(theEmail: string) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(theEmail).toLowerCase());
   }
 
-  private validatePwd(thePwd: string) {
+  public validatePwd(thePwd: string) {
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/;
     return re.test(String(thePwd));
   }

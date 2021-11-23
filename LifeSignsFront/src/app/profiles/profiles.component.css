@@ -3,27 +3,12 @@
     margin-left: 10px;
     margin: auto auto;
 }
-
-#idDetails {
-    border: 1px solid black;
+.sideMenu{
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
 }
-
-#name {
-    display: flex;
-    justify-content: space-between;
-}
-
-#lastName, #firstName, #professionType {
-    margin: auto auto;
-}
-
-#fieldSpecialty, #dob, #covid {
-    margin: auto auto;
-}
-
-#contactInfo {
-    display: flex;
-    justify-content: space-around;
+.d-flex {
+    height:100%;
 }
 
 .card-header {
@@ -45,7 +30,51 @@
 .nav-link{
     color: white;
 }
-#name {
-    border: 1px solid black;
+
+.card{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.5s ease-in-out;
 }
 
+.table{
+    color: var(--text-color);
+    transition: all 0.5s ease-in-out;
+}
+#th1 {
+    border-top: 2px solid #72A4C2;
+}
+#td4 {
+    border-bottom: 2px solid #72A4C2;
+}
+th {
+    border-bottom: 2px solid #F26925;
+}
+td {
+    border-bottom: 2px solid var(--text-color);
+}
+
+.updateBtn{
+    background-color: var(--menu-bg-color);
+    color: var(--menu-text-color);
+}
+
+a:hover, button:hover {
+    cursor: pointer;
+}
+
+.custom-header-color {
+    color: #ffffff;
+}
+
+.custom-secondary-color {
+    color:  #F26925;
+}
+
+.custom-background-color {
+    background-color: #474C55;
+}
+
+.list-group-item:hover {
+    text-decoration: wavy;
+}
