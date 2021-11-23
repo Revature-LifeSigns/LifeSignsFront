@@ -132,6 +132,7 @@ describe('SurveyComponent', () => {
         expect(component.covidSurvey.isExposed).toBeFalse();
         expect(component.covidSurvey.hasTraveled).toBeFalse();
         expect(component.covidSurvey.userId).toBe(0);
+
         component.submit();
         expect(component.covidSurvey.hasSymptoms).toBeTrue();
         expect(component.covidSurvey.isExposed).toBeTrue();

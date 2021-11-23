@@ -18,6 +18,7 @@ export class ModeService{
   // toggles between 2 Theme based on the current theme
   public toggleMode(){
     let currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+
     currentUser.viewPref = !currentUser.viewPref;
     localStorage.setItem("currentUser", JSON.stringify(currentUser));
     let temp = new User(currentUser.username, currentUser.userid, currentUser.viewPref);

@@ -77,12 +77,14 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/charts/' + userLogin.userid]);
             }
           }
+
         }
       });
     if (this.invalidLogin) {
       errMess!.innerHTML = 'Invalid login. Please try again.'
     } else {
       errMess!.innerHTML = '';
+
     }
   }
 

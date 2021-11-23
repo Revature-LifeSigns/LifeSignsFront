@@ -85,6 +85,7 @@ describe('AuthGuardService', () => {
   it('should invoke canActivate', ()=> {
     let route: ActivatedRouteSnapshot= new ActivatedRouteSnapshot();
     let state: RouterStateSnapshot = fakeRouterState("http://3.84.182.36:9025/LifeSigns");
+
     let spyOnMethod = spyOn(authService, 'canActivate').and.callThrough();
     authService.canActivate(route, state);
     expect(spyOnMethod).toHaveBeenCalled();

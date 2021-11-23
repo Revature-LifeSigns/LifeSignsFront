@@ -53,6 +53,7 @@ describe('NurseService', () => {
       expect(response.toString()).toEqual(testPhoto.toString());
     })
     const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/photo/1");
+
     expect(req.request.method).toBe("GET");
     req.flush(testPhoto);
   })

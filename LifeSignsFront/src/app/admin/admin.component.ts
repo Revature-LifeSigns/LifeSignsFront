@@ -38,6 +38,7 @@ export class AdminComponent implements OnInit {
           if(response != null){
             this.users = response;
             // console.log(this.users)
+
             this.sortUsers();
           }
       });

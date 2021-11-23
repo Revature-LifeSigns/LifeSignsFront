@@ -70,13 +70,16 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
     if(this.isEditChart) {
       this.allowAutoFillChart = true;
     }
+
     //console.log(this.allowAutoFillChart);
   }
 
   ngOnChanges() {
+
     if(this.isEditChart) {
       this.allowAutoFillChart = true;
     }
+
     //console.log(this.allowAutoFillChart);
   }
 
@@ -165,6 +168,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
       this.nurseServ.updatePatientChart(formDataString).subscribe(
         (response) => {
           // console.log(response);
+
         },
         (error) => {
           console.warn("Error Updating Chart", error);
@@ -179,6 +183,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         (response) => {
 
           // console.log(response);
+
           window.alert('your form has been submitted!');
         },
         (error) => {
@@ -187,6 +192,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
       );
     }
     window.location.reload();
+
   }
 
   toggleForm() {

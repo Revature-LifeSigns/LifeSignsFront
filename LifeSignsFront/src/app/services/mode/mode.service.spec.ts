@@ -1,11 +1,9 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { componentFactoryName } from '@angular/compiler';
 import { TestBed } from '@angular/core/testing';
 import { DarkTheme } from 'src/app/mode/theme/darkTheme';
 import { LightTheme } from 'src/app/mode/theme/lightTheme';
 import { ThemeMode } from 'src/app/mode/theme/theme';
 import { User } from '../util/user';
-
 import { ModeService } from './mode.service';
 
 describe('ModeService', () => {
@@ -42,6 +40,7 @@ describe('ModeService', () => {
   it('should toggle theme', ()=> {
     let currentUser = dummyUser;
     let spyOnMethod = spyOn(service, 'toggleMode');
+
     service.toggleMode();
     expect(spyOnMethod).toHaveBeenCalled();
   });
