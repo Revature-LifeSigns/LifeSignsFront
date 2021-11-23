@@ -175,8 +175,8 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         }
       )
       alert("Chart Updated.");
-      window.location.reload();
 
+      window.location.reload();
 
 
     } else {
@@ -193,6 +193,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         }
       );
     }
+
 
   }
 
