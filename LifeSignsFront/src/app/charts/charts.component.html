@@ -24,8 +24,8 @@
                                         <span class="input-group-text">Doctor</span>
                                     </div>
                                         <select formControlName = "doctor" class="form-control form-select shadow-sm mr-3"style="width:35%" #doctorSelect (change)=onDoctorSelect(doctorSelect.value)>
-                                          <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.doctor?.userid}}>{{ chartToEdit?.doctor?.firstName + " " + chartToEdit?.doctor?.firstName}}</option>
-                                          <option >---------</option>
+                                          <option value="{{chartToEdit.doctor}}" *ngIf="isEditChart">{{ chartToEdit.doctor?.firstName + " " + chartToEdit.doctor?.firstName}}</option>
+                                          <option disabled >---------</option>
                                           <option value = "">Unassigned</option>
                                           <option *ngFor="let doctor of doctorList" value = {{doctor.userid}}>{{(doctor.firstName + " " + doctor.lastName)}}</option>
                                         </select>
@@ -34,7 +34,7 @@
                                     </div>
 
                                     <select formControlName= "nurse" class="form-controlform-select shadow-sm mr-3" style="width:35%" #nurseSelect (change)=onNurseSelect(nurseSelect.value)>
-                                      <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.nurse?.userid}}>{{ chartToEdit?.nurse?.firstName + " " + chartToEdit?.nurse?.firstName}}
+                                      <option value="{{chartToEdit.nurse}}" *ngIf="isEditChart">{{ chartToEdit.nurse?.firstName + " " + chartToEdit.nurse?.firstName}}</option>
                                       <option *ngIf="currentUser.role == 'nurse'"  value= {{currentUser.userid}}>{{(currentUser.firstName + " " + currentUser.lastName)}}</option>
                                       <option *ngFor="let nurse of nurseList" value = {{nurse.userid}}>{{(nurse.firstName + " " + nurse.lastName)}}</option>
                                     </select>
@@ -74,7 +74,7 @@
                                         <span class="input-group-text" id="">State</span>
                                     </div>
                                     <select formControlName="state" class="form-select shadow-sm mr-3">
-                                        <option value="" disabled selected>Select a state</option>
+                                      <option value="" selected disabled>Select a state</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
                                         <option value="AZ">Arizona</option>
