@@ -176,6 +176,8 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
       )
       alert("Chart Updated.");
 
+      window.location.reload();
+
 
     } else {
       this.nurseServ.sendPatientChart(formDataString).subscribe(
@@ -191,7 +193,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         }
       );
     }
-    window.location.reload();
+
 
   }
 
