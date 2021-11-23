@@ -20,8 +20,8 @@ export class AccountComponent implements OnInit {
 
   infoForm = new FormGroup({
     username: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstname: new FormControl(''),
+    lastname: new FormControl(''),
     dob: new FormControl(''),
     address: new FormControl(''),
     street1: new FormControl(''),
@@ -43,15 +43,12 @@ export class AccountComponent implements OnInit {
     passwordAgain: new FormControl('')
   });
 
-  message: any = document.getElementById('message');
-
   constructor(private modalServ:NgbModal, private userServ:UserService) { }
 
   ngOnInit(): void {
     this.storedUser = window.localStorage.getItem('currentUser')!;
     this.currentUser = JSON.parse(this.storedUser);
     let address:string[] = this.currentUser.address.split(';');
-
     this.street1 = address[0];
     this.street2 = address[1];
     this.city = address[2];
@@ -75,6 +72,7 @@ export class AccountComponent implements OnInit {
   }
 
   updatePwd(passwords:FormGroup) {
+    let message: any = document.getElementById('message');
     if (this.validatePwd(passwords.get('currentPassword')!.value) &&
         this.validatePwd(passwords.get('newPassword')!.value)) {
       if (passwords.get('newPassword')!.value == passwords.get('passwordAgain')!.value) {
@@ -82,34 +80,33 @@ export class AccountComponent implements OnInit {
         this.userServ.updatePassword(JSON.stringify(passwords.value)).subscribe(
           response => {
             if (response) {
-              this.message.setAttribute("style", "color:mediumseagreen");
-              this.message.innerHTML = 'Successfully changed password.';
-
+              message.setAttribute("style", "color:mediumseagreen");
+              message.innerHTML = 'Successfully changed password.';
               passwords.reset();
             } else {
-              this.message.setAttribute("style", "color:red");
-              this.message.innerHTML = 'Current password does not match. Please try again.';
+              message.setAttribute("style", "color:red");
+              message.innerHTML = 'Current password does not match. Please try again.';
             }
           }
         );
       } else {
         // New password and confirmation don't match
-        this.message.setAttribute("style", "color:red");
-        this.message.innerHTML = 'Passwords do not match. Please try again.'
+        message.setAttribute("style", "color:red");
+        message.innerHTML = 'Passwords do not match. Please try again.'
       }
     } else {
       // Invalid fields
-      this.message.setAttribute("style", "color:red");
-      this.message.innerHTML = 'Invalid password. Please try again.'
+      message.setAttribute("style", "color:red");
+      message.innerHTML = 'Invalid password. Please try again.'
     }
   }
 
-  public validateEmail(theEmail: string) {
+  private validateEmail(theEmail: string) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(theEmail).toLowerCase());
   }
 
-  public validatePwd(thePwd: string) {
+  private validatePwd(thePwd: string) {
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/;
     return re.test(String(thePwd));
   }
