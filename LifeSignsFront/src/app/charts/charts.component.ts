@@ -48,9 +48,9 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
   tempDoc!:User;
   tempNurse!: User;
 
-  @Input() isEditChart: boolean;
-  @Input() chartToEdit:Chart;
-  allowAutoFillChart: boolean;
+  @Input() isEditChart!: boolean;
+  @Input() chartToEdit!:Chart;
+  allowAutoFillChart!: boolean;
 
 
   constructor(private route: ActivatedRoute, private nurseServ: NurseService, private userServ: UserService) {
@@ -74,9 +74,11 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
   }
 
   ngOnChanges() {
+
     if(this.isEditChart) {
       this.allowAutoFillChart = true;
     }
+
     //console.log(this.allowAutoFillChart);
   }
 
@@ -133,21 +135,21 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
   onDoctorSelect(doctorid: string){
 
     this.tempDoc = this.doctorList.find(doctor => {
-      return doctor.userid == doctorid as undefined as number
-    } );
+      return doctor.userid == doctorid as unknown as number;
+    } )!;
 
   }
 
   onNurseSelect(nurseid: string){
     this.tempNurse = this.nurseList.find(nurse => {
-      return nurse.userid == nurseid as undefined as number
-    } );
+      return nurse.userid == nurseid as unknown as number
+    } )!;
   }
 
 
 
   public submitChart(chart: FormGroup) {
-    let addressJoin= chart.get("street").value + "; " + chart.get("city").value + "; " + chart.get("state").value + "; " + chart.get("zipcode").value;
+    let addressJoin= chart.get("street")!.value + "; " + chart.get("city")!.value + "; " + chart.get("state")!.value + "; " + chart.get("zipcode")!.value;
     chart.removeControl("street");
     chart.removeControl("city");
     chart.removeControl("state");
@@ -172,6 +174,8 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
       )
       alert("Chart Updated.");
 
+      window.location.reload();
+
 
     } else {
       this.nurseServ.sendPatientChart(formDataString).subscribe(
@@ -179,6 +183,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         (response) => {
 
           // console.log(response);
+
           window.alert('your form has been submitted!');
         },
         (error) => {
@@ -186,7 +191,8 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         }
       );
     }
-    window.location.reload();
+
+
   }
 
   toggleForm() {

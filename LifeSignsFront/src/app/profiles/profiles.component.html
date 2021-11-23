@@ -134,13 +134,16 @@
                                 <td id="td4" colspan="4"></td>
                             </ng-template>
                         </tr>
+
                     </table>
                 </div>
             </div>
             <!--This is a container that will hold the "About Me" information for the individual-->
             <div id="aboutContainer">
                 <h2>About me</h2>
+
                 <p>{{ aboutMe }}</p>
+
                 <!-- <h5>Update About Me</h5> -->
                 <form [formGroup]="aboutMeGroup" form-control="aboutMe" (ngSubmit)="updateAboutMe()">
                     <div class="form-floating">
@@ -191,6 +194,7 @@
 
 
 
+
         </div>
 
         <!-- Pop-ups -->
@@ -216,3 +220,4 @@
                 </div>
             </div>
         </div>
+

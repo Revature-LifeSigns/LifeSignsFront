@@ -2,7 +2,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormControl, FormGroup } from '@angular/forms';
+
 import { By } from '@angular/platform-browser';
+
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user/user.service';
 

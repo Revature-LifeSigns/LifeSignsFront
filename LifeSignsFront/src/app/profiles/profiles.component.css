@@ -42,16 +42,16 @@
     transition: all 0.5s ease-in-out;
 }
 #th1 {
-    border-top: 2px solid #72A4C2;
+  border-top: 3px solid #72A4C2;
 }
 #td4 {
-    border-bottom: 2px solid #72A4C2;
+  border-bottom: 3px solid #72A4C2;
 }
 th {
-    border-bottom: 2px solid #F26925;
+  border-bottom: 2px solid slategray;
 }
 td {
-    border-bottom: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
 }
 
 .updateBtn{
@@ -78,3 +78,4 @@ a:hover, button:hover {
 .list-group-item:hover {
     text-decoration: wavy;
 }
+

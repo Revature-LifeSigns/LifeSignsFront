@@ -138,5 +138,4 @@ describe('ChartsComponent', () => {
     expect(spyOnMethod).toHaveBeenCalled();
   });
 
-
 });

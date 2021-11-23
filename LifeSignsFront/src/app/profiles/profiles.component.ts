@@ -14,7 +14,9 @@ import { ThrowStmt } from '@angular/compiler';
   templateUrl: './profiles.component.html',
   styleUrls: ['./profiles.component.css']
 })
+
 export class ProfilesComponent implements OnInit, DoCheck {
+
   street1!:string;
   street2!:string;
   city!:string;
@@ -46,7 +48,7 @@ export class ProfilesComponent implements OnInit, DoCheck {
   @Output()
   chartToEdit: Chart | undefined;
 
- aboutMe: string;
+ aboutMe!: string;
 
   // @Output()
   // allowAutoFillChart: boolean;
@@ -125,7 +127,6 @@ export class ProfilesComponent implements OnInit, DoCheck {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
     this.userServ.updateUserProfile(this.currentUser).subscribe(
       response => {
-        console.log(response);
         if (response) {
           this.aboutMeGroup.reset();
           // console.log(response);
