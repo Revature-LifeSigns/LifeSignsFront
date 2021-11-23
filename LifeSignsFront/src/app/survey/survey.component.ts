@@ -32,7 +32,7 @@ export class Survey implements OnInit {
 
   hasDisplayed: boolean = false;
   today = new Date().getDay();
-  dayToDisplay = 3;
+  dayToDisplay = 2;
 
 
   //Constructor
