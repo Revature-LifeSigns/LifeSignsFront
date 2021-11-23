@@ -25,7 +25,9 @@ describe('AdminService', () => {
     service.getAllUsers().subscribe(response => {
       expect(response.length).toBeGreaterThan(1);
     });
+
     const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/user");
+
     expect(req.request.method).toBe("GET");
   });
 

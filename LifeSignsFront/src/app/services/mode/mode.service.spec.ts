@@ -5,7 +5,6 @@ import { DarkTheme } from 'src/app/mode/theme/darkTheme';
 import { LightTheme } from 'src/app/mode/theme/lightTheme';
 import { ThemeMode } from 'src/app/mode/theme/theme';
 import { User } from '../util/user';
-
 import { ModeService } from './mode.service';
 
 describe('ModeService', () => {

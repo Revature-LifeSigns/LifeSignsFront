@@ -29,9 +29,12 @@ export class Survey implements OnInit {
     hasTraveled: false,
   };
 
+
   hasDisplayed: boolean = false;
   today = new Date().getDay();
   dayToDisplay = 3;
+
+
 
   //Constructor
   constructor(private userServ: UserService, private surveyServ: SurveyService) {}

@@ -179,6 +179,7 @@ class SurveyStub {
 
   it('should have current user p tag in div with id: "aboutContainer" has proper innerHTML', () => {
     fixture.detectChanges();
+
     let p = fixture.debugElement.query(By.css('p')).nativeElement;
     expect(p.innerHTML).toBe("TestAbout");
   });

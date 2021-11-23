@@ -74,9 +74,11 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
   }
 
   ngOnChanges() {
+
     if(this.isEditChart) {
       this.allowAutoFillChart = true;
     }
+
     //console.log(this.allowAutoFillChart);
   }
 
@@ -172,13 +174,16 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
       )
       alert("Chart Updated.");
 
+      window.location.reload();
+
 
     } else {
       this.nurseServ.sendPatientChart(formDataString).subscribe(
 
         (response) => {
 
-          console.log(response);
+          // console.log(response);
+
           window.alert('your form has been submitted!');
         },
         (error) => {
@@ -186,7 +191,8 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
         }
       );
     }
-    window.location.reload();
+
+
   }
 
   toggleForm() {
