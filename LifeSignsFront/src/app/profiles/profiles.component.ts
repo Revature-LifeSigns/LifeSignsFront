@@ -49,7 +49,7 @@ export class ProfilesComponent implements OnInit, DoCheck {
   @Output()
   chartToEdit: Chart | undefined;
 
- aboutMe: string;
+ aboutMe!: string;
 
   // @Output()
   // allowAutoFillChart: boolean;

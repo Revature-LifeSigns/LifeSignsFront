@@ -25,7 +25,7 @@
                                         <span class="input-group-text">Doctor</span>
                                     </div>
                                         <select formControlName = "doctor" class="form-control form-select shadow-sm mr-3"style="width:35%" #doctorSelect (change)=onDoctorSelect(doctorSelect.value)>
-                                          <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.doctor?.userid}}>{{ chartToEdit?.doctor?.firstName + " " + chartToEdit?.doctor?.firstName}}</option>
+                                          <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.doctor?.userid}}>{{ chartToEdit?.doctor?.firstName + " " + chartToEdit?.doctor?.lastName}}</option>
                                           <option >---------</option>
                                           <option value = "">Unassigned</option>
                                           <option *ngFor="let doctor of doctorList" value = {{doctor.userid}}>{{(doctor.firstName + " " + doctor.lastName)}}</option>
@@ -35,7 +35,7 @@
                                     </div>
 
                                     <select formControlName= "nurse" class="form-controlform-select shadow-sm mr-3" style="width:35%" #nurseSelect (change)=onNurseSelect(nurseSelect.value)>
-                                      <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.nurse?.userid}}>{{ chartToEdit?.nurse?.firstName + " " + chartToEdit?.nurse?.firstName}}
+                                      <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.nurse?.userid}}>{{ chartToEdit?.nurse?.firstName + " " + chartToEdit?.nurse?.lastName}}
                                       <option *ngIf="currentUser.role == 'nurse'"  value= {{currentUser.userid}}>{{(currentUser.firstName + " " + currentUser.lastName)}}</option>
                                       <option *ngFor="let nurse of nurseList" value = {{nurse.userid}}>{{(nurse.firstName + " " + nurse.lastName)}}</option>
                                     </select>
