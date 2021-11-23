@@ -178,7 +178,7 @@ export class ChartsComponent implements OnInit, DoCheck, OnChanges {
 
         (response) => {
 
-          // console.log(response);
+          console.log(response);
           window.alert('your form has been submitted!');
         },
         (error) => {
