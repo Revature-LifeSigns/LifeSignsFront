@@ -44,7 +44,7 @@ describe('UserService', () => {
     service.insertUser(dummyUser.username).subscribe(response => {
       expect(response.toString()).toEqual(dummyUser.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/register");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/register");
     expect(req.request.method).toBe("POST");
     req.flush(dummyUser);
   })
@@ -53,7 +53,7 @@ describe('UserService', () => {
     service.loginUser(dummyUser.username).subscribe(response => {
       expect(response.toString()).toEqual(dummyUser.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/login");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/login");
     expect(req.request.method).toBe("POST");
     req.flush(dummyUser);
   })
@@ -62,7 +62,7 @@ describe('UserService', () => {
     service.updateUserProfile(dummyUser).subscribe(response => {
       expect(response.toString()).toEqual(dummyUser.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user/update/1");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/user/update/1");
     expect(req.request.method).toBe("PATCH");
     req.flush(dummyUser);
   })
@@ -71,7 +71,7 @@ describe('UserService', () => {
     service.updatePassword(dummyUser.username).subscribe(response => {
       expect(response.toString()).toEqual(dummyUser.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/changePassword");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/changePassword");
     expect(req.request.method).toBe("POST");
     req.flush(dummyUser);
   })
@@ -80,7 +80,7 @@ describe('UserService', () => {
     service.getUsers().subscribe(response => {
       expect(response.toString().length).toBeGreaterThan(1);
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/user");
     expect(req.request.method).toBe("GET");
   });
 
@@ -93,7 +93,7 @@ describe('UserService', () => {
     service.updateUserPref(dummyUser).subscribe(response => {
       expect(response.viewPref).toBeFalsy();
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/user/update/1");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/user/update/1");
     expect(req.request.method).toBe("PATCH");
   });
 

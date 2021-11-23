@@ -23,15 +23,17 @@ export class Survey implements OnInit {
 
 
   covidSurvey: covidSurvey = {
-    userId: null,
+    userId: 0,
     hasSymptoms: false,
     isExposed: false,
     hasTraveled: false,
   };
 
-  hasDisplayed: boolean;
+
+  hasDisplayed: boolean = false;
   today = new Date().getDay();
-  dayToDisplay = 4;
+  dayToDisplay = 3;
+
 
   //Constructor
   constructor(private userServ: UserService, private surveyServ: SurveyService) {}
@@ -61,13 +63,13 @@ export class Survey implements OnInit {
         : (this.covidSurvey[<formKey>key] = true);
     }
     //get user id from user service
-    this.covidSurvey.userId = this.userServ.getLoggedInUser()?.userid;
+    this.covidSurvey.userId = this.userServ.getLoggedInUser()!.userid as number;
 
     //submit to backend with survey service
     let surveyJson = JSON.stringify(this.covidSurvey);
     this.surveyServ.insertSurvey(surveyJson).subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
       },
       error => {
         console.error(error);

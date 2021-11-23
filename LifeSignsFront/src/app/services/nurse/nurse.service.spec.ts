@@ -52,7 +52,8 @@ describe('NurseService', () => {
     service.getPhoto(dummyNurseProfile).subscribe(response => {
       expect(response.toString()).toEqual(testPhoto.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo/1");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/photo/1");
+
     expect(req.request.method).toBe("GET");
     req.flush(testPhoto);
   })
@@ -61,7 +62,7 @@ describe('NurseService', () => {
     service.uploadPhoto(file).subscribe(response => {
       expect(response.toString()).toEqual(file.toString());
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/photo");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/photo");
     expect(req.request.method).toBe("POST");
     req.flush(file);
   });
@@ -70,7 +71,7 @@ describe('NurseService', () => {
     service.sendPatientChart('').subscribe(response => {
       expect(response).toBeTruthy();
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/chart/insert");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/chart/insert");
     expect(req.request.method).toBe("POST");
     req.flush(file);
   });
@@ -79,7 +80,7 @@ describe('NurseService', () => {
     service.updatePatientChart('').subscribe(response => {
       expect(response).toBeTruthy();
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/chart/update");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/chart/update");
     expect(req.request.method).toBe("PATCH");
     req.flush(file);
   });
@@ -88,7 +89,7 @@ describe('NurseService', () => {
     service.getAllCharts().subscribe(response => {
       expect(response).toBeTruthy();
     })
-    const req = httpMock.expectOne("http://localhost:9025/LifeSigns/chart");
+    const req = httpMock.expectOne("http://3.84.182.36:9025/LifeSigns/chart");
     expect(req.request.method).toBe("GET");
     req.flush(file);
   });

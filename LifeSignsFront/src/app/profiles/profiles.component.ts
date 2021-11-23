@@ -1,18 +1,23 @@
 
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { User } from '../services/util/user';
 import { AdminService } from '../services/admin/admin.service';
 import { Chart } from "../services/util/chart";
+import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-profiles',
   templateUrl: './profiles.component.html',
   styleUrls: ['./profiles.component.css']
 })
-export class ProfilesComponent implements OnInit {
+
+export class ProfilesComponent implements OnInit, DoCheck {
+
   street1!:string;
   street2!:string;
   city!:string;
@@ -42,10 +47,13 @@ export class ProfilesComponent implements OnInit {
   isEditChart: boolean = true;
 
   @Output()
-  chartToEdit: Chart;
+  chartToEdit: Chart | undefined;
+
+ aboutMe: string;
 
   // @Output()
   // allowAutoFillChart: boolean;
+  // private router: Router;
 
 
   constructor(private userServ:UserService, private nurseServ:NurseService, private adminServ:AdminService) { }
@@ -65,18 +73,22 @@ export class ProfilesComponent implements OnInit {
       this.isNurse = false;
     }
     this.loadPhoto();
-    // this.getAssignedUnit();
+    this.getAssignedUnit();
     this.nurseServ.getAllCharts().subscribe(
       response => {
         for(let i=0; i<response.length; i++){
           if (response[i].doctor == null || response[i].nurse == null){
             this.unassignedCharts.push(response[i]);
-          } else if (response[i].doctor.userid == this.currentUser.userid || response[i].nurse.userid == this.currentUser.userid){
+          } else if (response[i].doctor!.userid == this.currentUser.userid || response[i].nurse!.userid == this.currentUser.userid){
             this.myCharts.push(response[i]);
           }
         }
       }
     )
+  }
+
+  ngDoCheck() {
+    this.aboutMe = this.currentUser.aboutMe;
   }
 
   loadPhoto(){
@@ -93,7 +105,8 @@ export class ProfilesComponent implements OnInit {
     let formData = new FormData();
     formData.append("file", this.file);
     formData.append("uploader", String(this.currentUser.userid));
-    console.log(this.currentUser.userid);
+    // console.log(this.currentUser.userid);
+
     this.nurseServ.uploadPhoto(formData).subscribe(
       response => {
         this.loadPhoto();
@@ -105,6 +118,7 @@ export class ProfilesComponent implements OnInit {
     let currentUser:any = this.userServ.getLoggedInUser();
     this.adminServ.getUnit(currentUser.userid).subscribe(
       response =>{
+        // console.log(response);
         this.unitName = response.unit;
       }
     );
@@ -115,7 +129,28 @@ export class ProfilesComponent implements OnInit {
     this.currentUser.aboutMe = this.aboutMeGroup.value.aboutMe;
     this.userServ.updateUserProfile(this.currentUser).subscribe(
       response => {
-
+        if (response) {
+          this.aboutMeGroup.reset();
+          // console.log(response);
+          const updatedUser:User = {
+            role: response.role,
+            username: response.username,
+            password: response.password,
+            email: response.email,
+            firstName: response.firstName,
+            lastName: response.lastName,
+            dob: response.dob,
+            address: response.address,
+            image: response.profile_image!,
+            aboutMe: response.aboutMe,
+            viewPref: response.viewPref,
+            specialty: response.specialty,
+            covidStatus: response.covidStatus,
+            userid: response.userid
+          };
+          localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+          this.currentUser = updatedUser;
+        }
       }
     )
   }
@@ -124,7 +159,8 @@ export class ProfilesComponent implements OnInit {
     this.chartToEdit = chart;
     //this.allowAutoFillChart = true;
 
-    console.log(chart);
+    // console.log(chart);
+
   }
 
   displayMyCharts() {

@@ -105,7 +105,7 @@ describe('ChartsComponent', () => {
   });
 
   it('should invoke chart submission', ()=>{
-    let spyOnMethod = spyOn(component, "submitChart").and.callThrough();
+    let spyOnMethod = spyOn(component, "submitChart");
     component.submitChart(new FormGroup({
       doctor: new FormControl({}),
       nurse: new FormControl({}),
@@ -137,4 +137,5 @@ describe('ChartsComponent', () => {
     component.onNurseSelect('');
     expect(spyOnMethod).toHaveBeenCalled();
   });
+
 });

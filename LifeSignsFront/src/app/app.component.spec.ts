@@ -30,7 +30,7 @@ describe('AppComponent', () => {
   });
 
   it('should invoke toggle()', ()=> {
-    let spyOnMethod = spyOn(component, "toggle").and.callThrough();
+    let spyOnMethod = spyOn(component, "toggle");
     component.toggle();
     expect(spyOnMethod).toHaveBeenCalled();
   });
@@ -42,7 +42,7 @@ describe('AppComponent', () => {
   });
 
   it('should invoke logoutUser()', ()=> {
-    let spyOnMethod = spyOn(component, "logoutUser").and.callThrough();
+    let spyOnMethod = spyOn(component, "logoutUser");
     component.logoutUser();
     expect(spyOnMethod).toHaveBeenCalled();
   });

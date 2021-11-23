@@ -13,7 +13,10 @@
                     <div appMode class="card" id="inbord">
                         <div class="card-header">
                             <img class="clipb" src="../../assets/img/clipboard.png" style="width:33%; height:25%;">
-                          </div>
+
+
+                            <div class="card-heading">Patient Chart</div>
+                        </div>
 
                         <div class="card-body mx-auto">
                             <form [formGroup]="chartGroup">
@@ -22,7 +25,8 @@
                                         <span class="input-group-text">Doctor</span>
                                     </div>
                                         <select formControlName = "doctor" class="form-control form-select shadow-sm mr-3"style="width:35%" #doctorSelect (change)=onDoctorSelect(doctorSelect.value)>
-                                          <option>---------</option>
+                                          <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.doctor?.userid}}>{{ chartToEdit?.doctor?.firstName + " " + chartToEdit?.doctor?.firstName}}</option>
+                                          <option >---------</option>
                                           <option value = "">Unassigned</option>
                                           <option *ngFor="let doctor of doctorList" value = {{doctor.userid}}>{{(doctor.firstName + " " + doctor.lastName)}}</option>
                                         </select>
@@ -31,6 +35,7 @@
                                     </div>
 
                                     <select formControlName= "nurse" class="form-controlform-select shadow-sm mr-3" style="width:35%" #nurseSelect (change)=onNurseSelect(nurseSelect.value)>
+                                      <option *ngIf="isEditChart == true" selected="selected" value={{chartToEdit?.nurse?.userid}}>{{ chartToEdit?.nurse?.firstName + " " + chartToEdit?.nurse?.firstName}}
                                       <option *ngIf="currentUser.role == 'nurse'"  value= {{currentUser.userid}}>{{(currentUser.firstName + " " + currentUser.lastName)}}</option>
                                       <option *ngFor="let nurse of nurseList" value = {{nurse.userid}}>{{(nurse.firstName + " " + nurse.lastName)}}</option>
                                     </select>
@@ -132,7 +137,7 @@
                                     </div>
                                     <input formControlName="zipcode" type="text" class="form-control shadow-sm">
 
-                                  </div>
+                                </div>
 
 
 
@@ -152,7 +157,7 @@
                                 <span class="input-group-text" id="">Room</span>
                             </div>
                             <input type="text" class="form-control shadow-sm" placeholder="101"> -->
-
+                                </div>
                                 <div class="input-group mb-4">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="">Diagnosis</span>
@@ -173,11 +178,11 @@
                                     <button class="btn btn-block text-uppercase mt-4 mb-2 shadow-sm w-25"
                                         (click)="submitChart(chartGroup)">Submit</button>
                                 </div>
-                                </div>
+
                             </form>
                         </div>
-                        </div>
-                        </div>
+                    </div>
+                </div>
             </div>
         </ng-template>
 

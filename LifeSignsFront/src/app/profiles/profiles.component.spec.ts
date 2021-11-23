@@ -2,11 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { stringify } from 'querystring';
 import { Observable, Subscriber } from 'rxjs';
 import { ChartsComponent } from '../charts/charts.component';
+import { AdminService } from '../services/admin/admin.service';
 import { NurseService } from '../services/nurse/nurse.service';
 import { UserService } from '../services/user/user.service';
 import { Chart } from '../services/util/chart';
+import { Unit } from '../services/util/unit';
 import { User } from '../services/util/user';
 import { Survey } from '../survey/survey.component';
 
@@ -17,6 +20,7 @@ describe('ProfilesComponent', () => {
   let fixture: ComponentFixture<ProfilesComponent>;
   let userServ: UserService;
   let nurseServ: NurseService;
+  let adminServ: AdminService;
   let mockClient: {get: jasmine.Spy, post: jasmine.Spy};
 
   const imgStr = 'src';
@@ -54,13 +58,23 @@ const dummyCharts: Chart = {
   nurse: dummyUser,
   treatment: "this is a treatment"
 }
-
+ const dummyUnit = new Unit("testUnit", 1);
     class MockServiceUser {
     getLoggedInUser(): User{
       return dummyUser;
     }
   }
-
+  class MockAdminService {
+    getUnit(userid:number): Observable<Unit> {
+      return new Observable(subscriber => {
+        subscriber.next({
+          unit: dummyUnit.unit,
+          unitId: dummyUnit.unitId
+        })
+        subscriber.complete();
+      });
+    }
+  }
   class MockServiceNurse {
     updatePhoto(){}
     getPhoto(user: User): Observable<Object>{
@@ -96,6 +110,7 @@ class SurveyStub {
       providers:[
         {provide: UserService, useClass: MockServiceUser},
         {provide: NurseService, useClass: MockServiceNurse},
+        {provide: AdminService, useClass: MockAdminService},
         {provide: HttpClient, useValue: mockClient}
       ]
     })
@@ -103,6 +118,7 @@ class SurveyStub {
 
     userServ = TestBed.inject(UserService);
     nurseServ = TestBed.inject(NurseService);
+    adminServ = TestBed.inject(AdminService);
     mockClient =  TestBed.get(HttpClient);
     fixture = TestBed.createComponent(ProfilesComponent);
     component = fixture.componentInstance;
@@ -163,20 +179,22 @@ class SurveyStub {
 
   it('should have current user p tag in div with id: "aboutContainer" has proper innerHTML', () => {
     fixture.detectChanges();
+
     let p = fixture.debugElement.query(By.css('p')).nativeElement;
     expect(p.innerHTML).toBe("TestAbout");
   });
 
 
-//   it('should call updatePhoto method', () => {
-//     fixture.detectChanges();
-//     let button =  fixture.debugElement.query(By.css('button')).nativeElement;
-//     spyOn(component, 'updatePhoto');
-//     button.click();
-//     fixture.whenStable().then(()=>{
-//       expect(component.updatePhoto).toHaveBeenCalled();
-//     })
-//   });
+  it('should call updatePhoto method', () => {
+    fixture.detectChanges();
+    let button =  fixture.debugElement.query(By.css('button')).nativeElement;
+    let spyOnMethod = spyOn(component, 'updatePhoto');
+    component.updatePhoto(event);
+    fixture.whenStable().then(()=>{
+      expect(spyOnMethod).toHaveBeenCalled();
+    })
+  });
+
 
   it('should invoke loadPhoto()', ()=> {
     let spyOnMethod = spyOn(component, 'loadPhoto').and.callThrough();

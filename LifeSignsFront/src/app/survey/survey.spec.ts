@@ -131,12 +131,13 @@ describe('SurveyComponent', () => {
         expect(component.covidSurvey.hasSymptoms).toBeFalse();
         expect(component.covidSurvey.isExposed).toBeFalse();
         expect(component.covidSurvey.hasTraveled).toBeFalse();
-        expect(component.covidSurvey.userId).toBe(null);
+        expect(component.covidSurvey.userId).toBe(0);
+
         component.submit();
         expect(component.covidSurvey.hasSymptoms).toBeTrue();
         expect(component.covidSurvey.isExposed).toBeTrue();
         expect(component.covidSurvey.hasTraveled).toBeTrue();
-        expect(component.covidSurvey.userId).toBe(dummyUser.userid);
+        expect(component.covidSurvey.userId).toEqual(dummyUser.userid as number);
     });
 });
 
